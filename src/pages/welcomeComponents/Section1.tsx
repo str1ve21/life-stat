@@ -5,20 +5,22 @@ import welcomeAssetPC from "@/WelcomeAssets/PC_Interface.png";
 import welcomeAssetPhone from "@/WelcomeAssets/Phone_Interface.png";
 
 //func
-import createParallax from "../../func/parallax";
+import { createParallaxY } from "../../func/parallax";
 
 // interfaces
-import IParallaxOptions from "../../interfaces/IParallaxOptions";
+import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 
 export default function Section1() {
-  const parallaxItems: IParallaxOptions[] = [
+  const parallaxItems: IParallaxYOptions[] = [
     {
+      scrollBlock: "#page",
       elem: "#section-text",
       power: 2,
-      startFrom: 100,
+      startFrom: 50,
       maxTranslateY: window.outerHeight,
     },
     {
+      scrollBlock: "#page",
       elem: "#section-image",
       power: 5,
       startFrom: 100,
@@ -27,20 +29,20 @@ export default function Section1() {
   ];
   useEffect(() => {
     parallaxItems.forEach((item) => {
-      createParallax(item);
+      createParallaxY(item);
     });
   }, []);
   return (
     <section id="Welcome" className="relative flex h-screen bg-neutral-100">
-      <div className="flex flex-col justify-between w-full mx-[5vw] lg:mx-[120px]">
+      <div className="flex flex-col justify-between w-full mx-[5vw] md:mx-[120px]">
         <div
           id="section-text"
-          className="flex flex-col justify-center items-center h-1/2 lg:h-3/5 w-full z-10"
+          className="flex flex-col justify-center items-center h-1/2 md:h-3/5 w-full z-10"
         >
-          <h1 className="text-[12vw] lg:text-[12vh] text-ssp text-center">
+          <h1 className="text-[6vh] lg:text-[12vh] text-ssp text-center">
             Приложение LifeStat.
           </h1>
-          <h2 className="text-[6vw] lg:text-[6vh] text-raleway text-center opacity-80">
+          <h2 className="text-[3vh] lg:text-[6vh] text-raleway text-center opacity-80">
             Облегчит ведение статистики в разы.
           </h2>
         </div>
