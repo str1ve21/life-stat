@@ -7,19 +7,27 @@ import welcomeAssetPhone from "@/WelcomeAssets/Phone_Interface.png";
 //func
 import createParallax from "../../func/parallax";
 
+// interfaces
+import IParallaxOptions from "../../interfaces/IParallaxOptions";
+
 export default function Section1() {
-  useEffect(() => {
-    createParallax({
+  const parallaxItems: IParallaxOptions[] = [
+    {
       elem: "#section-text",
       power: 2,
       startFrom: 100,
       maxTranslateY: window.outerHeight,
-    });
-    createParallax({
+    },
+    {
       elem: "#section-image",
       power: 5,
       startFrom: 100,
       maxTranslateY: window.outerHeight,
+    },
+  ];
+  useEffect(() => {
+    parallaxItems.forEach((item) => {
+      createParallax(item);
     });
   }, []);
   return (
