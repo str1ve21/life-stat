@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .dark {
+    color-scheme: dark;
+  }
+
+  .text-ssp {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .text-raleway {
+    font-family: 'Raleway', sans-serif;
+    -webkit-font-feature-settings: "lnum";
+    -moz-font-feature-settings: "lnum";
+    font-feature-settings: "lnum";
+  }
+
+  .text-vertical-rl {
+    writing-mode: vertical-rl;
+  }
+}
