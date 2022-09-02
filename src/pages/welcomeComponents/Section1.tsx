@@ -17,14 +17,12 @@ export default function Section1() {
       elem: "#section-text",
       power: 2,
       startFrom: 50,
-      maxTranslateY: window.outerHeight,
     },
     {
       scrollBlock: "#page",
       elem: "#section-image",
       power: 5,
       startFrom: 100,
-      maxTranslateY: window.outerHeight,
     },
   ];
   useEffect(() => {
