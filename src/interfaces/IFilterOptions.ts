@@ -1,9 +1,9 @@
-export default interface IParallaxYOptions {
+export default interface IFilterOptions {
   readonly scrollBlock: string;
   readonly elem: string;
-  readonly power: number;
+  readonly filterType: string;
   readonly startFrom?: number;
   readonly finishAfter?: number;
-  readonly initialTranslateY?: number;
+  readonly invertedValue?: boolean;
   readonly throttle?: number;
 }
