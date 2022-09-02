@@ -24,7 +24,8 @@ export default function Section2() {
       scrollBlock: "#page",
       elem: "#about-text",
       filterType: "opacity",
-      startFrom: 500,
+      initialFilterValue: 0,
+      startFrom: window.outerHeight / 3,
       finishAfter: 200,
     });
   }, []);

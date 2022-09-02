@@ -18,11 +18,9 @@ export function createParallaxY(options: IParallaxYOptions): void {
   const finishAfterValue = options.finishAfter! || window.outerHeight;
   const throttleValue = options.throttle! || 15;
 
-  if (initialTranslateValue) {
-    document.querySelector<HTMLElement>(
-      options.elem
-    )!.style.transform = `translateY(${initialTranslateValue}px)`;
-  }
+  document.querySelector<HTMLElement>(
+    options.elem
+  )!.style.transform = `translateY(${initialTranslateValue}px)`;
 
   page?.addEventListener(
     "scroll",
@@ -46,10 +44,15 @@ export function createParallaxY(options: IParallaxYOptions): void {
 
 export function createOpacity(options: IFilterOptions): void {
   const page = document.querySelector<HTMLElement>(options.scrollBlock);
+  const initialFilterValue = options.initialFilterValue || 0;
   const startFromValue = options.startFrom! || 0;
   const finishAfterValue = options.finishAfter! || 100;
-  const filterTypeValue = options.filterType;
   const throttleValue = options.throttle! || 15;
+  const reversedValue = options.reversedValue! || false;
+
+  document.querySelector<HTMLElement>(
+    options.elem
+  )!.style.filter = `${options.filterType}(${initialFilterValue})`;
 
   page?.addEventListener(
     "scroll",
@@ -59,10 +62,12 @@ export function createOpacity(options: IFilterOptions): void {
       if (page.scrollTop > startFromValue + finishAfterValue) return;
 
       let filterNumber = (page.scrollTop - startFromValue) / finishAfterValue;
+
+      if (reversedValue) filterNumber = 1 - filterNumber;
+
       document.querySelector<HTMLElement>(
         options.elem
-      )!.style.filter = `${filterTypeValue}(${filterNumber})`;
-      console.log(filterNumber, page.scrollTop, finishAfterValue)
+      )!.style.filter = `${options.filterType}(${filterNumber})`;
     })
   );
 }
