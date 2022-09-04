@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 
 //func
-import { createParallaxY, createOpacity } from "../../func/parallax";
+import { createParallaxY } from "../../func/parallax";
+import { createOpacity } from "../../func/opacity";
 
 // interfaces
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
@@ -30,7 +31,7 @@ export default function Section2() {
     });
   }, []);
   return (
-    <section id="About" className="relative h-[3000px] bg-app-100 z-50">
+    <section id="About" className="relative h-screen bg-app-100 z-50">
       <div className="lg:w-full mx-[5vw] lg:mx-0 lg:px-[120px] overflow-hidden">
         <h2
           id="about-title"
