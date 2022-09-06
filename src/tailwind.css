@@ -21,4 +21,8 @@
   .text-vertical-rl {
     writing-mode: vertical-rl;
   }
+  
+  .line-height-1 {
+    line-height: 1;
+  }
 }

@@ -6,5 +6,6 @@ export default interface IFilterOptions {
   readonly startFrom?: number;
   readonly finishAfter?: number;
   readonly reversedValue?: boolean;
+  readonly maxFilter?: number;
   readonly throttle?: number;
 }

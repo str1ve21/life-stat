@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./allComponents/Navbar";
 import Section1 from "./welcomeComponents/Section1";
 import Section2 from "./welcomeComponents/Section2";
+import Section3 from "./welcomeComponents/Section3";
 
 export default function WelcomePage() {
   return (
@@ -12,6 +13,7 @@ export default function WelcomePage() {
       <Navbar />
       <Section1 />
       <Section2 />
+      <Section3 />
     </main>
   );
 }

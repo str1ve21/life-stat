@@ -3,13 +3,14 @@ import { throttle } from "throttle-debounce";
 // interfaces
 import IFilterOptions from "../interfaces/IFilterOptions";
 
-export function createOpacity(options: IFilterOptions): void {
+export function createFilter(options: IFilterOptions): void {
   const page = document.querySelector<HTMLElement>(options.scrollBlock);
   const initialFilterValue = options.initialFilterValue || 0;
   const startFromValue = options.startFrom! || 0;
   const finishAfterValue = options.finishAfter! || 100;
   const throttleValue = options.throttle! || 15;
   const reversedValue = options.reversedValue! || false;
+  const maxFilterValue = options.maxFilter! || 1;
 
   document.querySelector<HTMLElement>(
     options.elem
@@ -22,7 +23,10 @@ export function createOpacity(options: IFilterOptions): void {
 
       if (page.scrollTop > startFromValue + finishAfterValue) return;
 
-      let filterNumber = (page.scrollTop - startFromValue) / finishAfterValue;
+      let filterNumber =
+        ((page.scrollTop - startFromValue) / finishAfterValue) * maxFilterValue;
+
+      if (filterNumber >= maxFilterValue) return;
 
       if (reversedValue) filterNumber = 1 - filterNumber;
 

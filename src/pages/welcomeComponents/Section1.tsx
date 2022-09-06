@@ -9,6 +9,7 @@ import { createParallaxY } from "../../func/parallax";
 
 // interfaces
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
+import { createFilter } from "../../func/filter";
 
 export default function Section1() {
   const welcomeParallaxItems: IParallaxYOptions[] = [
@@ -17,12 +18,14 @@ export default function Section1() {
       elem: "#welcome-text",
       power: 2,
       startFrom: 50,
+      finishAfter: 500,
     },
     {
       scrollBlock: "#page",
       elem: "#welcome-image",
       power: 5,
       startFrom: 100,
+      finishAfter: 300,
     },
   ];
   useEffect(() => {
@@ -31,13 +34,16 @@ export default function Section1() {
     });
   }, []);
   return (
-    <section id="Welcome" className="relative flex h-screen bg-neutral-100">
-      <div className="flex flex-col justify-between w-full mx-[5vw] md:px-[120px]">
+    <section
+      id="Welcome"
+      className="relative flex h-screen bg-neutral-200 z-10"
+    >
+      <div className="flex flex-col justify-between w-full px-[5vw] md:px-[120px]">
         <div
           id="welcome-text"
-          className="flex flex-col justify-center items-center h-1/2 md:h-3/5 w-full z-10"
+          className="flex flex-col justify-center items-center h-1/2 md:h-3/5 w-full z-[12]"
         >
-          <h1 className="text-[6vh] lg:text-[12vh] text-ssp text-center">
+          <h1 className="text-[6vh] lg:text-[12vh] text-ssp text-center line-height-1">
             Приложение LifeStat.
           </h1>
           <h2 className="text-[3vh] lg:text-[6vh] text-raleway text-center opacity-80">
@@ -46,7 +52,7 @@ export default function Section1() {
         </div>
         <div
           id="welcome-image"
-          className="flex justify-center items-center h-1/2 lg:h-2/5 w-full z-20"
+          className="flex justify-center items-center h-1/2 lg:h-2/5 z-[13]"
         >
           <img
             className="hidden lg:block w-2/3 mt-auto object-contain object-center"

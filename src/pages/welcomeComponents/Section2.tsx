@@ -2,53 +2,70 @@ import React, { useEffect } from "react";
 
 //func
 import { createParallaxY } from "../../func/parallax";
-import { createOpacity } from "../../func/opacity";
+import { createFilter } from "../../func/filter";
 
 // interfaces
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
+import IFilterOptions from "../../interfaces/IFilterOptions";
 
 export default function Section2() {
-  const aboutParallaxItems: IParallaxYOptions[] = [
+  const reasonParallaxItems: IParallaxYOptions[] = [
     {
       scrollBlock: "#page",
-      elem: "#about-title",
+      elem: "#reason-title",
       power: 2,
-      initialTranslateY: -200,
+      startFrom: -200,
+      initialTranslateY: -300,
+      finishAfter: 300,
+    },
+  ];
+  const reasonFilterItems: IFilterOptions[] = [
+    {
+      scrollBlock: "#page",
+      elem: "#reason-text",
+      filterType: "opacity",
+      initialFilterValue: 0,
+      startFrom: window.outerHeight / 2,
       finishAfter: 200,
     },
   ];
   useEffect(() => {
-    aboutParallaxItems.forEach((item) => {
+    reasonParallaxItems.forEach((item) => {
       createParallaxY(item);
     });
-    createOpacity({
-      scrollBlock: "#page",
-      elem: "#about-text",
-      filterType: "opacity",
-      initialFilterValue: 0,
-      startFrom: window.outerHeight / 3,
-      finishAfter: 200,
+    reasonFilterItems.forEach((item) => {
+      createFilter(item);
     });
   }, []);
   return (
-    <section id="About" className="relative h-screen bg-app-100 z-50">
-      <div className="lg:w-full mx-[5vw] lg:mx-0 lg:px-[120px] overflow-hidden">
-        <h2
-          id="about-title"
-          className="text-[4vh] lg:text-[10vh] text-ssp text-center"
-        >
-          В чём смысл?
-        </h2>
-        <p
-          id="about-text"
-          className="lg:max-w-[66vw] mx-auto text-[1.5vh] lg:text-[3vh] text-raleway text-center"
-        >
-          Мне всегда было интересно знать некоторые вещи о себе. Например,
-          сколько печенек я съел? Надеяться на то, что я буду знать об этом
-          после сморти мне не очень нравилось, а использовать блокнот или
-          заметки в телефоне не очень удобно. Для этих целей я решил создать это
-          приложение, возможно, не одному мне оно пригодится.
-        </p>
+    <section id="Reason" className="relative h-max bg-neutral-100 z-20">
+      <div className="lg:w-full mx-[5vw] lg:mx-0 lg:pl-[120px] lg:pr-[60px] overflow-hidden">
+        <div className="flex flex-col lg:w-[66vw] mx-auto">
+          <div id="reason-title">
+            <h2 className="mt-4 text-[6vh] lg:text-[12vh] text-ssp line-height-1">
+              В чём смысл?
+            </h2>
+            <p className="mb-8 text-[1.5vh] lg:text-[2.5vh] text-raleway opacity-80">
+              Почему это приложение появилось на свет.
+            </p>
+          </div>
+          <p
+            id="reason-text"
+            className="mb-8 text-[2.5vh] lg:text-[3.5vh] text-raleway"
+          >
+            Мне всегда было интересно знать некоторые вещи о себе. Например,
+            сколько печенек я съел? Надеяться на то, что я буду знать об этом
+            после сморти мне не очень нравилось, а использовать блокнот или
+            заметки в телефоне не очень удобно. Для этих целей я решил создать
+            это приложение, возможно, не одному мне оно пригодится.
+          </p>
+          <a
+            className="mr-auto mb-8 px-8 py-2 border-8 border-app-600 hover:border-app-100 text-[2vh] lg:text-[3vh] text-raleway rounded-2xl duration-200"
+            href="#Benefit"
+          >
+            А нужно ли оно мне?
+          </a>
+        </div>
       </div>
     </section>
   );
