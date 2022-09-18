@@ -13,7 +13,7 @@ export default function Section2() {
     {
       elem: "#reason-title",
       power: 2,
-      startFrom: -200,
+      startFrom: 0,
       initialTranslateY: -300,
       finishAfter: 300,
     },
@@ -36,8 +36,11 @@ export default function Section2() {
     });
   }, []);
   return (
-    <section id="Reason" className="relative h-screen bg-app-100 z-20">
-      <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:mr-0 lg:ml-auto lg:pl-[120px] lg:pr-[60px] overflow-hidden">
+    <section
+      id="Reason"
+      className="relative h-screen bg-gradient-to-b from-app-100 to-app-200 z-20"
+    >
+      <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:mr-0 lg:ml-auto lg:px-[60px] overflow-hidden">
         <div id="reason-title">
           <h2 className="mt-4 text-[6vh] lg:text-[12vh] text-ssp line-height-1 text-right lg:text-right">
             В чём смысл?
