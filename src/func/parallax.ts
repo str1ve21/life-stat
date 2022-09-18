@@ -11,26 +11,32 @@ export function createParallaxY(options: IParallaxYOptions): void {
     return;
   }
 
-  const page = document.querySelector<HTMLElement>(options.scrollBlock);
+  const page =
+    document.querySelector<HTMLElement>(options.scrollBlock!) || window;
   const startFromValue = options.startFrom! || 0;
   const initialTranslateValue = options.initialTranslateY || 0;
   const finishAfterValue = options.finishAfter! || window.outerHeight;
   const throttleValue = options.throttle! || 15;
+  let scrolledFromTop;
 
   document.querySelector<HTMLElement>(
     options.elem
   )!.style.transform = `translateY(${initialTranslateValue}px)`;
 
-  page?.addEventListener(
+  page.addEventListener(
     "scroll",
     throttle(throttleValue, () => {
-      if (page.scrollTop < startFromValue) return;
+      page === window
+        ? (scrolledFromTop = window.scrollY)
+        : (scrolledFromTop = (page as HTMLElement).scrollTop);
 
-      if (page.scrollTop > startFromValue + finishAfterValue * options.power)
+      if (scrolledFromTop < startFromValue) return;
+
+      if (scrolledFromTop > startFromValue + finishAfterValue * options.power)
         return;
 
       let parallaxNumber: number =
-        (page.scrollTop - startFromValue) / options.power;
+        (scrolledFromTop - startFromValue) / options.power;
 
       document.querySelector<HTMLElement>(
         options.elem
@@ -39,4 +45,5 @@ export function createParallaxY(options: IParallaxYOptions): void {
       }px)`;
     })
   );
+  // debugger;
 }

@@ -11,7 +11,6 @@ import IFilterOptions from "../../interfaces/IFilterOptions";
 export default function Section2() {
   const reasonParallaxItems: IParallaxYOptions[] = [
     {
-      scrollBlock: "#page",
       elem: "#reason-title",
       power: 2,
       startFrom: -200,
@@ -21,7 +20,6 @@ export default function Section2() {
   ];
   const reasonFilterItems: IFilterOptions[] = [
     {
-      scrollBlock: "#page",
       elem: "#reason-text",
       filterType: "opacity",
       initialFilterValue: 0,
@@ -38,34 +36,30 @@ export default function Section2() {
     });
   }, []);
   return (
-    <section id="Reason" className="relative h-max bg-neutral-100 z-20">
-      <div className="lg:w-full mx-[5vw] lg:mx-0 lg:pl-[120px] lg:pr-[60px] overflow-hidden">
-        <div className="flex flex-col lg:w-[66vw] mx-auto">
-          <div id="reason-title">
-            <h2 className="mt-4 text-[6vh] lg:text-[12vh] text-ssp line-height-1">
-              В чём смысл?
-            </h2>
-            <p className="mb-8 text-[1.5vh] lg:text-[2.5vh] text-raleway opacity-80">
-              Почему это приложение появилось на свет.
-            </p>
-          </div>
-          <p
-            id="reason-text"
-            className="mb-8 text-[2.5vh] lg:text-[3.5vh] text-raleway"
-          >
-            Мне всегда было интересно знать некоторые вещи о себе. Например,
-            сколько печенек я съел? Надеяться на то, что я буду знать об этом
-            после сморти мне не очень нравилось, а использовать блокнот или
-            заметки в телефоне не очень удобно. Для этих целей я решил создать
-            это приложение, возможно, не одному мне оно пригодится.
+    <section id="Reason" className="relative h-screen bg-app-100 z-20">
+      <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:mr-0 lg:ml-auto lg:pl-[120px] lg:pr-[60px] overflow-hidden">
+        <div id="reason-title">
+          <h2 className="mt-4 text-[6vh] lg:text-[12vh] text-ssp line-height-1 text-right lg:text-right">
+            В чём смысл?
+          </h2>
+          <p className="mb-8 text-[1.5vh] lg:text-[2.5vh] text-raleway text-right lg:text-right opacity-80">
+            Почему это приложение появилось на свет.
           </p>
-          <a
-            className="mr-auto mb-8 px-8 py-2 border-8 border-app-600 hover:border-app-100 text-[2vh] lg:text-[3vh] text-raleway rounded-2xl duration-200"
-            href="#Benefit"
-          >
-            А нужно ли оно мне?
-          </a>
         </div>
+        <p
+          id="reason-text"
+          className="mb-8 text-[2.5vh] lg:text-[3.5vh] text-raleway text-right lg:text-right"
+        >
+          Мне всегда было интересно знать некоторые вещи о себе. Например,
+          сколько печенек я съел? Использовать блокнот или заметки в телефоне не
+          очень удобно, поэтому для этих целей я решил создать это приложение.
+        </p>
+        <a
+          className="ml-auto mb-8 px-8 py-2 bg-neutral-100 hover:scale-95 text-[2vh] lg:text-[3vh] text-raleway rounded-2xl duration-200"
+          href="#Benefit"
+        >
+          А нужно ли оно мне?
+        </a>
       </div>
     </section>
   );

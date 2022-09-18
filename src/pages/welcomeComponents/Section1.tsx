@@ -14,14 +14,12 @@ import { createFilter } from "../../func/filter";
 export default function Section1() {
   const welcomeParallaxItems: IParallaxYOptions[] = [
     {
-      scrollBlock: "#page",
       elem: "#welcome-text",
       power: 2,
       startFrom: 50,
       finishAfter: 500,
     },
     {
-      scrollBlock: "#page",
       elem: "#welcome-image",
       power: 5,
       startFrom: 100,

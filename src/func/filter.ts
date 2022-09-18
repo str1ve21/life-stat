@@ -4,27 +4,33 @@ import { throttle } from "throttle-debounce";
 import IFilterOptions from "../interfaces/IFilterOptions";
 
 export function createFilter(options: IFilterOptions): void {
-  const page = document.querySelector<HTMLElement>(options.scrollBlock);
+  const page =
+    document.querySelector<HTMLElement>(options.scrollBlock!) || window;
   const initialFilterValue = options.initialFilterValue || 0;
   const startFromValue = options.startFrom! || 0;
   const finishAfterValue = options.finishAfter! || 100;
   const throttleValue = options.throttle! || 15;
   const reversedValue = options.reversedValue! || false;
   const maxFilterValue = options.maxFilter! || 1;
+  let scrolledFromTop;
 
   document.querySelector<HTMLElement>(
     options.elem
   )!.style.filter = `${options.filterType}(${initialFilterValue})`;
 
-  page?.addEventListener(
+  page.addEventListener(
     "scroll",
     throttle(throttleValue, () => {
-      if (page.scrollTop < startFromValue) return;
+      page === window
+        ? (scrolledFromTop = window.scrollY)
+        : (scrolledFromTop = (page as HTMLElement).scrollTop);
 
-      if (page.scrollTop > startFromValue + finishAfterValue) return;
+      if (scrolledFromTop < startFromValue) return;
+
+      if (scrolledFromTop > startFromValue + finishAfterValue) return;
 
       let filterNumber =
-        ((page.scrollTop - startFromValue) / finishAfterValue) * maxFilterValue;
+        ((scrolledFromTop - startFromValue) / finishAfterValue) * maxFilterValue;
 
       if (filterNumber >= maxFilterValue) return;
 

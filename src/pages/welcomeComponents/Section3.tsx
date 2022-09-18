@@ -11,7 +11,6 @@ import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 export default function Section3() {
   const benefitParallaxItems: IParallaxYOptions[] = [
     {
-      scrollBlock: "#page",
       elem: "#benefit-title",
       power: 2,
       startFrom: window.outerHeight / 3,
@@ -21,7 +20,6 @@ export default function Section3() {
   ];
   const benefitFilterItems: IFilterOptions[] = [
     {
-      scrollBlock: "#page",
       elem: "#benefit-text",
       filterType: "opacity",
       initialFilterValue: 0,
@@ -38,7 +36,7 @@ export default function Section3() {
     });
   }, []);
   return (
-    <section id="Benefit" className="relative h-max bg-neutral-200 z-50">
+    <section id="Benefit" className="relative h-max bg-neutral-200 z-30">
       <div className="lg:w-full mx-[5vw] lg:mx-0 lg:pl-[120px] lg:pr-[60px] overflow-hidden">
         <div className="flex flex-col lg:w-[66vw] mx-auto">
           <div className="mt-4 mb-8" id="benefit-title">
@@ -51,18 +49,20 @@ export default function Section3() {
           </div>
           <p
             id="benefit-text"
-            className="mb-4 text-[2.5vh] lg:text-[3.5vh] text-raleway"
+            className="mb-8 text-[2.5vh] lg:text-[3.5vh] text-raleway"
           >
             Данное приложение может быть использованно в различных областях, в
             том числе и для различных целей. В первую очередь оно подойдёт тем,
-            кто собирается вести разного рода статистику. Если вам нужно
-            подсчитать количество прочитанных книг, или же вы собираетесь
-            подсчитывать количество сделанных задач на работе, то данное
-            приложение сможет облегчить вам жизнь своей функциональностью и
-            гибкостью интерфейса, и это будет явно удобнее блокнота или заметок
-            в телефоне. Если же у вас есть область, за которой вы хотите следить
-            - думаю, вам стоит попробовать это приложение.
+            кто собирается вести разного рода статистику. Если же у вас есть
+            область, за которой вы хотите следить - думаю, вам стоит попробовать
+            это приложение.
           </p>
+          <a
+            className="mr-auto mb-8 px-8 py-2 border-8 border-app-600 hover:border-app-100 text-[2vh] lg:text-[3vh] text-raleway rounded-2xl duration-200"
+            href="#Account"
+          >
+            Создать аккаунт
+          </a>
         </div>
       </div>
     </section>
