@@ -7,7 +7,7 @@ import Section4 from "./welcomeComponents/Section4";
 
 export default function WelcomePage() {
   return (
-    <main id="page" className="min-w-[300px] scroll-smooth">
+    <main id="page">
       <Navbar />
       <Section1 />
       <Section2 />

@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 
+// img
+import UseAsset from "@/src/assets/WelcomeAssets/use.jpg";
+
 // func
 import { createFilter } from "../../func/filter";
 import { createParallaxY } from "../../func/parallax";
@@ -13,7 +16,7 @@ export default function Section3() {
     {
       elem: "#benefit-title",
       power: 2,
-      startFrom: window.outerHeight / 2,
+      startFrom: window.outerHeight / 1.5,
       initialTranslateY: -400,
       finishAfter: 400,
     },
@@ -23,7 +26,7 @@ export default function Section3() {
       elem: "#benefit-text",
       filterType: "opacity",
       initialFilterValue: 0,
-      startFrom: window.outerHeight * 1.2,
+      startFrom: window.outerHeight * 1.4,
       finishAfter: 400,
     },
   ];
@@ -36,7 +39,10 @@ export default function Section3() {
     });
   }, []);
   return (
-    <section id="Benefit" className="relative h-screen bg-neutral-200 z-30">
+    <section
+      id="Польза"
+      className="relative flex h-[80vh] lg:h-screen bg-neutral-200 z-30"
+    >
       <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:ml-0 lg:mr-auto lg:px-[60px] overflow-hidden">
         <div className="mt-4 mb-8" id="benefit-title">
           <h2 className="text-[6vh] lg:text-[12vh] text-ssp text-left line-height-1">
@@ -50,18 +56,23 @@ export default function Section3() {
           id="benefit-text"
           className="mb-8 text-[2.5vh] lg:text-[3.5vh] text-raleway"
         >
-          Данное приложение может быть использованно в различных областях, в том
-          числе и для различных целей. В первую очередь оно подойдёт тем, кто
-          собирается вести разного рода статистику. Если же у вас есть область,
-          за которой вы хотите следить - думаю, вам стоит попробовать это
-          приложение.
+          В первую очередь оно подойдёт тем, кто собирается вести разного рода
+          статистику. Если же у вас есть область, за которой вы хотите следить -
+          думаю, вам стоит попробовать это приложение.
         </p>
         <a
           className="mr-auto mb-8 px-8 py-2 bg-app-200 hover:scale-95 text-[2vh] lg:text-[3vh] text-raleway rounded-2xl duration-200"
-          href="#Account"
+          href="#Аккаунт"
         >
           Создать аккаунт
         </a>
+      </div>
+      <div className="hidden lg:flex justify-center items-center w-full h-screen">
+        <img
+          src={UseAsset}
+          alt="?"
+          className=" h-2/3 object-cover rounded-l-3xl"
+        />
       </div>
     </section>
   );

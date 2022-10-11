@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 // img
-import welcomeAssetPC from "@/WelcomeAssets/PC_Interface.png";
-import welcomeAssetPhone from "@/WelcomeAssets/Phone_Interface.png";
+import welcomeAssetPC from "@/src/assets/WelcomeAssets/PC_Interface.png";
+import welcomeAssetPhone from "@/src/assets/WelcomeAssets/Phone_Interface.png";
 
 //func
 import { createParallaxY } from "../../func/parallax";
@@ -33,13 +33,13 @@ export default function Section1() {
   }, []);
   return (
     <section
-      id="Welcome"
+      id="Главная"
       className="relative flex h-screen bg-neutral-200 z-10"
     >
       <div className="flex flex-col justify-between w-full px-[5vw] md:px-[120px]">
         <div
           id="welcome-text"
-          className="flex flex-col justify-center items-center h-1/2 md:h-3/5 w-full z-[12]"
+          className="flex flex-col justify-center items-center h-[60vh] md:h-[70vh] w-full z-[12]"
         >
           <h1 className="text-[6vh] lg:text-[12vh] text-ssp text-center line-height-1">
             Приложение LifeStat.
@@ -50,7 +50,7 @@ export default function Section1() {
         </div>
         <div
           id="welcome-image"
-          className="flex justify-center items-center h-1/2 lg:h-2/5 z-[13]"
+          className="flex justify-center items-center h-[40vh] lg:h-[30vh] z-[13]"
         >
           <img
             className="hidden lg:block w-2/3 mt-auto object-contain object-center"
