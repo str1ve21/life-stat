@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import SCounters from "../../store/SCounters";
+
 // img
 import IconAsset from "@/src/assets/logo.svg";
 
@@ -18,7 +20,12 @@ export default function WelcomePage() {
         Welcome back, str1ve!
       </h1>
       <div id="buttons" className="flex flex-wrap gap-[20px]">
-        <button className="px-8 py-2 bg-emerald-200 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200">
+        <button
+          onClick={() => {
+            SCounters.addCounter("test", 0);
+          }}
+          className="px-8 py-2 bg-emerald-200 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200"
+        >
           Добавить
         </button>
         <button className="px-8 py-2 bg-amber-200 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200">

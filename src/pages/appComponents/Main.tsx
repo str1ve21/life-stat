@@ -2,8 +2,9 @@ import React from "react";
 import Counter from "./Counter";
 import SCounters from "../../store/SCounters";
 import ICounter from "../../interfaces/ICounter";
+import { observer } from "mobx-react-lite";
 
-export default function Main() {
+const Main = observer(() => {
   return (
     <section className="min-h-screen px-[40px] py-[20px]">
       <div id="counters" className="grid lg:grid-cols-4 gap-[20px]">
@@ -13,4 +14,6 @@ export default function Main() {
       </div>
     </section>
   );
-}
+});
+
+export default Main;
