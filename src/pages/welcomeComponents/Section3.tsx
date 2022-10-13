@@ -41,7 +41,7 @@ export default function Section3() {
   return (
     <section
       id="Польза"
-      className="relative flex h-[80vh] lg:h-screen bg-neutral-200 z-30"
+      className="relative flex h-[80vh] lg:h-screen bg-neutral-100 z-30"
     >
       <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:ml-0 lg:mr-auto lg:px-[60px] overflow-hidden">
         <div className="mt-4 mb-8" id="benefit-title">

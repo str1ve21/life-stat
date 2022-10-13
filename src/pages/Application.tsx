@@ -1,5 +1,12 @@
 import React from "react";
+import Hello from "./appComponents/Hello";
+import Main from "./appComponents/Main";
 
-export default function WelcomePage() {
-  return <section>22</section>;
+export default function ApplicationPage() {
+  return (
+    <main id="app">
+      <Hello></Hello>
+      <Main></Main>
+    </main>
+  );
 }

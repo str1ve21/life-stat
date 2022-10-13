@@ -34,14 +34,14 @@ export default function Section1() {
   return (
     <section
       id="Главная"
-      className="relative flex h-screen bg-neutral-200 z-10"
+      className="relative flex h-screen bg-neutral-100 z-10"
     >
       <div className="flex flex-col justify-between w-full px-[5vw] md:px-[120px]">
         <div
           id="welcome-text"
           className="flex flex-col justify-center items-center h-[60vh] md:h-[70vh] w-full z-[12]"
         >
-          <h1 className="text-[6vh] lg:text-[12vh] text-ssp text-center line-height-1">
+          <h1 className="text-[6vh] lg:text-[12vh] text-ssp font-bold text-center line-height-1">
             Приложение LifeStat.
           </h1>
           <h2 className="text-[3vh] lg:text-[6vh] text-raleway text-center opacity-80">
