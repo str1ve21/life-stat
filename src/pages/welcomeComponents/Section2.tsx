@@ -45,7 +45,7 @@ export default function Section2() {
     >
       <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:mr-0 lg:ml-auto lg:px-[60px] overflow-hidden">
         <div id="reason-title">
-          <h2 className="mt-4 text-[6vh] lg:text-[12vh] text-ssp line-height-1 text-right lg:text-right">
+          <h2 className="mt-4 text-[6vh] lg:text-[12vh] text-ssp font-bold line-height-1 text-right lg:text-right">
             В чём смысл?
           </h2>
           <p className="mb-8 text-[1.5vh] lg:text-[2.5vh] text-raleway text-right lg:text-right opacity-80">

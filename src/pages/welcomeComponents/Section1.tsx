@@ -44,7 +44,7 @@ export default function Section1() {
           <h1 className="text-[6vh] lg:text-[12vh] text-ssp font-bold text-center line-height-1">
             Приложение LifeStat.
           </h1>
-          <h2 className="text-[3vh] lg:text-[6vh] text-raleway text-center opacity-80">
+          <h2 className="text-[2vh] lg:text-[4vh] text-raleway text-center opacity-80">
             Облегчит ведение статистики в разы.
           </h2>
         </div>

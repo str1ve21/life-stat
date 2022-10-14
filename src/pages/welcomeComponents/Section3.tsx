@@ -45,7 +45,7 @@ export default function Section3() {
     >
       <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:ml-0 lg:mr-auto lg:px-[60px] overflow-hidden">
         <div className="mt-4 mb-8" id="benefit-title">
-          <h2 className="text-[6vh] lg:text-[12vh] text-ssp text-left line-height-1">
+          <h2 className="text-[6vh] lg:text-[12vh] text-ssp font-bold text-left line-height-1">
             Стоит ли тебе его использовать?
           </h2>
           <p className="text-[1.5vh] lg:text-[2.5vh] text-raleway opacity-80">
