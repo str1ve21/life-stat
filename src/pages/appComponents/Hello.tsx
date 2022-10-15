@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import SCounters from "../../store/SCounters";
-
 // img
 import IconAsset from "@/src/assets/logo.svg";
 
@@ -22,7 +20,9 @@ export default function WelcomePage() {
       <div id="buttons" className="flex flex-wrap gap-[20px]">
         <button
           onClick={() => {
-            SCounters.addCounter("test", 0);
+            document
+              .querySelector<HTMLDialogElement>("#addCounterDialog")!
+              .showModal();
           }}
           className="px-8 py-2 bg-emerald-200 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200"
         >

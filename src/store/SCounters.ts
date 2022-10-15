@@ -19,18 +19,13 @@ class counterStore {
     },
   ];
 
-  addCounter(title: string, count: number) {
-    const tempItem: ICounter = {
-      id: this.countersData.length,
-      title: title,
-      counter: count,
-    };
-    this.countersData.push(tempItem);
+  addCounter(newCounterData: ICounter) {
+    this.countersData.push(newCounterData);
   }
 
   changeValue(elem: number) {
     this.countersData[elem].counter +=
-      +document.querySelector<HTMLInputElement>(`#Input${elem}`)!.value;
+      +document.querySelector<HTMLInputElement>(`#CounterInput${elem}`)!.value;
   }
 }
 

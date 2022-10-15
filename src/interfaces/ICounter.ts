@@ -1,5 +1,7 @@
 export default interface ICounter {
-  readonly id: number;
+  id: number;
   title: string;
   counter: number;
+  defaultInput?: number;
+  color?: string;
 }
