@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import ICounter from "../interfaces/ICounter";
 
 class counterStore {
@@ -11,11 +11,7 @@ class counterStore {
       id: 0,
       title: "test",
       counter: 0,
-    },
-    {
-      id: 1,
-      title: "test 2",
-      counter: 1,
+      color: "#FF9B41",
     },
   ];
 
@@ -23,9 +19,11 @@ class counterStore {
     this.countersData.push(newCounterData);
   }
 
-  changeValue(elem: number) {
-    this.countersData[elem].counter +=
-      +document.querySelector<HTMLInputElement>(`#CounterInput${elem}`)!.value;
+  changeValue(elem: number, inputValue: number) {
+    const objToChange = toJS(this.countersData).findIndex(
+      (obj) => obj.id === elem
+    );
+    this.countersData[objToChange].counter += inputValue;
   }
 }
 

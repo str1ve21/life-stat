@@ -12,32 +12,32 @@ import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 import IFilterOptions from "../../interfaces/IFilterOptions";
 
 export default function Section2() {
-  const reasonParallaxItems: IParallaxYOptions[] = [
-    {
-      elem: "#reason-title",
-      power: 2,
-      startFrom: 0,
-      initialTranslateY: -300,
-      finishAfter: 300,
-    },
-  ];
-  const reasonFilterItems: IFilterOptions[] = [
-    {
-      elem: "#reason-text",
-      filterType: "opacity",
-      initialFilterValue: 0,
-      startFrom: window.outerHeight / 2,
-      finishAfter: 200,
-    },
-  ];
-  useEffect(() => {
-    reasonParallaxItems.forEach((item) => {
-      createParallaxY(item);
-    });
-    reasonFilterItems.forEach((item) => {
-      createFilter(item);
-    });
-  }, []);
+  // const reasonParallaxItems: IParallaxYOptions[] = [
+  //   {
+  //     elem: "#reason-title",
+  //     power: 2,
+  //     startFrom: 0,
+  //     initialTranslateY: -300,
+  //     finishAfter: 300,
+  //   },
+  // ];
+  // const reasonFilterItems: IFilterOptions[] = [
+  //   {
+  //     elem: "#reason-text",
+  //     filterType: "opacity",
+  //     initialFilterValue: 0,
+  //     startFrom: window.outerHeight / 2,
+  //     finishAfter: 200,
+  //   },
+  // ];
+  // useEffect(() => {
+  //   reasonParallaxItems.forEach((item) => {
+  //     createParallaxY(item);
+  //   });
+  //   reasonFilterItems.forEach((item) => {
+  //     createFilter(item);
+  //   });
+  // }, []);
   return (
     <section
       id="Смысл"

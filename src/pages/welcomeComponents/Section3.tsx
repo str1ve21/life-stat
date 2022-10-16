@@ -12,32 +12,32 @@ import IFilterOptions from "../../interfaces/IFilterOptions";
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 
 export default function Section3() {
-  const benefitParallaxItems: IParallaxYOptions[] = [
-    {
-      elem: "#benefit-title",
-      power: 2,
-      startFrom: window.outerHeight / 1.5,
-      initialTranslateY: -400,
-      finishAfter: 400,
-    },
-  ];
-  const benefitFilterItems: IFilterOptions[] = [
-    {
-      elem: "#benefit-text",
-      filterType: "opacity",
-      initialFilterValue: 0,
-      startFrom: window.outerHeight * 1.4,
-      finishAfter: 400,
-    },
-  ];
-  useEffect(() => {
-    benefitParallaxItems.forEach((item) => {
-      createParallaxY(item);
-    });
-    benefitFilterItems.forEach((item) => {
-      createFilter(item);
-    });
-  }, []);
+  // const benefitParallaxItems: IParallaxYOptions[] = [
+  //   {
+  //     elem: "#benefit-title",
+  //     power: 2,
+  //     startFrom: window.outerHeight / 1.5,
+  //     initialTranslateY: -400,
+  //     finishAfter: 400,
+  //   },
+  // ];
+  // const benefitFilterItems: IFilterOptions[] = [
+  //   {
+  //     elem: "#benefit-text",
+  //     filterType: "opacity",
+  //     initialFilterValue: 0,
+  //     startFrom: window.outerHeight * 1.4,
+  //     finishAfter: 400,
+  //   },
+  // ];
+  // useEffect(() => {
+  //   benefitParallaxItems.forEach((item) => {
+  //     createParallaxY(item);
+  //   });
+  //   benefitFilterItems.forEach((item) => {
+  //     createFilter(item);
+  //   });
+  // }, []);
   return (
     <section
       id="Польза"

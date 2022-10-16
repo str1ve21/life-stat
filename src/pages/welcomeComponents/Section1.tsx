@@ -12,25 +12,25 @@ import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 import { createFilter } from "../../func/filter";
 
 export default function Section1() {
-  const welcomeParallaxItems: IParallaxYOptions[] = [
-    {
-      elem: "#welcome-text",
-      power: 2,
-      startFrom: 50,
-      finishAfter: 500,
-    },
-    {
-      elem: "#welcome-image",
-      power: 5,
-      startFrom: 100,
-      finishAfter: 300,
-    },
-  ];
-  useEffect(() => {
-    welcomeParallaxItems.forEach((item) => {
-      createParallaxY(item);
-    });
-  }, []);
+  // const welcomeParallaxItems: IParallaxYOptions[] = [
+  //   {
+  //     elem: "#welcome-text",
+  //     power: 2,
+  //     startFrom: 50,
+  //     finishAfter: 500,
+  //   },
+  //   {
+  //     elem: "#welcome-image",
+  //     power: 5,
+  //     startFrom: 100,
+  //     finishAfter: 300,
+  //   },
+  // ];
+  // useEffect(() => {
+  //   welcomeParallaxItems.forEach((item) => {
+  //     createParallaxY(item);
+  //   });
+  // }, []);
   return (
     <section
       id="Главная"

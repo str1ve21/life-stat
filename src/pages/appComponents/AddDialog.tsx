@@ -2,6 +2,7 @@ import React from "react";
 import SCounters from "../../store/SCounters";
 import IAddInputsArray from "../../interfaces/IAddInputsArray";
 import ICounter from "../../interfaces/ICounter";
+import { getInputValue } from "../../func/getInputValue";
 
 export default function AddDialog() {
   const AddInputsArray: IAddInputsArray[] = [
@@ -11,6 +12,7 @@ export default function AddDialog() {
       htmlId: "titleInput",
       labelText: "Заголовок",
       placeholder: "Мой первый счётчик",
+      defValue: "Счётчик",
     },
     {
       id: 1,
@@ -37,16 +39,9 @@ export default function AddDialog() {
     },
   ];
 
-  function getInputValue(elem: string): string {
-    if (!document.querySelector<HTMLInputElement>(elem)) {
-      return "Wrong element.";
-    }
-    return document.querySelector<HTMLInputElement>(elem)!.value;
-  }
-
   function sendCounterData() {
     const tempItem: ICounter = {
-      id: SCounters.countersData.length,
+      id: Date.now(),
       title: getInputValue("#titleInput"),
       counter: +getInputValue("#countInput"),
       defaultInput: +getInputValue("#defaultInput"),
@@ -67,7 +62,12 @@ export default function AddDialog() {
         Здесь вы можете создать новый счётчик со своими параметрами, и
         кастомизировать его.
       </h3>
-      <div className="mb-[40px] text-[1vh] lg:text-[2vh] line-height-1">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+        className="mb-[40px] text-[1vh] lg:text-[2vh] line-height-1"
+      >
         {AddInputsArray.map((item: IAddInputsArray) => {
           return (
             <label key={item.id} className="flex flex-col gap-[10px] mb-[20px]">
@@ -77,12 +77,13 @@ export default function AddDialog() {
                 placeholder={item.placeholder}
                 defaultValue={item.defValue}
                 id={item.htmlId}
-                className="px-2 py-2 w-full min-h-[50px] border-b-4 border-l-4 text-raleway border-app-100 rounded-bl-xl"
+                name={item.htmlId}
+                className="px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 rounded-xl"
               />
             </label>
           );
         })}
-      </div>
+      </form>
       <button
         onClick={() => {
           sendCounterData();
