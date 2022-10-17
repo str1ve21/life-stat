@@ -11,27 +11,43 @@ export default function AddDialog() {
       type: "text",
       htmlId: "titleInput",
       labelText: "Заголовок",
-      placeholder: "Мой первый счётчик",
+      placeholder: "Станд.: Счётчик",
       defValue: "Счётчик",
     },
     {
       id: 1,
-      type: "number",
-      htmlId: "countInput",
-      labelText: "Стартовое значение",
-      placeholder: "Число, с которого начнётся отсчёт",
-      defValue: "0",
+      type: "text",
+      htmlId: "descriptionInput",
+      labelText: "Описание",
+      placeholder: "Станд.: Мой первый счётчик",
+      defValue: "Мой первый счётчик",
     },
     {
       id: 2,
       type: "number",
-      htmlId: "defaultInput",
-      labelText: "Значение ввода",
-      placeholder: "Стандартное число для изменения",
-      defValue: "1",
+      htmlId: "countInput",
+      labelText: "Стартовое значение",
+      placeholder: "Станд.: 0",
+      defValue: "0",
     },
     {
       id: 3,
+      type: "number",
+      htmlId: "goalInput",
+      labelText: "Цель",
+      placeholder: "Станд.: 0",
+      defValue: "0",
+    },
+    {
+      id: 4,
+      type: "number",
+      htmlId: "defaultInput",
+      labelText: "Значение ввода",
+      placeholder: "Станд.: 1",
+      defValue: "1",
+    },
+    {
+      id: 5,
       type: "color",
       htmlId: "borderColorInput",
       labelText: "Цвет акцента",
@@ -43,7 +59,9 @@ export default function AddDialog() {
     const tempItem: ICounter = {
       id: Date.now(),
       title: getInputValue("#titleInput"),
+      description: getInputValue("#descriptionInput"),
       counter: +getInputValue("#countInput"),
+      goal: +getInputValue("#goalInput"),
       defaultInput: +getInputValue("#defaultInput"),
       color: getInputValue("#borderColorInput"),
     };
@@ -60,17 +78,17 @@ export default function AddDialog() {
       </h2>
       <h3 className="mb-[40px] text-[1vh] lg:text-[2vh] text-raleway opacity-80">
         Здесь вы можете создать новый счётчик со своими параметрами, и
-        кастомизировать его.
+        кастомизировать его. Пустое поле не создаёт элемент.
       </h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="mb-[40px] text-[1vh] lg:text-[2vh] line-height-1"
+        className="grid grid-cols-2 gap-[20px] mb-[40px] text-[1vh] lg:text-[2vh] line-height-1"
       >
         {AddInputsArray.map((item: IAddInputsArray) => {
           return (
-            <label key={item.id} className="flex flex-col gap-[10px] mb-[20px]">
+            <label key={item.id} className="flex flex-col gap-[10px]">
               <span className="text-ssp">{item.labelText}</span>
               <input
                 type={item.type}

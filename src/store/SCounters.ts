@@ -6,17 +6,11 @@ class counterStore {
     makeAutoObservable(this);
   }
 
-  countersData: ICounter[] = [
-    {
-      id: 0,
-      title: "test",
-      counter: 0,
-      color: "#FF9B41",
-    },
-  ];
+  countersData: ICounter[] = [];
 
   addCounter(newCounterData: ICounter) {
     this.countersData.push(newCounterData);
+    this.saveToLocalStorage();
   }
 
   changeValue(elem: number, inputValue: number) {
@@ -24,6 +18,22 @@ class counterStore {
       (obj) => obj.id === elem
     );
     this.countersData[objToChange].counter += inputValue;
+    this.saveToLocalStorage();
+  }
+
+  saveToLocalStorage() {
+    const savedCountersArray = JSON.stringify(toJS(this.countersData));
+    localStorage.setItem("All Counters", savedCountersArray);
+  }
+
+  loadFromLocalStorage() {
+    if (toJS(this.countersData).length !== 0) return;
+    const loadedCountersArray: [] = JSON.parse(
+      localStorage.getItem("All Counters")!
+    );
+    loadedCountersArray.forEach((item) => {
+      this.countersData.push(item);
+    });
   }
 }
 
