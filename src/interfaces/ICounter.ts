@@ -6,4 +6,5 @@ export default interface ICounter {
   goal: number;
   defaultInput?: number;
   color: string;
+  textColor: string;
 }

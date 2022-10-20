@@ -12,7 +12,7 @@ export default function AddDialog() {
       htmlId: "titleInput",
       labelText: "Заголовок",
       placeholder: "Станд.: Счётчик",
-      defValue: "Счётчик",
+      defValue: "",
     },
     {
       id: 1,
@@ -20,7 +20,7 @@ export default function AddDialog() {
       htmlId: "descriptionInput",
       labelText: "Описание",
       placeholder: "Станд.: Мой первый счётчик",
-      defValue: "Мой первый счётчик",
+      defValue: "",
     },
     {
       id: 2,
@@ -50,8 +50,15 @@ export default function AddDialog() {
       id: 5,
       type: "color",
       htmlId: "borderColorInput",
-      labelText: "Цвет акцента",
+      labelText: "Цвет фона",
       defValue: "#FF9B41",
+    },
+    {
+      id: 6,
+      type: "color",
+      htmlId: "textColorInput",
+      labelText: "Цвет текста",
+      defValue: "#000000",
     },
   ];
 
@@ -64,6 +71,7 @@ export default function AddDialog() {
       goal: +getInputValue("#goalInput"),
       defaultInput: +getInputValue("#defaultInput"),
       color: getInputValue("#borderColorInput"),
+      textColor: getInputValue("#textColorInput"),
     };
     SCounters.addCounter(tempItem);
   }

@@ -13,9 +13,9 @@ const Counter = observer((props: IProps) => {
     <div
       id={`Counter ${props.data.id}`}
       className="flex flex-col justify-between w-max max-w-[45vw] rounded-2xl p-[20px]"
-      style={{ background: props.data.color }}
+      style={{ background: props.data.color, color: props.data.textColor }}
     >
-      <div className="flex flex-col justify-between h-full mb-[20px] p-[20px] leading-none bg-white/20 rounded-2xl">
+      <div className="flex flex-col justify-between h-full mb-[20px] p-[20px] leading-none backdrop-invert-[0.075] rounded-2xl">
         <h2 className="mb-[10px] text-[3vh] lg:text-[6vh] text-ssp font-bold">
           {props.data.title}
         </h2>
@@ -39,7 +39,7 @@ const Counter = observer((props: IProps) => {
           type="number"
           defaultValue={props.data.defaultInput ? props.data.defaultInput : 1}
           id={`CounterInput${props.data.id}`}
-          className="px-2 py-2 min-h-[50px] bg-white/50 text-raleway rounded-xl"
+          className="px-2 py-2 min-h-[50px] bg-transparent backdrop-invert-[0.15] text-raleway rounded-xl"
         />
         <button
           onClick={() => {
@@ -48,7 +48,7 @@ const Counter = observer((props: IProps) => {
               +getInputValue(`#CounterInput${props.data.id}`)
             );
           }}
-          className="px-8 py-2 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway bg-white/50 rounded-2xl duration-200"
+          className="px-8 py-2 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway backdrop-invert-[0.15] rounded-2xl duration-200"
         >
           Добавить
         </button>
