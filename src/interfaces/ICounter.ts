@@ -1,10 +1,10 @@
 export default interface ICounter {
   id: number;
   title: string;
-  description?: string;
+  description: string;
   counter: number;
   goal: number;
-  defaultInput?: number;
+  defaultInput: number;
   color: string;
   textColor: string;
 }

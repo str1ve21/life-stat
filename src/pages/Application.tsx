@@ -8,6 +8,10 @@ export default function ApplicationPage() {
   useEffect(() => {
     if (localStorage.length !== 0) {
       SCounters.loadFromLocalStorage();
+      console.log(
+        "%cДорогой пользователь, ради сохранения своих счётчиков не производите никаких манипуляций с localStorage через консоль. Это может привести к удалению всех счётчиков или другим плохим последствиям.",
+        "font-family: monospace; font-size: 20px; color: black; background: #FF9B41; padding: 20px; border-radius: 20px"
+      );
     }
   }, []);
   return (

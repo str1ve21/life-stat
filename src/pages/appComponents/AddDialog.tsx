@@ -127,7 +127,7 @@ export default function AddDialog() {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="absolute top-[20px] right-[20px] w-[40px] cursor-pointer"
+        className="absolute top-[20px] right-[20px] w-[30px] cursor-pointer"
         onClick={() => {
           document
             .querySelector<HTMLDialogElement>("#addCounterDialog")!
