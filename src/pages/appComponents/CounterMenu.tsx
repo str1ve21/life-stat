@@ -1,4 +1,9 @@
 import React from "react";
+import ICounter from "../../interfaces/ICounter";
+import ISureDialog from "../../interfaces/ISureDialog";
+import SCounters from "../../store/SCounters";
+import SDialog from "../../store/SDialog";
+import { toJS } from "mobx";
 
 interface IProps {
   id: number;
@@ -7,6 +12,29 @@ interface IProps {
 }
 
 export default function CounterMenu(props: IProps) {
+  const storeAsArray: ICounter[] = toJS(SCounters.countersData);
+  const inArrayID: number = storeAsArray.findIndex(
+    (obj) => obj.id === props.id
+  );
+  const deleteDialog: ISureDialog = {
+    id: `deleteDialog${props.id}`,
+    title: `Удаление счётчика.`,
+    text: `Вы уверены, что хотите удалить счётчик с номером ${
+      inArrayID + 1
+    } навсегда?`,
+    yesText: "Удалить",
+    noText: "Закрыть",
+    yesFunction: () => {
+      SCounters.removeCounter(props.id);
+      SDialog.deleteDialog();
+    },
+    noFunction: () => {
+      document
+        .querySelector<HTMLDialogElement>(`#deleteDialog${props.id}`)!
+        .close();
+      SDialog.deleteDialog();
+    },
+  };
   return (
     <>
       <svg
@@ -38,9 +66,7 @@ export default function CounterMenu(props: IProps) {
       >
         <button
           onClick={() => {
-            document
-              .querySelector<HTMLDialogElement>(`#deleteDialog${props.id}`)!
-              .showModal();
+            SDialog.createDialog(deleteDialog);
           }}
           className="font-raleway pb-[10px] border-b-2"
           style={{ borderColor: props.textColor }}

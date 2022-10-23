@@ -1,8 +1,6 @@
 import React from "react";
 import SCounters from "../../store/SCounters";
 import ICounter from "../../interfaces/ICounter";
-import ISureDialog from "../../interfaces/ISureDialog";
-import SureDialog from "../allComponents/SureDialog";
 import CounterSetValue from "./CounterSetValue";
 import CounterMenu from "./CounterMenu";
 import { observer } from "mobx-react-lite";
@@ -17,23 +15,6 @@ const Counter = observer((props: IProps) => {
   const inArrayID: number = storeAsArray.findIndex(
     (obj) => obj.id === props.data.id
   );
-  const deleteDialog: ISureDialog = {
-    id: `deleteDialog${props.data.id}`,
-    title: `Удаление счётчика.`,
-    text: `Вы уверены, что хотите удалить счётчик с номером ${
-      inArrayID + 1
-    } навсегда?`,
-    yesText: "Удалить",
-    noText: "Закрыть",
-    yesFunction: () => {
-      SCounters.removeCounter(props.data.id);
-    },
-    noFunction: () => {
-      document
-        .querySelector<HTMLDialogElement>(`#deleteDialog${props.data.id}`)!
-        .close();
-    },
-  };
 
   return (
     <div
@@ -63,17 +44,16 @@ const Counter = observer((props: IProps) => {
           )}
         </p>
         <CounterMenu
-          id={props.data.id}
-          color={props.data.color}
-          textColor={props.data.textColor}
+          id={storeAsArray[inArrayID].id}
+          color={storeAsArray[inArrayID].color}
+          textColor={storeAsArray[inArrayID].textColor}
         ></CounterMenu>
       </div>
       <CounterSetValue
-        storeCounterID={props.data.id}
-        defInput={props.data.defaultInput}
-        accentColor={props.data.textColor}
+        storeCounterID={storeAsArray[inArrayID].id}
+        defInput={storeAsArray[inArrayID].defaultInput}
+        accentColor={storeAsArray[inArrayID].textColor}
       ></CounterSetValue>
-      <SureDialog data={deleteDialog}></SureDialog>
     </div>
   );
 });

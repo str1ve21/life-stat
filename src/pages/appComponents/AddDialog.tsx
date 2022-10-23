@@ -11,7 +11,7 @@ export default function AddDialog() {
       type: "text",
       htmlId: "titleInput",
       labelText: "Заголовок",
-      placeholder: "Станд.: Счётчик",
+      placeholder: "Счётчик",
       defValue: "",
     },
     {
@@ -19,7 +19,7 @@ export default function AddDialog() {
       type: "text",
       htmlId: "descriptionInput",
       labelText: "Описание",
-      placeholder: "Станд.: Мой первый счётчик",
+      placeholder: "Мой первый счётчик",
       defValue: "",
     },
     {

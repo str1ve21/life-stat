@@ -1,27 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ISureDialog from "../../interfaces/ISureDialog";
+import SDialog from "../../store/SDialog";
 
-interface IProps {
-  data: ISureDialog;
-}
-
-export default function SureDialog(props: IProps) {
+export default function SureDialog() {
+  const dialogElement: ISureDialog = SDialog.sureDialogData[0];
   return (
     <dialog
-      id={props.data.id}
+      id={dialogElement.id}
       className="dialog mx-[20px] md:mx-auto md:max-w-xl dialog-padding rounded-2xl"
     >
-      <h2 className="title">{props.data.title}</h2>
-      <h3 className="subtitle">{props.data.text}</h3>
+      <h2 className="title">{dialogElement.title}</h2>
+      <h3 className="subtitle">{dialogElement.text}</h3>
       <div className="flex gap-[10px] md:gap-[20px]">
         <button
-          onClick={props.data.yesFunction}
+          onClick={dialogElement.yesFunction}
           className="button bg-emerald-300"
         >
-          {props.data.yesText}
+          {dialogElement.yesText}
         </button>
-        <button onClick={props.data.noFunction} className="button bg-rose-300">
-          {props.data.noText}
+        <button
+          onClick={dialogElement.noFunction}
+          className="button bg-rose-300"
+        >
+          {dialogElement.noText}
         </button>
       </div>
       <svg
@@ -33,8 +34,9 @@ export default function SureDialog(props: IProps) {
         className="dialog-close"
         onClick={() => {
           document
-            .querySelector<HTMLDialogElement>(`#${props.data.id}`)!
+            .querySelector<HTMLDialogElement>(`#${dialogElement.id}`)!
             .close();
+          SDialog.deleteDialog();
         }}
       >
         <path
