@@ -38,7 +38,7 @@ const Counter = observer((props: IProps) => {
   return (
     <div
       id={`Counter-${props.data.id}`}
-      className="flex flex-col justify-between max-w-[40vw] counter-padding break-all rounded-2xl"
+      className="flex flex-col justify-between w-full counter-padding break-words rounded-2xl"
       style={{ background: props.data.color, color: props.data.textColor }}
     >
       <div
@@ -53,7 +53,7 @@ const Counter = observer((props: IProps) => {
             <h3 className="subtitle">{props.data.description}</h3>
           )}
         </div>
-        <p className="counter-value">
+        <p className="counter-value break-all">
           {props.data.counter}
           {props.data.goal !== 0 && (
             <>

@@ -16,7 +16,7 @@
   }
 
   .counter-value {
-    @apply text-6xl md:text-8xl lg:text-9xl text-raleway font-light;
+    @apply text-6xl md:text-7xl lg:text-8xl text-raleway font-light;
   }
 
   .dialog-padding {

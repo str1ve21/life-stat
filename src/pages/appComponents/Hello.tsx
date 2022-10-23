@@ -9,7 +9,7 @@ export default function WelcomePage() {
     <section className="flex flex-col justify-center gap-[20px] min-h-[50vh] content-padding bg-neutral-100">
       <Link
         to="/"
-        className="absolute top-[20px] lg:left-[60px] left-[20px] flex items-center lg:h-[48px] md:h-[40px] h-[32px]"
+        className="absolute top-[20px] xl:left-[60px] left-[20px] flex items-center lg:h-[48px] md:h-[40px] h-[32px]"
       >
         <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
         <span className="lg:ml-4 ml-2 text-logo">LifeStat</span>
