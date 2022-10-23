@@ -6,16 +6,18 @@ import { getInputValue } from "../../func/getInputValue";
 interface IProps {
   storeCounterID: number;
   defInput: number;
+  accentColor: string;
 }
 
 const CounterSetValue = observer((props: IProps) => {
   return (
-    <div className="grid grid-cols-2 gap-[20px]">
+    <div className="grid grid-cols-2 gap-[10px] md:gap-[20px]">
       <input
         type="number"
         defaultValue={props.defInput ? props.defInput : 1}
         id={`CounterInput${props.storeCounterID}`}
-        className="px-2 py-2 min-h-[50px] bg-transparent backdrop-invert-[0.15] text-raleway rounded-xl"
+        className="min-h-[50px] px-2 py-2 text-[2vh] border-2 bg-transparent backdrop-invert-[0.15] text-raleway rounded-xl"
+        style={{ borderColor: props.accentColor }}
       />
       <button
         onClick={() => {
@@ -24,7 +26,8 @@ const CounterSetValue = observer((props: IProps) => {
             +getInputValue(`#CounterInput${props.storeCounterID}`)
           );
         }}
-        className="px-8 py-2 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway backdrop-invert-[0.15] rounded-2xl duration-200"
+        className="p-auto border-2 hover:scale-95 text-[2vh] text-raleway backdrop-invert-[0.15] rounded-2xl duration-200"
+        style={{ borderColor: props.accentColor }}
       >
         Добавить
       </button>

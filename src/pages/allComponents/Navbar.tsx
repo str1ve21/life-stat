@@ -13,10 +13,10 @@ export default function Navbar() {
     "Ссылки",
   ];
   return (
-    <header className="fixed flex w-full h-[80px] px-[60px] backdrop-blur-lg bg-white/40 z-[999]">
+    <header className="fixed flex w-full h-[88px] px-[60px] backdrop-blur-lg bg-white/40 z-[100]">
       <a href="#" className="flex items-center h-[48px] my-auto">
         <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
-        <span className="ml-4 text-[2vh] lg:text-3xl text-ssp">LifeStat</span>
+        <span className="ml-4 text-logo">LifeStat</span>
       </a>
       <nav className="flex justify-around items-center w-max ml-auto uppercase text-[2vh] lg:text-xl bg-clip-text bg-gradient-to-b from-app-600 to-app-100">
         {linksArray.map((item: string) => {

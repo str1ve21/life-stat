@@ -8,26 +8,19 @@ interface IProps {
 export default function SureDialog(props: IProps) {
   return (
     <dialog
-      id={`sureDialog${props.data.counterID}`}
-      className="dialog max-w-3xl p-[40px] rounded-2xl"
+      id={props.data.id}
+      className="dialog mx-[20px] md:mx-auto md:max-w-xl dialog-padding rounded-2xl"
     >
-      <h2 className="text-[3vh] lg:text-[6vh] text-ssp font-bold">
-        {props.data.title}
-      </h2>
-      <h3 className="mb-[40px] text-[1vh] lg:text-[2vh] text-raleway opacity-80">
-        {props.data.text}
-      </h3>
-      <div className="flex gap-[20px]">
+      <h2 className="title">{props.data.title}</h2>
+      <h3 className="subtitle">{props.data.text}</h3>
+      <div className="flex gap-[10px] md:gap-[20px]">
         <button
           onClick={props.data.yesFunction}
-          className="px-8 py-2 bg-emerald-300 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200"
+          className="button bg-emerald-300"
         >
           {props.data.yesText}
         </button>
-        <button
-          onClick={props.data.noFunction}
-          className="px-8 py-2 bg-rose-300 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200"
-        >
+        <button onClick={props.data.noFunction} className="button bg-rose-300">
           {props.data.noText}
         </button>
       </div>
@@ -37,12 +30,10 @@ export default function SureDialog(props: IProps) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="absolute top-[20px] right-[20px] w-[30px] cursor-pointer"
+        className="dialog-close"
         onClick={() => {
           document
-            .querySelector<HTMLDialogElement>(
-              `#sureDialog${props.data.counterID}`
-            )!
+            .querySelector<HTMLDialogElement>(`#${props.data.id}`)!
             .close();
         }}
       >

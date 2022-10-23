@@ -6,20 +6,20 @@ import IconAsset from "@/src/assets/logo.svg";
 
 export default function WelcomePage() {
   return (
-    <section className="flex flex-col justify-center min-h-[50vh] px-[40px] py-[20px] bg-neutral-100">
+    <section className="flex flex-col justify-center gap-[20px] min-h-[50vh] content-padding bg-neutral-100">
       <Link
         to="/"
-        className="absolute top-[20px] left-[40px] flex items-center h-[48px]"
+        className="absolute top-[20px] lg:left-[60px] left-[20px] flex items-center lg:h-[48px] md:h-[40px] h-[32px]"
       >
         <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
-        <span className="ml-4 text-[2vh] lg:text-3xl text-ssp">LifeStat</span>
+        <span className="lg:ml-4 ml-2 text-logo">LifeStat</span>
       </Link>
-      <h1 className="text-[6vh] lg:text-[12vh] text-ssp font-bold text-center">
+      <h1 className="hello-title text-center leading-none">
         Welcome back, str1ve!
       </h1>
       <div
         id="buttons"
-        className="flex flex-wrap gap-[20px] w-full justify-center"
+        className="flex flex-wrap content-gap w-full justify-center"
       >
         <button
           onClick={() => {
@@ -27,7 +27,7 @@ export default function WelcomePage() {
               .querySelector<HTMLDialogElement>("#addCounterDialog")!
               .showModal();
           }}
-          className="px-8 py-2 bg-emerald-200 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200"
+          className="button bg-emerald-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ export default function WelcomePage() {
             />
           </svg>
         </button>
-        <button className="px-8 py-2 bg-blue-200 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200">
+        <button className="button bg-blue-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

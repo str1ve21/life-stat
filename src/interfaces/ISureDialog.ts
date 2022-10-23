@@ -1,5 +1,5 @@
 export default interface ISureDialog {
-  counterID: number;
+  id: string;
   title: string;
   text: string;
   yesText: string;

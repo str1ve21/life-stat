@@ -6,7 +6,7 @@ import { observer } from "mobx-react-lite";
 
 const Main = observer(() => {
   return (
-    <section className="min-h-screen px-[40px] py-[20px]">
+    <section className="min-h-screen content-padding">
       <div id="counters" className="flex flex-wrap justify-center gap-[20px]">
         {SCounters.countersData.map((item: ICounter) => {
           return <Counter key={item.id} data={item}></Counter>;

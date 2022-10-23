@@ -79,12 +79,10 @@ export default function AddDialog() {
   return (
     <dialog
       id="addCounterDialog"
-      className="dialog max-w-3xl p-[40px] rounded-2xl"
+      className="dialog mx-[20px] md:mx-auto md:max-w-2xl dialog-padding rounded-2xl"
     >
-      <h2 className="text-[3vh] lg:text-[6vh] text-ssp font-bold">
-        Добавление счётчика.
-      </h2>
-      <h3 className="mb-[40px] text-[1vh] lg:text-[2vh] text-raleway opacity-80">
+      <h2 className="title">Добавление счётчика.</h2>
+      <h3 className="subtitle">
         Здесь вы можете создать новый счётчик со своими параметрами, и
         кастомизировать его. Пустое поле не создаёт элемент.
       </h3>
@@ -92,11 +90,11 @@ export default function AddDialog() {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="grid grid-cols-2 gap-[20px] mb-[40px] text-[1vh] lg:text-[2vh] line-height-1"
+        className="form"
       >
         {AddInputsArray.map((item: IAddInputsArray) => {
           return (
-            <label key={item.id} className="flex flex-col gap-[10px]">
+            <label key={item.id} className="label">
               <span className="text-ssp">{item.labelText}</span>
               <input
                 type={item.type}
@@ -104,7 +102,7 @@ export default function AddDialog() {
                 defaultValue={item.defValue}
                 id={item.htmlId}
                 name={item.htmlId}
-                className="px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 rounded-xl"
+                className="input"
               />
             </label>
           );
@@ -117,7 +115,7 @@ export default function AddDialog() {
             .querySelector<HTMLDialogElement>("#addCounterDialog")!
             .close();
         }}
-        className="px-8 py-2 bg-app-100 hover:scale-95 text-[1vh] lg:text-[2vh] text-raleway rounded-2xl duration-200"
+        className="button bg-app-100"
       >
         Создать
       </button>
@@ -127,7 +125,7 @@ export default function AddDialog() {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="absolute top-[20px] right-[20px] w-[30px] cursor-pointer"
+        className="dialog-close"
         onClick={() => {
           document
             .querySelector<HTMLDialogElement>("#addCounterDialog")!

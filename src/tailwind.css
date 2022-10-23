@@ -2,7 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+@layer components {
+  .content-padding {
+    @apply px-[20px] md:px-[40px] lg:px-[60px] py-[20px];
+  }
+
+  .content-gap {
+    @apply gap-[10px] md:gap-[15px] lg:gap-[20px];
+  }
+
+  .counter-padding {
+    @apply p-[10px] md:p-[20px];
+  }
+
+  .counter-value {
+    @apply text-6xl md:text-8xl lg:text-9xl text-raleway font-light;
+  }
+
+  .dialog-padding {
+    @apply p-[20px] md:p-[40px];
+  }
+
+  .hello-title {
+    @apply text-4xl md:text-6xl lg:text-8xl text-ssp font-bold;
+  }
+
+  .text-logo {
+    @apply text-xl md:text-2xl lg:text-3xl text-ssp;
+  }
+
+  .dialog-close {
+    @apply absolute top-[10px] md:top-[20px] right-[10px] md:right-[20px] w-[20px] md:w-[30px] cursor-pointer;
+  }
+
+  .title {
+    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-ssp font-bold;
+  }
+
+  .subtitle {
+    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway opacity-80;
+  }
+
+  .button {
+    @apply px-8 py-2 hover:scale-95 text-lg text-raleway rounded-2xl duration-200 select-none; 
+  }
+
+  .form {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-[15px] md:gap-[20px] mb-[20px] md:mb-[40px] text-lg line-height-1;
+  }
+
+  .label {
+    @apply flex flex-col gap-[5px] md:gap-[10px];
+  }
+
+  .input {
+    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 rounded-xl;
+  }
+}
+
+@layer utilities {
   .dark {
     color-scheme: dark;
   }
