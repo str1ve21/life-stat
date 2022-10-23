@@ -44,7 +44,7 @@
   }
 
   .button {
-    @apply px-8 py-2 hover:scale-95 text-lg text-raleway rounded-2xl duration-200 select-none; 
+    @apply px-8 py-2 hover:scale-95 text-lg text-raleway rounded-2xl duration-200 select-none;
   }
 
   .form {
@@ -66,11 +66,11 @@
   }
 
   .text-ssp {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
   }
 
   .text-raleway {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     -webkit-font-feature-settings: "lnum";
     -moz-font-feature-settings: "lnum";
     font-feature-settings: "lnum";
@@ -79,7 +79,7 @@
   .text-vertical-rl {
     writing-mode: vertical-rl;
   }
-  
+
   .line-height-1 {
     line-height: 1;
   }

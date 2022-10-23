@@ -30,7 +30,8 @@ export function createFilter(options: IFilterOptions): void {
       if (scrolledFromTop > startFromValue + finishAfterValue) return;
 
       let filterNumber =
-        ((scrolledFromTop - startFromValue) / finishAfterValue) * maxFilterValue;
+        ((scrolledFromTop - startFromValue) / finishAfterValue) *
+        maxFilterValue;
 
       if (filterNumber >= maxFilterValue) return;
 

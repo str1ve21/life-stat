@@ -19,6 +19,7 @@ class dialogStore {
   }
 
   deleteDialog() {
+    document.querySelector<HTMLDialogElement>("dialog")?.close();
     this.sureDialogData = [];
   }
 }
