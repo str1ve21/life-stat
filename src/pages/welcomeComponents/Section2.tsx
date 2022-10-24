@@ -43,19 +43,22 @@ export default function Section2() {
       id="Смысл"
       className="relative flex flex-row-reverse h-[80vh] lg:h-screen bg-gradient-to-b from-app-100 to-app-200 z-20"
     >
-      <div className="flex flex-col justify-center lg:max-w-[50vw] content-padding overflow-hidden">
+      <div className="flex flex-col justify-center lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding overflow-hidden">
         <div id="reason-title">
-          <h2 className="hello-title text-right">В чём смысл?</h2>
-          <p className="hello-subtitle mb-[20px] lg:mb-[40px] text-right">
+          <h2 className="hello-title lg:text-right">В чём смысл?</h2>
+          <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">
             Почему это приложение появилось на свет.
           </p>
         </div>
-        <p id="reason-text" className="text text-right">
+        <p id="reason-text" className="text lg:text-right">
           Мне всегда было интересно знать некоторые вещи о себе. Например,
-          сколько печенек я съел? Использовать блокнот или заметки в телефоне не
+          сколько раз я гулял? Использовать блокнот или заметки в телефоне не
           очень удобно, поэтому для этих целей я решил создать это приложение.
         </p>
-        <a className="ml-auto button bg-neutral-100" href="#Польза">
+        <a
+          className="mr-auto lg:mr-0 lg:ml-auto button bg-neutral-100"
+          href="#Польза"
+        >
           А нужно ли оно мне?
         </a>
       </div>
