@@ -4,7 +4,6 @@ import { toJS } from "mobx";
 
 export function findCounterByID(key: number | string) {
   const allCounters: ICounter[] = toJS(SCounters.countersData);
-  console.log(allCounters)
   const counter: ICounter | undefined = allCounters.find(
     (obj) => obj.id === key
   );

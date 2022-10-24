@@ -124,6 +124,11 @@ export default function AddDialog() {
         onClick={() => {
           SCounterDialog.deleteDialog();
           sendCounterData();
+          document
+            .querySelector<HTMLDialogElement>(
+              `#counterMenu${dialogElementData.id}`
+            )!
+            .classList.toggle("invisible");
         }}
         className="button bg-app-100"
       >
@@ -138,6 +143,11 @@ export default function AddDialog() {
         className="dialog-close"
         onClick={() => {
           SCounterDialog.deleteDialog();
+          document
+            .querySelector<HTMLDialogElement>(
+              `#counterMenu${dialogElementData.id}`
+            )!
+            .classList.toggle("invisible");
         }}
       >
         <path
