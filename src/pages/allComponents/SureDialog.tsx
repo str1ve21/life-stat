@@ -3,26 +3,26 @@ import ISureDialog from "../../interfaces/ISureDialog";
 import SDialog from "../../store/SDialog";
 
 export default function SureDialog() {
-  const dialogElement: ISureDialog = SDialog.sureDialogData[0];
+  const dialogElementData: ISureDialog = SDialog.sureDialogData[0];
   return (
     <dialog
-      id={dialogElement.id}
+      id={dialogElementData.id}
       className="dialog mx-[20px] md:mx-auto md:max-w-xl dialog-padding rounded-2xl"
     >
-      <h2 className="title">{dialogElement.title}</h2>
-      <h3 className="subtitle">{dialogElement.text}</h3>
+      <h2 className="title">{dialogElementData.title}</h2>
+      <h3 className="subtitle">{dialogElementData.text}</h3>
       <div className="flex gap-[10px] md:gap-[20px]">
         <button
-          onClick={dialogElement.yesFunction}
+          onClick={dialogElementData.yesFunction}
           className="button bg-emerald-300"
         >
-          {dialogElement.yesText}
+          {dialogElementData.yesText}
         </button>
         <button
-          onClick={dialogElement.noFunction}
+          onClick={dialogElementData.noFunction}
           className="button bg-rose-300"
         >
-          {dialogElement.noText}
+          {dialogElementData.noText}
         </button>
       </div>
       <svg
@@ -33,9 +33,6 @@ export default function SureDialog() {
         stroke="currentColor"
         className="dialog-close"
         onClick={() => {
-          document
-            .querySelector<HTMLDialogElement>(`#${dialogElement.id}`)!
-            .close();
           SDialog.deleteDialog();
         }}
       >

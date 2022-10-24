@@ -13,6 +13,13 @@ class counterStore {
     this.saveToLocalStorage();
   }
 
+  editCounter(editedCounter: ICounter) {
+    const counterToEdit = toJS(this.countersData).findIndex(
+      (obj) => obj.id === editedCounter.id
+    );
+    this.countersData.splice(counterToEdit, 1, editedCounter);
+  }
+
   removeCounter(id: number) {
     const idToRemove = toJS(this.countersData).findIndex(
       (obj) => obj.id === id

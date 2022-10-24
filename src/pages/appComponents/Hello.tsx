@@ -3,8 +3,19 @@ import { Link } from "react-router-dom";
 
 // img
 import IconAsset from "@/src/assets/logo.svg";
+import SCounterDialog from "../../store/SCounterDialog";
+import ICounterDialog from "../../interfaces/ICounterDialog";
 
 export default function WelcomePage() {
+  const createCounterDialog: ICounterDialog = {
+    id: 0,
+    text: "Добавление счётчика.",
+    title:
+      "Здесь вы можете создать новый счётчик со своими параметрами, и кастомизировать его. Пустое поле не создаёт элемент.",
+    buttonText: "Создать",
+    isEdit: false,
+  };
+
   return (
     <section className="flex flex-col justify-center gap-[20px] min-h-[50vh] content-padding bg-neutral-100">
       <Link
@@ -23,9 +34,7 @@ export default function WelcomePage() {
       >
         <button
           onClick={() => {
-            document
-              .querySelector<HTMLDialogElement>("#addCounterDialog")!
-              .showModal();
+            SCounterDialog.createDialog(createCounterDialog);
           }}
           className="button bg-emerald-200"
         >

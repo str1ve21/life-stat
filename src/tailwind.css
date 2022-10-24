@@ -16,7 +16,7 @@
   }
 
   .counter-value {
-    @apply text-6xl md:text-7xl lg:text-8xl text-raleway font-light;
+    @apply text-6xl md:text-7xl lg:text-8xl text-raleway font-light leading-none;
   }
 
   .dialog-padding {
@@ -24,7 +24,7 @@
   }
 
   .hello-title {
-    @apply text-4xl md:text-6xl lg:text-8xl text-ssp font-bold;
+    @apply text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-ssp font-bold;
   }
 
   .text-logo {
@@ -36,11 +36,11 @@
   }
 
   .title {
-    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-ssp font-bold;
+    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-ssp font-bold leading-none;
   }
 
   .subtitle {
-    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway opacity-80;
+    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway leading-none opacity-80;
   }
 
   .button {

@@ -3,6 +3,8 @@ import ICounter from "../../interfaces/ICounter";
 import ISureDialog from "../../interfaces/ISureDialog";
 import SCounters from "../../store/SCounters";
 import SDialog from "../../store/SDialog";
+import SCounterDialog from "../../store/SCounterDialog";
+import ICounterDialog from "../../interfaces/ICounterDialog";
 import { toJS } from "mobx";
 
 interface IProps {
@@ -16,6 +18,7 @@ export default function CounterMenu(props: IProps) {
   const inArrayID: number = storeAsArray.findIndex(
     (obj) => obj.id === props.id
   );
+
   const deleteDialog: ISureDialog = {
     id: `deleteDialog${props.id}`,
     title: `Удаление счётчика.`,
@@ -35,6 +38,15 @@ export default function CounterMenu(props: IProps) {
       SDialog.deleteDialog();
     },
   };
+  const createCounterDialog: ICounterDialog = {
+    id: props.id,
+    text: "Изменеие счётчика.",
+    title:
+      "Здесь вы можете создать новый счётчик со своими параметрами, и кастомизировать его. Пустое поле не создаёт элемент.",
+    buttonText: "Изменить",
+    isEdit: true,
+  };
+
   return (
     <>
       <svg
@@ -74,6 +86,9 @@ export default function CounterMenu(props: IProps) {
           Удалить
         </button>
         <button
+          onClick={() => {
+            SCounterDialog.createDialog(createCounterDialog);
+          }}
           className="font-raleway py-[10px] border-b-2"
           style={{ borderColor: props.textColor }}
         >

@@ -5,6 +5,7 @@ import CounterSetValue from "./CounterSetValue";
 import CounterMenu from "./CounterMenu";
 import { observer } from "mobx-react-lite";
 import { toJS } from "mobx";
+import numeral from "numeral";
 
 interface IProps {
   data: ICounter;
@@ -19,7 +20,7 @@ const Counter = observer((props: IProps) => {
   return (
     <div
       id={`Counter-${props.data.id}`}
-      className="flex flex-col justify-between min-w-[280px] max-w-[40vw] counter-padding break-words rounded-2xl"
+      className="flex flex-col justify-between min-w-[280px] w-max counter-padding break-words rounded-2xl"
       style={{ background: props.data.color, color: props.data.textColor }}
     >
       <div
@@ -31,15 +32,15 @@ const Counter = observer((props: IProps) => {
             {inArrayID + 1}. {props.data.title}
           </h2>
           {props.data.description && (
-            <h3 className="subtitle">{props.data.description}</h3>
+            <h3 className="subtitle m-0">{props.data.description}</h3>
           )}
         </div>
-        <p className="counter-value break-all">
-          {props.data.counter}
+        <p className="counter-value mt-[20px] break-all">
+          {numeral(props.data.counter).format("0.[000]a")}
           {props.data.goal !== 0 && (
             <>
               <span className="opacity-80"> из </span>
-              {props.data.goal}
+              {numeral(props.data.goal).format("0.[000]a")}
             </>
           )}
         </p>

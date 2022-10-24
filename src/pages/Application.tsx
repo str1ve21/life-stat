@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import Hello from "./appComponents/Hello";
 import Main from "./appComponents/Main";
-import AddDialog from "./appComponents/AddDialog";
+import CounterDialog from "./appComponents/CounterDialog";
 import SCounters from "../store/SCounters";
+import SCounterDialog from "../store/SCounterDialog";
+import { observer } from "mobx-react-lite";
 
-export default function ApplicationPage() {
+const ApplicationPage = observer(() => {
   useEffect(() => {
     if (localStorage.length !== 0) {
       SCounters.loadFromLocalStorage();
@@ -16,9 +18,13 @@ export default function ApplicationPage() {
   }, []);
   return (
     <main id="app">
-      <AddDialog></AddDialog>
+      {SCounterDialog.counterDialogData.length > 0 && (
+        <CounterDialog></CounterDialog>
+      )}
       <Hello></Hello>
       <Main></Main>
     </main>
   );
-}
+});
+
+export default ApplicationPage;
