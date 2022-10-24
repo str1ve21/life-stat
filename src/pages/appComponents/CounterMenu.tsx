@@ -41,8 +41,7 @@ export default function CounterMenu(props: IProps) {
   const createCounterDialog: ICounterDialog = {
     id: props.id,
     text: "Изменеие счётчика.",
-    title:
-      "Здесь вы можете создать новый счётчик со своими параметрами, и кастомизировать его. Пустое поле не создаёт элемент.",
+    title: "Здесь вы можете изменить ваш счётчик.",
     buttonText: "Изменить",
     isEdit: true,
   };
