@@ -4,14 +4,13 @@ import IAddInputsArray from "../../interfaces/IAddInputsArray";
 import ICounter from "../../interfaces/ICounter";
 import ICounterDialog from "../../interfaces/ICounterDialog";
 import SCounterDialog from "../../store/SCounterDialog";
+import { findCounterByID } from "../../func/currentCounter";
 import { getInputValue } from "../../func/getInputValue";
-import { toJS } from "mobx";
 
 export default function AddDialog() {
   const dialogElementData: ICounterDialog = SCounterDialog.counterDialogData[0];
-  const counters: ICounter[] = toJS(SCounters.countersData);
-  const currentCounter: ICounter | undefined = counters.find(
-    (obj) => obj.id === dialogElementData.id
+  const currentCounter: ICounter | undefined = findCounterByID(
+    dialogElementData.id
   );
   const AddInputsArray: IAddInputsArray[] = [
     {
@@ -34,7 +33,7 @@ export default function AddDialog() {
       id: 2,
       type: "number",
       htmlId: "countInput",
-      labelText: "Стартовое значение",
+      labelText: "Значение",
       placeholder: "Станд.: 0",
       defValue: dialogElementData.isEdit ? currentCounter?.counter : "0",
     },

@@ -1,11 +1,10 @@
 import React from "react";
-import ICounter from "../../interfaces/ICounter";
 import ISureDialog from "../../interfaces/ISureDialog";
 import SCounters from "../../store/SCounters";
 import SDialog from "../../store/SDialog";
 import SCounterDialog from "../../store/SCounterDialog";
 import ICounterDialog from "../../interfaces/ICounterDialog";
-import { toJS } from "mobx";
+import { inArrayIDByID } from "../../func/currentCounter";
 
 interface IProps {
   id: number;
@@ -14,10 +13,7 @@ interface IProps {
 }
 
 export default function CounterMenu(props: IProps) {
-  const storeAsArray: ICounter[] = toJS(SCounters.countersData);
-  const inArrayID: number = storeAsArray.findIndex(
-    (obj) => obj.id === props.id
-  );
+  const inArrayID: number = inArrayIDByID(props.id);
 
   const deleteDialog: ISureDialog = {
     id: `deleteDialog${props.id}`,

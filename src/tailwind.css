@@ -16,7 +16,7 @@
   }
 
   .counter-value {
-    @apply text-6xl md:text-7xl lg:text-8xl text-raleway font-light leading-none;
+    @apply text-7xl xl:text-8xl text-raleway font-light leading-none;
   }
 
   .dialog-padding {
@@ -36,11 +36,11 @@
   }
 
   .title {
-    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-ssp font-bold leading-none;
+    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-ssp font-bold;
   }
 
   .subtitle {
-    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway leading-none opacity-80;
+    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway opacity-80;
   }
 
   .button {

@@ -1,21 +1,17 @@
 import React from "react";
-import SCounters from "../../store/SCounters";
+import numeral from "numeral";
 import ICounter from "../../interfaces/ICounter";
 import CounterSetValue from "./CounterSetValue";
 import CounterMenu from "./CounterMenu";
 import { observer } from "mobx-react-lite";
-import { toJS } from "mobx";
-import numeral from "numeral";
+import { inArrayIDByID } from "../../func/currentCounter";
 
 interface IProps {
   data: ICounter;
 }
 
 const Counter = observer((props: IProps) => {
-  const storeAsArray: ICounter[] = toJS(SCounters.countersData);
-  const inArrayID: number = storeAsArray.findIndex(
-    (obj) => obj.id === props.data.id
-  );
+  const inArrayID: number = inArrayIDByID(props.data.id);
 
   return (
     <div
@@ -45,15 +41,15 @@ const Counter = observer((props: IProps) => {
           )}
         </p>
         <CounterMenu
-          id={storeAsArray[inArrayID].id}
-          color={storeAsArray[inArrayID].color}
-          textColor={storeAsArray[inArrayID].textColor}
+          id={props.data.id}
+          color={props.data.color}
+          textColor={props.data.textColor}
         ></CounterMenu>
       </div>
       <CounterSetValue
-        storeCounterID={storeAsArray[inArrayID].id}
-        defInput={storeAsArray[inArrayID].defaultInput}
-        accentColor={storeAsArray[inArrayID].textColor}
+        storeCounterID={props.data.id}
+        defInput={props.data.defaultInput}
+        accentColor={props.data.textColor}
       ></CounterSetValue>
     </div>
   );
