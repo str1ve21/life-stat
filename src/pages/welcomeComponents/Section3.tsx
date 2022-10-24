@@ -43,27 +43,19 @@ export default function Section3() {
       id="Польза"
       className="relative flex h-[80vh] lg:h-screen bg-neutral-100 z-30"
     >
-      <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:ml-0 lg:mr-auto lg:px-[60px] overflow-hidden">
-        <div className="mt-4 mb-8" id="benefit-title">
-          <h2 className="text-[6vh] lg:text-[12vh] text-ssp font-bold text-left line-height-1">
-            Стоит ли тебе его использовать?
-          </h2>
-          <p className="text-[1.5vh] lg:text-[2.5vh] text-raleway opacity-80">
+      <div className="flex flex-col justify-center lg:max-w-[50vw] content-padding overflow-hidden">
+        <div id="benefit-title">
+          <h2 className="hello-title">Стоит ли тебе его использовать?</h2>
+          <p className="hello-subtitle mb-[20px] lg:mb-[40px]">
             Что тебе даст использование приложения?
           </p>
         </div>
-        <p
-          id="benefit-text"
-          className="mb-8 text-[2.5vh] lg:text-[3.5vh] text-raleway"
-        >
+        <p id="benefit-text" className="text">
           В первую очередь оно подойдёт тем, кто собирается вести разного рода
           статистику. Если же у вас есть область, за которой вы хотите следить -
           думаю, вам стоит попробовать это приложение.
         </p>
-        <a
-          className="mr-auto mb-8 px-8 py-2 bg-app-200 hover:scale-95 text-[2vh] lg:text-[3vh] text-raleway rounded-2xl duration-200"
-          href="#Аккаунт"
-        >
+        <a className="mr-auto button bg-app-200" href="#Аккаунт">
           Создать аккаунт
         </a>
       </div>

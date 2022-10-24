@@ -43,27 +43,19 @@ export default function Section2() {
       id="Смысл"
       className="relative flex flex-row-reverse h-[80vh] lg:h-screen bg-gradient-to-b from-app-100 to-app-200 z-20"
     >
-      <div className="flex flex-col justify-center lg:max-w-[60vw] h-full mx-[5vw] lg:mr-0 lg:ml-auto lg:px-[60px] overflow-hidden">
+      <div className="flex flex-col justify-center lg:max-w-[50vw] content-padding overflow-hidden">
         <div id="reason-title">
-          <h2 className="mt-4 text-[6vh] lg:text-[12vh] text-ssp font-bold line-height-1 text-right lg:text-right">
-            В чём смысл?
-          </h2>
-          <p className="mb-8 text-[1.5vh] lg:text-[2.5vh] text-raleway text-right lg:text-right opacity-80">
+          <h2 className="hello-title text-right">В чём смысл?</h2>
+          <p className="hello-subtitle mb-[20px] lg:mb-[40px] text-right">
             Почему это приложение появилось на свет.
           </p>
         </div>
-        <p
-          id="reason-text"
-          className="mb-8 text-[2.5vh] lg:text-[3.5vh] text-raleway text-right lg:text-right"
-        >
+        <p id="reason-text" className="text text-right">
           Мне всегда было интересно знать некоторые вещи о себе. Например,
           сколько печенек я съел? Использовать блокнот или заметки в телефоне не
           очень удобно, поэтому для этих целей я решил создать это приложение.
         </p>
-        <a
-          className="ml-auto mb-8 px-8 py-2 bg-neutral-100 hover:scale-95 text-[2vh] lg:text-[3vh] text-raleway rounded-2xl duration-200"
-          href="#Польза"
-        >
+        <a className="ml-auto button bg-neutral-100" href="#Польза">
           А нужно ли оно мне?
         </a>
       </div>

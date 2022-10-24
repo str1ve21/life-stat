@@ -27,8 +27,20 @@
     @apply text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-ssp font-bold;
   }
 
+  .hello-subtitle {
+    @apply text-base md:text-lg lg:text-xl 2xl:text-2xl text-raleway opacity-80;
+  }
+
+  .text {
+    @apply mb-[20px] md:mb-[40px] text-lg md:text-xl lg:text-2xl 2xl:text-3xl text-raleway;
+  }
+
   .text-logo {
-    @apply text-xl md:text-2xl lg:text-3xl text-ssp;
+    @apply text-xl md:text-2xl xl:text-3xl text-ssp;
+  }
+
+  .text-nav {
+    @apply text-base md:text-lg xl:text-xl uppercase;
   }
 
   .dialog-close {
