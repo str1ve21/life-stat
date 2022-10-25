@@ -1,20 +1,20 @@
 import { makeAutoObservable } from "mobx";
-import ISureDialog from "../interfaces/ISureDialog";
+import IInfoDialog from "../interfaces/IInfoDialog";
 
-class dialogStore {
+class infoDialogStore {
   constructor() {
     makeAutoObservable(this);
   }
 
-  sureDialogData: ISureDialog[] = [];
+  infoDialogData: IInfoDialog[] = [];
 
-  createDialog(item: ISureDialog) {
-    this.sureDialogData.push(item);
+  createDialog(item: IInfoDialog) {
+    this.infoDialogData.push(item);
     setTimeout(() => {
       document.querySelector<HTMLDialogElement>("dialog")?.close();
       document
         .querySelector<HTMLDialogElement>(
-          `#deleteDialog${this.sureDialogData[0].id}`
+          `#infoDialog${this.infoDialogData[0].id}`
         )!
         .showModal();
     }, 0);
@@ -22,8 +22,8 @@ class dialogStore {
 
   deleteDialog() {
     document.querySelector<HTMLDialogElement>("dialog")?.close();
-    this.sureDialogData = [];
+    this.infoDialogData = [];
   }
 }
 
-export default new dialogStore();
+export default new infoDialogStore();

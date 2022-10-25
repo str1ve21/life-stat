@@ -62,7 +62,7 @@ export default function Section3() {
       <div className="hidden lg:flex justify-center items-center w-full h-screen">
         <img
           src={UseAsset}
-          alt="?"
+          alt="UseAsset"
           className=" h-2/3 object-cover rounded-l-3xl"
         />
       </div>

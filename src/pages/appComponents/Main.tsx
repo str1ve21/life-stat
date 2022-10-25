@@ -5,6 +5,8 @@ import ICounter from "../../interfaces/ICounter";
 import SureDialog from "../allComponents/SureDialog";
 import SDialog from "../../store/SDialog";
 import { observer } from "mobx-react-lite";
+import SInfoDialog from "../../store/SInfoDialog";
+import InfoDialog from "../allComponents/InfoDialog";
 
 const Main = observer(() => {
   return (
@@ -15,6 +17,7 @@ const Main = observer(() => {
         })}
       </div>
       {SDialog.sureDialogData.length > 0 && <SureDialog></SureDialog>}
+      {SInfoDialog.infoDialogData.length > 0 && <InfoDialog></InfoDialog>}
     </section>
   );
 });

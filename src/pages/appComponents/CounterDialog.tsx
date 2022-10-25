@@ -96,8 +96,10 @@ export default function AddDialog() {
       id={`counterDialog${dialogElementData.id}`}
       className="dialog mx-[20px] md:mx-auto md:max-w-2xl dialog-padding rounded-2xl"
     >
-      <h2 className="title">{dialogElementData.text}</h2>
-      <h3 className="subtitle">{dialogElementData.title}</h3>
+      <div className="dialog-header">
+        <h2 className="title">{dialogElementData.text}</h2>
+        <h3 className="subtitle">{dialogElementData.title}</h3>
+      </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -124,11 +126,13 @@ export default function AddDialog() {
         onClick={() => {
           SCounterDialog.deleteDialog();
           sendCounterData();
-          document
-            .querySelector<HTMLDialogElement>(
-              `#counterMenu${dialogElementData.id}`
-            )!
-            .classList.toggle("invisible");
+          if (dialogElementData.isEdit) {
+            document
+              .querySelector<HTMLDialogElement>(
+                `#counterMenu${dialogElementData.id}`
+              )!
+              .classList.toggle("invisible");
+          }
         }}
         className="button bg-app-100"
       >
@@ -143,11 +147,13 @@ export default function AddDialog() {
         className="dialog-close"
         onClick={() => {
           SCounterDialog.deleteDialog();
-          document
-            .querySelector<HTMLDialogElement>(
-              `#counterMenu${dialogElementData.id}`
-            )!
-            .classList.toggle("invisible");
+          if (dialogElementData.isEdit) {
+            document
+              .querySelector<HTMLDialogElement>(
+                `#counterMenu${dialogElementData.id}`
+              )!
+              .classList.toggle("invisible");
+          }
         }}
       >
         <path

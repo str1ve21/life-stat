@@ -23,16 +23,16 @@
     @apply p-[20px] md:p-[40px];
   }
 
-  .hello-title {
-    @apply text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-ssp font-bold;
+  .dialog-header {
+    @apply pr-[20px] md:pr-[40px];
   }
 
-  .hello-subtitle {
-    @apply text-base md:text-lg lg:text-xl 2xl:text-2xl text-raleway opacity-80;
+  .dialog-close {
+    @apply absolute top-[10px] md:top-[20px] right-[10px] md:right-[20px] w-[20px] md:w-[30px] cursor-pointer;
   }
 
-  .text {
-    @apply mb-[20px] md:mb-[40px] text-lg md:text-xl lg:text-2xl 2xl:text-3xl text-raleway;
+  .dialog-text {
+    @apply text-lg md:text-xl lg:text-2xl 2xl:text-3xl text-raleway;
   }
 
   .text-logo {
@@ -43,8 +43,12 @@
     @apply text-base md:text-lg xl:text-xl uppercase;
   }
 
-  .dialog-close {
-    @apply absolute top-[10px] md:top-[20px] right-[10px] md:right-[20px] w-[20px] md:w-[30px] cursor-pointer;
+  .hello-title {
+    @apply text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-ssp font-bold;
+  }
+
+  .hello-subtitle {
+    @apply text-base md:text-lg lg:text-xl 2xl:text-2xl text-raleway opacity-80;
   }
 
   .title {
@@ -55,8 +59,12 @@
     @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway opacity-80;
   }
 
+  .text {
+    @apply mb-[20px] md:mb-[40px] text-lg md:text-xl lg:text-2xl 2xl:text-3xl text-raleway;
+  }
+
   .button {
-    @apply px-8 py-2 hover:scale-95 text-lg text-raleway rounded-2xl duration-200 select-none;
+    @apply px-8 py-2 hover:scale-95 text-lg text-raleway rounded-2xl duration-200;
   }
 
   .form {
@@ -73,6 +81,10 @@
 }
 
 @layer utilities {
+  button {
+    user-select: none;
+  }
+
   .dark {
     color-scheme: dark;
   }

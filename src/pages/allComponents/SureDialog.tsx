@@ -6,11 +6,13 @@ export default function SureDialog() {
   const dialogElementData: ISureDialog = SDialog.sureDialogData[0];
   return (
     <dialog
-      id={dialogElementData.id}
+      id={`deleteDialog${dialogElementData.id}`}
       className="dialog mx-[20px] md:mx-auto md:max-w-xl dialog-padding rounded-2xl"
     >
-      <h2 className="title">{dialogElementData.title}</h2>
-      <h3 className="subtitle">{dialogElementData.text}</h3>
+      <div className="dialog-header">
+        <h2 className="title">{dialogElementData.title}</h2>
+        <h3 className="subtitle">{dialogElementData.text}</h3>
+      </div>
       <div className="flex gap-[10px] md:gap-[20px]">
         <button
           onClick={dialogElementData.yesFunction}
