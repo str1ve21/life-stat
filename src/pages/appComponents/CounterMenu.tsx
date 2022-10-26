@@ -51,12 +51,12 @@ export default function CounterMenu(props: IProps) {
     title: "Информация о счётчике.",
     description: "Здесь будет некоторая информация о вашем счётчике.",
     text: [
-      `Полное значение счётчика: ${props.counter}`,
+      `Полное значение счётчика: ${numeral(props.counter).format("0.[000]")}`,
       props.goal !== 0
-        ? `Полная цель: ${props.goal}`
+        ? `Полная цель: ${numeral(props.goal).format("0.[000]")}`
         : `Полная цель: Отсутсвует цель`,
       props.goal !== 0
-        ? `Прогресс: ${numeral(props.counter / props.goal).format("0.[00]%")}`
+        ? `Прогресс: ${numeral(props.counter / props.goal).format("0.[000]%")}`
         : `Прогресс: Отсутсвует цель`,
       `Дата создания: ${new Date(props.id).toLocaleDateString()}, ${new Date(
         props.id
