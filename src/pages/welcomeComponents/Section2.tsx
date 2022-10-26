@@ -43,7 +43,7 @@ export default function Section2() {
       id="Смысл"
       className="relative flex flex-row-reverse h-[80vh] lg:h-screen bg-gradient-to-b from-app-100 to-app-200 z-20"
     >
-      <div className="flex flex-col justify-center lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding overflow-hidden">
+      <div className="flex flex-col justify-center lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="reason-title">
           <h2 className="hello-title lg:text-right">В чём смысл?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">

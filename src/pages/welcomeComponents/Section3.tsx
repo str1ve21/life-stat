@@ -43,7 +43,7 @@ export default function Section3() {
       id="Польза"
       className="relative flex h-[80vh] lg:h-screen bg-neutral-100 z-30"
     >
-      <div className="flex flex-col justify-center lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding overflow-hidden">
+      <div className="flex flex-col justify-center lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="benefit-title">
           <h2 className="hello-title">Стоит ли тебе его использовать?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px]">

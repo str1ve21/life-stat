@@ -32,10 +32,7 @@ export default function Section1() {
   //   });
   // }, []);
   return (
-    <section
-      id="Главная"
-      className="relative flex h-screen bg-neutral-100 z-10"
-    >
+    <section id="Главная" className="relative h-screen bg-neutral-100 z-10">
       <div className="flex flex-col justify-between w-full content-padding pb-0">
         <div
           id="welcome-text"
