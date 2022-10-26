@@ -1,4 +1,5 @@
 import React from "react";
+import numeral from "numeral";
 import ISureDialog from "../../interfaces/ISureDialog";
 import SCounters from "../../store/SCounters";
 import SDialog from "../../store/SDialog";
@@ -13,6 +14,7 @@ interface IProps {
   color: string;
   textColor: string;
   counter: number;
+  goal: number;
 }
 
 export default function CounterMenu(props: IProps) {
@@ -49,10 +51,16 @@ export default function CounterMenu(props: IProps) {
     title: "Информация о счётчике.",
     description: "Здесь будет некоторая информация о вашем счётчике.",
     text: [
-      `Значение счётчика: ${props.counter}`,
+      `Полное значение счётчика: ${props.counter}`,
+      props.goal !== 0
+        ? `Полная цель: ${props.goal}`
+        : `Полная цель: Отсутсвует цель`,
+      props.goal !== 0
+        ? `Прогресс: ${numeral(props.counter / props.goal).format("0.[00]%")}`
+        : `Прогресс: Отсутсвует цель`,
       `Дата создания: ${new Date(props.id).toLocaleDateString()}, ${new Date(
         props.id
-      ).toLocaleTimeString()}`,
+      ).toTimeString()}`,
     ],
   };
 

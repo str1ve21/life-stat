@@ -31,7 +31,7 @@ const Counter = observer((props: IProps) => {
             <h3 className="subtitle m-0">{props.data.description}</h3>
           )}
         </div>
-        <p className="counter-value mt-[20px] break-all">
+        <p className="counter-value mt-[20px] break-words">
           {numeral(props.data.counter).format("0.[000]a")}
           {props.data.goal !== 0 && (
             <>
@@ -45,6 +45,7 @@ const Counter = observer((props: IProps) => {
           color={props.data.color}
           textColor={props.data.textColor}
           counter={props.data.counter}
+          goal={props.data.goal}
         ></CounterMenu>
       </div>
       <CounterSetValue
