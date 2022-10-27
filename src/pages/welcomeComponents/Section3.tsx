@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { throttle } from "throttle-debounce";
 
 // img
 import UseAsset from "@/src/assets/WelcomeAssets/use.jpg";
@@ -16,9 +17,9 @@ export default function Section3() {
     {
       elem: "#benefit-title",
       power: 2,
-      startFrom: window.outerHeight / 1.5,
-      initialTranslateY: -400,
-      finishAfter: 400,
+      startFrom: window.outerHeight / 1.3,
+      initialTranslateY: -window.outerHeight / 3,
+      finishAfter: window.outerHeight / 3,
     },
   ];
   const benefitFilterItems: IFilterOptions[] = [
@@ -27,23 +28,29 @@ export default function Section3() {
       filterType: "opacity",
       initialFilterValue: 0,
       startFrom: window.outerHeight * 1.4,
-      finishAfter: 400,
+      finishAfter: window.outerHeight / 4,
     },
   ];
   useEffect(() => {
     benefitParallaxItems.forEach((item) => {
-      window.addEventListener("scroll", () => {
-        createParallaxY(item);
-      });
+      window.addEventListener(
+        "scroll",
+        throttle(15, () => {
+          createParallaxY(item);
+        })
+      );
     });
     benefitFilterItems.forEach((item) => {
       document.querySelector<HTMLElement>(
         item.elem
       )!.style.filter = `${item.filterType}(${item.initialFilterValue})`;
 
-      window.addEventListener("scroll", () => {
-        createFilter(item);
-      });
+      window.addEventListener(
+        "scroll",
+        throttle(15, () => {
+          createFilter(item);
+        })
+      );
     });
     return () => {
       benefitParallaxItems.forEach((item) => {

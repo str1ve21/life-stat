@@ -4,5 +4,4 @@ export default interface IParallaxYOptions {
   readonly startFrom?: number;
   readonly finishAfter?: number;
   readonly initialTranslateY?: number;
-  readonly throttle?: number;
 }

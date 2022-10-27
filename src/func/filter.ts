@@ -6,12 +6,11 @@ import IFilterOptions from "../interfaces/IFilterOptions";
 export function createFilter(options: IFilterOptions): void {
   const startFromValue = options.startFrom! || 0;
   const finishAfterValue = options.finishAfter! || 100;
-  const throttleValue = options.throttle! || 15;
   const reversedValue = options.reversedValue! || false;
   const maxFilterValue = options.maxFilter! || 1;
   let scrolledFromTop;
 
-  const filterFunction = throttle(throttleValue, () => {
+  const filterFunction = () => {
     scrolledFromTop = window.scrollY;
 
     if (scrolledFromTop < startFromValue) return;
@@ -28,7 +27,7 @@ export function createFilter(options: IFilterOptions): void {
     document.querySelector<HTMLElement>(
       options.elem
     )!.style.filter = `${options.filterType}(${filterNumber})`;
-  });
+  };
 
   return filterFunction();
 }

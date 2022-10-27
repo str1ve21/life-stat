@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { throttle } from "throttle-debounce";
 
 // img
 import ReasonAsset from "@/src/assets/WelcomeAssets/reason.jpg";
@@ -17,8 +18,8 @@ export default function Section2() {
       elem: "#reason-title",
       power: 2,
       startFrom: 0,
-      initialTranslateY: -300,
-      finishAfter: 300,
+      initialTranslateY: -window.outerHeight / 3,
+      finishAfter: window.outerHeight / 3,
     },
   ];
   const reasonFilterItems: IFilterOptions[] = [
@@ -26,24 +27,30 @@ export default function Section2() {
       elem: "#reason-text",
       filterType: "opacity",
       initialFilterValue: 0,
-      startFrom: window.outerHeight / 2,
-      finishAfter: 200,
+      startFrom: window.outerHeight / 2.5,
+      finishAfter: window.outerHeight / 2.5,
     },
   ];
   useEffect(() => {
     reasonParallaxItems.forEach((item) => {
-      window.addEventListener("scroll", () => {
-        createParallaxY(item);
-      });
+      window.addEventListener(
+        "scroll",
+        throttle(15, () => {
+          createParallaxY(item);
+        })
+      );
     });
     reasonFilterItems.forEach((item) => {
       document.querySelector<HTMLElement>(
         item.elem
       )!.style.filter = `${item.filterType}(${item.initialFilterValue})`;
 
-      window.addEventListener("scroll", () => {
-        createFilter(item);
-      });
+      window.addEventListener(
+        "scroll",
+        throttle(15, () => {
+          createFilter(item);
+        })
+      );
     });
     return () => {
       reasonParallaxItems.forEach((item) => {

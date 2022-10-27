@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { throttle } from "throttle-debounce";
 
 // img
 import welcomeAssetPC from "@/src/assets/WelcomeAssets/PC_Interface.png";
@@ -27,15 +28,21 @@ export default function Section1() {
   ];
   useEffect(() => {
     welcomeParallaxItems.forEach((item) => {
-      window.addEventListener("scroll", () => {
-        createParallaxY(item);
-      });
+      window.addEventListener(
+        "scroll",
+        throttle(15, () => {
+          createParallaxY(item);
+        })
+      );
     });
     return () => {
       welcomeParallaxItems.forEach((item) => {
-        window.removeEventListener("scroll", () => {
-          createParallaxY(item);
-        });
+        window.removeEventListener(
+          "scroll",
+          throttle(15, () => {
+            createParallaxY(item);
+          })
+        );
       });
     };
   }, []);
@@ -56,7 +63,7 @@ export default function Section1() {
         </div>
         <div
           id="welcome-image"
-          className="flex justify-center items-end h-max z-[13]"
+          className="flex justify-center items-end h-max max-h-[40vh] z-[13]"
         >
           <img
             className="hidden lg:block w-2/3 object-contain object-center"
