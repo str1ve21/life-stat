@@ -12,36 +12,56 @@ import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 import IFilterOptions from "../../interfaces/IFilterOptions";
 
 export default function Section2() {
-  // const reasonParallaxItems: IParallaxYOptions[] = [
-  //   {
-  //     elem: "#reason-title",
-  //     power: 2,
-  //     startFrom: 0,
-  //     initialTranslateY: -300,
-  //     finishAfter: 300,
-  //   },
-  // ];
-  // const reasonFilterItems: IFilterOptions[] = [
-  //   {
-  //     elem: "#reason-text",
-  //     filterType: "opacity",
-  //     initialFilterValue: 0,
-  //     startFrom: window.outerHeight / 2,
-  //     finishAfter: 200,
-  //   },
-  // ];
-  // useEffect(() => {
-  //   reasonParallaxItems.forEach((item) => {
-  //     createParallaxY(item);
-  //   });
-  //   reasonFilterItems.forEach((item) => {
-  //     createFilter(item);
-  //   });
-  // }, []);
+  const reasonParallaxItems: IParallaxYOptions[] = [
+    {
+      elem: "#reason-title",
+      power: 2,
+      startFrom: 0,
+      initialTranslateY: -300,
+      finishAfter: 300,
+    },
+  ];
+  const reasonFilterItems: IFilterOptions[] = [
+    {
+      elem: "#reason-text",
+      filterType: "opacity",
+      initialFilterValue: 0,
+      startFrom: window.outerHeight / 2,
+      finishAfter: 200,
+    },
+  ];
+  useEffect(() => {
+    reasonParallaxItems.forEach((item) => {
+      window.addEventListener("scroll", () => {
+        createParallaxY(item);
+      });
+    });
+    reasonFilterItems.forEach((item) => {
+      document.querySelector<HTMLElement>(
+        item.elem
+      )!.style.filter = `${item.filterType}(${item.initialFilterValue})`;
+
+      window.addEventListener("scroll", () => {
+        createFilter(item);
+      });
+    });
+    return () => {
+      reasonParallaxItems.forEach((item) => {
+        window.removeEventListener("scroll", () => {
+          createParallaxY(item);
+        });
+      });
+      reasonFilterItems.forEach((item) => {
+        window.removeEventListener("scroll", () => {
+          createFilter(item);
+        });
+      });
+    };
+  }, []);
   return (
     <section
       id="Смысл"
-      className="relative flex flex-row-reverse h-[80vh] lg:h-screen bg-gradient-to-b from-app-100 to-app-200 z-20"
+      className="relative flex flex-row-reverse h-[80vh] lg:h-screen bg-gradient-to-b from-app-100 to-app-200 z-20 overflow-hidden"
     >
       <div className="flex flex-col justify-center lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="reason-title">

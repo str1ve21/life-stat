@@ -12,36 +12,56 @@ import IFilterOptions from "../../interfaces/IFilterOptions";
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 
 export default function Section3() {
-  // const benefitParallaxItems: IParallaxYOptions[] = [
-  //   {
-  //     elem: "#benefit-title",
-  //     power: 2,
-  //     startFrom: window.outerHeight / 1.5,
-  //     initialTranslateY: -400,
-  //     finishAfter: 400,
-  //   },
-  // ];
-  // const benefitFilterItems: IFilterOptions[] = [
-  //   {
-  //     elem: "#benefit-text",
-  //     filterType: "opacity",
-  //     initialFilterValue: 0,
-  //     startFrom: window.outerHeight * 1.4,
-  //     finishAfter: 400,
-  //   },
-  // ];
-  // useEffect(() => {
-  //   benefitParallaxItems.forEach((item) => {
-  //     createParallaxY(item);
-  //   });
-  //   benefitFilterItems.forEach((item) => {
-  //     createFilter(item);
-  //   });
-  // }, []);
+  const benefitParallaxItems: IParallaxYOptions[] = [
+    {
+      elem: "#benefit-title",
+      power: 2,
+      startFrom: window.outerHeight / 1.5,
+      initialTranslateY: -400,
+      finishAfter: 400,
+    },
+  ];
+  const benefitFilterItems: IFilterOptions[] = [
+    {
+      elem: "#benefit-text",
+      filterType: "opacity",
+      initialFilterValue: 0,
+      startFrom: window.outerHeight * 1.4,
+      finishAfter: 400,
+    },
+  ];
+  useEffect(() => {
+    benefitParallaxItems.forEach((item) => {
+      window.addEventListener("scroll", () => {
+        createParallaxY(item);
+      });
+    });
+    benefitFilterItems.forEach((item) => {
+      document.querySelector<HTMLElement>(
+        item.elem
+      )!.style.filter = `${item.filterType}(${item.initialFilterValue})`;
+
+      window.addEventListener("scroll", () => {
+        createFilter(item);
+      });
+    });
+    return () => {
+      benefitParallaxItems.forEach((item) => {
+        window.removeEventListener("scroll", () => {
+          createParallaxY(item);
+        });
+      });
+      benefitFilterItems.forEach((item) => {
+        window.removeEventListener("scroll", () => {
+          createFilter(item);
+        });
+      });
+    };
+  }, []);
   return (
     <section
       id="Польза"
-      className="relative flex h-[80vh] lg:h-screen bg-neutral-100 z-30"
+      className="relative flex h-[80vh] lg:h-screen bg-neutral-100 z-30 overflow-hidden"
     >
       <div className="flex flex-col justify-center lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="benefit-title">

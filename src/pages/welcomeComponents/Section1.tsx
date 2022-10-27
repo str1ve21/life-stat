@@ -9,31 +9,42 @@ import { createParallaxY } from "../../func/parallax";
 
 // interfaces
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
-import { createFilter } from "../../func/filter";
 
 export default function Section1() {
-  // const welcomeParallaxItems: IParallaxYOptions[] = [
-  //   {
-  //     elem: "#welcome-text",
-  //     power: 2,
-  //     startFrom: 50,
-  //     finishAfter: 500,
-  //   },
-  //   {
-  //     elem: "#welcome-image",
-  //     power: 5,
-  //     startFrom: 100,
-  //     finishAfter: 300,
-  //   },
-  // ];
-  // useEffect(() => {
-  //   welcomeParallaxItems.forEach((item) => {
-  //     createParallaxY(item);
-  //   });
-  // }, []);
+  const welcomeParallaxItems: IParallaxYOptions[] = [
+    {
+      elem: "#welcome-text",
+      power: 2,
+      startFrom: 50,
+      finishAfter: 500,
+    },
+    {
+      elem: "#welcome-image",
+      power: 5,
+      startFrom: 100,
+      finishAfter: 300,
+    },
+  ];
+  useEffect(() => {
+    welcomeParallaxItems.forEach((item) => {
+      window.addEventListener("scroll", () => {
+        createParallaxY(item);
+      });
+    });
+    return () => {
+      welcomeParallaxItems.forEach((item) => {
+        window.removeEventListener("scroll", () => {
+          createParallaxY(item);
+        });
+      });
+    };
+  }, []);
   return (
-    <section id="Главная" className="relative h-screen bg-neutral-100 z-10">
-      <div className="flex flex-col justify-between w-full content-padding pb-0">
+    <section
+      id="Главная"
+      className="relative h-screen bg-neutral-100 z-10 overflow-hidden"
+    >
+      <div className="flex flex-col justify-between w-full h-full content-padding pb-0">
         <div
           id="welcome-text"
           className="flex flex-col justify-center items-center h-[60vh] md:h-[70vh] w-full z-[12]"
@@ -45,10 +56,10 @@ export default function Section1() {
         </div>
         <div
           id="welcome-image"
-          className="flex justify-center items-center h-[40vh] lg:h-[30vh] z-[13]"
+          className="flex justify-center items-end h-max z-[13]"
         >
           <img
-            className="hidden lg:block w-2/3 mt-auto object-contain object-center"
+            className="hidden lg:block w-2/3 object-contain object-center"
             src={welcomeAssetPC}
             alt="PC App interface"
           />
