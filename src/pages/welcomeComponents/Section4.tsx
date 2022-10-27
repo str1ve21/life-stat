@@ -6,9 +6,9 @@ export default function Section4() {
   return (
     <section
       id="Аккаунт"
-      className="relative h-screen bg-gradient-to-b from-app-200 to-app-300 z-40"
+      className="relative h-max bg-gradient-to-b from-app-200 to-app-300 z-40"
     >
-      <div className="flex flex-col justify-center items-center gap-[20px] md:gap-[40px] w-full h-full content-padding">
+      <div className="flex flex-col justify-center items-center gap-[20px] md:gap-[40px] w-full min-h-screen content-padding">
         <div className="flex flex-wrap justify-center p-[10px] gap-[20px] lg:gap-[40px] bg-neutral-200/30 rounded-2xl">
           <button
             onClick={() => {
