@@ -66,11 +66,8 @@ export default function Section3() {
     };
   }, []);
   return (
-    <section
-      id="Польза"
-      className="relative flex h-max bg-neutral-100 z-30 overflow-hidden"
-    >
-      <div className="flex flex-col justify-center min-h-screen lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
+    <section id="Польза" className="relative flex h-max z-30 overflow-hidden">
+      <div className="flex flex-col justify-center min-h-[80vh] lg:min-h-screen lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="benefit-title">
           <h2 className="hello-title">Стоит ли тебе его использовать?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px]">
@@ -90,7 +87,7 @@ export default function Section3() {
         <img
           src={UseAsset}
           alt="UseAsset"
-          className=" h-2/3 object-cover rounded-l-3xl"
+          className=" h-2/3 object-cover rounded-l-full"
         />
       </div>
     </section>

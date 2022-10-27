@@ -47,10 +47,7 @@ export default function Section1() {
     };
   }, []);
   return (
-    <section
-      id="Главная"
-      className="relative h-screen bg-neutral-100 z-10 overflow-hidden"
-    >
+    <section id="Главная" className="relative h-screen z-10 overflow-hidden">
       <div className="flex flex-col justify-between w-full h-full content-padding pb-0">
         <div
           id="welcome-text"
@@ -69,11 +66,13 @@ export default function Section1() {
             className="hidden lg:block w-2/3 object-contain object-center"
             src={welcomeAssetPC}
             alt="PC App interface"
+            loading="lazy"
           />
           <img
             className="block lg:hidden h-full object-contain object-center"
             src={welcomeAssetPhone}
             alt="Phone App interface"
+            loading="lazy"
           />
         </div>
       </div>

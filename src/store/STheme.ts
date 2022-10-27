@@ -8,7 +8,7 @@ class themeStore {
   themeData = {
     isMenuVisible: false,
     isSystemTheme: true,
-    current: "dark",
+    current: "system",
   };
 
   setTheme(theme: string) {
@@ -25,7 +25,8 @@ class themeStore {
         : "light";
     }
   }
-  closeMenu() {
+
+  toggleVisibility() {
     this.themeData.isMenuVisible = !this.themeData.isMenuVisible;
   }
 }

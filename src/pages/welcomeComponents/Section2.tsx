@@ -68,9 +68,9 @@ export default function Section2() {
   return (
     <section
       id="Смысл"
-      className="relative flex flex-row-reverse h-max bg-gradient-to-b from-app-100 to-app-200 z-20 overflow-hidden"
+      className="relative flex flex-row-reverse h-max bg-gradient-to-b from-app-100 to-app-200 z-20 rounded-[40px] overflow-hidden"
     >
-      <div className="flex flex-col justify-center min-h-screen lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
+      <div className="flex flex-col justify-center min-h-[80vh] lg:min-h-screen lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="reason-title">
           <h2 className="hello-title lg:text-right">В чём смысл?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">
@@ -93,7 +93,7 @@ export default function Section2() {
         <img
           src={ReasonAsset}
           alt="ReasonAsset"
-          className=" h-2/3 object-cover rounded-r-3xl"
+          className=" h-2/3 object-cover rounded-r-full"
         />
       </div>
     </section>
