@@ -83,7 +83,7 @@ export default function Section2() {
           очень удобно, поэтому для этих целей я решил создать это приложение.
         </p>
         <a
-          className="mr-auto lg:mr-0 lg:ml-auto button bg-neutral-100"
+          className="mr-auto lg:mr-0 lg:ml-auto button bg-neutral-100 dark:bg-neutral-800"
           href="#Польза"
         >
           А нужно ли оно мне?

@@ -7,8 +7,8 @@ class themeStore {
 
   themeData = {
     isMenuVisible: false,
-    isSystemTheme: true,
-    current: "system",
+    isSystemTheme: false,
+    current: "dark",
   };
 
   setTheme(theme: string) {

@@ -14,7 +14,7 @@ export default function Navbar() {
     "Ссылки",
   ];
   return (
-    <header className="fixed flex w-full h-max content-padding backdrop-blur-[8px] bg-white/75 z-[100] rounded-b-[40px]">
+    <header className="fixed flex w-full h-max content-padding backdrop-blur-[8px] bg-white/50 dark:bg-black/30 z-[100] rounded-b-[40px]">
       <a href="#" className="flex items-center h-[40px] lg:h-[50px] my-auto">
         <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
         <span className="ml-[10px] lg:ml-[20px] text-logo">LifeStat</span>

@@ -9,12 +9,13 @@ export default function Section4() {
       className="relative h-max bg-gradient-to-b from-app-200 to-app-300 z-40 rounded-[40px]"
     >
       <div className="flex flex-col justify-center items-center gap-[20px] md:gap-[40px] w-full min-h-[80vh] lg:min-h-screen content-padding">
-        <div className="flex flex-wrap justify-center p-[10px] gap-[20px] lg:gap-[40px] bg-neutral-200/30 rounded-2xl">
+        <div className="flex flex-wrap justify-center p-[10px] gap-[20px] lg:gap-[40px] bg-neutral-200/30 dark:bg-neutral-800/30 rounded-2xl">
           <button
             onClick={() => {
               setIsLogin((isLogin = true));
             }}
-            className={`account-button ${isLogin ? "bg-app-200" : ""}`}
+            className="account-button"
+            style={{ background: isLogin ? "#FF9358" : "" }}
           >
             Вход
           </button>
@@ -22,7 +23,8 @@ export default function Section4() {
             onClick={() => {
               setIsLogin((isLogin = false));
             }}
-            className={`account-button ${isLogin ? "" : "bg-app-200"}`}
+            className="account-button"
+            style={{ background: isLogin ? "" : "#FF9358" }}
           >
             Регистрация
           </button>
@@ -44,7 +46,7 @@ export default function Section4() {
             <span className="text-ssp">Пароль</span>
             <input type="password" className="account-input" />
           </label>
-          <button className="button w-max mx-auto bg-neutral-100">
+          <button className="button w-max mx-auto bg-neutral-100 dark:bg-neutral-900">
             {isLogin ? "Вход" : "Регистрация"}
           </button>
           {/* <Link className="button bg-neutral-100" to="/app">App</Link> */}

@@ -5,9 +5,9 @@ import { autorun } from "mobx";
 
 const ThemeSwitcher = observer(() => {
   useEffect(() => {
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? STheme.setTheme("dark")
-      : STheme.setTheme("light");
+    // window.matchMedia("(prefers-color-scheme: dark)").matches
+    //   ? STheme.setTheme("dark")
+    //   : STheme.setTheme("light");
 
     window
       .matchMedia("(prefers-color-scheme: dark)")
@@ -72,7 +72,7 @@ const ThemeSwitcher = observer(() => {
         </svg>
       </button>
       <div
-        className={`absolute flex-col gap-[10px] top-[100px] lg:top-[110px] right-[30px] lg:right-[50px] p-[10px] bg-white rounded-2xl ${
+        className={`absolute flex-col gap-[10px] top-[100px] lg:top-[110px] right-[30px] lg:right-[50px] p-[10px] bg-white dark:bg-neutral-900 rounded-2xl ${
           STheme.themeData.isMenuVisible ? "flex" : "hidden"
         }`}
       >

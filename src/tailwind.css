@@ -84,19 +84,19 @@
   }
 
   .account-form {
-    @apply flex flex-col max-w-xl gap-[20px] md:gap-[40px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-200/30 rounded-2xl;
+    @apply flex flex-col max-w-xl gap-[20px] md:gap-[40px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-200/30 dark:bg-neutral-800/30 rounded-2xl;
   }
 
   .account-button {
-    @apply px-8 py-2 text-lg text-raleway text-center bg-neutral-100 rounded-2xl duration-200;
+    @apply px-8 py-2 text-lg text-raleway text-center bg-neutral-100 dark:bg-neutral-900 rounded-2xl duration-200;
   }
 
   .account-label {
-    @apply flex flex-col gap-[5px] md:gap-[10px] p-[20px] bg-neutral-200/30 rounded-2xl;
+    @apply flex flex-col gap-[5px] md:gap-[10px] p-[20px] bg-neutral-200/30 dark:bg-neutral-800/30  rounded-2xl;
   }
 
   .account-input {
-    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-neutral-100 bg-transparent rounded-xl;
+    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway dark:border-neutral-200 border-neutral-800 bg-transparent rounded-xl;
   }
 }
 
