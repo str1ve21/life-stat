@@ -134,7 +134,7 @@ export default function AddDialog() {
               .classList.toggle("invisible");
           }
         }}
-        className="button bg-app-100"
+        className="button bg-app-100 dark:bg-app-150"
       >
         {dialogElementData.buttonText}
       </button>

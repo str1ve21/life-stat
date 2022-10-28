@@ -20,6 +20,10 @@
     @apply text-7xl xl:text-8xl text-raleway font-light leading-none;
   }
 
+  .dialog {
+    @apply bg-neutral-100 dark:bg-neutral-900;
+  }
+
   .dialog-padding {
     @apply p-[20px] md:p-[40px];
   }
@@ -81,7 +85,7 @@
   }
 
   .input {
-    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 rounded-xl;
+    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 bg-transparent rounded-xl;
   }
 
   .account-form {

@@ -16,13 +16,13 @@ export default function SureDialog() {
       <div className="flex gap-[10px] md:gap-[20px]">
         <button
           onClick={dialogElementData.yesFunction}
-          className="button bg-emerald-300"
+          className="button bg-emerald-300 dark:bg-emerald-600"
         >
           {dialogElementData.yesText}
         </button>
         <button
           onClick={dialogElementData.noFunction}
-          className="button bg-rose-300"
+          className="button bg-rose-300 dark:bg-rose-600"
         >
           {dialogElementData.noText}
         </button>

@@ -9,11 +9,11 @@ import Navbar from "./allComponents/Navbar";
 
 const ApplicationPage = observer(() => {
   useEffect(() => {
-    if (localStorage.length !== 0) {
+    if (!!localStorage.getItem("All Counters")) {
       SCounters.loadFromLocalStorage();
       console.log(
         "%cДорогой пользователь, ради сохранения своих счётчиков не производите никаких манипуляций с localStorage через консоль. Это может привести к удалению всех счётчиков или другим плохим последствиям.",
-        "font-family: monospace; font-size: 20px; color: black; background: linear-gradient(145deg, #FF9B41 0%, #FF7A9E 100%); padding: 20px; border-radius: 20px"
+        "font-family: monospace; font-size: 20px; color: black; background: linear-gradient(145deg, #FF7A9E 0%, #FF9B41 100%); padding: 20px; border-radius: 20px"
       );
     }
   }, []);

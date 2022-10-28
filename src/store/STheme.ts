@@ -1,11 +1,12 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
+import ITheme from "../interfaces/ITheme";
 
 class themeStore {
   constructor() {
     makeAutoObservable(this);
   }
 
-  themeData = {
+  themeData: ITheme = {
     isMenuVisible: false,
     isSystemTheme: true,
     current: "system",
@@ -23,10 +24,23 @@ class themeStore {
         ? "dark"
         : "light";
     }
+    this.saveToLocalStorage();
   }
 
   toggleVisibility() {
     this.themeData.isMenuVisible = !this.themeData.isMenuVisible;
+  }
+
+  saveToLocalStorage() {
+    const savedThemeObject = JSON.stringify(toJS(this.themeData));
+    localStorage.setItem("Theme Data", savedThemeObject);
+  }
+
+  loadFromLocalStorage() {
+    const loadedThemeObject: ITheme = JSON.parse(
+      localStorage.getItem("Theme Data")!
+    );
+    this.themeData = loadedThemeObject;
   }
 }
 

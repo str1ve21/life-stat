@@ -18,7 +18,7 @@ export default function InfoDialog() {
           return (
             <p
               key={item}
-              className="dialog-text p-[10px] odd:bg-neutral-100 odd:rounded-2xl"
+              className="dialog-text p-[10px] odd:bg-neutral-200 odd:dark:bg-neutral-800 odd:rounded-2xl"
             >
               {item}
             </p>

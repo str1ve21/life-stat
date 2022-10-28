@@ -26,7 +26,7 @@ export default function WelcomePage() {
           onClick={() => {
             SCounterDialog.createDialog(createCounterDialog);
           }}
-          className="button bg-emerald-200 dark:bg-emerald-600"
+          className="button bg-emerald-300 dark:bg-emerald-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ export default function WelcomePage() {
             />
           </svg>
         </button>
-        <button className="button bg-sky-200 dark:bg-sky-600">
+        <button className="button bg-sky-300 dark:bg-sky-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

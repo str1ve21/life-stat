@@ -1,13 +1,17 @@
 import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
-import STheme from "../../store/STheme";
 import { autorun } from "mobx";
+import STheme from "../../store/STheme";
 
 const ThemeSwitcher = observer(() => {
   useEffect(() => {
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? STheme.setTheme("dark", true)
-      : STheme.setTheme("light", true);
+    if (!!localStorage.getItem("Theme Data")) {
+      STheme.loadFromLocalStorage();
+    } else {
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? STheme.setTheme("dark", true)
+        : STheme.setTheme("light", true);
+    }
 
     window
       .matchMedia("(prefers-color-scheme: dark)")
