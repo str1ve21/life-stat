@@ -3,6 +3,7 @@ import { throttle } from "throttle-debounce";
 
 // img
 import welcomeAssetPC from "@/src/assets/WelcomeAssets/PC_Interface.png";
+import welcomeAssetTablet from "@/src/assets/WelcomeAssets/Tablet_Interface.png";
 import welcomeAssetPhone from "@/src/assets/WelcomeAssets/Phone_Interface.png";
 
 //func
@@ -60,12 +61,17 @@ export default function Section1() {
         </div>
         <div id="welcome-image" className="flex justify-center h-[50vh] z-[13]">
           <img
-            className="hidden lg:block h-full object-contain object-center"
+            className="hidden xl:block h-full object-contain object-center"
             src={welcomeAssetPC}
             alt="PC App interface"
           />
           <img
-            className="block lg:hidden h-full object-contain object-center"
+            className="hidden md:block xl:hidden h-full object-contain object-center"
+            src={welcomeAssetTablet}
+            alt="Tablet App interface"
+          />
+          <img
+            className="block md:hidden h-full object-contain object-center"
             src={welcomeAssetPhone}
             alt="Phone App interface"
           />
