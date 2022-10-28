@@ -5,6 +5,7 @@ import CounterDialog from "./appComponents/CounterDialog";
 import SCounters from "../store/SCounters";
 import SCounterDialog from "../store/SCounterDialog";
 import { observer } from "mobx-react-lite";
+import Navbar from "./allComponents/Navbar";
 
 const ApplicationPage = observer(() => {
   useEffect(() => {
@@ -17,10 +18,11 @@ const ApplicationPage = observer(() => {
     }
   }, []);
   return (
-    <main id="app">
+    <main id="app" className="bg-neutral-200 dark:bg-neutral-900">
       {SCounterDialog.counterDialogData.length > 0 && (
         <CounterDialog></CounterDialog>
       )}
+      <Navbar href="/" customClass="absolute"></Navbar>
       <Hello></Hello>
       <Main></Main>
     </main>

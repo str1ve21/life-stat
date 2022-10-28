@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// img
-import IconAsset from "@/src/assets/logo.svg";
 import SCounterDialog from "../../store/SCounterDialog";
 import ICounterDialog from "../../interfaces/ICounterDialog";
 
@@ -17,17 +15,9 @@ export default function WelcomePage() {
   };
 
   return (
-    <section className="flex flex-col justify-center gap-[20px] min-h-[50vh] content-padding bg-neutral-100">
-      <Link
-        to="/"
-        className="absolute top-[20px] xl:left-[60px] left-[20px] flex items-center lg:h-[48px] md:h-[40px] h-[32px]"
-      >
-        <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
-        <span className="lg:ml-4 ml-2 text-logo">LifeStat</span>
-      </Link>
-      <h1 className="hello-title text-center leading-none">
-        Welcome back, str1ve!
-      </h1>
+    <section className="flex flex-col justify-center gap-[20px] min-h-[50vh] content-padding bg-neutral-100 dark:bg-neutral-800 rounded-b-[40px]">
+      <h1 className="hello-title text-center leading-none">Привет, str1ve!</h1>
+      <h2 className="hello-subtitle text-center leading-none">owo uwu</h2>
       <div
         id="buttons"
         className="flex flex-wrap content-gap w-full justify-center"
@@ -36,7 +26,7 @@ export default function WelcomePage() {
           onClick={() => {
             SCounterDialog.createDialog(createCounterDialog);
           }}
-          className="button bg-emerald-200"
+          className="button bg-emerald-200 dark:bg-emerald-600"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +43,7 @@ export default function WelcomePage() {
             />
           </svg>
         </button>
-        <button className="button bg-blue-200">
+        <button className="button bg-sky-200 dark:bg-sky-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -5,15 +5,17 @@ import { autorun } from "mobx";
 
 const ThemeSwitcher = observer(() => {
   useEffect(() => {
-    // window.matchMedia("(prefers-color-scheme: dark)").matches
-    //   ? STheme.setTheme("dark")
-    //   : STheme.setTheme("light");
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? STheme.setTheme("dark", true)
+      : STheme.setTheme("light", true);
 
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", (event) => {
         if (STheme.themeData.isSystemTheme) {
-          event.matches ? STheme.setTheme("dark") : STheme.setTheme("light");
+          event.matches
+            ? STheme.setTheme("dark", true)
+            : STheme.setTheme("light", true);
         }
       });
 
@@ -26,14 +28,15 @@ const ThemeSwitcher = observer(() => {
       }
       if (STheme.themeData.isSystemTheme) {
         window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? STheme.setTheme("dark")
-          : STheme.setTheme("light");
+          ? STheme.setTheme("dark", true)
+          : STheme.setTheme("light", true);
       }
     });
   }, []);
   return (
     <>
       <button
+        className="ml-auto lg:ml-0 p-[10px] bg-white dark:bg-black rounded-full"
         onClick={() => {
           STheme.toggleVisibility();
         }}
@@ -44,8 +47,12 @@ const ThemeSwitcher = observer(() => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`icon hover:text-amber-500 ${
+          className={`icon hover:text-neutral-900 ${
             STheme.themeData.current === "light" ? "block" : "hidden"
+          } ${
+            STheme.themeData.isSystemTheme
+              ? "text-emerald-500"
+              : "text-yellow-600"
           }`}
         >
           <path
@@ -60,8 +67,10 @@ const ThemeSwitcher = observer(() => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className={`icon hover:text-sky-500 ${
+          className={`icon hover:text-neutral-100 ${
             STheme.themeData.current === "dark" ? "block" : "hidden"
+          } ${
+            STheme.themeData.isSystemTheme ? "text-emerald-500" : "text-sky-400"
           }`}
         >
           <path
@@ -72,7 +81,7 @@ const ThemeSwitcher = observer(() => {
         </svg>
       </button>
       <div
-        className={`absolute flex-col gap-[10px] top-[100px] lg:top-[110px] right-[30px] lg:right-[50px] p-[10px] bg-white dark:bg-neutral-900 rounded-2xl ${
+        className={`absolute flex-col gap-[10px] top-[100px] lg:top-[110px] right-[20px] md:right-[40px] lg:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl ${
           STheme.themeData.isMenuVisible ? "flex" : "hidden"
         }`}
       >
@@ -83,9 +92,9 @@ const ThemeSwitcher = observer(() => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="icon hover:text-amber-500"
+            className="icon hover:text-yellow-600"
             onClick={() => {
-              STheme.setTheme("light");
+              STheme.setTheme("light", false);
             }}
           >
             <path
@@ -102,9 +111,9 @@ const ThemeSwitcher = observer(() => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="icon hover:text-sky-500"
+            className="icon hover:text-sky-400"
             onClick={() => {
-              STheme.setTheme("dark");
+              STheme.setTheme("dark", false);
             }}
           >
             <path
@@ -123,7 +132,7 @@ const ThemeSwitcher = observer(() => {
             stroke="currentColor"
             className="icon hover:text-emerald-500"
             onClick={() => {
-              STheme.setTheme("system");
+              STheme.setTheme("system", true);
             }}
           >
             <path

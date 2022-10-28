@@ -25,7 +25,6 @@ export function createParallaxY(options: IParallaxYOptions): void {
       return;
 
     window.onresize = throttle(250, () => {
-      console.log("resized");
       initialTranslateValue = options.initialTranslateY || 0;
       startFromValue = options.startFrom! || 0;
       finishAfterValue = options.finishAfter! || window.outerHeight;

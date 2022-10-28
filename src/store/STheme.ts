@@ -7,18 +7,17 @@ class themeStore {
 
   themeData = {
     isMenuVisible: false,
-    isSystemTheme: false,
-    current: "dark",
+    isSystemTheme: true,
+    current: "system",
   };
 
-  setTheme(theme: string) {
+  setTheme(theme: string, isSystem: boolean) {
     this.themeData.isMenuVisible = false;
+    this.themeData.isSystemTheme = isSystem;
     if (theme === "dark" || "light") {
-      this.themeData.isSystemTheme = false;
       this.themeData.current = theme;
     }
     if (theme === "system") {
-      this.themeData.isSystemTheme = true;
       this.themeData.current = window.matchMedia("(prefers-color-scheme: dark)")
         .matches
         ? "dark"

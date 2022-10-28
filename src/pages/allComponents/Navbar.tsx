@@ -1,25 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 // img
 import IconAsset from "@/src/assets/logo.svg";
 
-export default function Navbar() {
-  const linksArray: string[] = [
-    "Главная",
-    "Смысл",
-    "Польза",
-    "Аккаунт",
-    "Планы",
-    "Ссылки",
-  ];
+interface IProps {
+  href: string;
+  linksArray?: string[];
+  customClass: string;
+}
+
+export default function Navbar(props: IProps) {
+  const linksArray: string[] = props.linksArray! || [];
   return (
-    <header className="fixed flex w-full h-max content-padding backdrop-blur-[8px] bg-white/50 dark:bg-black/30 z-[100] rounded-b-[40px]">
-      <a href="#" className="flex items-center h-[40px] lg:h-[50px] my-auto">
+    <header
+      className={`${props.customClass} flex w-full h-max content-padding backdrop-blur-[8px] z-[100] rounded-b-[40px]`}
+    >
+      <Link
+        to={props.href}
+        className="flex items-center h-[40px] lg:h-[50px] my-auto"
+      >
         <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
         <span className="ml-[10px] lg:ml-[20px] text-logo">LifeStat</span>
-      </a>
-      <nav className="hidden lg:flex justify-around items-center w-max ml-auto mr-[40px] text-nav bg-clip-text bg-gradient-to-r from-app-600 to-app-100">
+      </Link>
+      <nav className="hidden lg:flex justify-around items-center w-max ml-auto mr-[60px] text-nav bg-clip-text bg-gradient-to-r from-app-600 to-app-100">
         {linksArray.map((item: string) => {
           return (
             <a

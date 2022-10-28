@@ -48,22 +48,19 @@ export default function Section1() {
   }, []);
   return (
     <section id="Главная" className="relative h-screen z-10 overflow-hidden">
-      <div className="flex flex-col justify-between w-full h-full content-padding pb-0">
+      <div className="flex flex-col justify-between w-full h-full content-padding">
         <div
           id="welcome-text"
-          className="flex flex-col justify-center items-center h-[60vh] md:h-[70vh] w-full z-[12]"
+          className="flex flex-col justify-end h-full w-full mb-[80px] lg:mb-[40px] z-[12]"
         >
           <h1 className="hello-title text-center">Приложение LifeStat.</h1>
           <h2 className="hello-subtitle text-center mt-[20px]">
             Облегчит ведение статистики в разы.
           </h2>
         </div>
-        <div
-          id="welcome-image"
-          className="flex justify-center items-end h-max max-h-[40vh] z-[13]"
-        >
+        <div id="welcome-image" className="flex justify-center h-[50vh] z-[13]">
           <img
-            className="hidden lg:block w-2/3 object-contain object-center"
+            className="hidden lg:block h-full object-contain object-center"
             src={welcomeAssetPC}
             alt="PC App interface"
           />
