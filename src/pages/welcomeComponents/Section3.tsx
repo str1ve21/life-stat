@@ -66,8 +66,11 @@ export default function Section3() {
     };
   }, []);
   return (
-    <section id="Польза" className="relative flex h-max z-30 overflow-hidden">
-      <div className="flex flex-col justify-center min-h-[80vh] lg:min-h-screen lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
+    <section
+      id="Польза"
+      className="relative flex flex-col lg:flex-row h-max z-30 rounded-[40px] overflow-hidden"
+    >
+      <div className="flex flex-col justify-center min-h-[60vh] lg:min-h-screen lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="benefit-title">
           <h2 className="hello-title">Стоит ли тебе его использовать?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px]">
@@ -79,15 +82,18 @@ export default function Section3() {
           статистику. Если же у вас есть область, за которой вы хотите следить -
           думаю, вам стоит попробовать это приложение.
         </p>
-        <a className="mr-auto button bg-app-200" href="#Аккаунт">
+        <a
+          className="mr-auto button bg-app-200 dark:bg-app-250"
+          href="#Аккаунт"
+        >
           Создать аккаунт
         </a>
       </div>
-      <div className="hidden lg:flex justify-center items-center w-full h-screen">
+      <div className="flex justify-center items-center px-[40px] lg:p-0 w-full lg:h-screen">
         <img
           src={UseAsset}
           alt="UseAsset"
-          className=" h-2/3 object-cover rounded-l-full"
+          className="h-[20vh] lg:h-2/3 object-cover rounded-t-full lg:rounded-tr-none lg:rounded-l-full"
         />
       </div>
     </section>

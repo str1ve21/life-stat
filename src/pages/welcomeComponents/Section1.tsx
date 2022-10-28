@@ -66,13 +66,11 @@ export default function Section1() {
             className="hidden lg:block w-2/3 object-contain object-center"
             src={welcomeAssetPC}
             alt="PC App interface"
-            loading="lazy"
           />
           <img
             className="block lg:hidden h-full object-contain object-center"
             src={welcomeAssetPhone}
             alt="Phone App interface"
-            loading="lazy"
           />
         </div>
       </div>

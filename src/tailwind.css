@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer components {
+
   .content-padding {
     @apply px-[20px] md:px-[40px] lg:px-[60px] py-[20px];
   }
@@ -84,15 +85,15 @@
   }
 
   .account-form {
-    @apply flex flex-col max-w-xl gap-[20px] md:gap-[40px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-200/30 dark:bg-neutral-800/30 rounded-2xl;
+    @apply flex flex-col max-w-xl gap-[40px] p-[20px] md:px-[40px] text-lg line-height-1 bg-neutral-200/70 dark:bg-neutral-800/70 rounded-[40px];
   }
 
   .account-button {
-    @apply px-8 py-2 text-lg text-raleway text-center bg-neutral-100 dark:bg-neutral-900 rounded-2xl duration-200;
+    @apply px-8 py-2 text-lg text-raleway text-center rounded-2xl duration-200;
   }
 
   .account-label {
-    @apply flex flex-col gap-[5px] md:gap-[10px] p-[20px] bg-neutral-200/30 dark:bg-neutral-800/30  rounded-2xl;
+    @apply flex flex-col gap-[5px] md:gap-[10px] rounded-2xl;
   }
 
   .account-input {
@@ -101,6 +102,7 @@
 }
 
 @layer utilities {
+
   button {
     user-select: none;
   }

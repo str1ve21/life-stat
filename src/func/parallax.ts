@@ -11,9 +11,9 @@ export function createParallaxY(options: IParallaxYOptions): void {
     return;
   }
 
-  const startFromValue = options.startFrom! || 0;
-  const initialTranslateValue = options.initialTranslateY || 0;
-  const finishAfterValue = options.finishAfter! || window.outerHeight;
+  let initialTranslateValue = options.initialTranslateY || 0;
+  let startFromValue = options.startFrom! || 0;
+  let finishAfterValue = options.finishAfter! || window.outerHeight;
   let scrolledFromTop: number;
 
   const parallaxFunction = () => {
@@ -23,6 +23,13 @@ export function createParallaxY(options: IParallaxYOptions): void {
 
     if (scrolledFromTop > startFromValue + finishAfterValue * options.power)
       return;
+
+    window.onresize = throttle(250, () => {
+      console.log("resized");
+      initialTranslateValue = options.initialTranslateY || 0;
+      startFromValue = options.startFrom! || 0;
+      finishAfterValue = options.finishAfter! || window.outerHeight;
+    });
 
     let parallaxNumber: number =
       (scrolledFromTop - startFromValue) / options.power;
