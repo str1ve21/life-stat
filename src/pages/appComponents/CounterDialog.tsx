@@ -85,6 +85,9 @@ export default function AddDialog() {
     if (dialogElementData.isEdit) {
       tempItem.id = dialogElementData.id;
       SCounters.editCounter(tempItem);
+      document.querySelector<HTMLInputElement>(
+        `#CounterInput${currentCounter?.id}`
+      )!.value = `${tempItem.defaultInput}`;
       return;
     }
     tempItem.id = Date.now();
