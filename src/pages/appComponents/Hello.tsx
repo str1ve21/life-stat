@@ -14,10 +14,41 @@ export default function WelcomePage() {
     isEdit: false,
   };
 
+  const helloText: string[] = [
+    "Привет",
+    "Здравствуйте",
+    "Добро пожаловать",
+    "С возвращением",
+    "Доброго времени суток",
+  ];
+
+  const factArray: string[] = [
+    "Приложение было создано 2 людьми.",
+    "Приложение работает благодаря React, MobX, Tailwind и Vite.",
+    "Разработка заняла 2.5 месяца до выпуска первой версии приложения.",
+    "Если значок темы - зелёный, значит тема выбрана системой.",
+    "Ваши идеи для развития приложения вы можете написать разработчикам на Boosty.",
+    "У этого сайта есть приложение (PWA), вы можете добавить его на главный экран.",
+    "Планы на обновления вы можете найти на главной странице.",
+    "Не трогай localStorage через консоль!",
+    "Вы любите сплэши из Майнкрафта? Разработчики да.",
+    "Мы рады, что хоть кто-то использует это приложение.",
+    "*место для шуток и фактов*",
+    "Ваша поддержка на Boosty мотивирует нас стать лучше!",
+    "Внизу главной страницы есть лапка котика.",
+    "Эта строка была написана в 29.10.22 22:55, делай с этой информацией что хочешь.",
+    "В первой версии было только 16 строк с шутками и фактами, включая эту.",
+    "owo uwu",
+  ];
+
   return (
-    <section className="flex flex-col justify-center gap-[20px] min-h-[320px] h-[50vh] content-padding bg-neutral-100 dark:bg-neutral-800 rounded-b-[40px]">
-      <h1 className="hello-title text-center leading-none">Привет, str1ve!</h1>
-      <h2 className="hello-subtitle text-center leading-none">owo uwu</h2>
+    <section className="flex flex-col justify-center gap-[20px] min-h-[420px] h-[50vh] content-padding bg-neutral-100 dark:bg-neutral-800 rounded-b-[40px]">
+      <h1 className="hello-title text-center leading-none">
+        {helloText[Math.floor(Math.random() * helloText.length)]}, str1ve!
+      </h1>
+      <h2 className="hello-subtitle text-center leading-none">
+        {factArray[Math.floor(Math.random() * factArray.length)]}
+      </h2>
       <div
         id="buttons"
         className="flex flex-wrap content-gap w-full justify-center"
