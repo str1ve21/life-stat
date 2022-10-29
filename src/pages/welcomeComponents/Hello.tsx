@@ -12,7 +12,7 @@ import { createParallaxY } from "../../func/parallax";
 // interfaces
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 
-export default function Section1() {
+export default function Hello() {
   const welcomeParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#welcome-text",

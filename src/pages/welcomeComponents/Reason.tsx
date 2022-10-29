@@ -12,7 +12,7 @@ import { createFilter } from "../../func/filter";
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 import IFilterOptions from "../../interfaces/IFilterOptions";
 
-export default function Section2() {
+export default function Reason() {
   const reasonParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#reason-title",
@@ -70,7 +70,7 @@ export default function Section2() {
       id="Смысл"
       className="relative flex flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-100 dark:from-app-150 to-app-200 dark:to-app-250  z-20 rounded-[40px] overflow-hidden"
     >
-      <div className="flex flex-col justify-center min-h-[60vh] lg:min-h-screen lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
+      <div className="flex flex-col justify-center min-h-[60vh] lg:min-h-screen w-full lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="reason-title">
           <h2 className="hello-title lg:text-right">В чём смысл?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">
@@ -89,7 +89,7 @@ export default function Section2() {
           А нужно ли оно мне?
         </a>
       </div>
-      <div className="flex justify-center items-center px-[40px] lg:p-0 w-full lg:h-screen">
+      <div className="flex justify-center lg:justify-start items-center px-[40px] lg:p-0 w-full lg:h-screen">
         <img
           src={ReasonAsset}
           alt="ReasonAsset"
