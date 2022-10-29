@@ -52,9 +52,15 @@ export default function Section1() {
       <div className="flex flex-col justify-between w-full h-full content-padding">
         <div
           id="welcome-text"
-          className="flex flex-col justify-end h-full w-full mb-[80px] lg:mb-[40px] z-[12]"
+          className="flex flex-col justify-end h-full w-full mb-[80px] z-[12]"
         >
-          <h1 className="hello-title text-center">Приложение LifeStat.</h1>
+          <h1 className="hello-title text-center">
+            Приложение{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-br from-app-600 to-app-100">
+              LifeStat
+            </span>
+            .
+          </h1>
           <h2 className="hello-subtitle text-center mt-[20px]">
             Облегчит ведение статистики в разы.
           </h2>

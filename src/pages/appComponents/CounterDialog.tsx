@@ -109,7 +109,7 @@ export default function AddDialog() {
         {AddInputsArray.map((item: IAddInputsArray) => {
           return (
             <label key={item.id} className="label">
-              <span className="text-ssp">{item.labelText}</span>
+              <span className="text-ssp ml-3">{item.labelText}</span>
               <input
                 type={item.type}
                 placeholder={item.placeholder}

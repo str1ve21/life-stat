@@ -41,21 +41,34 @@ export default function Section4() {
           }}
           className="account-form"
         >
-          <h2 className="title my-0 md:my-[20px] md:mx-[40px] text-center">
+          <h2 className="title my-0 md:mb-[20px] md:mx-[40px] text-center">
             {isLogin ? "С возвращением!" : "Добро пожаловать!"}
           </h2>
           <label className="account-label">
-            <span className="text-ssp">Логин</span>
+            <span className="text-ssp ml-3">Логин</span>
             <input type="text" className="account-input" />
           </label>
           <label className="account-label">
-            <span className="text-ssp">Пароль</span>
+            <span className="text-ssp ml-3">Пароль</span>
             <input type="password" className="account-input" />
           </label>
-          <button className="button w-max mx-auto bg-neutral-100 dark:bg-neutral-900">
+          <button className="button w-full mx-auto bg-neutral-100 dark:bg-neutral-900">
             {isLogin ? "Вход" : "Регистрация"}
           </button>
-          {/* <Link className="button bg-neutral-100" to="/app">App</Link> */}
+          {isLogin && (
+            <div className="flex justify-between gap-[20px]">
+              <label className="checkbox-label bg-neutral-100 dark:bg-neutral-900">
+                <input type="checkbox" className="checkbox" />
+                <span>Запомнить меня</span>
+              </label>
+              <a
+                href="#"
+                className="button w-1/2 bg-neutral-100 dark:bg-neutral-900"
+              >
+                Забыли пароль?
+              </a>
+            </div>
+          )}
         </form>
       </div>
     </section>

@@ -88,8 +88,16 @@
     @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 bg-transparent rounded-xl;
   }
 
+  .checkbox {
+    @apply w-[20px] h-[20px];
+  }
+
+  .checkbox-label {
+    @apply flex justify-center items-center gap-[20px] w-1/2 text-lg text-raleway text-center rounded-2xl;
+  }
+
   .account-form {
-    @apply flex flex-col w-full max-w-xl gap-[40px] p-[20px] md:px-[40px] text-lg line-height-1 bg-neutral-200/70 dark:bg-neutral-800/70 rounded-[40px];
+    @apply flex flex-col w-full max-w-xl gap-[20px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-200/70 dark:bg-neutral-800/70 rounded-[40px];
   }
 
   .account-button {
