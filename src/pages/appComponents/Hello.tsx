@@ -15,7 +15,7 @@ export default function WelcomePage() {
   };
 
   return (
-    <section className="flex flex-col justify-center gap-[20px] min-h-[50vh] content-padding bg-neutral-100 dark:bg-neutral-800 rounded-b-[40px]">
+    <section className="flex flex-col justify-center gap-[20px] min-h-[320px] h-[50vh] content-padding bg-neutral-100 dark:bg-neutral-800 rounded-b-[40px]">
       <h1 className="hello-title text-center leading-none">Привет, str1ve!</h1>
       <h2 className="hello-subtitle text-center leading-none">owo uwu</h2>
       <div

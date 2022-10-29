@@ -13,7 +13,7 @@ const ApplicationPage = observer(() => {
       SCounters.loadFromLocalStorage();
       console.log(
         "%cПривет! Ради сохранения своих счётчиков не производи никаких манипуляций с localStorage через консоль. Это может привести к удалению всех счётчиков или другим плохим последствиям. Ты же не хочешь проблем?",
-        "font-family: monospace; font-size: 20px; color: black; background: linear-gradient(145deg, #FF7A9E 0%, #FF9B41 100%); padding: 20px; border-radius: 20px"
+        "font-family: monospace; font-size: 20px; color: black; background: linear-gradient(145deg, #FF9B41 0%, #FF7A9E 100%); padding: 20px; border-radius: 20px"
       );
     }
   }, []);
