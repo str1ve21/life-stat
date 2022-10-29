@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { getInputValue } from "../../func/getInputValue";
 import SCounters from "../../store/SCounters";
@@ -14,8 +14,7 @@ const CounterSetValue = observer((props: IProps) => {
     <div className="grid grid-cols-2 gap-[10px] md:gap-[20px] mt-[10px]">
       <input
         type="number"
-        defaultValue={1}
-        value={props.defInput}
+        defaultValue={props.defInput}
         id={`CounterInput${props.storeCounterID}`}
         className="min-h-[50px] px-2 py-2 text-base md:text-lg border-2 bg-transparent backdrop-invert-[0.15] text-raleway rounded-xl"
         style={{ borderColor: props.accentColor }}

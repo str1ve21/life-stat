@@ -7,7 +7,7 @@ export default function InfoDialog() {
   return (
     <dialog
       id={`infoDialog${dialogElementData.id}`}
-      className="dialog mx-[20px] md:mx-auto md:max-w-2xl dialog-padding rounded-2xl"
+      className="dialog mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>

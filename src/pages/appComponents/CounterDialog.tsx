@@ -49,7 +49,7 @@ export default function AddDialog() {
       id: 4,
       type: "number",
       htmlId: "defaultInput",
-      labelText: "Значение ввода",
+      labelText: "Стандартное значение ввода",
       placeholder: "Станд.: 1",
       defValue: dialogElementData.isEdit ? currentCounter?.defaultInput : "1",
     },
@@ -94,7 +94,7 @@ export default function AddDialog() {
   return (
     <dialog
       id={`counterDialog${dialogElementData.id}`}
-      className="dialog mx-[20px] md:mx-auto md:max-w-2xl dialog-padding rounded-2xl"
+      className="dialog mx-[20px] md:mx-auto md:max-w-3xl w-full dialog-padding rounded-2xl"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.text}</h2>
