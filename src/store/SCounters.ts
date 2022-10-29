@@ -18,6 +18,7 @@ class counterStore {
       (obj) => obj.id === editedCounter.id
     );
     this.countersData.splice(counterToEdit, 1, editedCounter);
+    this.saveToLocalStorage();
   }
 
   removeCounter(id: number) {

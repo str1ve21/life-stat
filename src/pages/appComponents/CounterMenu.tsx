@@ -15,6 +15,7 @@ interface IProps {
   textColor: string;
   counter: number;
   goal: number;
+  donePercent: string;
 }
 
 export default function CounterMenu(props: IProps) {
@@ -56,7 +57,7 @@ export default function CounterMenu(props: IProps) {
         ? `Полная цель: ${numeral(props.goal).format("0.[000]")}`
         : `Полная цель: Отсутсвует цель`,
       props.goal !== 0
-        ? `Прогресс: ${numeral(props.counter / props.goal).format("0.[000]%")}`
+        ? `Прогресс: ${props.donePercent}`
         : `Прогресс: Отсутсвует цель`,
       `Дата создания: ${new Date(props.id).toLocaleDateString()}, ${new Date(
         props.id

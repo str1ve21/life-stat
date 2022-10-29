@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
-import SCounters from "../../store/SCounters";
 import { getInputValue } from "../../func/getInputValue";
+import SCounters from "../../store/SCounters";
 
 interface IProps {
   storeCounterID: number;
@@ -11,10 +11,11 @@ interface IProps {
 
 const CounterSetValue = observer((props: IProps) => {
   return (
-    <div className="grid grid-cols-2 gap-[10px] md:gap-[20px]">
+    <div className="grid grid-cols-2 gap-[10px] md:gap-[20px] mt-[10px]">
       <input
         type="number"
-        defaultValue={props.defInput ? props.defInput : 1}
+        defaultValue={1}
+        value={props.defInput}
         id={`CounterInput${props.storeCounterID}`}
         className="min-h-[50px] px-2 py-2 text-base md:text-lg border-2 bg-transparent backdrop-invert-[0.15] text-raleway rounded-xl"
         style={{ borderColor: props.accentColor }}
