@@ -93,7 +93,7 @@
   }
 
   .checkbox-label {
-    @apply flex justify-center items-center gap-[20px] w-1/2 text-lg text-raleway text-center rounded-2xl;
+    @apply flex justify-center items-center gap-[20px] py-2 text-lg text-raleway text-center rounded-2xl;
   }
 
   .account-form {

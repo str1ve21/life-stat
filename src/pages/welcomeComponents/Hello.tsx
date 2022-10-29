@@ -16,15 +16,17 @@ export default function Hello() {
   const welcomeParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#welcome-text",
-      power: 2,
-      startFrom: 50,
-      finishAfter: 500,
+      power: 2.5,
+      startFrom: 0,
+      initialTranslateY: -window.outerHeight / 2.5,
+      finishAfter: window.outerHeight,
     },
     {
       elem: "#welcome-image",
-      power: 5,
-      startFrom: 100,
-      finishAfter: 300,
+      power: 4,
+      startFrom: 0,
+      initialTranslateY: -window.outerHeight / 3.5,
+      finishAfter: window.outerHeight,
     },
   ];
   useEffect(() => {

@@ -17,7 +17,7 @@ export default function Benefit() {
     {
       elem: "#benefit-title",
       power: 2,
-      startFrom: window.outerHeight / 1.3,
+      startFrom: window.outerHeight * 1.8,
       initialTranslateY: -window.outerHeight / 3,
       finishAfter: window.outerHeight / 3,
     },
@@ -27,7 +27,7 @@ export default function Benefit() {
       elem: "#benefit-text",
       filterType: "opacity",
       initialFilterValue: 0,
-      startFrom: window.outerHeight * 1.4,
+      startFrom: window.outerHeight * 2.3,
       finishAfter: window.outerHeight / 4,
     },
   ];
@@ -83,7 +83,7 @@ export default function Benefit() {
           думаю, вам стоит попробовать это приложение.
         </p>
         <a
-          className="mr-auto button bg-app-200 dark:bg-app-250"
+          className="mr-auto button bg-app-400 dark:bg-app-450"
           href="#Аккаунт"
         >
           Создать аккаунт

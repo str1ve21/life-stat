@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./allComponents/Navbar";
 import Hello from "./welcomeComponents/Hello";
 import Reason from "./welcomeComponents/Reason";
@@ -8,11 +8,15 @@ import Roadmap from "./welcomeComponents/Roadmap";
 import Footer from "./welcomeComponents/Footer";
 
 export default function WelcomePage() {
+  useEffect(() => {
+    window.scrollTo(0, window.outerHeight);
+    document.documentElement.classList.add("scroll-smooth");
+  }, []);
   const links: string[] = [
+    "Аккаунт",
     "Главная",
     "Смысл",
     "Польза",
-    "Аккаунт",
     "Планы",
     "Ссылки",
   ];
@@ -24,11 +28,11 @@ export default function WelcomePage() {
           customClass="fixed bg-white/50 dark:bg-black/30"
           linksArray={links}
         />
+        <Account />
         <Hello />
         <Reason />
         <Benefit />
         <Roadmap />
-        <Account />
       </main>
       <Footer />
     </>

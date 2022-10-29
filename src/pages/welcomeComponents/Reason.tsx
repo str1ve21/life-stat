@@ -17,7 +17,7 @@ export default function Reason() {
     {
       elem: "#reason-title",
       power: 2,
-      startFrom: 0,
+      startFrom: window.outerHeight * 0.9,
       initialTranslateY: -window.outerHeight / 3,
       finishAfter: window.outerHeight / 3,
     },
@@ -27,7 +27,7 @@ export default function Reason() {
       elem: "#reason-text",
       filterType: "opacity",
       initialFilterValue: 0,
-      startFrom: window.outerHeight / 2.5,
+      startFrom: window.outerHeight * 1.4,
       finishAfter: window.outerHeight / 2.5,
     },
   ];
@@ -68,7 +68,7 @@ export default function Reason() {
   return (
     <section
       id="Смысл"
-      className="relative flex flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-100 dark:from-app-150 to-app-200 dark:to-app-250  z-20 rounded-[40px] overflow-hidden"
+      className="relative flex flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-300 dark:from-app-350 to-app-400 dark:to-app-450 z-20 rounded-[40px] overflow-hidden"
     >
       <div className="flex flex-col justify-center min-h-[60vh] lg:min-h-screen w-full lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="reason-title">
