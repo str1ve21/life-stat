@@ -53,7 +53,7 @@ const Counter = observer((props: IProps) => {
       </div>
       {!!props.data.goal && (
         <div
-          className="w-full h-[40px] border-2 backdrop-invert-[0.075] rounded-2xl"
+          className="w-full h-[40px] border-2 backdrop-invert-[0.075] rounded-2xl overflow-hidden"
           style={{ borderColor: props.data.textColor }}
         >
           <div
