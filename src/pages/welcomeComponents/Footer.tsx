@@ -20,16 +20,13 @@ export default function Footer() {
       </div>
       {textArray.map((item) => {
         return (
-          <p
-            key={item}
-            className="text mb-[10px] p-[10px] odd:bg-neutral-200/50 odd:dark:bg-neutral-800/50 odd:rounded-2xl"
-          >
+          <p key={item} className="subtext py-[10px]">
             {item}
           </p>
         );
       })}
-      <div className=" ml-[40px]">
-        <p className="text mb-0 mt-[40px] lg:mt-[80px] text-right">
+      <div className="ml-[40px] mt-[40px] lg:mt-[60px]">
+        <p className="text mb-[10px] text-right">
           Блог на{" "}
           <a
             rel="noreferrer"
@@ -41,7 +38,7 @@ export default function Footer() {
           </a>
           .
         </p>
-        <p className="text mb-0 mt-[10px] lg:mt-[20px] text-right">
+        <p className="text mb-0 text-right">
           Сделано с ❤️{" "}
           <a
             rel="noreferrer"
@@ -65,11 +62,11 @@ export default function Footer() {
       </div>
       <img
         onClick={() => {
-          alert("Meow!");
+          alert("Мя уу!");
         }}
         src={CatAsset}
         alt="Cat :3"
-        className="absolute bottom-[0px] left-[20px] md:left-[40px] lg:left-[60px] h-[40px] lg:h-[80px]"
+        className="absolute bottom-[0px] left-[20px] md:left-[40px] lg:left-[60px] h-[40px] lg:h-[80px] cursor-pointer"
       />
     </footer>
   );
