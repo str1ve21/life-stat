@@ -73,7 +73,7 @@
   }
 
   .icon {
-    @apply w-[25px] lg:w-[30px] duration-200;
+    @apply w-[15px] md:w-[20px] lg:w-[30px] duration-200;
   }
 
   .button {

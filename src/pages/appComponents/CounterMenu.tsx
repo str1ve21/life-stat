@@ -10,7 +10,8 @@ import IInfoDialog from "../../interfaces/IInfoDialog";
 import SInfoDialog from "../../store/SInfoDialog";
 
 interface IProps {
-  id: number;
+  id: string;
+  dateID: number;
   color: string;
   textColor: string;
   counter: number;
@@ -49,6 +50,7 @@ export default function CounterMenu(props: IProps) {
   };
   const infoDialog: IInfoDialog = {
     id: props.id,
+    dateID: props.dateID,
     title: "Информация о счётчике.",
     description: "Здесь будет некоторая информация о вашем счётчике.",
     text: [
@@ -59,9 +61,9 @@ export default function CounterMenu(props: IProps) {
       props.goal !== 0
         ? `Прогресс: ${props.donePercent}`
         : `Прогресс: Отсутсвует цель`,
-      `Дата создания: ${new Date(props.id).toLocaleDateString()}, ${new Date(
-        props.id
-      ).toTimeString()}`,
+      `Дата создания: ${new Date(
+        props.dateID
+      ).toLocaleDateString()}, ${new Date(props.dateID).toTimeString()}`,
     ],
   };
 

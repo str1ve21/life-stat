@@ -11,13 +11,12 @@ export function createParallaxY(options: IParallaxYOptions): void {
     return;
   }
 
-  let initialTranslateValue = options.initialTranslateY || 0;
-  let startFromValue = options.startFrom! || 0;
-  let finishAfterValue = options.finishAfter! || window.outerHeight;
-  let scrolledFromTop: number;
-
   const parallaxFunction = () => {
-    scrolledFromTop = window.scrollY;
+    let initialTranslateValue = options.initialTranslateY || 0;
+    let startFromValue = options.startFrom! || 0;
+    let finishAfterValue = options.finishAfter! || window.outerHeight;
+    let scrolledFromTop: number = window.scrollY;
+    let parallaxNumber: number;
 
     if (scrolledFromTop < startFromValue) return;
 
@@ -30,8 +29,7 @@ export function createParallaxY(options: IParallaxYOptions): void {
       finishAfterValue = options.finishAfter! || window.outerHeight;
     });
 
-    let parallaxNumber: number =
-      (scrolledFromTop - startFromValue) / options.power;
+    parallaxNumber = (scrolledFromTop - startFromValue) / options.power;
 
     document.querySelector<HTMLElement>(
       options.elem

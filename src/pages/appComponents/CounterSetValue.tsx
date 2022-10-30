@@ -4,7 +4,7 @@ import { getInputValue } from "../../func/getInputValue";
 import SCounters from "../../store/SCounters";
 
 interface IProps {
-  storeCounterID: number;
+  storeCounterID: string;
   defInput: number;
   accentColor: string;
 }

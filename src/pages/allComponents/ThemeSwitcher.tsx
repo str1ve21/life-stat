@@ -85,7 +85,7 @@ const ThemeSwitcher = observer(() => {
         </svg>
       </button>
       <div
-        className={`absolute flex-col gap-[10px] top-[100px] lg:top-[110px] right-[20px] md:right-[40px] lg:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl ${
+        className={`absolute flex-col gap-[10px] top-[65px] md:top-[70px] lg:top-[110px] right-[20px] md:right-[40px] lg:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl ${
           STheme.themeData.isMenuVisible ? "flex" : "hidden"
         }`}
       >

@@ -1,5 +1,6 @@
 export default interface ICounter {
-  id: number;
+  id: string;
+  dateID: number;
   title: string;
   description: string;
   counter: number;

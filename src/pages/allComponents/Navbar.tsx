@@ -15,11 +15,11 @@ export default function Navbar(props: IProps) {
   const linksArray: string[] = props.linksArray! || [];
   return (
     <header
-      className={`${props.customClass} flex w-full h-max content-padding backdrop-blur-[8px] z-[100] rounded-b-[40px]`}
+      className={`${props.customClass} flex w-full h-max py-[10px] lg:py-[20px] content-padding backdrop-blur-[8px] z-[100] rounded-b-2xl lg:rounded-b-[40px]`}
     >
       <Link
         to={props.href}
-        className="flex items-center h-[40px] lg:h-[50px] my-auto"
+        className="flex items-center h-[30px] lg:h-[50px] my-auto"
       >
         <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
         <span className="ml-[10px] lg:ml-[20px] text-logo">LifeStat</span>

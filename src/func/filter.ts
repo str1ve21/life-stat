@@ -4,10 +4,10 @@ import { throttle } from "throttle-debounce";
 import IFilterOptions from "../interfaces/IFilterOptions";
 
 export function createFilter(options: IFilterOptions): void {
-  const startFromValue = options.startFrom! || 0;
-  const finishAfterValue = options.finishAfter! || 100;
-  const reversedValue = options.reversedValue! || false;
-  const maxFilterValue = options.maxFilter! || 1;
+  let startFromValue = options.startFrom! || 0;
+  let finishAfterValue = options.finishAfter! || 100;
+  let reversedValue = options.reversedValue! || false;
+  let maxFilterValue = options.maxFilter! || 1;
   let scrolledFromTop;
 
   const filterFunction = () => {
@@ -23,6 +23,12 @@ export function createFilter(options: IFilterOptions): void {
     if (filterNumber >= maxFilterValue) return;
 
     if (reversedValue) filterNumber = 1 - filterNumber;
+
+    window.onresize = throttle(333, () => {
+      startFromValue = options.startFrom! || 0;
+      finishAfterValue = options.finishAfter! || 100;
+      maxFilterValue = options.maxFilter! || 1;
+    });
 
     document.querySelector<HTMLElement>(
       options.elem

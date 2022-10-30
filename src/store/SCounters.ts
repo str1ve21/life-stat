@@ -21,7 +21,7 @@ class counterStore {
     this.saveToLocalStorage();
   }
 
-  removeCounter(id: number) {
+  removeCounter(id: string) {
     const idToRemove = toJS(this.countersData).findIndex(
       (obj) => obj.id === id
     );
@@ -29,7 +29,7 @@ class counterStore {
     this.saveToLocalStorage();
   }
 
-  changeValue(elem: number, inputValue: number) {
+  changeValue(elem: string, inputValue: number) {
     const objToChange = toJS(this.countersData).findIndex(
       (obj) => obj.id === elem
     );

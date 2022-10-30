@@ -4,6 +4,7 @@ import IAddInputsArray from "../../interfaces/IAddInputsArray";
 import ICounter from "../../interfaces/ICounter";
 import ICounterDialog from "../../interfaces/ICounterDialog";
 import SCounterDialog from "../../store/SCounterDialog";
+import { v4 as uuidv4, v4 } from "uuid";
 import { findCounterByID } from "../../func/currentCounter";
 import { getInputValue } from "../../func/getInputValue";
 
@@ -73,7 +74,8 @@ export default function AddDialog() {
 
   function sendCounterData() {
     const tempItem: ICounter = {
-      id: 0,
+      id: "",
+      dateID: 0,
       title: getInputValue("#titleInput"),
       description: getInputValue("#descriptionInput"),
       counter: +getInputValue("#countInput"),
@@ -90,7 +92,8 @@ export default function AddDialog() {
       )!.value = `${tempItem.defaultInput}`;
       return;
     }
-    tempItem.id = Date.now();
+    tempItem.id = uuidv4();
+    tempItem.dateID = Date.now();
     SCounters.addCounter(tempItem);
   }
 
