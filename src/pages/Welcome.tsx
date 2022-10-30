@@ -25,6 +25,7 @@ export default function WelcomePage() {
       <main id="page" className="bg-neutral-200 dark:bg-neutral-900">
         <Navbar
           href="/"
+          isMobileExist={true}
           customClass="fixed bg-white/50 dark:bg-black/30"
           linksArray={links}
         />

@@ -6,7 +6,7 @@ import ICounterDialog from "../../interfaces/ICounterDialog";
 
 export default function WelcomePage() {
   const createCounterDialog: ICounterDialog = {
-    id: 0,
+    id: "",
     text: "Добавление счётчика.",
     title:
       "Здесь вы можете создать новый счётчик со своими параметрами, и кастомизировать его. Необязательными являются заголовок, описание и цель.",

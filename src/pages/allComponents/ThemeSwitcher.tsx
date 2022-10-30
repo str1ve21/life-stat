@@ -40,7 +40,7 @@ const ThemeSwitcher = observer(() => {
   return (
     <>
       <button
-        className="ml-auto lg:ml-0 p-[10px] bg-white dark:bg-black rounded-full"
+        className="ml-[20px] md:ml-[40px] lg:ml-0 p-[10px] bg-white dark:bg-black rounded-full"
         onClick={() => {
           STheme.toggleVisibility();
         }}

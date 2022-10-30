@@ -22,7 +22,7 @@ const ApplicationPage = observer(() => {
       {SCounterDialog.counterDialogData.length > 0 && (
         <CounterDialog></CounterDialog>
       )}
-      <Navbar href="/" customClass="absolute"></Navbar>
+      <Navbar href="/" isMobileExist={false} customClass="absolute"></Navbar>
       <Hello></Hello>
       <Main></Main>
     </main>
