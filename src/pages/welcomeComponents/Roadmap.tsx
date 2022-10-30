@@ -17,6 +17,7 @@ export default function Roadmap() {
     "Добавление таймеров для счёта времени.",
     "Система достижений.",
     "Группировка счётчиков.",
+    "Анимации.",
   ];
 
   const benefitParallaxItems: IParallaxYOptions[] = [

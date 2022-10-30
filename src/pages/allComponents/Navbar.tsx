@@ -40,23 +40,45 @@ export default function Navbar(props: IProps) {
         })}
       </nav>
       {props.isMobileExist && (
-        <svg
+        <button
           onClick={() => {
             toggleMobileMenu((prev) => !prev);
           }}
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className={`icon block lg:hidden mr-0 lg:mr-[20px] ml-auto`}
+          className="flex lg:hidden mr-0 lg:mr-[20px] ml-auto p-[10px] bg-white dark:bg-black rounded-full"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
+          {isMobileMenu && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="icon text-rose-300 dark:text-rose-700"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          )}
+          {isMobileMenu === false && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="icon"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          )}
+        </button>
       )}
       <div
         className={`absolute flex lg:hidden flex-col w-[calc(100%-95px)] md:w-[calc(100%-140px)] gap-[10px] top-[65px] md:top-[70px] left-[20px] right-[75px] md:right-[120px] p-[20px] bg-white dark:bg-black rounded-2xl ${
