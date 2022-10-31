@@ -16,10 +16,10 @@ export default function Benefit() {
   const benefitParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#benefit-title",
-      power: 2,
-      startFrom: window.outerHeight * 1.8,
-      initialTranslateY: -window.outerHeight / 3,
-      finishAfter: window.outerHeight / 3,
+      power: 1.5,
+      startFrom: 40,
+      initialTranslateY: -131,
+      finishAfter: 60,
     },
   ];
   const benefitFilterItems: IFilterOptions[] = [
@@ -27,8 +27,8 @@ export default function Benefit() {
       elem: "#benefit-text",
       filterType: "opacity",
       initialFilterValue: 0,
-      startFrom: window.outerHeight * 2.4,
-      finishAfter: window.outerHeight / 4,
+      startFrom: 55,
+      finishAfter: 65,
     },
   ];
   useEffect(() => {

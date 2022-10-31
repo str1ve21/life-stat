@@ -13,7 +13,7 @@ import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 export default function Roadmap() {
   const roadmapText: string[] = [
     "Создание тем для счётчиков.",
-    "Возможность кастомизировать фон в первой секции приложения.",
+    "Возможность кастомизировать фон в приложении.",
     "Добавление таймеров для счёта времени.",
     "Система достижений.",
     "Группировка счётчиков.",
@@ -23,10 +23,10 @@ export default function Roadmap() {
   const benefitParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#roadmap-title",
-      power: 2,
-      startFrom: window.outerHeight * 2.7,
-      initialTranslateY: -window.outerHeight / 3,
-      finishAfter: window.outerHeight / 3,
+      power: 1.5,
+      startFrom: 60,
+      initialTranslateY: -132,
+      finishAfter: 80,
     },
   ];
   const benefitFilterItems: IFilterOptions[] = [
@@ -34,8 +34,8 @@ export default function Roadmap() {
       elem: "#roadmap",
       filterType: "opacity",
       initialFilterValue: 0,
-      startFrom: window.outerHeight * 3.3,
-      finishAfter: window.outerHeight / 4,
+      startFrom: 75,
+      finishAfter: 95,
     },
   ];
   useEffect(() => {

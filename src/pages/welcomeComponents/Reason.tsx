@@ -16,10 +16,10 @@ export default function Reason() {
   const reasonParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#reason-title",
-      power: 2,
-      startFrom: window.outerHeight * 0.9,
-      initialTranslateY: -window.outerHeight / 3,
-      finishAfter: window.outerHeight / 3,
+      power: 1.5,
+      startFrom: 20,
+      initialTranslateY: -130,
+      finishAfter: 40,
     },
   ];
   const reasonFilterItems: IFilterOptions[] = [
@@ -27,8 +27,8 @@ export default function Reason() {
       elem: "#reason-text",
       filterType: "opacity",
       initialFilterValue: 0,
-      startFrom: window.outerHeight * 1.4,
-      finishAfter: window.outerHeight / 2.5,
+      startFrom: 35,
+      finishAfter: 45,
     },
   ];
   useEffect(() => {

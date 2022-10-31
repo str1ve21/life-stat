@@ -11,31 +11,35 @@ export function createParallaxY(options: IParallaxYOptions): void {
     return;
   }
 
+  const initialTranslateValue = options.initialTranslateY || 0;
+  const startFromValue = options.startFrom! || 0;
+  const finishAfterValue = options.finishAfter! || window.outerHeight;
+  const HTMLElement: HTMLElement = document.documentElement;
+  let scrolledFromTop: number;
+  let parallaxNumber: number;
+
   const parallaxFunction = () => {
-    let initialTranslateValue = options.initialTranslateY || 0;
-    let startFromValue = options.startFrom! || 0;
-    let finishAfterValue = options.finishAfter! || window.outerHeight;
-    let scrolledFromTop: number = window.scrollY;
-    let parallaxNumber: number;
+    scrolledFromTop =
+      (HTMLElement.scrollTop /
+        (HTMLElement.scrollHeight - HTMLElement.clientHeight)) *
+      100;
 
     if (scrolledFromTop < startFromValue) return;
 
-    if (scrolledFromTop > startFromValue + finishAfterValue * options.power)
+    if (scrolledFromTop > finishAfterValue) {
+      document.querySelector<HTMLElement>(
+        options.elem
+      )!.style.transform = `translateY(${0}%)`;
       return;
+    }
 
-    window.onresize = throttle(250, () => {
-      initialTranslateValue = options.initialTranslateY || 0;
-      startFromValue = options.startFrom! || 0;
-      finishAfterValue = options.finishAfter! || window.outerHeight;
-    });
-
-    parallaxNumber = (scrolledFromTop - startFromValue) / options.power;
+    parallaxNumber = ((scrolledFromTop - startFromValue) / options.power) * 10;
 
     document.querySelector<HTMLElement>(
       options.elem
     )!.style.transform = `translateY(${
       initialTranslateValue + parallaxNumber
-    }px)`;
+    }%)`;
   };
 
   return parallaxFunction();

@@ -16,19 +16,20 @@ export default function Hello() {
   const welcomeParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#welcome-text",
-      power: 2.5,
+      power: 1.5,
       startFrom: 0,
-      initialTranslateY: -window.outerHeight / 2.5,
-      finishAfter: window.outerHeight,
+      initialTranslateY: -145,
+      finishAfter: 40,
     },
     {
       elem: "#welcome-image",
-      power: 4,
-      startFrom: 0,
-      initialTranslateY: -window.outerHeight / 3.5,
-      finishAfter: window.outerHeight,
+      power: 5,
+      startFrom: 10,
+      initialTranslateY: -25,
+      finishAfter: 45,
     },
   ];
+
   useEffect(() => {
     welcomeParallaxItems.forEach((item) => {
       window.addEventListener(
