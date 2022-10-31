@@ -44,7 +44,7 @@ export default function Navbar(props: IProps) {
           onClick={() => {
             toggleMobileMenu((prev) => !prev);
           }}
-          className="flex lg:hidden mr-0 lg:mr-[20px] ml-auto p-[10px] bg-white dark:bg-black rounded-full"
+          className="flex lg:hidden h-max mr-0 lg:mr-[20px] ml-auto my-auto p-[5px] bg-white dark:bg-black rounded-full"
         >
           {isMobileMenu && (
             <svg

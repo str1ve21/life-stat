@@ -70,7 +70,7 @@ export default function Benefit() {
       id="Польза"
       className="relative flex flex-col lg:flex-row h-max z-30 rounded-[40px] overflow-hidden"
     >
-      <div className="flex flex-col justify-center min-h-[70vh] lg:min-h-screen w-full lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
+      <div className="flex flex-col justify-center min-h-[700px] lg:min-h-screen w-full lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
         <div id="benefit-title">
           <h2 className="hello-title">Стоит ли тебе его использовать?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px]">

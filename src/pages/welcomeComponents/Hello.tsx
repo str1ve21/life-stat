@@ -18,15 +18,15 @@ export default function Hello() {
       elem: "#welcome-text",
       power: 1.5,
       startFrom: 0,
-      initialTranslateY: -145,
-      finishAfter: 40,
+      initialTranslateY: -130,
+      finishAfter: 50,
     },
     {
       elem: "#welcome-image",
       power: 5,
       startFrom: 10,
       initialTranslateY: -25,
-      finishAfter: 45,
+      finishAfter: 50,
     },
   ];
 
