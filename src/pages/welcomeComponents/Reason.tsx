@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { throttle } from "throttle-debounce";
+import { useLocation } from "react-router-dom";
 
 // img
 import ReasonAsset from "@/src/assets/WelcomeAssets/reason.jpg";
@@ -13,6 +14,8 @@ import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 import IFilterOptions from "../../interfaces/IFilterOptions";
 
 export default function Reason() {
+  const location = useLocation();
+
   const reasonParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#reason-title",
@@ -31,6 +34,7 @@ export default function Reason() {
       finishAfter: 45,
     },
   ];
+
   useEffect(() => {
     reasonParallaxItems.forEach((item) => {
       window.addEventListener(
@@ -64,7 +68,7 @@ export default function Reason() {
         });
       });
     };
-  }, []);
+  }, [location.pathname]);
   return (
     <section
       id="Смысл"

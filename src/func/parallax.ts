@@ -19,6 +19,8 @@ export function createParallaxY(options: IParallaxYOptions): void {
   let parallaxNumber: number;
 
   const parallaxFunction = () => {
+    if (!document.querySelector<HTMLElement>(options.elem)) return;
+
     scrolledFromTop =
       (HTMLElement.scrollTop /
         (HTMLElement.scrollHeight - HTMLElement.clientHeight)) *

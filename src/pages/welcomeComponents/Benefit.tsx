@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { throttle } from "throttle-debounce";
+import { useLocation } from "react-router-dom";
 
 // img
 import UseAsset from "@/src/assets/WelcomeAssets/use.jpg";
@@ -13,6 +14,8 @@ import IFilterOptions from "../../interfaces/IFilterOptions";
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 
 export default function Benefit() {
+  const location = useLocation();
+
   const benefitParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#benefit-title",
@@ -31,6 +34,7 @@ export default function Benefit() {
       finishAfter: 65,
     },
   ];
+
   useEffect(() => {
     benefitParallaxItems.forEach((item) => {
       window.addEventListener(
@@ -64,7 +68,7 @@ export default function Benefit() {
         });
       });
     };
-  }, []);
+  }, [location.pathname]);
   return (
     <section
       id="Польза"

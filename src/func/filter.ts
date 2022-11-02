@@ -13,6 +13,8 @@ export function createFilter(options: IFilterOptions): void {
   let filterNumber: number;
 
   const filterFunction = () => {
+    if (!document.querySelector<HTMLElement>(options.elem)) return;
+
     scrolledFromTop =
       (HTMLElement.scrollTop /
         (HTMLElement.scrollHeight - HTMLElement.clientHeight)) *

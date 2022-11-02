@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { throttle } from "throttle-debounce";
-import RoadmapAsset from "@/src/assets/WelcomeAssets/roadmap.jpg";
+import { useLocation } from "react-router-dom";
 
 // func
 import { createFilter } from "../../func/filter";
@@ -10,7 +10,12 @@ import { createParallaxY } from "../../func/parallax";
 import IFilterOptions from "../../interfaces/IFilterOptions";
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 
+// img
+import RoadmapAsset from "@/src/assets/WelcomeAssets/roadmap.jpg";
+
 export default function Roadmap() {
+  const location = useLocation();
+
   const roadmapText: string[] = [
     "Создание тем для счётчиков.",
     "Возможность кастомизировать фон в приложении.",
@@ -38,6 +43,7 @@ export default function Roadmap() {
       finishAfter: 95,
     },
   ];
+
   useEffect(() => {
     benefitParallaxItems.forEach((item) => {
       window.addEventListener(
@@ -71,7 +77,7 @@ export default function Roadmap() {
         });
       });
     };
-  }, []);
+  }, [location.pathname]);
   return (
     <section
       id="Планы"
