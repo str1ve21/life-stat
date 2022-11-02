@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, when } from "mobx";
 import ISureDialog from "../interfaces/ISureDialog";
 
 class dialogStore {
@@ -10,14 +10,6 @@ class dialogStore {
 
   createDialog(item: ISureDialog) {
     this.sureDialogData.push(item);
-    setTimeout(() => {
-      document.querySelector<HTMLDialogElement>("dialog")?.close();
-      document
-        .querySelector<HTMLDialogElement>(
-          `#deleteDialog${this.sureDialogData[0].id}`
-        )!
-        .showModal();
-    }, 0);
   }
 
   deleteDialog() {

@@ -4,6 +4,8 @@ export default interface ISureDialog {
   text: string;
   yesText: string;
   noText: string;
-  yesFunction: () => void;
-  noFunction: () => void;
+  isYesFunc: boolean;
+  isNoFunc: boolean;
+  yesFunction?: () => void;
+  noFunction?: () => void;
 }

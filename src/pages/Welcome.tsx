@@ -6,8 +6,11 @@ import Benefit from "./welcomeComponents/Benefit";
 import Account from "./welcomeComponents/Account";
 import Roadmap from "./welcomeComponents/Roadmap";
 import Footer from "./welcomeComponents/Footer";
+import SureDialog from "./allComponents/SureDialog";
+import SDialog from "../store/SDialog";
+import { observer } from "mobx-react-lite";
 
-export default function WelcomePage() {
+const WelcomePage = observer(() => {
   useEffect(() => {
     window.scrollTo(0, window.outerHeight);
     document.documentElement.classList.add("scroll-smooth");
@@ -23,6 +26,7 @@ export default function WelcomePage() {
   return (
     <>
       <main id="page" className="bg-neutral-200 dark:bg-neutral-900">
+        {SDialog.sureDialogData.length > 0 && <SureDialog></SureDialog>}
         <Navbar
           href="/"
           isMobileExist={true}
@@ -38,4 +42,6 @@ export default function WelcomePage() {
       <Footer />
     </>
   );
-}
+});
+
+export default WelcomePage;

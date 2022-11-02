@@ -23,21 +23,21 @@ export default function CounterMenu(props: IProps) {
   const inArrayID: number = inArrayIDByID(props.id);
 
   const deleteDialog: ISureDialog = {
-    id: props.id,
+    id: `deleteCounter${props.id}`,
     title: `Удаление счётчика.`,
     text: `Вы уверены, что хотите удалить счётчик с номером ${
       inArrayID + 1
     } навсегда?`,
     yesText: "Удалить",
     noText: "Закрыть",
+    isYesFunc: true,
+    isNoFunc: true,
     yesFunction: () => {
       SCounters.removeCounter(props.id);
       SDialog.deleteDialog();
     },
     noFunction: () => {
-      document
-        .querySelector<HTMLDialogElement>(`#deleteDialog${props.id}`)!
-        .close();
+      document.querySelector<HTMLDialogElement>(deleteDialog.id)!.close();
       SDialog.deleteDialog();
     },
   };

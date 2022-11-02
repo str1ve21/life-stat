@@ -18,7 +18,7 @@ export default function Hello() {
       elem: "#welcome-text",
       power: 1.5,
       startFrom: 0,
-      initialTranslateY: -130,
+      initialTranslateY: -140,
       finishAfter: 50,
     },
     {
