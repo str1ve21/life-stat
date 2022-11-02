@@ -65,18 +65,6 @@ export default function Roadmap() {
         })
       );
     });
-    return () => {
-      benefitParallaxItems.forEach((item) => {
-        window.removeEventListener("scroll", () => {
-          createParallaxY(item);
-        });
-      });
-      benefitFilterItems.forEach((item) => {
-        window.removeEventListener("scroll", () => {
-          createFilter(item);
-        });
-      });
-    };
   }, [location.pathname]);
   return (
     <section

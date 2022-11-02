@@ -1,5 +1,3 @@
-import { throttle } from "throttle-debounce";
-
 // interfaces
 import IFilterOptions from "../interfaces/IFilterOptions";
 

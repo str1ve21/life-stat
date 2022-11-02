@@ -56,18 +56,6 @@ export default function Reason() {
         })
       );
     });
-    return () => {
-      reasonParallaxItems.forEach((item) => {
-        window.removeEventListener("scroll", () => {
-          createParallaxY(item);
-        });
-      });
-      reasonFilterItems.forEach((item) => {
-        window.removeEventListener("scroll", () => {
-          createFilter(item);
-        });
-      });
-    };
   }, [location.pathname]);
   return (
     <section

@@ -56,18 +56,6 @@ export default function Benefit() {
         })
       );
     });
-    return () => {
-      benefitParallaxItems.forEach((item) => {
-        window.removeEventListener("scroll", () => {
-          createParallaxY(item);
-        });
-      });
-      benefitFilterItems.forEach((item) => {
-        window.removeEventListener("scroll", () => {
-          createFilter(item);
-        });
-      });
-    };
   }, [location.pathname]);
   return (
     <section

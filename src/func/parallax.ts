@@ -1,5 +1,3 @@
-import { throttle } from "throttle-debounce";
-
 // interfaces
 import IParallaxYOptions from "../interfaces/IParallaxYOptions";
 

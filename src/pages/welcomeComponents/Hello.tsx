@@ -42,16 +42,6 @@ export default function Hello() {
         })
       );
     });
-    return () => {
-      welcomeParallaxItems.forEach((item) => {
-        window.removeEventListener(
-          "scroll",
-          throttle(15, () => {
-            createParallaxY(item);
-          })
-        );
-      });
-    };
   }, [location.pathname]);
   return (
     <section id="Главная" className="relative h-screen z-10 overflow-hidden">
