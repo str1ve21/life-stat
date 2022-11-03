@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SCounters from "../../store/SCounters";
 import IAddInputsArray from "../../interfaces/IAddInputsArray";
 import ICounter from "../../interfaces/ICounter";
 import ICounterDialog from "../../interfaces/ICounterDialog";
 import SCounterDialog from "../../store/SCounterDialog";
-import { v4 as uuidv4, v4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import { findCounterByID } from "../../func/currentCounter";
 import { getInputValue } from "../../func/getInputValue";
 
 export default function AddDialog() {
+  useEffect(() => {
+    if (
+      !document.querySelector<HTMLDialogElement>(
+        `#counterDialog${dialogElementData.id}`
+      )!.open
+    ) {
+      document
+        .querySelector<HTMLDialogElement>(
+          `#counterDialog${dialogElementData.id}`
+        )!
+        .showModal();
+    }
+  }, []);
+
   const dialogElementData: ICounterDialog = SCounterDialog.counterDialogData[0];
   const currentCounter: ICounter | undefined = findCounterByID(
     dialogElementData.id
@@ -155,7 +169,7 @@ export default function AddDialog() {
           SCounterDialog.deleteDialog();
           if (dialogElementData.isEdit) {
             document
-              .querySelector<HTMLDialogElement>(
+              .querySelector<HTMLDivElement>(
                 `#counterMenu${dialogElementData.id}`
               )!
               .classList.toggle("invisible");

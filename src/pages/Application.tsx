@@ -9,8 +9,7 @@ import { observer } from "mobx-react-lite";
 
 const ApplicationPage = observer(() => {
   useEffect(() => {
-    // Срабатывает при загрузке
-    SCounters.fetchGetCounters();
+    // SCounters.fetchGetCounters();
     if (!!localStorage.getItem("All Counters")) {
       SCounters.loadFromLocalStorage();
       console.log(

@@ -9,15 +9,8 @@ class counterDialogStore {
   counterDialogData: ICounterDialog[] = [];
 
   createDialog(item: ICounterDialog) {
+    document.querySelector<HTMLDialogElement>("dialog")?.close();
     this.counterDialogData.push(item);
-    setTimeout(() => {
-      document.querySelector<HTMLDialogElement>("dialog")?.close();
-      document
-        .querySelector<HTMLDialogElement>(
-          `#counterDialog${this.counterDialogData[0].id}`
-        )!
-        .showModal();
-    }, 0);
   }
 
   deleteDialog() {

@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import SCounterDialog from "../../store/SCounterDialog";
 import ICounterDialog from "../../interfaces/ICounterDialog";
+import Settings from "./Settings";
 
 export default function WelcomePage() {
   const createCounterDialog: ICounterDialog = {
-    id: "",
+    id: "counterDialog",
     text: "Добавление счётчика.",
     title:
       "Здесь вы можете создать новый счётчик со своими параметрами, и кастомизировать его. Необязательными являются заголовок, описание и цель.",
@@ -74,7 +74,14 @@ export default function WelcomePage() {
             />
           </svg>
         </button>
-        <button className="button bg-sky-300 dark:bg-sky-600">
+        <button
+          onClick={() => {
+            document
+              .querySelector<HTMLDialogElement>("#settingsDialog")
+              ?.showModal();
+          }}
+          className="button bg-sky-300 dark:bg-sky-600"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -96,6 +103,7 @@ export default function WelcomePage() {
           </svg>
         </button>
       </div>
+      <Settings></Settings>
     </section>
   );
 }

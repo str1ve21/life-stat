@@ -5,10 +5,14 @@ import SDialog from "../../store/SDialog";
 export default function SureDialog() {
   const dialogElementData: ISureDialog = SDialog.sureDialogData[0];
   useEffect(() => {
-    document.querySelector<HTMLDialogElement>("dialog")?.close();
-    document
-      .querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
-      .showModal();
+    if (
+      !document.querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
+        .open
+    ) {
+      document
+        .querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
+        .showModal();
+    }
   }, []);
   return (
     <dialog

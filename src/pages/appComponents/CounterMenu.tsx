@@ -37,7 +37,7 @@ export default function CounterMenu(props: IProps) {
       SDialog.deleteDialog();
     },
     noFunction: () => {
-      document.querySelector<HTMLDialogElement>(deleteDialog.id)!.close();
+      document.querySelector<HTMLDialogElement>("#" + deleteDialog.id)!.close();
       SDialog.deleteDialog();
     },
   };
@@ -49,7 +49,7 @@ export default function CounterMenu(props: IProps) {
     isEdit: true,
   };
   const infoDialog: IInfoDialog = {
-    id: props.id,
+    id: `infoDialog${props.id}`,
     dateID: props.dateID,
     title: "Информация о счётчике.",
     description: "Здесь будет некоторая информация о вашем счётчике.",

@@ -1,4 +1,4 @@
-import { makeAutoObservable, when } from "mobx";
+import { makeAutoObservable } from "mobx";
 import ISureDialog from "../interfaces/ISureDialog";
 
 class dialogStore {
@@ -9,6 +9,7 @@ class dialogStore {
   sureDialogData: ISureDialog[] = [];
 
   createDialog(item: ISureDialog) {
+    document.querySelector<HTMLDialogElement>("dialog")?.close();
     this.sureDialogData.push(item);
   }
 

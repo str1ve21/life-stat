@@ -9,15 +9,8 @@ class infoDialogStore {
   infoDialogData: IInfoDialog[] = [];
 
   createDialog(item: IInfoDialog) {
+    document.querySelector<HTMLDialogElement>("dialog")?.close();
     this.infoDialogData.push(item);
-    setTimeout(() => {
-      document.querySelector<HTMLDialogElement>("dialog")?.close();
-      document
-        .querySelector<HTMLDialogElement>(
-          `#infoDialog${this.infoDialogData[0].id}`
-        )!
-        .showModal();
-    }, 0);
   }
 
   deleteDialog() {

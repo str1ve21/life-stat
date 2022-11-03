@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import IInfoDialog from "../../interfaces/IInfoDialog";
 import SInfoDialog from "../../store/SInfoDialog";
 
 export default function InfoDialog() {
   const dialogElementData: IInfoDialog = SInfoDialog.infoDialogData[0];
+  useEffect(() => {
+    if (
+      !document.querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
+        .open
+    ) {
+      document
+        .querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
+        .showModal();
+    }
+  }, []);
   return (
     <dialog
-      id={`infoDialog${dialogElementData.id}`}
+      id={dialogElementData.id}
       className="dialog mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl"
     >
       <div className="dialog-header">
