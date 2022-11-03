@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import Hello from "./appComponents/Hello";
 import Main from "./appComponents/Main";
+import Navbar from "./allComponents/Navbar";
 import CounterDialog from "./appComponents/CounterDialog";
 import SCounters from "../store/SCounters";
 import SCounterDialog from "../store/SCounterDialog";
 import { observer } from "mobx-react-lite";
-import Navbar from "./allComponents/Navbar";
 
 const ApplicationPage = observer(() => {
   useEffect(() => {
+    // Срабатывает при загрузке
+    SCounters.fetchGetCounters();
     if (!!localStorage.getItem("All Counters")) {
       SCounters.loadFromLocalStorage();
       console.log(
@@ -16,6 +18,7 @@ const ApplicationPage = observer(() => {
         "font-family: monospace; font-size: 20px; color: black; background: linear-gradient(145deg, #FF9B41 0%, #FF7A9E 100%); padding: 20px; border-radius: 20px"
       );
     }
+    // SCounters.fetchPostCounters();
   }, []);
   return (
     <main id="app" className="bg-neutral-200 dark:bg-neutral-900">

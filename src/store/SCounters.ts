@@ -1,4 +1,5 @@
 import { makeAutoObservable, toJS } from "mobx";
+import { throttle } from "throttle-debounce";
 import ICounter from "../interfaces/ICounter";
 
 class counterStore {
@@ -35,6 +36,22 @@ class counterStore {
     );
     this.countersData[objToChange].counter += inputValue;
     this.saveToLocalStorage();
+  }
+
+  async fetchGetCounters() {
+    const response = await fetch("http://0.0.0.0:8000/allCounters");
+    console.log(response.json());
+  }
+
+  async fetchPostCounters() {
+    const response = await fetch("http://0.0.0.0:8000/saveCounters", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(toJS(this.countersData)),
+    });
+    console.log(response);
   }
 
   saveToLocalStorage() {

@@ -32,8 +32,9 @@ export default function Account() {
       password: getInputValue("#input-password"),
     };
 
-    const postBody = {
+    const postBody: RequestInit = {
       method: "POST",
+      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
       },
