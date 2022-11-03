@@ -1,42 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function InfoDialog() {
+  let [currentSetting, setCurrentSetting] = useState("account");
   return (
     <dialog
       id="settingsDialog"
       className="dialog mx-[20px] md:mx-auto md:max-w-6xl w-full dialog-padding rounded-2xl"
     >
       <div className="dialog-header">
-        <h2 className="title">Настройки</h2>
+        <h2 className="title">Настройки.</h2>
         <h3 className="subtitle">
           Настройки приложения... Ожидаемо, наверное.
         </h3>
       </div>
-      <div className="buttons-navbar">
+      <div className="buttons-navbar w-max mb-[20px] md:mb-[40px]">
         <button
-          onClick={() => {}}
+          onClick={() => {
+            setCurrentSetting("account");
+          }}
           className={`button ${
-            ""
-            // isLogin
-            //   ? "bg-app-100 dark:bg-app-150"
-            //   : "bg-neutral-200 dark:bg-neutral-800"
+            currentSetting === "account"
+              ? "bg-app-100 dark:bg-app-150"
+              : "bg-neutral-200 dark:bg-neutral-800"
           }`}
         >
-          Вход
+          Аккаунт
         </button>
         <button
-          onClick={() => {}}
+          onClick={() => {
+            setCurrentSetting("app");
+          }}
           className={`button ${
-            ""
-            // isLogin
-            //   ? "bg-neutral-200 dark:bg-neutral-800"
-            //   : "bg-app-100 dark:bg-app-150"
+            currentSetting === "app"
+              ? "bg-app-100 dark:bg-app-150"
+              : "bg-neutral-200 dark:bg-neutral-800"
           }`}
         >
-          Регистрация
+          Приложение
         </button>
       </div>
-      <div></div>
+      {currentSetting === "account" && <div>acc</div>}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
