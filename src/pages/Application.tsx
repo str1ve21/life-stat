@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Hello from "./appComponents/Hello";
 import Main from "./appComponents/Main";
 import Navbar from "./allComponents/Navbar";
+import Footer from "./allComponents/Footer";
 import CounterDialog from "./appComponents/CounterDialog";
 import SCounters from "../store/SCounters";
 import SCounterDialog from "../store/SCounterDialog";
@@ -9,7 +10,7 @@ import { observer } from "mobx-react-lite";
 
 const ApplicationPage = observer(() => {
   useEffect(() => {
-    // SCounters.fetchGetCounters();
+    SCounters.fetchGetCounters();
     if (!!localStorage.getItem("All Counters")) {
       SCounters.loadFromLocalStorage();
       console.log(
@@ -27,6 +28,7 @@ const ApplicationPage = observer(() => {
       <Navbar href="/" isMobileExist={false} customClass="absolute"></Navbar>
       <Hello></Hello>
       <Main></Main>
+      <Footer></Footer>
     </main>
   );
 });

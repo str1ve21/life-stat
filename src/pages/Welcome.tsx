@@ -5,7 +5,7 @@ import Reason from "./welcomeComponents/Reason";
 import Benefit from "./welcomeComponents/Benefit";
 import Account from "./welcomeComponents/Account";
 import Roadmap from "./welcomeComponents/Roadmap";
-import Footer from "./welcomeComponents/Footer";
+import Footer from "./allComponents/Footer";
 import SureDialog from "./allComponents/SureDialog";
 import SDialog from "../store/SDialog";
 import { observer } from "mobx-react-lite";

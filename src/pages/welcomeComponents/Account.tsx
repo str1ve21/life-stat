@@ -58,7 +58,8 @@ export default function Account() {
     if (isLogin) {
       const response = await fetch("http://0.0.0.0:8000/login", postBody);
       if (response.status === 200) {
-        navigation("/app");
+        // navigation("/app");
+        console.log(response);
       } else {
         wrongDataDialog.title = `Неверный логин или пароль.`;
         wrongDataDialog.text = `Вероятно, что вы ввели неверный логин или пароль. Код ошибки: ${response.status}`;

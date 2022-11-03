@@ -62,7 +62,7 @@ export default function Footer() {
       </div>
       <img
         onClick={() => {
-          alert("Мя уу!");
+          alert("/ᐠ. ｡.ᐟ\\ Мя уу! ˎˊ˗");
         }}
         src={CatAsset}
         alt="Cat :3"
