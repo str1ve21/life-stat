@@ -12,6 +12,30 @@ export default function InfoDialog() {
           Настройки приложения... Ожидаемо, наверное.
         </h3>
       </div>
+      <div className="buttons-navbar">
+        <button
+          onClick={() => {}}
+          className={`button ${
+            ""
+            // isLogin
+            //   ? "bg-app-100 dark:bg-app-150"
+            //   : "bg-neutral-200 dark:bg-neutral-800"
+          }`}
+        >
+          Вход
+        </button>
+        <button
+          onClick={() => {}}
+          className={`button ${
+            ""
+            // isLogin
+            //   ? "bg-neutral-200 dark:bg-neutral-800"
+            //   : "bg-app-100 dark:bg-app-150"
+          }`}
+        >
+          Регистрация
+        </button>
+      </div>
       <div></div>
       <svg
         xmlns="http://www.w3.org/2000/svg"

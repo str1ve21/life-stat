@@ -43,7 +43,7 @@ export default function Account() {
 
     if (data.username.length < 3) {
       wrongDataDialog.title = `Короткий логин.`;
-      wrongDataDialog.text = `Длинна логина должна быть длиннее 4 символов.`;
+      wrongDataDialog.text = `Длинна логина должна быть больше 4 символов.`;
       SDialog.createDialog(wrongDataDialog);
       return;
     }
@@ -58,7 +58,7 @@ export default function Account() {
     if (isLogin) {
       const response = await fetch("http://0.0.0.0:8000/login", postBody);
       if (response.status === 200) {
-        // navigation("/app");
+        navigation("/app");
         console.log(response);
       } else {
         wrongDataDialog.title = `Неверный логин или пароль.`;
@@ -86,12 +86,12 @@ export default function Account() {
       className="relative h-max bg-gradient-to-b from-app-100 dark:from-app-150 to-app-200 dark:to-app-250 z-50 rounded-b-[40px]"
     >
       <div className="flex flex-col justify-center items-center gap-[20px] md:gap-[40px] w-full min-h-[700px] lg:min-h-screen content-padding">
-        <div className="flex flex-wrap justify-center p-[10px] gap-[20px] lg:gap-[40px] bg-neutral-100/50 dark:bg-neutral-800/50 rounded-2xl">
+        <div className="buttons-navbar">
           <button
             onClick={() => {
               setIsLogin((isLogin = true));
             }}
-            className={`account-button ${
+            className={`button ${
               isLogin
                 ? "bg-app-100 dark:bg-app-150"
                 : "bg-neutral-200 dark:bg-neutral-800"
@@ -103,7 +103,7 @@ export default function Account() {
             onClick={() => {
               setIsLogin((isLogin = false));
             }}
-            className={`account-button ${
+            className={`button ${
               isLogin
                 ? "bg-neutral-200 dark:bg-neutral-800"
                 : "bg-app-100 dark:bg-app-150"
@@ -176,26 +176,31 @@ export default function Account() {
               />
             </svg>
           </label>
-          <button
-            onClick={accountLogic}
-            type="submit"
-            className="button w-full mx-auto bg-neutral-200 dark:bg-neutral-800"
-          >
-            {isLogin ? "Вход" : "Регистрация"}
-          </button>
           {isLogin && (
             <div className="flex flex-col md:flex-row gap-[20px]">
-              <label className="checkbox-label w-full md:w-1/2 bg-neutral-200 dark:bg-neutral-800">
-                <input type="checkbox" className="checkbox" />
-                <span>Запомнить меня</span>
-              </label>
+              <button
+                onClick={accountLogic}
+                type="submit"
+                className="button w-full bg-neutral-200 dark:bg-neutral-800"
+              >
+                Вход
+              </button>
               <a
                 href="#"
-                className="button w-full md:w-1/2 bg-neutral-200 dark:bg-neutral-800"
+                className="button w-full bg-neutral-200 dark:bg-neutral-800"
               >
                 Забыли пароль?
               </a>
             </div>
+          )}
+          {isLogin === false && (
+            <button
+              onClick={accountLogic}
+              type="submit"
+              className="button w-full mx-auto bg-neutral-200 dark:bg-neutral-800"
+            >
+              Регистрация
+            </button>
           )}
         </form>
       </div>
