@@ -2,8 +2,14 @@ import IAccountData from "../interfaces/IAccountData";
 
 export function serverURL() {
   let serverURL: string;
-  serverURL = "http://0.0.0.0:8000";
-  return serverURL;
+  if (import.meta.env.DEV) {
+    serverURL = "http://0.0.0.0:8000";
+    return serverURL;
+  }
+  if (import.meta.env.PROD) {
+    serverURL = "чё-то там да будет";
+    return serverURL;
+  }
 }
 
 export function postAccountBody(userData: IAccountData) {
