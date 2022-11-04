@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-
   section {
     @apply min-w-[320px] min-h-[700px];
   }
@@ -122,9 +121,8 @@
 }
 
 @layer utilities {
-
   ::selection {
-    background: #FF9B41;
+    background: #ff9b41;
     color: #101010;
   }
 

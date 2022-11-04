@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { getInputValue } from "../../func/getInputValue";
 import { useNavigate } from "react-router-dom";
+import IAccountData from "../../interfaces/IAccountData";
 import ISureDialog from "../../interfaces/ISureDialog";
 import SDialog from "../../store/SDialog";
+import { getInputValue } from "../../func/getInputValue";
+import { postAccountBody, serverURL } from "../../func/fetchData";
 
 export default function Account() {
   const navigation = useNavigate();
@@ -27,18 +29,9 @@ export default function Account() {
   };
 
   async function accountLogic() {
-    const data = {
+    const data: IAccountData = {
       username: getInputValue("#input-login"),
       password: getInputValue("#input-password"),
-    };
-
-    const postBody: RequestInit = {
-      method: "POST",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
     };
 
     if (data.username.length < 3) {
@@ -56,10 +49,12 @@ export default function Account() {
     }
 
     if (isLogin) {
-      const response = await fetch("http://0.0.0.0:8000/login", postBody);
+      const response = await fetch(
+        `${serverURL()}/login`,
+        postAccountBody(data)
+      );
       if (response.status === 200) {
         navigation("/app");
-        console.log(response);
       } else {
         wrongDataDialog.title = `Неверный логин или пароль.`;
         wrongDataDialog.text = `Вероятно, что вы ввели неверный логин или пароль. Код ошибки: ${response.status}`;
@@ -67,7 +62,11 @@ export default function Account() {
       }
       return;
     }
-    const response = await fetch("http://0.0.0.0:8000/register", postBody);
+
+    const response = await fetch(
+      `${serverURL()}/register`,
+      postAccountBody(data)
+    );
     if (response.status === 200) {
       setIsLogin((isLogin = true));
       wrongDataDialog.title = `Регистрация успешна.`;

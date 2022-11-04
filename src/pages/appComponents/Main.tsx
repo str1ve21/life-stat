@@ -10,7 +10,7 @@ import InfoDialog from "../allComponents/InfoDialog";
 
 const Main = observer(() => {
   return (
-    <section className="min-h-[50vh] h-max content-padding">
+    <section className="min-h-[75vh] h-max content-padding">
       <div id="counters" className="flex flex-wrap justify-center gap-[20px]">
         {SCounters.countersData.length <= 0 && (
           <div className="text-center text-neutral-400 dark:text-neutral-600">

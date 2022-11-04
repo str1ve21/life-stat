@@ -1,6 +1,10 @@
-import { makeAutoObservable, toJS } from "mobx";
-import { throttle } from "throttle-debounce";
+import { makeAutoObservable, runInAction, toJS } from "mobx";
 import ICounter from "../interfaces/ICounter";
+import {
+  serverURL,
+  getCountersBody,
+  postCountersBody,
+} from "../func/fetchData";
 
 class counterStore {
   constructor() {
@@ -9,9 +13,13 @@ class counterStore {
 
   countersData: ICounter[] = [];
 
+  clearCounters() {
+    this.countersData = [];
+  }
+
   addCounter(newCounterData: ICounter) {
     this.countersData.push(newCounterData);
-    this.saveToLocalStorage();
+    this.fetchPostCounters();
   }
 
   editCounter(editedCounter: ICounter) {
@@ -19,7 +27,7 @@ class counterStore {
       (obj) => obj.id === editedCounter.id
     );
     this.countersData.splice(counterToEdit, 1, editedCounter);
-    this.saveToLocalStorage();
+    this.fetchPostCounters();
   }
 
   removeCounter(id: string) {
@@ -27,7 +35,7 @@ class counterStore {
       (obj) => obj.id === id
     );
     this.countersData.splice(idToRemove, 1);
-    this.saveToLocalStorage();
+    this.fetchPostCounters();
   }
 
   changeValue(elem: string, inputValue: number) {
@@ -35,39 +43,50 @@ class counterStore {
       (obj) => obj.id === elem
     );
     this.countersData[objToChange].counter += inputValue;
-    this.saveToLocalStorage();
+    this.fetchPostCounters();
   }
 
   async fetchGetCounters() {
-    const response = await fetch("http://0.0.0.0:8000/allCounters");
-    console.log(response.json());
+    try {
+      const response = await fetch(
+        `${serverURL()}/allCounters`,
+        getCountersBody()
+      );
+      const serverCounters: ICounter[] = await response.json();
+      if (serverCounters !== null) {
+        runInAction(() => {
+          this.countersData = [];
+          serverCounters.forEach((item) => {
+            this.countersData.push(item);
+          });
+        });
+      }
+    } catch (error) {
+      console.error(`[ERROR]: while SCounters GET. More info: ${error}`);
+    }
   }
 
   async fetchPostCounters() {
-    const response = await fetch("http://0.0.0.0:8000/saveCounters", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(toJS(this.countersData)),
-    });
-    console.log(response);
+    const JSONStore: string = JSON.stringify(toJS(this.countersData));
+    await fetch(`${serverURL()}/saveCounters`, postCountersBody(JSONStore));
   }
 
-  saveToLocalStorage() {
-    const savedCountersArray = JSON.stringify(toJS(this.countersData));
-    localStorage.setItem("All Counters", savedCountersArray);
-  }
+  // До лучших времён...
 
-  loadFromLocalStorage() {
-    if (toJS(this.countersData).length !== 0) return;
-    const loadedCountersArray: [] = JSON.parse(
-      localStorage.getItem("All Counters")!
-    );
-    loadedCountersArray.forEach((item) => {
-      this.countersData.push(item);
-    });
-  }
+  // saveToLocalStorage() {
+  //   const savedCountersArray = JSON.stringify(toJS(this.countersData));
+  //   localStorage.setItem("All Counters", savedCountersArray);
+  // }
+
+  // loadFromLocalStorage() {
+  //   if (toJS(this.countersData).length !== 0) return;
+  //   const loadedCountersArray: ICounter[] = JSON.parse(
+  //     localStorage.getItem("All Counters")!
+  //   );
+  //   loadedCountersArray.forEach((item) => {
+  //     this.countersData.push(item);
+  //   });
+  // }
 }
 
 export default new counterStore();

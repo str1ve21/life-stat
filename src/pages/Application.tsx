@@ -10,15 +10,15 @@ import { observer } from "mobx-react-lite";
 
 const ApplicationPage = observer(() => {
   useEffect(() => {
+    SCounters.clearCounters();
     SCounters.fetchGetCounters();
-    if (!!localStorage.getItem("All Counters")) {
-      SCounters.loadFromLocalStorage();
-      console.log(
-        "%cПривет! Ради сохранения своих счётчиков не производи никаких манипуляций с localStorage через консоль. Это может привести к удалению всех счётчиков или другим плохим последствиям. Ты же не хочешь проблем?",
-        "font-family: monospace; font-size: 20px; color: black; background: linear-gradient(145deg, #FF9B41 0%, #FF7A9E 100%); padding: 20px; border-radius: 20px"
-      );
-    }
-    // SCounters.fetchPostCounters();
+    // if (!!localStorage.getItem("All Counters")) {
+    //   SCounters.loadFromLocalStorage();
+    //   console.log(
+    //     "%cПривет! Ради сохранения своих счётчиков не производи никаких манипуляций с localStorage через консоль. Это может привести к удалению всех счётчиков или другим плохим последствиям. Ты же не хочешь проблем?",
+    //     "font-family: monospace; font-size: 20px; color: black; background: linear-gradient(145deg, #FF9B41 0%, #FF7A9E 100%); padding: 20px; border-radius: 20px"
+    //   );
+    // }
   }, []);
   return (
     <main id="app" className="bg-neutral-200 dark:bg-neutral-900">
