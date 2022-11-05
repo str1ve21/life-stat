@@ -7,7 +7,7 @@ export function serverURL() {
     return serverURL;
   }
   if (import.meta.env.PROD) {
-    serverURL = "чё-то там да будет";
+    serverURL = "http://localhost/api";
     return serverURL;
   }
 }
