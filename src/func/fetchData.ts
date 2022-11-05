@@ -7,7 +7,7 @@ export function serverURL() {
     return serverURL;
   }
   if (import.meta.env.PROD) {
-    serverURL = "http://localhost/api";
+    serverURL = "http://158.160.37.253/api";
     return serverURL;
   }
 }
