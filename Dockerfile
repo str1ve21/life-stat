@@ -10,6 +10,6 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 COPY --from=prod /app/docs .
 COPY ./nginx.conf /etc/nginx/
-EXPOSE 80
+EXPOSE 3000
 # run nginx with global directives and daemon off
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
