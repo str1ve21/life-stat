@@ -55,9 +55,15 @@ export default function Account() {
       );
       if (response.status === 200) {
         navigation("/app");
-      } else {
+        return;
+      } else if (response.status === 403) {
         wrongDataDialog.title = `Неверный логин или пароль.`;
         wrongDataDialog.text = `Вероятно, что вы ввели неверный логин или пароль. Код ошибки: ${response.status}`;
+        SDialog.createDialog(wrongDataDialog);
+        return;
+      } else {
+        wrongDataDialog.title = `Неизвестная ошибка.`;
+        wrongDataDialog.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
         SDialog.createDialog(wrongDataDialog);
       }
       return;
