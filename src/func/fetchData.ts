@@ -4,12 +4,10 @@ export function serverURL() {
   let serverURL: string;
   if (import.meta.env.DEV) {
     serverURL = import.meta.env.VITE_DEV_API;
-    console.log(serverURL);
     return serverURL;
   }
   if (import.meta.env.PROD) {
     serverURL = import.meta.env.VITE_PROD_API;
-    console.log(serverURL);
     return serverURL;
   }
 }
