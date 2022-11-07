@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Hello from "./appComponents/Hello";
 import Main from "./appComponents/Main";
 import Navbar from "./allComponents/Navbar";
@@ -9,9 +10,15 @@ import SCounterDialog from "../store/SCounterDialog";
 import { observer } from "mobx-react-lite";
 
 const ApplicationPage = observer(() => {
+  const navigator = useNavigate();
+
   useEffect(() => {
     SCounters.clearCounters();
-    SCounters.fetchGetCounters();
+    SCounters.fetchGetCounters().then((status) => {
+      if (status === 401) {
+        navigator("/");
+      }
+    });
     // if (!!localStorage.getItem("All Counters")) {
     //   SCounters.loadFromLocalStorage();
     //   console.log(
