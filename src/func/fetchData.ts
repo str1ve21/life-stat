@@ -2,6 +2,7 @@ import IAccountData from "../interfaces/IAccountData";
 
 export function serverURL() {
   let serverURL: string;
+  console.log(import.meta.env.VITE_PROD_API);
   if (import.meta.env.DEV) {
     serverURL = import.meta.env.VITE_DEV_API;
     return serverURL;
