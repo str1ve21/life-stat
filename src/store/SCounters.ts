@@ -52,6 +52,9 @@ class counterStore {
         `${serverURL()}/allCounters`,
         getCountersBody()
       );
+      if (response.status === 401) {
+        return response.status;
+      }
       const serverCounters: ICounter[] = await response.json();
       if (serverCounters !== null) {
         runInAction(() => {

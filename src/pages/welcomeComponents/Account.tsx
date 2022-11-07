@@ -184,12 +184,15 @@ export default function Account() {
               >
                 Вход
               </button>
-              <a
-                href="#"
+              <button
+                onClick={() => {
+                  alert("Вспоминайте, функция пока в разработке :(");
+                  console.log(import.meta.env.VITE_TEST_DATA);
+                }}
                 className="button w-full bg-neutral-200 dark:bg-neutral-800"
               >
                 Забыли пароль?
-              </a>
+              </button>
             </div>
           )}
           {isLogin === false && (

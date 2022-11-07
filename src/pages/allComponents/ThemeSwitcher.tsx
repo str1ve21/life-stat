@@ -40,7 +40,7 @@ const ThemeSwitcher = observer(() => {
   return (
     <>
       <button
-        className="h-max ml-[20px] md:ml-[40px] lg:ml-0 my-auto p-[5px] lg:p-[10px] bg-white dark:bg-black rounded-full"
+        className="h-max p-[5px] lg:p-[10px] bg-white dark:bg-black rounded-full"
         onClick={() => {
           STheme.toggleVisibility();
         }}
@@ -85,7 +85,7 @@ const ThemeSwitcher = observer(() => {
         </svg>
       </button>
       <div
-        className={`absolute flex-col gap-[10px] top-[65px] md:top-[70px] lg:top-[110px] right-[20px] md:right-[40px] lg:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl ${
+        className={`absolute flex-col gap-[10px] top-[65px] md:top-[70px] lg:top-[110px] right-[15px] md:right-[35px] lg:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl ${
           STheme.themeData.isMenuVisible ? "flex" : "hidden"
         }`}
       >
