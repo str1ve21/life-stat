@@ -1,10 +1,6 @@
 import { makeAutoObservable, runInAction, toJS } from "mobx";
 import ICounter from "../interfaces/ICounter";
-import {
-  serverURL,
-  getCountersBody,
-  postCountersBody,
-} from "../func/fetchData";
+import { serverURL, getBody, postCountersBody } from "../func/fetchData";
 
 class counterStore {
   constructor() {
@@ -48,10 +44,7 @@ class counterStore {
 
   async fetchGetCounters() {
     try {
-      const response = await fetch(
-        `${serverURL()}/allCounters`,
-        getCountersBody()
-      );
+      const response = await fetch(`${serverURL()}/allCounters`, getBody());
       if (response.status === 401) {
         return response.status;
       }
