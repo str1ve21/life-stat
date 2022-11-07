@@ -38,10 +38,10 @@ export function postCountersBody(store: string) {
   return postCountersBody;
 }
 
-export function getCountersBody() {
-  let getCountersBody: RequestInit;
-  getCountersBody = {
+export function getBody() {
+  let getBody: RequestInit;
+  getBody = {
     credentials: "include",
   };
-  return getCountersBody;
+  return getBody;
 }

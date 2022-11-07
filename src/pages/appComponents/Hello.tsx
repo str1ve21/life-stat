@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { throttle } from "throttle-debounce";
 
@@ -9,6 +9,7 @@ import ICounterDialog from "../../interfaces/ICounterDialog";
 
 import SCounterDialog from "../../store/SCounterDialog";
 import { createParallaxY } from "../../func/parallax";
+import { getBody, serverURL } from "../../func/fetchData";
 
 export default function WelcomePage() {
   const location = useLocation();
@@ -59,7 +60,16 @@ export default function WelcomePage() {
     },
   ];
 
+  let [username, setUsername] = useState("");
+
+  async function getUser() {
+    const response = await fetch(`${serverURL()}/user`, getBody());
+    const serverData = await response.json();
+    setUsername(serverData.message);
+  }
+
   useEffect(() => {
+    getUser();
     welcomeParallaxItems.forEach((item) => {
       window.addEventListener(
         "scroll",
@@ -77,7 +87,7 @@ export default function WelcomePage() {
         className="flex flex-col justify-center gap-[20px]"
       >
         <h1 className="hello-title text-center leading-none">
-          {helloText[Math.floor(Math.random() * helloText.length)]}, str1ve!
+          {helloText[Math.floor(Math.random() * helloText.length)]}, {username}!
         </h1>
         <h2 className="hello-subtitle text-center leading-none">
           {factArray[Math.floor(Math.random() * factArray.length)]}
