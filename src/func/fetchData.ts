@@ -3,11 +3,11 @@ import IAccountData from "../interfaces/IAccountData";
 export function serverURL() {
   let serverURL: string;
   if (import.meta.env.DEV) {
-    serverURL = import.meta.env.VITE_DEV_API;
+    serverURL = "http://0.0.0.0:8000";
     return serverURL;
   }
   if (import.meta.env.PROD) {
-    serverURL = import.meta.env.VITE_PROD_API;
+    serverURL = "/api";
     return serverURL;
   }
 }
