@@ -13,7 +13,10 @@ export default function InfoDialog() {
           Настройки приложения... Ожидаемо, наверное.
         </h3>
       </div>
-      <div className="buttons-navbar w-max mb-[20px] md:mb-[40px]">
+      <p className="text">
+        Люди добровые, извините, в разработке, пока нечего настраивать.
+      </p>
+      {/* <div className="buttons-navbar w-max mb-[20px] md:mb-[40px]">
         <button
           onClick={() => {
             setCurrentSetting("account");
@@ -39,7 +42,7 @@ export default function InfoDialog() {
           Приложение
         </button>
       </div>
-      {currentSetting === "account" && <div>acc</div>}
+      {currentSetting === "account" && <div>acc</div>} */}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
