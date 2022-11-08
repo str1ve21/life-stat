@@ -22,7 +22,15 @@ export default defineConfig(({ command }) => {
     plugins: [
       react(),
       VitePWA({
-        includeAssets: ["logo.svg"],
+        includeAssets: [
+          "logo.svg",
+          "maskable_icon_x72.png",
+          "maskable_icon_x96.png",
+          "maskable_icon_x128.png",
+          "maskable_icon_x192.png",
+          "maskable_icon_x384.png",
+          "maskable_icon_x512.png",
+        ],
         devOptions: {
           enabled: isDev,
         },
