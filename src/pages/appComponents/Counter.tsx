@@ -26,14 +26,22 @@ const Counter = observer((props: IProps) => {
         style={{ borderColor: props.data.textColor }}
       >
         <div>
-          <h2 className="title">
+          <h2 className="title" style={{ color: props.data.textColor }}>
             {inArrayID + 1}. {props.data.title}
           </h2>
           {props.data.description && (
-            <h3 className="subtitle m-0">{props.data.description}</h3>
+            <h3
+              className="subtitle m-0"
+              style={{ color: props.data.textColor }}
+            >
+              {props.data.description}
+            </h3>
           )}
         </div>
-        <p className="counter-value mt-[20px] break-words text-justify">
+        <p
+          className="counter-value mt-[20px] break-words text-justify"
+          style={{ color: props.data.textColor }}
+        >
           {numeral(props.data.counter).format("0.[000]a")}
           {props.data.goal !== 0 && (
             <>
