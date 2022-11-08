@@ -4,6 +4,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 # RUN npm test - if you want to test before to build
+ENV VITE_PROD_API /api
 RUN npm run build
 
 FROM nginx:alpine

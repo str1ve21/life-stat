@@ -94,15 +94,8 @@ export default defineConfig(({ command }) => {
           ],
         },
         workbox: {
-          globPatterns: ["**/*.{js,css,html,png,svg}"],
+          globPatterns: ["**/*.{js,css,html,jpg,png,svg}"],
           runtimeCaching: [
-            {
-              urlPattern: ({ request }) => request.destination === "script",
-              handler: "StaleWhileRevalidate",
-              options: {
-                cacheName: "javascript",
-              },
-            },
             {
               urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
               handler: "CacheFirst",
