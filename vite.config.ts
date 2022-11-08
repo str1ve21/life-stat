@@ -22,7 +22,7 @@ export default defineConfig(({ command }) => {
     plugins: [
       react(),
       VitePWA({
-        registerType: "autoUpdate",
+        registerType: "prompt",
         injectRegister: "auto",
         devOptions: {
           enabled: isDev,
