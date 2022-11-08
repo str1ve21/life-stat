@@ -94,7 +94,7 @@ export default function Account() {
       id="Аккаунт"
       className="relative h-max bg-gradient-to-b from-app-100 dark:from-app-150 to-app-200 dark:to-app-250 z-50 rounded-b-[40px]"
     >
-      <div className="flex flex-col justify-center items-center gap-[20px] md:gap-[40px] w-full min-h-[700px] lg:min-h-screen content-padding">
+      <div className="flex flex-col justify-center items-center gap-[20px] md:gap-[40px] w-full h-screen min-h-[700px] content-padding">
         <div className="buttons-navbar">
           <button
             onClick={() => {

@@ -15,7 +15,10 @@ const ApplicationPage = observer(() => {
   useEffect(() => {
     SCounters.clearCounters();
     SCounters.fetchGetCounters().then((status) => {
-      if (status === 401 && import.meta.env.PROD) {
+      if (import.meta.env.PROD && status === 401) {
+        navigator("/");
+      }
+      if (import.meta.env.PROD && status === 404) {
         navigator("/");
       }
     });

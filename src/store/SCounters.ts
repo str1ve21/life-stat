@@ -45,7 +45,10 @@ class counterStore {
   async fetchGetCounters() {
     try {
       const response = await fetch(`${serverURL()}/allCounters`, getBody());
-      if (response.status === 401) {
+      if (response.status === 401 || response.status === 404) {
+        console.error(
+          `[ERROR]: While SCounters GET (response). More info: ${response.status}`
+        );
         return response.status;
       }
       const serverCounters: ICounter[] = await response.json();
@@ -58,13 +61,21 @@ class counterStore {
         });
       }
     } catch (error) {
-      console.error(`[ERROR]: while SCounters GET. More info: ${error}`);
+      console.error(
+        `[ERROR]: While SCounters GET (catch). More info: ${error}`
+      );
     }
   }
 
   async fetchPostCounters() {
-    const JSONStore: string = JSON.stringify(toJS(this.countersData));
-    await fetch(`${serverURL()}/saveCounters`, postCountersBody(JSONStore));
+    try {
+      const JSONStore: string = JSON.stringify(toJS(this.countersData));
+      await fetch(`${serverURL()}/saveCounters`, postCountersBody(JSONStore));
+    } catch (error) {
+      console.error(
+        `[ERROR]: While SCounters POST (catch). More info: ${error}`
+      );
+    }
   }
 
   // До лучших времён...
