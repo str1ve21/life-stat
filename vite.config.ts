@@ -22,8 +22,7 @@ export default defineConfig(({ command }) => {
     plugins: [
       react(),
       VitePWA({
-        registerType: "autoUpdate",
-        injectRegister: "auto",
+        includeAssets: ["logo.svg"],
         devOptions: {
           enabled: isDev,
         },
@@ -38,55 +37,55 @@ export default defineConfig(({ command }) => {
           start_url: ".",
           icons: [
             {
-              src: "src/assets/icons/maskable_icon_x72.png",
+              src: "/maskable_icon_x72.png",
               sizes: "72x72",
               type: "image/png",
               purpose: "maskable",
             },
             {
-              src: "src/assets/icons/maskable_icon_x96.png",
+              src: "/maskable_icon_x96.png",
               sizes: "96x96",
               type: "image/png",
               purpose: "maskable",
             },
             {
-              src: "src/assets/icons/maskable_icon_x128.png",
+              src: "/maskable_icon_x128.png",
               sizes: "128x128",
               type: "image/png",
               purpose: "maskable",
             },
             {
-              src: "src/assets/icons/maskable_icon_x192.png",
+              src: "/maskable_icon_x192.png",
               sizes: "192x192",
               type: "image/png",
               purpose: "maskable",
             },
             {
-              src: "src/assets/icons/icon-192x192.png",
+              src: "/icon-192x192.png",
               sizes: "192x192",
               type: "image/png",
               purpose: "any",
             },
             {
-              src: "src/assets/icons/maskable_icon_x384.png",
+              src: "/maskable_icon_x384.png",
               sizes: "384x384",
               type: "image/png",
               purpose: "maskable",
             },
             {
-              src: "src/assets/icons/icon-384x384.png",
+              src: "/icon-384x384.png",
               sizes: "384x384",
               type: "image/png",
               purpose: "any",
             },
             {
-              src: "src/assets/icons/maskable_icon_x512.png",
+              src: "/maskable_icon_x512.png",
               sizes: "512x512",
               type: "image/png",
               purpose: "maskable",
             },
             {
-              src: "src/assets/icons/icon-512x512.png",
+              src: "/icon-512x512.png",
               sizes: "512x512",
               type: "image/png",
               purpose: "any",
@@ -94,6 +93,7 @@ export default defineConfig(({ command }) => {
           ],
         },
         workbox: {
+          sourcemap: true,
           globPatterns: ["**/*.{js,css,html,jpg,png,svg}"],
           runtimeCaching: [
             {
