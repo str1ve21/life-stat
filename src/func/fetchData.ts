@@ -6,10 +6,7 @@ export function serverURL() {
     serverURL = "http://0.0.0.0:8000";
     return serverURL;
   }
-  if (import.meta.env.PROD) {
-    serverURL = "/api";
-    return serverURL;
-  }
+  return "/api";
 }
 
 export function postAccountBody(userData: IAccountData) {
