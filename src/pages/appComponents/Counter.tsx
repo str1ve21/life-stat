@@ -33,7 +33,7 @@ const Counter = observer((props: IProps) => {
             <h3 className="subtitle m-0">{props.data.description}</h3>
           )}
         </div>
-        <p className="counter-value mt-[20px] break-words">
+        <p className="counter-value mt-[20px] break-words text-justify">
           {numeral(props.data.counter).format("0.[000]a")}
           {props.data.goal !== 0 && (
             <>

@@ -3,7 +3,7 @@ import CatAsset from "@/src/assets/cat.png";
 
 export default function Footer() {
   const textArray: string[] = [
-    "Версия: 1.0.1022.",
+    "Версия: 1.1.1122. (Preview)",
     "Разработка FrontEnd / Design: str1ve.",
     "Разработка BackEnd / DevOps Management / SSM: SAwckA.",
     "Спасибо charlesdeluvio, freestocks, Med Badr  Chemmaoui за фото. Источник Unsplash.",

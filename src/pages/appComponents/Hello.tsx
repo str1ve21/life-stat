@@ -39,7 +39,7 @@ export default function WelcomePage() {
     "Ваши идеи для развития приложения вы можете написать разработчикам на Boosty.",
     "У этого сайта есть приложение (PWA), вы можете добавить его на главный экран.",
     "Планы на обновления вы можете найти на главной странице.",
-    "Не трогай localStorage через консоль!",
+    "Счётчики сохраняются автоматически.",
     "Вы любите сплэши из Майнкрафта? Разработчики да.",
     "Мы рады, что хоть кто-то использует это приложение.",
     "*место для шуток и фактов*",
@@ -60,7 +60,7 @@ export default function WelcomePage() {
     },
   ];
 
-  let [username, setUsername] = useState("");
+  let [username, setUsername] = useState("anon");
 
   async function getUser() {
     const response = await fetch(`${serverURL()}/user`, getBody());

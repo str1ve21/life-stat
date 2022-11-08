@@ -13,9 +13,11 @@ const Main = observer(() => {
     <section className="min-h-[75vh] h-max content-padding">
       <div id="counters" className="flex flex-wrap justify-center gap-[20px]">
         {SCounters.countersData.length <= 0 && (
-          <div className="text-center text-neutral-400 dark:text-neutral-600">
-            <h2 className="hello-title my-[40px]">/ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\</h2>
-            <p className="hello-subtitle">{`"Пусто и одиноко тут..." - грустно промяукал котик.`}</p>
+          <div className="text-center">
+            <h2 className="hello-title my-[40px] text-neutral-400 dark:text-neutral-600">
+              /ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\
+            </h2>
+            <p className="hello-subtitle text-neutral-400 dark:text-neutral-600">{`"Пусто и одиноко тут..." - грустно промяукал котик.`}</p>
           </div>
         )}
         {SCounters.countersData.map((item: ICounter) => {

@@ -12,7 +12,8 @@ import { observer } from "mobx-react-lite";
 
 const WelcomePage = observer(() => {
   useEffect(() => {
-    window.scrollTo(0, window.outerHeight);
+    document.documentElement.classList.remove("scroll-smooth");
+    window.scrollTo(0, window.innerHeight);
     document.documentElement.classList.add("scroll-smooth");
   }, []);
   const links: string[] = [
