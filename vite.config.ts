@@ -38,7 +38,7 @@ export default defineConfig(({ command }) => {
           lang: "ru",
           name: "LifeStat",
           short_name: "LifeStat",
-          theme_color: "#171717",
+          theme_color: "#FF9B41",
           background_color: "#171717",
           display: "standalone",
           orientation: "portrait",

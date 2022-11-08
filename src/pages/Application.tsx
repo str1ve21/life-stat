@@ -15,9 +15,9 @@ const ApplicationPage = observer(() => {
   useEffect(() => {
     SCounters.clearCounters();
     SCounters.fetchGetCounters().then((status) => {
-      // if (status === 401) {
-      //   navigator("/");
-      // }
+      if (status === 401 && import.meta.env.PROD) {
+        navigator("/");
+      }
     });
     // if (!!localStorage.getItem("All Counters")) {
     //   SCounters.loadFromLocalStorage();

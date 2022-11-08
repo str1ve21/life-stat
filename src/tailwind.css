@@ -40,39 +40,39 @@
   }
 
   .dialog-text {
-    @apply text-base md:text-lg lg:text-xl text-raleway;
+    @apply text-base md:text-lg lg:text-xl text-raleway text-neutral-900 dark:text-neutral-100;
   }
 
   .text-logo {
-    @apply text-xl md:text-2xl xl:text-3xl text-ssp;
+    @apply text-xl md:text-2xl xl:text-3xl text-ssp text-neutral-900 dark:text-neutral-100;
   }
 
   .text-nav {
-    @apply text-base md:text-lg xl:text-xl uppercase;
+    @apply text-base md:text-lg xl:text-xl uppercase text-neutral-900 dark:text-neutral-100;
   }
 
   .hello-title {
-    @apply text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-ssp font-bold;
+    @apply text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-ssp font-bold text-neutral-900 dark:text-neutral-100;
   }
 
   .hello-subtitle {
-    @apply text-base md:text-lg lg:text-xl 2xl:text-2xl text-raleway opacity-80;
+    @apply text-base md:text-lg lg:text-xl 2xl:text-2xl text-raleway opacity-80 text-neutral-900 dark:text-neutral-100;
   }
 
   .title {
-    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-ssp font-bold;
+    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-ssp font-bold text-neutral-900 dark:text-neutral-100;
   }
 
   .subtitle {
-    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway opacity-80;
+    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway opacity-80 text-neutral-900 dark:text-neutral-100;
   }
 
   .text {
-    @apply mb-[20px] md:mb-[40px] text-lg md:text-xl lg:text-2xl 2xl:text-3xl text-raleway;
+    @apply mb-[20px] md:mb-[40px] text-lg md:text-xl lg:text-2xl 2xl:text-3xl text-raleway text-neutral-900 dark:text-neutral-100;
   }
 
   .subtext {
-    @apply text-base md:text-lg xl:text-xl text-raleway;
+    @apply text-base md:text-lg xl:text-xl text-raleway text-neutral-900 dark:text-neutral-100;
   }
 
   .icon {

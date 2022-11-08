@@ -76,11 +76,15 @@ export default function Account() {
     if (response.status === 200) {
       setIsLogin((isLogin = true));
       wrongDataDialog.title = `Регистрация успешна.`;
-      wrongDataDialog.text = `Теперь вы можете войти в свой аккаунт.`;
+      wrongDataDialog.text = `Теперь вы можете войти в свой аккаунт. Сохраните данные, восстановление пароля пока не работает!`;
       SDialog.createDialog(wrongDataDialog);
-    } else {
+    } else if (response.status === 409) {
       wrongDataDialog.title = `Пользователь уже существует.`;
       wrongDataDialog.text = `Пользователь с таким логином уже существует. Код ошибки: ${response.status}`;
+      SDialog.createDialog(wrongDataDialog);
+    } else {
+      wrongDataDialog.title = `Неизвестная ошибка.`;
+      wrongDataDialog.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
       SDialog.createDialog(wrongDataDialog);
     }
   }
