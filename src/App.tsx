@@ -1,5 +1,8 @@
+// react, router, mobx
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
+// components
 import WelcomePage from "./pages/Welcome";
 import ApplicationPage from "./pages/Application";
 

@@ -1,18 +1,26 @@
+// react, router, mobx
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { throttle } from "throttle-debounce";
 
-import Settings from "./Settings";
-
-import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
-import ICounterDialog from "../../interfaces/ICounterDialog";
-
+// stores
 import SCounterDialog from "../../store/SCounterDialog";
+
+// local functions
+import { throttle } from "throttle-debounce";
 import { createParallaxY } from "../../func/parallax";
 import { getBody, serverURL } from "../../func/fetchData";
 
+// interfaces
+import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
+import ICounterDialog from "../../interfaces/ICounterDialog";
+
+// components
+import Settings from "./Settings";
+
 export default function WelcomePage() {
   const location = useLocation();
+
+  let [username, setUsername] = useState("anon");
 
   const createCounterDialog: ICounterDialog = {
     id: "counterDialog",
@@ -59,8 +67,6 @@ export default function WelcomePage() {
       finishAfter: 100,
     },
   ];
-
-  let [username, setUsername] = useState("anon");
 
   async function getUser() {
     const response = await fetch(`${serverURL()}/user`, getBody());

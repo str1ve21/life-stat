@@ -1,4 +1,11 @@
+// react, router, mobx
 import React, { useEffect } from "react";
+import { observer } from "mobx-react-lite";
+
+// stores
+import SDialog from "../store/SDialog";
+
+// components
 import Navbar from "./allComponents/Navbar";
 import Hello from "./welcomeComponents/Hello";
 import Reason from "./welcomeComponents/Reason";
@@ -7,15 +14,8 @@ import Account from "./welcomeComponents/Account";
 import Roadmap from "./welcomeComponents/Roadmap";
 import Footer from "./allComponents/Footer";
 import SureDialog from "./allComponents/SureDialog";
-import SDialog from "../store/SDialog";
-import { observer } from "mobx-react-lite";
 
 const WelcomePage = observer(() => {
-  useEffect(() => {
-    document.documentElement.classList.remove("scroll-smooth");
-    window.scrollTo(0, window.innerHeight);
-    document.documentElement.classList.add("scroll-smooth");
-  }, []);
   const links: string[] = [
     "Аккаунт",
     "Главная",
@@ -24,6 +24,13 @@ const WelcomePage = observer(() => {
     "Планы",
     "Ссылки",
   ];
+
+  useEffect(() => {
+    document.documentElement.classList.remove("scroll-smooth");
+    window.scrollTo(0, window.innerHeight);
+    document.documentElement.classList.add("scroll-smooth");
+  }, []);
+
   return (
     <>
       <main id="page" className="bg-neutral-200 dark:bg-neutral-900">

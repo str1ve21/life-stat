@@ -1,7 +1,9 @@
+//react, router, mobx
 import React, { useState } from "react";
 
 export default function InfoDialog() {
   let [currentSetting, setCurrentSetting] = useState("account");
+
   return (
     <dialog
       id="settingsDialog"

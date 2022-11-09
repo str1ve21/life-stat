@@ -1,11 +1,18 @@
+// react, router, mobx
 import React from "react";
-import Counter from "./Counter";
-import SCounters from "../../store/SCounters";
-import ICounter from "../../interfaces/ICounter";
-import SureDialog from "../allComponents/SureDialog";
-import SDialog from "../../store/SDialog";
 import { observer } from "mobx-react-lite";
+
+// stores
+import SDialog from "../../store/SDialog";
+import SCounters from "../../store/SCounters";
 import SInfoDialog from "../../store/SInfoDialog";
+
+// interfaces
+import ICounter from "../../interfaces/ICounter";
+
+// components
+import Counter from "./Counter";
+import SureDialog from "../allComponents/SureDialog";
 import InfoDialog from "../allComponents/InfoDialog";
 
 const Main = observer(() => {

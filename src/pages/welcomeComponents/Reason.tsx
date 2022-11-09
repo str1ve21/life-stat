@@ -1,17 +1,20 @@
+// react, router, mobx
 import React, { useEffect } from "react";
-import { throttle } from "throttle-debounce";
 import { useLocation } from "react-router-dom";
 
-// img
-import ReasonAsset from "@/src/assets/WelcomeAssets/reason.jpg";
+// plugins, libs
+import { throttle } from "throttle-debounce";
 
-//func
+//local functions
 import { createParallaxY } from "../../func/parallax";
 import { createFilter } from "../../func/filter";
 
 // interfaces
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 import IFilterOptions from "../../interfaces/IFilterOptions";
+
+// images
+import ReasonAsset from "@/src/assets/WelcomeAssets/reason.jpg";
 
 export default function Reason() {
   const location = useLocation();
@@ -25,6 +28,7 @@ export default function Reason() {
       finishAfter: 40,
     },
   ];
+
   const reasonFilterItems: IFilterOptions[] = [
     {
       elem: "#reason-text",
@@ -57,6 +61,7 @@ export default function Reason() {
       );
     });
   }, [location.pathname]);
+
   return (
     <section
       id="Смысл"
@@ -81,7 +86,7 @@ export default function Reason() {
           А нужно ли оно мне?
         </a>
       </div>
-      <div className="flex justify-center lg:justify-start items-center px-[40px] lg:p-0 w-full lg:h-screen">
+      <div className="flex justify-center lg:justify-end items-center w-full lg:min-h-[700px] lg:h-screen px-[40px] lg:p-0">
         <img
           src={ReasonAsset}
           alt="ReasonAsset"

@@ -1,35 +1,38 @@
+// react, router, mobx
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+
+// stores
+import SCounters from "../store/SCounters";
+import SCounterDialog from "../store/SCounterDialog";
+
+// components
 import Hello from "./appComponents/Hello";
 import Main from "./appComponents/Main";
 import Navbar from "./allComponents/Navbar";
 import Footer from "./allComponents/Footer";
 import CounterDialog from "./appComponents/CounterDialog";
-import SCounters from "../store/SCounters";
-import SCounterDialog from "../store/SCounterDialog";
-import { observer } from "mobx-react-lite";
 
 const ApplicationPage = observer(() => {
   const navigator = useNavigate();
 
   useEffect(() => {
-    SCounters.clearCounters();
     SCounters.fetchGetCounters().then((status) => {
-      if (import.meta.env.PROD && status === 401) {
-        navigator("/");
+      if (status === 200) {
+        console.log(`GET status: ${status}. По кайфу работает.`);
+        SCounters.clearLocalStorage();
+        return SCounters.fetchPostCounters();
       }
-      if (import.meta.env.PROD && status === 404) {
-        navigator("/");
+      if (import.meta.env.PROD && status === 401) {
+        console.warn(
+          `GET status: ${status}. Войдите в аккаунт, прежде чем открывать приложение!`
+        );
+        return navigator("/");
       }
     });
-    // if (!!localStorage.getItem("All Counters")) {
-    //   SCounters.loadFromLocalStorage();
-    //   console.log(
-    //     "%cПривет! Ради сохранения своих счётчиков не производи никаких манипуляций с localStorage через консоль. Это может привести к удалению всех счётчиков или другим плохим последствиям. Ты же не хочешь проблем?",
-    //     "font-family: monospace; font-size: 20px; color: black; background: linear-gradient(145deg, #FF9B41 0%, #FF7A9E 100%); padding: 20px; border-radius: 20px"
-    //   );
-    // }
   }, []);
+
   return (
     <main id="app" className="bg-neutral-200 dark:bg-neutral-900">
       {SCounterDialog.counterDialogData.length > 0 && (

@@ -1,15 +1,23 @@
+// react, router, mobx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import IAccountData from "../../interfaces/IAccountData";
-import ISureDialog from "../../interfaces/ISureDialog";
+
+// stores
 import SDialog from "../../store/SDialog";
+
+// local functions
 import { getInputValue } from "../../func/getInputValue";
 import { postAccountBody, serverURL } from "../../func/fetchData";
+
+// interfaces
+import IAccountData from "../../interfaces/IAccountData";
+import ISureDialog from "../../interfaces/ISureDialog";
 
 export default function Account() {
   const navigation = useNavigate();
 
   let [isLogin, setIsLogin] = useState(true);
+
   let [isShowPass, setIsShowPass] = useState(false);
 
   const wrongDataDialog: ISureDialog = {

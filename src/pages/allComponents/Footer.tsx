@@ -1,4 +1,7 @@
+// react, router, mobx
 import React from "react";
+
+// images
 import CatAsset from "@/src/assets/cat.png";
 
 export default function Footer() {
@@ -9,6 +12,7 @@ export default function Footer() {
     "Спасибо charlesdeluvio, freestocks, Med Badr  Chemmaoui за фото. Источник Unsplash.",
     "Контакты в нижнем правом углу.",
   ];
+
   return (
     <footer
       id="Ссылки"

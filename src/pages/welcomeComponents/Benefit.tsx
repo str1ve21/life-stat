@@ -1,17 +1,20 @@
+// react, router, mobx
 import React, { useEffect } from "react";
-import { throttle } from "throttle-debounce";
 import { useLocation } from "react-router-dom";
 
-// img
-import UseAsset from "@/src/assets/WelcomeAssets/use.jpg";
+// plugins, libs
+import { throttle } from "throttle-debounce";
 
-// func
+// local functions
 import { createFilter } from "../../func/filter";
 import { createParallaxY } from "../../func/parallax";
 
 // interfaces
 import IFilterOptions from "../../interfaces/IFilterOptions";
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
+
+// images
+import UseAsset from "@/src/assets/WelcomeAssets/use.jpg";
 
 export default function Benefit() {
   const location = useLocation();
@@ -25,6 +28,7 @@ export default function Benefit() {
       finishAfter: 60,
     },
   ];
+
   const benefitFilterItems: IFilterOptions[] = [
     {
       elem: "#benefit-text",
@@ -57,6 +61,7 @@ export default function Benefit() {
       );
     });
   }, [location.pathname]);
+
   return (
     <section
       id="Польза"
@@ -81,7 +86,7 @@ export default function Benefit() {
           Создать аккаунт
         </a>
       </div>
-      <div className="flex justify-center lg:justify-end items-center px-[40px] lg:p-0 w-full lg:h-screen">
+      <div className="flex justify-center lg:justify-end items-center w-full lg:min-h-[700px] lg:h-screen px-[40px] lg:p-0">
         <img
           src={UseAsset}
           alt="UseAsset"

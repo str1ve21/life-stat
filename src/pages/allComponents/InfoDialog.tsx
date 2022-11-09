@@ -1,9 +1,15 @@
+// react, router, mobx
 import React, { useEffect } from "react";
-import IInfoDialog from "../../interfaces/IInfoDialog";
+
+// stores
 import SInfoDialog from "../../store/SInfoDialog";
+
+// interfaces
+import IInfoDialog from "../../interfaces/IInfoDialog";
 
 export default function InfoDialog() {
   const dialogElementData: IInfoDialog = SInfoDialog.infoDialogData[0];
+
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
@@ -14,6 +20,7 @@ export default function InfoDialog() {
         .showModal();
     }
   }, []);
+
   return (
     <dialog
       id={dialogElementData.id}

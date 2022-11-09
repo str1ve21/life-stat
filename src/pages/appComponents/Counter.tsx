@@ -1,10 +1,19 @@
+// react, router, mobx
 import React from "react";
+import { observer } from "mobx-react-lite";
+
+// plugins, libs
 import numeral from "numeral";
+
+// local functions
+import { inArrayIDByID } from "../../func/currentCounter";
+
+// interfaces
 import ICounter from "../../interfaces/ICounter";
+
+// components
 import CounterSetValue from "./CounterSetValue";
 import CounterMenu from "./CounterMenu";
-import { observer } from "mobx-react-lite";
-import { inArrayIDByID } from "../../func/currentCounter";
 
 interface IProps {
   data: ICounter;
@@ -12,7 +21,9 @@ interface IProps {
 
 const Counter = observer((props: IProps) => {
   const inArrayID: number = inArrayIDByID(props.data.id);
+
   const donePercent: number = props.data.counter / props.data.goal;
+
   const donePercentFormat: string = numeral(donePercent).format("0.[000]%");
 
   return (

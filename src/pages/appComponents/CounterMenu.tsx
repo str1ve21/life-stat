@@ -1,13 +1,22 @@
+// react, router, mobx
 import React from "react";
+
+// plugins, libs
 import numeral from "numeral";
-import ISureDialog from "../../interfaces/ISureDialog";
+
+// stores
 import SCounters from "../../store/SCounters";
 import SDialog from "../../store/SDialog";
 import SCounterDialog from "../../store/SCounterDialog";
-import ICounterDialog from "../../interfaces/ICounterDialog";
-import { inArrayIDByID } from "../../func/currentCounter";
-import IInfoDialog from "../../interfaces/IInfoDialog";
 import SInfoDialog from "../../store/SInfoDialog";
+
+// local functions
+import { inArrayIDByID } from "../../func/currentCounter";
+
+// interfaces
+import ISureDialog from "../../interfaces/ISureDialog";
+import ICounterDialog from "../../interfaces/ICounterDialog";
+import IInfoDialog from "../../interfaces/IInfoDialog";
 
 interface IProps {
   id: string;
@@ -41,6 +50,7 @@ export default function CounterMenu(props: IProps) {
       SDialog.deleteDialog();
     },
   };
+
   const сounterDialog: ICounterDialog = {
     id: props.id,
     text: "Изменеие счётчика.",
@@ -48,6 +58,7 @@ export default function CounterMenu(props: IProps) {
     buttonText: "Изменить",
     isEdit: true,
   };
+
   const infoDialog: IInfoDialog = {
     id: `infoDialog${props.id}`,
     dateID: props.dateID,

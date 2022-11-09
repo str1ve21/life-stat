@@ -10,6 +10,7 @@ class counterDialogStore {
 
   createDialog(item: ICounterDialog) {
     document.querySelector<HTMLDialogElement>("dialog")?.close();
+    this.counterDialogData = [];
     this.counterDialogData.push(item);
   }
 
