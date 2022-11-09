@@ -10,6 +10,7 @@ class infoDialogStore {
 
   createDialog(item: IInfoDialog) {
     document.querySelector<HTMLDialogElement>("dialog")?.close();
+    this.infoDialogData = [];
     this.infoDialogData.push(item);
   }
 

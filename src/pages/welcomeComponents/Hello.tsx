@@ -1,17 +1,20 @@
+// react, router, mobx
 import React, { useEffect } from "react";
-import { throttle } from "throttle-debounce";
 import { useLocation } from "react-router-dom";
 
-// img
-import welcomeAssetPC from "@/src/assets/WelcomeAssets/PC_Interface.png";
-import welcomeAssetTablet from "@/src/assets/WelcomeAssets/Tablet_Interface.png";
-import welcomeAssetPhone from "@/src/assets/WelcomeAssets/Phone_Interface.png";
+// plugins, libs
+import { throttle } from "throttle-debounce";
 
-//func
+//local functions
 import { createParallaxY } from "../../func/parallax";
 
 // interfaces
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
+
+// images
+import welcomeAssetPC from "@/src/assets/WelcomeAssets/PC_Interface.png";
+import welcomeAssetTablet from "@/src/assets/WelcomeAssets/Tablet_Interface.png";
+import welcomeAssetPhone from "@/src/assets/WelcomeAssets/Phone_Interface.png";
 
 export default function Hello() {
   const location = useLocation();
@@ -43,6 +46,7 @@ export default function Hello() {
       );
     });
   }, [location.pathname]);
+
   return (
     <section id="Главная" className="relative h-screen z-10 overflow-hidden">
       <div className="flex flex-col justify-between w-full h-full content-padding">

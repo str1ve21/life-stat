@@ -1,10 +1,11 @@
+// react, router, mobx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+// components
 import ThemeSwitcher from "./ThemeSwitcher";
 
-// img
-import IconAsset from "@/src/assets/logo.svg";
-
+// interfaces
 interface IProps {
   href: string;
   linksArray?: string[];
@@ -12,9 +13,14 @@ interface IProps {
   isMobileExist: boolean;
 }
 
+// images
+import IconAsset from "@/src/assets/logo.svg";
+
 export default function Navbar(props: IProps) {
   const linksArray: string[] = props.linksArray! || [];
+
   const [isMobileMenu, toggleMobileMenu] = useState(false);
+
   return (
     <header
       className={`${props.customClass} flex justify-between min-w-[320px] w-full h-max py-[10px] lg:py-[20px] content-padding backdrop-blur-[8px] z-[100] rounded-b-2xl lg:rounded-b-[40px]`}

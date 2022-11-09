@@ -10,6 +10,7 @@ class dialogStore {
 
   createDialog(item: ISureDialog) {
     document.querySelector<HTMLDialogElement>("dialog")?.close();
+    this.sureDialogData = [];
     this.sureDialogData.push(item);
   }
 

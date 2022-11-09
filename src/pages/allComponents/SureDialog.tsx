@@ -1,9 +1,15 @@
+// react, router, mobx
 import React, { useEffect } from "react";
-import ISureDialog from "../../interfaces/ISureDialog";
+
+// stores
 import SDialog from "../../store/SDialog";
+
+// interfaces
+import ISureDialog from "../../interfaces/ISureDialog";
 
 export default function SureDialog() {
   const dialogElementData: ISureDialog = SDialog.sureDialogData[0];
+
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
@@ -14,6 +20,7 @@ export default function SureDialog() {
         .showModal();
     }
   }, []);
+
   return (
     <dialog
       id={dialogElementData.id}

@@ -22,7 +22,9 @@ export default defineConfig(({ command }) => {
     plugins: [
       react(),
       VitePWA({
+        registerType: "prompt",
         includeAssets: [
+          "favicon.ico",
           "logo.svg",
           "maskable_icon_x72.png",
           "maskable_icon_x96.png",
@@ -30,6 +32,14 @@ export default defineConfig(({ command }) => {
           "maskable_icon_x192.png",
           "maskable_icon_x384.png",
           "maskable_icon_x512.png",
+          "apple-touch-icon.png",
+          "apple-touch-icon-72x72.png",
+          "apple-touch-icon-76x76.png",
+          "apple-touch-icon-114x114.png",
+          "apple-touch-icon-120x120.png",
+          "apple-touch-icon-144x144.png",
+          "apple-touch-icon-152x152.png",
+          "apple-touch-icon-180x180.png",
         ],
         devOptions: {
           enabled: isDev,

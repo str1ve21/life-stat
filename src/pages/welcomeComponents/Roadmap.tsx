@@ -1,8 +1,11 @@
+// react, router, mobx
 import React, { useEffect } from "react";
-import { throttle } from "throttle-debounce";
 import { useLocation } from "react-router-dom";
 
-// func
+// plugins, libs
+import { throttle } from "throttle-debounce";
+
+// local functions
 import { createFilter } from "../../func/filter";
 import { createParallaxY } from "../../func/parallax";
 
@@ -10,7 +13,7 @@ import { createParallaxY } from "../../func/parallax";
 import IFilterOptions from "../../interfaces/IFilterOptions";
 import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 
-// img
+// images
 import RoadmapAsset from "@/src/assets/WelcomeAssets/roadmap.jpg";
 
 export default function Roadmap() {
@@ -34,6 +37,7 @@ export default function Roadmap() {
       finishAfter: 80,
     },
   ];
+
   const benefitFilterItems: IFilterOptions[] = [
     {
       elem: "#roadmap",
@@ -66,6 +70,7 @@ export default function Roadmap() {
       );
     });
   }, [location.pathname]);
+
   return (
     <section
       id="Планы"

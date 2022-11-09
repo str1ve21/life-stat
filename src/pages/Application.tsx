@@ -1,13 +1,18 @@
+// react, router, mobx
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+
+// stores
+import SCounters from "../store/SCounters";
+import SCounterDialog from "../store/SCounterDialog";
+
+// components
 import Hello from "./appComponents/Hello";
 import Main from "./appComponents/Main";
 import Navbar from "./allComponents/Navbar";
 import Footer from "./allComponents/Footer";
 import CounterDialog from "./appComponents/CounterDialog";
-import SCounters from "../store/SCounters";
-import SCounterDialog from "../store/SCounterDialog";
-import { observer } from "mobx-react-lite";
 
 const ApplicationPage = observer(() => {
   const navigator = useNavigate();
@@ -30,6 +35,7 @@ const ApplicationPage = observer(() => {
     //   );
     // }
   }, []);
+
   return (
     <main id="app" className="bg-neutral-200 dark:bg-neutral-900">
       {SCounterDialog.counterDialogData.length > 0 && (

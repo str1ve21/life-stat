@@ -1,8 +1,14 @@
+// react, router, mobx
 import React from "react";
 import { observer } from "mobx-react-lite";
-import { getInputValue } from "../../func/getInputValue";
+
+// stores
 import SCounters from "../../store/SCounters";
 
+// local functions
+import { getInputValue } from "../../func/getInputValue";
+
+// interfaces
 interface IProps {
   storeCounterID: string;
   defInput: number;

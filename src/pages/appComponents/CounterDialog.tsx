@@ -1,32 +1,29 @@
+// react, router, mobx
 import React, { useEffect } from "react";
-import SCounters from "../../store/SCounters";
-import IAddInputsArray from "../../interfaces/IAddInputsArray";
-import ICounter from "../../interfaces/ICounter";
-import ICounterDialog from "../../interfaces/ICounterDialog";
-import SCounterDialog from "../../store/SCounterDialog";
+
+// plugins, libs
 import { v4 as uuidv4 } from "uuid";
+
+// stores
+import SCounters from "../../store/SCounters";
+import SCounterDialog from "../../store/SCounterDialog";
+
+// local functions
 import { findCounterByID } from "../../func/currentCounter";
 import { getInputValue } from "../../func/getInputValue";
 
-export default function AddDialog() {
-  useEffect(() => {
-    if (
-      !document.querySelector<HTMLDialogElement>(
-        `#counterDialog${dialogElementData.id}`
-      )!.open
-    ) {
-      document
-        .querySelector<HTMLDialogElement>(
-          `#counterDialog${dialogElementData.id}`
-        )!
-        .showModal();
-    }
-  }, []);
+// interfaces
+import IAddInputsArray from "../../interfaces/IAddInputsArray";
+import ICounter from "../../interfaces/ICounter";
+import ICounterDialog from "../../interfaces/ICounterDialog";
 
+export default function AddDialog() {
   const dialogElementData: ICounterDialog = SCounterDialog.counterDialogData[0];
+
   const currentCounter: ICounter | undefined = findCounterByID(
     dialogElementData.id
   );
+
   const AddInputsArray: IAddInputsArray[] = [
     {
       id: 0,
@@ -110,6 +107,20 @@ export default function AddDialog() {
     tempItem.dateID = Date.now();
     SCounters.addCounter(tempItem);
   }
+
+  useEffect(() => {
+    if (
+      !document.querySelector<HTMLDialogElement>(
+        `#counterDialog${dialogElementData.id}`
+      )!.open
+    ) {
+      document
+        .querySelector<HTMLDialogElement>(
+          `#counterDialog${dialogElementData.id}`
+        )!
+        .showModal();
+    }
+  }, []);
 
   return (
     <dialog

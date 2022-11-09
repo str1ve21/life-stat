@@ -1,6 +1,9 @@
+// react, router, mobx
 import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { autorun } from "mobx";
+
+// stores
 import STheme from "../../store/STheme";
 
 const ThemeSwitcher = observer(() => {
@@ -37,6 +40,7 @@ const ThemeSwitcher = observer(() => {
       }
     });
   }, []);
+
   return (
     <>
       <button
