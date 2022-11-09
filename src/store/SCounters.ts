@@ -45,7 +45,7 @@ class counterStore {
   async fetchGetCounters() {
     try {
       const response = await fetch(`${serverURL()}/allCounters`, getBody());
-      if (response.status === 401 || response.status === 404) {
+      if (response.status !== 200) {
         console.error(
           `[ERROR]: While SCounters GET (response). More info: ${response.status}`
         );
@@ -60,9 +60,16 @@ class counterStore {
           });
         });
       }
+      return response.status;
     } catch (error) {
       console.error(
-        `[ERROR]: While SCounters GET (catch). More info: ${error}`
+        `[ERROR]: While SCounters GET (catch). More info: ${error}.`
+      );
+      this.saveToLocalStorage();
+      this.loadFromLocalStorage();
+      console.warn(
+        "%cВнимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.",
+        "font-family: monospace; font-size: 20px; padding: 20px;"
       );
     }
   }
@@ -70,30 +77,41 @@ class counterStore {
   async fetchPostCounters() {
     try {
       const JSONStore: string = JSON.stringify(toJS(this.countersData));
-      await fetch(`${serverURL()}/saveCounters`, postCountersBody(JSONStore));
+      const response = await fetch(
+        `${serverURL()}/saveCounters`,
+        postCountersBody(JSONStore)
+      );
+      console.log(`POST status: ${response.status}. По кайфу работает.`);
     } catch (error) {
       console.error(
-        `[ERROR]: While SCounters POST (catch). More info: ${error}`
+        `[ERROR]: While SCounters POST (catch). More info: ${error}.`
+      );
+      this.saveToLocalStorage();
+      console.warn(
+        "%cВнимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.",
+        "font-family: monospace; font-size: 20px; padding: 20px;"
       );
     }
   }
 
-  // До лучших времён...
+  clearLocalStorage() {
+    localStorage.removeItem("All Counters");
+  }
 
-  // saveToLocalStorage() {
-  //   const savedCountersArray = JSON.stringify(toJS(this.countersData));
-  //   localStorage.setItem("All Counters", savedCountersArray);
-  // }
+  saveToLocalStorage() {
+    const savedCountersArray = JSON.stringify(toJS(this.countersData));
+    localStorage.setItem("All Counters", savedCountersArray);
+  }
 
-  // loadFromLocalStorage() {
-  //   if (toJS(this.countersData).length !== 0) return;
-  //   const loadedCountersArray: ICounter[] = JSON.parse(
-  //     localStorage.getItem("All Counters")!
-  //   );
-  //   loadedCountersArray.forEach((item) => {
-  //     this.countersData.push(item);
-  //   });
-  // }
+  loadFromLocalStorage() {
+    if (toJS(this.countersData).length !== 0) return;
+    const loadedCountersArray: ICounter[] = JSON.parse(
+      localStorage.getItem("All Counters")!
+    );
+    loadedCountersArray.forEach((item) => {
+      this.countersData.push(item);
+    });
+  }
 }
 
 export default new counterStore();
