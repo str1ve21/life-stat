@@ -86,7 +86,7 @@ export default function Benefit() {
           Создать аккаунт
         </a>
       </div>
-      <div className="flex justify-center lg:justify-end items-center px-[40px] lg:p-0 w-full lg:h-screen">
+      <div className="flex justify-center lg:justify-end items-center w-full lg:min-h-[700px] lg:h-screen px-[40px] lg:p-0">
         <img
           src={UseAsset}
           alt="UseAsset"
