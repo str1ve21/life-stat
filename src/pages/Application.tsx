@@ -21,7 +21,10 @@ const ApplicationPage = observer(() => {
     SCounters.fetchGetCounters().then((status) => {
       if (status === 200) {
         console.log(`GET status: ${status}. По кайфу работает.`);
-        SCounters.clearLocalStorage();
+        if (!!localStorage.getItem("All Counters")) {
+          SCounters.fetchPostCounters();
+          SCounters.clearLocalStorage();
+        }
         return SCounters.fetchPostCounters();
       }
       if (import.meta.env.PROD && status === 401) {
