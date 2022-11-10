@@ -45,7 +45,7 @@ export default function Navbar(props: IProps) {
           );
         })}
       </nav>
-      <div className="flex gap-[20px]">
+      <div className="flex gap-[20px] my-auto">
         {props.isMobileExist && (
           <button
             onClick={() => {

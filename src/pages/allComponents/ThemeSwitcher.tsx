@@ -59,7 +59,7 @@ const ThemeSwitcher = observer(() => {
             STheme.themeData.current === "light" ? "block" : "hidden"
           } ${
             STheme.themeData.isSystemTheme
-              ? "text-emerald-500"
+              ? "text-emerald-500 dark:text-emerald-500"
               : "text-yellow-600"
           }`}
         >
@@ -78,7 +78,9 @@ const ThemeSwitcher = observer(() => {
           className={`icon hover:text-neutral-100 ${
             STheme.themeData.current === "dark" ? "block" : "hidden"
           } ${
-            STheme.themeData.isSystemTheme ? "text-emerald-500" : "text-sky-400"
+            STheme.themeData.isSystemTheme
+              ? "text-emerald-500 dark:text-emerald-500"
+              : "dark:text-sky-400"
           }`}
         >
           <path

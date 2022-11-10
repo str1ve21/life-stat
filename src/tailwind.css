@@ -36,7 +36,7 @@
   }
 
   .dialog-close {
-    @apply absolute top-[10px] md:top-[20px] right-[10px] md:right-[20px] w-[20px] md:w-[30px] cursor-pointer;
+    @apply absolute top-[10px] md:top-[20px] right-[10px] md:right-[20px] w-[20px] md:w-[30px] cursor-pointer text-red-600 dark:text-red-400;
   }
 
   .dialog-text {
@@ -76,7 +76,7 @@
   }
 
   .icon {
-    @apply w-[20px] lg:w-[30px] duration-200;
+    @apply w-[20px] lg:w-[30px] duration-200 text-neutral-900 dark:text-neutral-100;
   }
 
   .button {
@@ -88,35 +88,35 @@
   }
 
   .label {
-    @apply flex flex-col gap-[5px] md:gap-[10px];
+    @apply flex flex-col gap-[5px] md:gap-[10px] text-neutral-900 dark:text-neutral-100;
   }
 
   .input {
-    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 bg-transparent rounded-xl;
+    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 bg-transparent rounded-xl text-neutral-900 dark:text-neutral-100;
   }
 
   .checkbox {
-    @apply w-[20px] h-[20px];
+    @apply w-[20px] h-[20px] text-neutral-900 dark:text-neutral-100;
   }
 
   .checkbox-label {
-    @apply flex justify-center items-center gap-[20px] py-2 text-lg text-raleway text-center rounded-2xl;
+    @apply flex justify-center items-center gap-[20px] py-2 text-lg text-raleway text-center rounded-2xl text-neutral-900 dark:text-neutral-100;
   }
 
   .account-form {
-    @apply flex flex-col w-full max-w-xl gap-[20px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-100/50 dark:bg-neutral-800/50 rounded-[40px];
+    @apply flex flex-col w-full max-w-xl gap-[20px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-100/50 dark:bg-neutral-800/50 rounded-[40px] text-neutral-900 dark:text-neutral-100;
   }
 
   .account-label {
-    @apply flex flex-col gap-[5px] md:gap-[10px] rounded-2xl;
+    @apply flex flex-col gap-[5px] md:gap-[10px] rounded-2xl text-neutral-900 dark:text-neutral-100;
   }
 
   .account-input {
-    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway dark:border-neutral-200 border-neutral-800 bg-transparent rounded-xl;
+    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway dark:border-neutral-200 border-neutral-800 bg-transparent rounded-xl text-neutral-900 dark:text-neutral-100;
   }
 
   .buttons-navbar {
-    @apply flex flex-wrap justify-center p-[10px] gap-[20px] lg:gap-[40px] bg-neutral-100/50 dark:bg-neutral-800/50 rounded-2xl;
+    @apply flex flex-wrap justify-center p-[10px] gap-[20px] lg:gap-[40px] bg-neutral-100/50 dark:bg-neutral-800/50 rounded-2xl text-neutral-900 dark:text-neutral-100;
   }
 }
 

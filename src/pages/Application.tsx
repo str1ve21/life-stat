@@ -22,7 +22,6 @@ const ApplicationPage = observer(() => {
       if (status === 200) {
         console.log(`GET status: ${status}. По кайфу работает.`);
         if (!!localStorage.getItem("All Counters")) {
-          SCounters.fetchPostCounters();
           SCounters.clearLocalStorage();
         }
         return SCounters.fetchPostCounters();
