@@ -81,7 +81,9 @@ const Counter = observer((props: IProps) => {
             style={{
               width:
                 props.data.goal >= props.data.counter
-                  ? donePercentFormat
+                  ? donePercent > 0
+                    ? donePercentFormat
+                    : "0%"
                   : "100%",
               background: props.data.textColor,
             }}

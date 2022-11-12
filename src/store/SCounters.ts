@@ -65,7 +65,6 @@ class counterStore {
       console.error(
         `[ERROR]: While SCounters GET (catch). More info: ${error}.`
       );
-      this.saveToLocalStorage();
       this.loadFromLocalStorage();
       console.warn(
         "%cВнимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.",
