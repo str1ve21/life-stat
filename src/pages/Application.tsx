@@ -18,14 +18,17 @@ const ApplicationPage = observer(() => {
   const navigator = useNavigate();
 
   useEffect(() => {
+    if (!!localStorage.getItem("All Counters")) {
+      async () => {
+        console.warn(
+          "%cВнимание! Локальные сохранения загружаются на сервер.",
+          "font-family: monospace; font-size: 20px; padding: 20px;"
+        );
+        await SCounters.fetchPostCounters();
+        SCounters.clearLocalStorage();
+      };
+    }
     SCounters.fetchGetCounters().then((status) => {
-      if (status === 200) {
-        console.log(`GET status: ${status}. По кайфу работает.`);
-        if (!!localStorage.getItem("All Counters")) {
-          SCounters.clearLocalStorage();
-        }
-        return SCounters.fetchPostCounters();
-      }
       if (import.meta.env.PROD && status === 401) {
         console.warn(
           `GET status: ${status}. Войдите в аккаунт, прежде чем открывать приложение!`
