@@ -77,7 +77,7 @@ const Counter = observer((props: IProps) => {
           style={{ borderColor: props.data.textColor }}
         >
           <div
-            className="h-full opacity-75 rounded-2xl overflow-hidden"
+            className="h-full opacity-75 rounded-2xl overflow-hidden duration-200"
             style={{
               width:
                 props.data.goal >= props.data.counter
