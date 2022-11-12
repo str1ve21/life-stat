@@ -51,6 +51,7 @@ class counterStore {
         );
         return response.status;
       }
+      console.log(`GET status: ${response.status}. По кайфу работает.`);
       const serverCounters: ICounter[] = await response.json();
       if (serverCounters !== null) {
         runInAction(() => {
