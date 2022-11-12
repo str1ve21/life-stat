@@ -17,25 +17,32 @@ import CounterDialog from "./appComponents/CounterDialog";
 const ApplicationPage = observer(() => {
   const navigator = useNavigate();
 
-  useEffect(() => {
+  async function countersLogic() {
     if (!!localStorage.getItem("All Counters")) {
-      async () => {
-        console.warn(
-          "%cВнимание! Локальные сохранения загружаются на сервер.",
-          "font-family: monospace; font-size: 20px; padding: 20px;"
-        );
-        await SCounters.fetchPostCounters();
-        SCounters.clearLocalStorage();
-      };
+      SCounters.loadFromLocalStorage();
+
+      console.warn(
+        "%cВнимание! Локальные сохранения загружаются на сервер. Пытаются, по крайней мере.",
+        "font-family: monospace; font-size: 20px; padding: 20px;"
+      );
+
+      await SCounters.fetchPostCounters();
+      return;
     }
-    SCounters.fetchGetCounters().then((status) => {
-      if (import.meta.env.PROD && status === 401) {
-        console.warn(
-          `GET status: ${status}. Войдите в аккаунт, прежде чем открывать приложение!`
-        );
-        return navigator("/");
-      }
-    });
+
+    const getResult = await SCounters.fetchGetCounters();
+
+    if (import.meta.env.PROD && getResult === 401) {
+      console.warn(
+        `GET status: ${getResult}. Войдите в аккаунт, прежде чем открывать приложение!`
+      );
+
+      navigator("/");
+    }
+  }
+
+  useEffect(() => {
+    countersLogic();
   }, []);
 
   return (
