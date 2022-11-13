@@ -108,6 +108,18 @@ export default function AddDialog() {
     SCounters.addCounter(tempItem);
   }
 
+  function submit() {
+    SCounterDialog.deleteDialog();
+    sendCounterData();
+    if (dialogElementData.isEdit) {
+      document
+        .querySelector<HTMLDialogElement>(
+          `#counterMenu${dialogElementData.id}`
+        )!
+        .classList.toggle("invisible");
+    }
+  }
+
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>(
@@ -155,15 +167,7 @@ export default function AddDialog() {
       </form>
       <button
         onClick={() => {
-          SCounterDialog.deleteDialog();
-          sendCounterData();
-          if (dialogElementData.isEdit) {
-            document
-              .querySelector<HTMLDialogElement>(
-                `#counterMenu${dialogElementData.id}`
-              )!
-              .classList.toggle("invisible");
-          }
+          submit();
         }}
         className="button bg-app-100 dark:bg-app-150"
       >
