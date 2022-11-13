@@ -52,11 +52,11 @@ https://github.com/SAwckA/life-stat-backend
 > Авторизация:
 
 Версия 1.1.1122 (Preview):
-Логин, пароль. acess_token на 30 дней.
+Логин, пароль. acess_token на 30 дней
 
 В будущем:
-Привязка Email.  
-OAuth2 при помощи YandexID, Google, VK.
+Привязка Email  
+OAuth2 при помощи YandexID, Google, VK
 
 YandexID Api:`https://yandex.ru/id/business?utm_source=yandex&utm_medium=yandex-id&utm_campaign=link-owners-sites`
 
@@ -66,10 +66,10 @@ YandexID Api:`https://yandex.ru/id/business?utm_source=yandex&utm_medium=yandex-
 
 Версия 1.1.1122 (Preview):
 
-- Логин (не почта).
-- Пароль.
+- Логин (не почта)
+- Пароль
 
 Данные счётчиков:
 
-- JSON массив.  
-  Название поля в БД предпочтительно "All Counters"
+- JSON массив  
+- Данные о теме хранятся локально
