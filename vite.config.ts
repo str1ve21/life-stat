@@ -52,7 +52,7 @@ export default defineConfig(({ command }) => {
           background_color: "#171717",
           display: "standalone",
           orientation: "portrait",
-          start_url: ".",
+          start_url: "/app",
           icons: [
             {
               src: "/maskable_icon_x72.png",
