@@ -12,6 +12,7 @@
 - components
 - css
 - images
+- other
 
 > Стилизация компонентов:
 
