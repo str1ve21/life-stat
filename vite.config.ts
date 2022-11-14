@@ -112,6 +112,7 @@ export default defineConfig(({ command }) => {
         },
         workbox: {
           sourcemap: true,
+          cleanupOutdatedCaches: true,
           globPatterns: ["**/*.{js,css,html,jpg,png,svg}"],
           runtimeCaching: [
             {
