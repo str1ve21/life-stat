@@ -94,7 +94,10 @@ export default function CounterMenu(props: IProps) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-[30px] md:w-[40px] duration-200 dark:text-neutral-900 text-neutral-100"
+          className="w-[30px] md:w-[40px] duration-200"
+          style={{
+            color: props.textColor,
+          }}
         >
           <path
             strokeLinecap="round"
