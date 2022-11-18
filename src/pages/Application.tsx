@@ -20,11 +20,16 @@ const ApplicationPage = observer(() => {
   async function countersLogic() {
     if (!!localStorage.getItem("All Counters")) {
       SCounters.loadFromLocalStorage();
+
       console.log(
         `[LOG]: Application loading... LocalStorage: ${localStorage.getItem(
           "All Counters"
         )}`
       );
+
+      await SCounters.fetchPostCounters();
+
+      return;
     }
 
     const getResult = await SCounters.fetchGetCounters();
