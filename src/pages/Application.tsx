@@ -20,21 +20,24 @@ const ApplicationPage = observer(() => {
   async function countersLogic() {
     if (!!localStorage.getItem("All Counters")) {
       SCounters.loadFromLocalStorage();
-
-      console.warn(
-        "%cВнимание! Локальные сохранения загружаются на сервер. Пытаются, по крайней мере.",
-        "font-family: monospace; font-size: 20px; padding: 20px;"
+      console.log(
+        `[LOG]: Application loading... LocalStorage: ${localStorage.getItem(
+          "All Counters"
+        )}`
       );
-
-      await SCounters.fetchPostCounters();
-      return;
     }
 
     const getResult = await SCounters.fetchGetCounters();
 
+    console.log(
+      `[LOG]: Application GET fetch finished. Response status: ${getResult}. LocalStorage: ${localStorage.getItem(
+        "All Counters"
+      )}`
+    );
+
     if (import.meta.env.PROD && getResult === 401) {
       console.warn(
-        `GET status: ${getResult}. Войдите в аккаунт, прежде чем открывать приложение!`
+        `[WARN]: Application GET (if). More info: ${getResult}. Войдите в аккаунт, прежде чем открывать приложение!`
       );
 
       navigator("/");

@@ -55,13 +55,15 @@ class counterStore {
 
       if (response.status !== 200) {
         console.error(
-          `[ERROR]: While SCounters GET (response). More info: ${response.status}`
+          `[ERROR]: SCounters GET (if). More info: ${response.status}.`
         );
 
         return response.status;
       }
 
-      console.log(`GET status: ${response.status}. По кайфу работает.`);
+      console.log(
+        `[LOG]: SCounters GET (response). More info: ${response.status}. По кайфу работает.`
+      );
 
       const serverCounters: ICounter[] = await response.json();
 
@@ -74,19 +76,16 @@ class counterStore {
         });
       }
 
-      this.clearLocalStorage();
+      this.saveToLocalStorage();
 
       return response.status;
     } catch (error) {
-      console.error(
-        `[ERROR]: While SCounters GET (catch). More info: ${error}.`
-      );
+      console.error(`[ERROR]: SCounters GET (catch). More info: ${error}.`);
 
       this.saveToLocalStorage();
 
       console.warn(
-        "%cВнимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.",
-        "font-family: monospace; font-size: 20px; padding: 20px;"
+        `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
       );
     }
   }
@@ -100,19 +99,18 @@ class counterStore {
         postCountersBody(JSONStore)
       );
 
-      console.log(`POST status: ${response.status}. По кайфу работает.`);
+      this.saveToLocalStorage();
 
-      this.clearLocalStorage();
-    } catch (error) {
-      console.error(
-        `[ERROR]: While SCounters POST (catch). More info: ${error}.`
+      console.log(
+        `[LOG]: SCounters POST (response). More info: ${response.status}. По кайфу работает.`
       );
+    } catch (error) {
+      console.error(`[ERROR]: SCounters POST (catch). More info: ${error}.`);
 
       this.saveToLocalStorage();
 
       console.warn(
-        "%cВнимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.",
-        "font-family: monospace; font-size: 20px; padding: 20px;"
+        `[WARN]: SCounters POST (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
       );
     }
   }
