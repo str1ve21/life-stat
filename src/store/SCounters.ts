@@ -121,6 +121,7 @@ class counterStore {
   }
 
   loadFromLocalStorage() {
+    this.countersData = [];
     const loadedCountersArray: ICounter[] = JSON.parse(
       localStorage.getItem("All Counters")!
     );
