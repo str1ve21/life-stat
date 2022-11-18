@@ -31,16 +31,6 @@ const ApplicationPage = observer(() => {
     console.log(
       `[LOG]: Application GET fetch finished. Response status: ${getResult}.`
     );
-
-    if (!!localStorage.getItem("All Counters")) {
-      SCounters.loadFromLocalStorage();
-      console.log(
-        `[LOG]: Application loading LocalStorage finished. More info: ${localStorage.getItem(
-          "All Counters"
-        )}`
-      );
-      await SCounters.fetchPostCounters();
-    }
   }
 
   useEffect(() => {

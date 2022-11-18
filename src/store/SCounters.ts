@@ -80,9 +80,9 @@ class counterStore {
     } catch (error) {
       console.error(`[ERROR]: SCounters GET (catch). More info: ${error}.`);
 
-      console.warn(
-        `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
-      );
+      // console.warn(
+      //   `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
+      // );
     }
   }
 
@@ -95,19 +95,15 @@ class counterStore {
         postCountersBody(JSONStore)
       );
 
-      this.saveToLocalStorage();
-
       console.log(
         `[LOG]: SCounters POST (response). More info: ${response.status}. По кайфу работает.`
       );
     } catch (error) {
       console.error(`[ERROR]: SCounters POST (catch). More info: ${error}.`);
 
-      this.saveToLocalStorage();
-
-      console.warn(
-        `[WARN]: SCounters POST (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
-      );
+      // console.warn(
+      //   `[WARN]: SCounters POST (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
+      // );
     }
   }
 
