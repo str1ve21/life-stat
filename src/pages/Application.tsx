@@ -38,7 +38,7 @@ const ApplicationPage = observer(() => {
       SCounters.loadFromLocalStorage();
 
       console.log(
-        `[LOG]: Application loading... LocalStorage: ${localStorage.getItem(
+        `[LOG]: Application loading LocalStorage finished. More info: ${localStorage.getItem(
           "All Counters"
         )}`
       );
