@@ -18,21 +18,10 @@ const ApplicationPage = observer(() => {
   const navigator = useNavigate();
 
   async function countersLogic() {
-    if (!!localStorage.getItem("All Counters")) {
-      SCounters.loadFromLocalStorage();
-      console.log(
-        `[LOG]: Application loading... LocalStorage: ${localStorage.getItem(
-          "All Counters"
-        )}`
-      );
-    }
-
     const getResult = await SCounters.fetchGetCounters();
 
     console.log(
-      `[LOG]: Application GET fetch finished. Response status: ${getResult}. LocalStorage: ${localStorage.getItem(
-        "All Counters"
-      )}`
+      `[LOG]: Application GET fetch finished. Response status: ${getResult}.`
     );
 
     if (import.meta.env.PROD && getResult === 401) {
@@ -41,6 +30,20 @@ const ApplicationPage = observer(() => {
       );
 
       navigator("/");
+
+      return;
+    }
+
+    if (!!localStorage.getItem("All Counters")) {
+      SCounters.loadFromLocalStorage();
+
+      console.log(
+        `[LOG]: Application loading... LocalStorage: ${localStorage.getItem(
+          "All Counters"
+        )}`
+      );
+
+      await SCounters.fetchPostCounters();
     }
   }
 
