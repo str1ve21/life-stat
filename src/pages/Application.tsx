@@ -18,6 +18,22 @@ const ApplicationPage = observer(() => {
   const navigator = useNavigate();
 
   async function countersLogic() {
+    const getResult = await SCounters.fetchGetCounters();
+
+    console.log(
+      `[LOG]: Application GET fetch finished. Response status: ${getResult}.`
+    );
+
+    if (import.meta.env.PROD && getResult === 401) {
+      console.warn(
+        `[WARN]: Application GET (if). More info: ${getResult}. Войдите в аккаунт, прежде чем открывать приложение!`
+      );
+
+      navigator("/");
+
+      return;
+    }
+
     if (!!localStorage.getItem("All Counters")) {
       SCounters.loadFromLocalStorage();
 
@@ -28,24 +44,6 @@ const ApplicationPage = observer(() => {
       );
 
       await SCounters.fetchPostCounters();
-
-      return;
-    }
-
-    const getResult = await SCounters.fetchGetCounters();
-
-    console.log(
-      `[LOG]: Application GET fetch finished. Response status: ${getResult}. LocalStorage: ${localStorage.getItem(
-        "All Counters"
-      )}`
-    );
-
-    if (import.meta.env.PROD && getResult === 401) {
-      console.warn(
-        `[WARN]: Application GET (if). More info: ${getResult}. Войдите в аккаунт, прежде чем открывать приложение!`
-      );
-
-      navigator("/");
     }
   }
 

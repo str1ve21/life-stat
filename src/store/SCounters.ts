@@ -76,13 +76,9 @@ class counterStore {
         });
       }
 
-      this.saveToLocalStorage();
-
       return response.status;
     } catch (error) {
       console.error(`[ERROR]: SCounters GET (catch). More info: ${error}.`);
-
-      this.saveToLocalStorage();
 
       console.warn(
         `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
