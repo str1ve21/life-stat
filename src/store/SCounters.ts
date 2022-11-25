@@ -58,7 +58,6 @@ class counterStore {
         console.error(
           `[ERROR]: SCounters GET (if). More info: ${response.status}.`
         );
-
         return response.status;
       }
 
@@ -76,6 +75,18 @@ class counterStore {
           });
         });
       }
+
+      const isSynced: boolean =
+        localStorage.getItem("All Counters") === JSON.stringify(serverCounters);
+
+      if (!isSynced) {
+        console.warn(
+          `[WARN]: SCounters GET (sync check). More info: ${isSynced} (isSynced).`
+        );
+        return "Data conflict";
+      }
+
+      this.saveToLocalStorage();
 
       return response.status;
     } catch (error) {

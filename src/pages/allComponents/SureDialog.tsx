@@ -24,7 +24,7 @@ export default function SureDialog() {
   return (
     <dialog
       id={dialogElementData.id}
-      className="dialog mx-[20px] md:mx-auto md:max-w-xl w-full dialog-padding rounded-2xl"
+      className="dialog mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
@@ -56,23 +56,25 @@ export default function SureDialog() {
           </button>
         )}
       </div>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="dialog-close"
-        onClick={() => {
-          SDialog.deleteDialog();
-        }}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
+      {dialogElementData.canClose && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="dialog-close"
+          onClick={() => {
+            SDialog.deleteDialog();
+          }}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      )}
     </dialog>
   );
 }

@@ -6,6 +6,7 @@ export default interface ISureDialog {
   noText: string;
   isYesFunc: boolean;
   isNoFunc: boolean;
+  canClose: boolean;
   yesFunction?: () => void;
   noFunction?: () => void;
 }

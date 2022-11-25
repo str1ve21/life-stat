@@ -42,6 +42,7 @@ export default function CounterMenu(props: IProps) {
     noText: "Закрыть",
     isYesFunc: true,
     isNoFunc: true,
+    canClose: true,
     yesFunction: () => {
       SCounters.removeCounter(props.id);
       SDialog.deleteDialog();
@@ -73,12 +74,12 @@ export default function CounterMenu(props: IProps) {
       props.goal !== 0
         ? `Прогресс: ${props.donePercent}`
         : `Прогресс: Отсутсвует цель`,
-      `Дата создания: ${new Date(
-        props.dateID
-      ).toLocaleDateString()}, ${new Date(props.dateID).toTimeString()}`,
       `Последнее изменение: ${new Date(
         props.lastEdit
       ).toLocaleDateString()}, ${new Date(props.lastEdit).toTimeString()}`,
+      `Дата создания: ${new Date(
+        props.dateID
+      ).toLocaleDateString()}, ${new Date(props.dateID).toTimeString()}`,
     ],
   };
 
