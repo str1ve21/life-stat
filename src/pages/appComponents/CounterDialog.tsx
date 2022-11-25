@@ -87,6 +87,7 @@ export default function AddDialog() {
     const tempItem: ICounter = {
       id: "",
       dateID: 0,
+      lastEdit: Date.now(),
       title: getInputValue("#titleInput"),
       description: getInputValue("#descriptionInput"),
       counter: +getInputValue("#countInput"),
@@ -95,11 +96,12 @@ export default function AddDialog() {
       color: getInputValue("#borderColorInput"),
       textColor: getInputValue("#textColorInput"),
     };
-    if (dialogElementData.isEdit) {
-      tempItem.id = dialogElementData.id;
+    if (currentCounter && dialogElementData.isEdit) {
+      tempItem.id = currentCounter.id;
+      tempItem.dateID = currentCounter.dateID;
       SCounters.editCounter(tempItem);
       document.querySelector<HTMLInputElement>(
-        `#CounterInput${currentCounter?.id}`
+        `#CounterInput${currentCounter.id}`
       )!.value = `${tempItem.defaultInput}`;
       return;
     }

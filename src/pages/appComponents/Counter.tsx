@@ -64,6 +64,7 @@ const Counter = observer((props: IProps) => {
         <CounterMenu
           id={props.data.id}
           dateID={props.data.dateID}
+          lastEdit={props.data.lastEdit}
           color={props.data.color}
           textColor={props.data.textColor}
           counter={props.data.counter}

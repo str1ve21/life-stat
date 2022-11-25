@@ -44,6 +44,7 @@ class counterStore {
       (obj) => obj.id === elem
     );
 
+    this.countersData[objToChange].lastEdit = Date.now();
     this.countersData[objToChange].counter += inputValue;
 
     this.fetchPostCounters();
@@ -80,9 +81,11 @@ class counterStore {
     } catch (error) {
       console.error(`[ERROR]: SCounters GET (catch). More info: ${error}.`);
 
-      // console.warn(
-      //   `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
-      // );
+      console.warn(
+        `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
+      );
+
+      this.loadFromLocalStorage();
     }
   }
 
@@ -98,12 +101,16 @@ class counterStore {
       console.log(
         `[LOG]: SCounters POST (response). More info: ${response.status}. По кайфу работает.`
       );
+
+      this.saveToLocalStorage();
     } catch (error) {
       console.error(`[ERROR]: SCounters POST (catch). More info: ${error}.`);
 
-      // console.warn(
-      //   `[WARN]: SCounters POST (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
-      // );
+      console.warn(
+        `[WARN]: SCounters POST (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
+      );
+
+      this.saveToLocalStorage();
     }
   }
 

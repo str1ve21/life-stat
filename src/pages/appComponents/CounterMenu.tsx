@@ -21,6 +21,7 @@ import IInfoDialog from "../../interfaces/IInfoDialog";
 interface IProps {
   id: string;
   dateID: number;
+  lastEdit: number;
   color: string;
   textColor: string;
   counter: number;
@@ -75,6 +76,9 @@ export default function CounterMenu(props: IProps) {
       `Дата создания: ${new Date(
         props.dateID
       ).toLocaleDateString()}, ${new Date(props.dateID).toTimeString()}`,
+      `Последнее изменение: ${new Date(
+        props.lastEdit
+      ).toLocaleDateString()}, ${new Date(props.lastEdit).toTimeString()}`,
     ],
   };
 
