@@ -17,8 +17,6 @@ import welcomeAssetTablet from "@/src/assets/WelcomeAssets/Tablet_Interface.png"
 import welcomeAssetPhone from "@/src/assets/WelcomeAssets/Phone_Interface.png";
 
 export default function Hello() {
-  const location = useLocation();
-
   const welcomeParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#welcome-text",
@@ -45,7 +43,7 @@ export default function Hello() {
         })
       );
     });
-  }, [location.pathname]);
+  }, []);
 
   return (
     <section id="Главная" className="relative h-screen z-10 overflow-hidden">
