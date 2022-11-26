@@ -18,8 +18,6 @@ import ICounterDialog from "../../interfaces/ICounterDialog";
 import Settings from "./Settings";
 
 export default function WelcomePage() {
-  const location = useLocation();
-
   let [username, setUsername] = useState("anon");
 
   const createCounterDialog: ICounterDialog = {
@@ -37,6 +35,32 @@ export default function WelcomePage() {
     "Добро пожаловать",
     "С возвращением",
     "Доброго времени суток",
+    "Salve",
+    "Салам алейкум",
+    "Hej",
+    "Hello",
+    "Ahlan wa sahlan",
+    "Hola",
+    "Прывитанне",
+    "Здравейте",
+    "Chao",
+    "Aloha",
+    "Shalom",
+    "Buenas dias",
+    "Buon giorno",
+    "Ave",
+    "Guten Tag",
+    "Ola",
+    "Buna",
+    "Здраво",
+    "Привіт",
+    "Paivaa",
+    "Bonjour",
+    "Namaste",
+    "Zdravo",
+    "God dag",
+    "Saluton",
+    "Konnichi wa",
   ];
 
   const factArray: string[] = [
@@ -84,7 +108,7 @@ export default function WelcomePage() {
         })
       );
     });
-  }, [location.pathname]);
+  }, []);
 
   return (
     <section className="grid place-content-center min-h-[420px] h-[50vh] content-padding bg-neutral-100 dark:bg-neutral-800 rounded-b-[40px] overflow-hidden">
@@ -95,9 +119,9 @@ export default function WelcomePage() {
         <h1 className="hello-title text-center leading-none">
           {helloText[Math.floor(Math.random() * helloText.length)]}, {username}!
         </h1>
-        <h2 className="hello-subtitle text-center leading-none">
+        <p className="hello-subtitle text-center leading-none">
           {factArray[Math.floor(Math.random() * factArray.length)]}
-        </h2>
+        </p>
         <div
           id="buttons"
           className="flex flex-wrap content-gap w-full justify-center"

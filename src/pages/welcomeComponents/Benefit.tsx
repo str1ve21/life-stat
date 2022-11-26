@@ -17,8 +17,6 @@ import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 import UseAsset from "@/src/assets/WelcomeAssets/use.jpg";
 
 export default function Benefit() {
-  const location = useLocation();
-
   const benefitParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#benefit-title",
@@ -60,7 +58,7 @@ export default function Benefit() {
         })
       );
     });
-  }, [location.pathname]);
+  }, []);
 
   return (
     <section

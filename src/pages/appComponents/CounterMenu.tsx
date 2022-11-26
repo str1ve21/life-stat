@@ -21,6 +21,7 @@ import IInfoDialog from "../../interfaces/IInfoDialog";
 interface IProps {
   id: string;
   dateID: number;
+  lastEdit: number;
   color: string;
   textColor: string;
   counter: number;
@@ -41,6 +42,7 @@ export default function CounterMenu(props: IProps) {
     noText: "Закрыть",
     isYesFunc: true,
     isNoFunc: true,
+    canClose: true,
     yesFunction: () => {
       SCounters.removeCounter(props.id);
       SDialog.deleteDialog();
@@ -72,6 +74,9 @@ export default function CounterMenu(props: IProps) {
       props.goal !== 0
         ? `Прогресс: ${props.donePercent}`
         : `Прогресс: Отсутсвует цель`,
+      `Последнее изменение: ${new Date(
+        props.lastEdit
+      ).toLocaleDateString()}, ${new Date(props.lastEdit).toTimeString()}`,
       `Дата создания: ${new Date(
         props.dateID
       ).toLocaleDateString()}, ${new Date(props.dateID).toTimeString()}`,

@@ -17,8 +17,6 @@ import IFilterOptions from "../../interfaces/IFilterOptions";
 import ReasonAsset from "@/src/assets/WelcomeAssets/reason.jpg";
 
 export default function Reason() {
-  const location = useLocation();
-
   const reasonParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#reason-title",
@@ -60,7 +58,7 @@ export default function Reason() {
         })
       );
     });
-  }, [location.pathname]);
+  }, []);
 
   return (
     <section

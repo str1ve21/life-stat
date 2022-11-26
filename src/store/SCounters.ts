@@ -44,6 +44,7 @@ class counterStore {
       (obj) => obj.id === elem
     );
 
+    this.countersData[objToChange].lastEdit = Date.now();
     this.countersData[objToChange].counter += inputValue;
 
     this.fetchPostCounters();
@@ -57,7 +58,6 @@ class counterStore {
         console.error(
           `[ERROR]: SCounters GET (if). More info: ${response.status}.`
         );
-
         return response.status;
       }
 
@@ -76,13 +76,27 @@ class counterStore {
         });
       }
 
+      const isSynced: boolean =
+        localStorage.getItem("All Counters") === JSON.stringify(serverCounters);
+
+      if (!isSynced) {
+        console.warn(
+          `[WARN]: SCounters GET (sync check). More info: ${isSynced} (isSynced).`
+        );
+        return "Data conflict";
+      }
+
+      this.saveToLocalStorage();
+
       return response.status;
     } catch (error) {
       console.error(`[ERROR]: SCounters GET (catch). More info: ${error}.`);
 
-      // console.warn(
-      //   `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
-      // );
+      console.warn(
+        `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
+      );
+
+      this.loadFromLocalStorage();
     }
   }
 
@@ -98,12 +112,16 @@ class counterStore {
       console.log(
         `[LOG]: SCounters POST (response). More info: ${response.status}. По кайфу работает.`
       );
+
+      this.saveToLocalStorage();
     } catch (error) {
       console.error(`[ERROR]: SCounters POST (catch). More info: ${error}.`);
 
-      // console.warn(
-      //   `[WARN]: SCounters POST (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
-      // );
+      console.warn(
+        `[WARN]: SCounters POST (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
+      );
+
+      this.saveToLocalStorage();
     }
   }
 

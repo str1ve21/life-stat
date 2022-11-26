@@ -17,8 +17,6 @@ import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 import RoadmapAsset from "@/src/assets/WelcomeAssets/roadmap.jpg";
 
 export default function Roadmap() {
-  const location = useLocation();
-
   const roadmapText: string[] = [
     "Создание тем для счётчиков.",
     "Возможность кастомизировать фон в приложении.",
@@ -69,7 +67,7 @@ export default function Roadmap() {
         })
       );
     });
-  }, [location.pathname]);
+  }, []);
 
   return (
     <section

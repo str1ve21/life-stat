@@ -41,12 +41,9 @@ const Counter = observer((props: IProps) => {
             {inArrayID + 1}. {props.data.title}
           </h2>
           {props.data.description && (
-            <h3
-              className="subtitle m-0"
-              style={{ color: props.data.textColor }}
-            >
+            <p className="subtitle m-0" style={{ color: props.data.textColor }}>
               {props.data.description}
-            </h3>
+            </p>
           )}
         </div>
         <p
@@ -64,6 +61,7 @@ const Counter = observer((props: IProps) => {
         <CounterMenu
           id={props.data.id}
           dateID={props.data.dateID}
+          lastEdit={props.data.lastEdit}
           color={props.data.color}
           textColor={props.data.textColor}
           counter={props.data.counter}

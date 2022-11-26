@@ -28,6 +28,7 @@ export default function Account() {
     noText: "Закрыть",
     isYesFunc: false,
     isNoFunc: true,
+    canClose: true,
     noFunction: () => {
       document
         .querySelector<HTMLDialogElement>("#" + wrongDataDialog.id)!
