@@ -76,6 +76,11 @@ class counterStore {
         });
       }
 
+      console.log(
+        "localStorage: " + localStorage.getItem("All Counters"),
+        "server: " + JSON.stringify(serverCounters)
+      );
+
       const isSynced: boolean =
         localStorage.getItem("All Counters") === JSON.stringify(serverCounters);
 
