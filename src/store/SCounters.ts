@@ -50,7 +50,14 @@ class counterStore {
     this.fetchPostCounters();
   }
 
-  async fetchGetCounters() {
+  setStorage(array: ICounter[]) {
+    this.countersData = [];
+    array.forEach((item) => {
+      this.countersData.push(item);
+    });
+  }
+
+  async fetchGetCounters(isInitial?: boolean) {
     try {
       const response = await fetch(`${serverURL()}/allCounters`, getBody());
 
@@ -67,28 +74,31 @@ class counterStore {
 
       const serverCounters: ICounter[] = await response.json();
 
-      if (serverCounters !== null) {
-        runInAction(() => {
-          this.countersData = [];
-          serverCounters.forEach((item) => {
-            this.countersData.push(item);
-          });
-        });
+      if (isInitial) {
+        console.log(`[LOG]: SCounters GET (initial). Started...`);
+
+        const isSynced: boolean =
+          localStorage.getItem("All Counters") ===
+          JSON.stringify(serverCounters);
+
+        console.log(
+          `[LOG]: LocalStorage data: ${localStorage.getItem(
+            "All Counters"
+          )}\n\n[LOG]: Server data: ${JSON.stringify(serverCounters)}`
+        );
+
+        if (!isSynced) {
+          console.warn(
+            `[WARN]: SCounters GET (sync check). More info: ${isSynced} (isSynced).`
+          );
+          return "Data conflict";
+        }
       }
 
-      console.log(
-        "localStorage: " + localStorage.getItem("All Counters"),
-        "server: " + JSON.stringify(serverCounters)
-      );
-
-      const isSynced: boolean =
-        localStorage.getItem("All Counters") === JSON.stringify(serverCounters);
-
-      if (!isSynced) {
-        console.warn(
-          `[WARN]: SCounters GET (sync check). More info: ${isSynced} (isSynced).`
-        );
-        return "Data conflict";
+      if (serverCounters !== null) {
+        runInAction(() => {
+          this.setStorage(serverCounters);
+        });
       }
 
       this.saveToLocalStorage();

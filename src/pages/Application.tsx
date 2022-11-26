@@ -32,9 +32,7 @@ const ApplicationPage = observer(() => {
     canClose: false,
     yesFunction: () => {
       try {
-        console.log(
-          `[LOG]: Application (dialog): Sending data to server started...`
-        );
+        console.log(`[LOG]: Application (dialog): POST started...`);
         if (localStorage.getItem("All Counters")) {
           SCounters.loadFromLocalStorage();
           console.log(
@@ -52,13 +50,9 @@ const ApplicationPage = observer(() => {
     },
     noFunction: () => {
       try {
-        console.log(
-          `[LOG]: Application (dialog): Clear localStorage and fetch begin...`
-        );
-        SCounters.clearLocalStorage();
+        console.log(`[LOG]: Application (dialog): GET started...`);
         SCounters.fetchGetCounters();
         console.log(`[LOG]: Application (dialog): GET finished...`);
-        SCounters.saveToLocalStorage();
         console.log(
           `[LOG]: Application (dialog): Saved to localStorage. Done.`
         );
@@ -72,7 +66,7 @@ const ApplicationPage = observer(() => {
   };
 
   async function countersLogic() {
-    const getResult = await SCounters.fetchGetCounters();
+    const getResult = await SCounters.fetchGetCounters(true);
 
     if (import.meta.env.PROD && getResult === 401) {
       console.warn(
