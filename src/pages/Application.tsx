@@ -31,23 +31,43 @@ const ApplicationPage = observer(() => {
     isNoFunc: true,
     canClose: false,
     yesFunction: () => {
-      console.log(
-        `[LOG]: Application (dialog): Sending data to server started...`
-      );
-      if (localStorage.getItem("All Counters")) {
-        SCounters.loadFromLocalStorage();
+      try {
+        console.log(
+          `[LOG]: Application (dialog): Sending data to server started...`
+        );
+        if (localStorage.getItem("All Counters")) {
+          SCounters.loadFromLocalStorage();
+          console.log(
+            `[LOG]: Application (dialog): Found localStorage data...`
+          );
+        }
+        SCounters.fetchPostCounters();
+        console.log(`[LOG]: Application (dialog): POST finished. Done.`);
+        SDialog.deleteDialog();
+      } catch (error) {
+        console.error(
+          `[ERROR]: Application (dialog): Sendidng finished with error ${error}.`
+        );
       }
-      SCounters.fetchPostCounters();
-      SDialog.deleteDialog();
     },
     noFunction: () => {
-      console.log(
-        `[LOG]: Application (dialog): Clear localStorage and fetch begin...`
-      );
-      SCounters.clearLocalStorage();
-      SCounters.fetchGetCounters();
-      SCounters.saveToLocalStorage();
-      SDialog.deleteDialog();
+      try {
+        console.log(
+          `[LOG]: Application (dialog): Clear localStorage and fetch begin...`
+        );
+        SCounters.clearLocalStorage();
+        SCounters.fetchGetCounters();
+        console.log(`[LOG]: Application (dialog): GET finished...`);
+        SCounters.saveToLocalStorage();
+        console.log(
+          `[LOG]: Application (dialog): Saved to localStorage. Done.`
+        );
+        SDialog.deleteDialog();
+      } catch (error) {
+        console.error(
+          `[ERROR]: Application (dialog): Sendidng finished with error ${error}.`
+        );
+      }
     },
   };
 
