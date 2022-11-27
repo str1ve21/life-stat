@@ -20,7 +20,7 @@ export default function Account() {
 
   let [isShowPass, setIsShowPass] = useState(false);
 
-  const wrongDataDialog: ISureDialog = {
+  const dialogData: ISureDialog = {
     id: "wrongData",
     title: ``,
     text: ``,
@@ -30,9 +30,7 @@ export default function Account() {
     isNoFunc: true,
     canClose: true,
     noFunction: () => {
-      document
-        .querySelector<HTMLDialogElement>("#" + wrongDataDialog.id)!
-        .close();
+      document.querySelector<HTMLDialogElement>("#" + dialogData.id)!.close();
       SDialog.deleteDialog();
     },
   };
@@ -44,16 +42,16 @@ export default function Account() {
     };
 
     if (data.username.length < 3) {
-      wrongDataDialog.title = `Короткий логин.`;
-      wrongDataDialog.text = `Длинна логина должна быть больше 4 символов.`;
-      SDialog.createDialog(wrongDataDialog);
+      dialogData.title = `Короткий логин.`;
+      dialogData.text = `Длинна логина должна быть больше 4 символов.`;
+      SDialog.createDialog(dialogData);
       return;
     }
 
     if (data.password.length < 7) {
-      wrongDataDialog.title = `Ненадежный пароль.`;
-      wrongDataDialog.text = `Пароль должен быть длиннее 8 символов.`;
-      SDialog.createDialog(wrongDataDialog);
+      dialogData.title = `Ненадежный пароль.`;
+      dialogData.text = `Пароль должен быть длиннее 8 символов.`;
+      SDialog.createDialog(dialogData);
       return;
     }
 
@@ -63,17 +61,18 @@ export default function Account() {
         postAccountBody(data)
       );
       if (response.status === 200) {
+        localStorage.setItem("Username", data.username);
         navigation("/app");
         return;
       } else if (response.status === 403) {
-        wrongDataDialog.title = `Неверный логин или пароль.`;
-        wrongDataDialog.text = `Вероятно, что вы ввели неверный логин или пароль. Код ошибки: ${response.status}`;
-        SDialog.createDialog(wrongDataDialog);
+        dialogData.title = `Неверный логин или пароль.`;
+        dialogData.text = `Вероятно, что вы ввели неверный логин или пароль. Код ошибки: ${response.status}`;
+        SDialog.createDialog(dialogData);
         return;
       } else {
-        wrongDataDialog.title = `Неизвестная ошибка.`;
-        wrongDataDialog.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
-        SDialog.createDialog(wrongDataDialog);
+        dialogData.title = `Неизвестная ошибка.`;
+        dialogData.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
+        SDialog.createDialog(dialogData);
       }
       return;
     }
@@ -84,17 +83,18 @@ export default function Account() {
     );
     if (response.status === 200) {
       setIsLogin((isLogin = true));
-      wrongDataDialog.title = `Регистрация успешна.`;
-      wrongDataDialog.text = `Теперь вы можете войти в свой аккаунт. Сохраните данные, восстановление пароля пока не работает!`;
-      SDialog.createDialog(wrongDataDialog);
+      localStorage.setItem("Username", data.username);
+      dialogData.title = `Регистрация успешна.`;
+      dialogData.text = `Теперь вы можете войти в свой аккаунт. Сохраните данные, восстановление пароля пока не работает!`;
+      SDialog.createDialog(dialogData);
     } else if (response.status === 409) {
-      wrongDataDialog.title = `Пользователь уже существует.`;
-      wrongDataDialog.text = `Пользователь с таким логином уже существует. Код ошибки: ${response.status}`;
-      SDialog.createDialog(wrongDataDialog);
+      dialogData.title = `Пользователь уже существует.`;
+      dialogData.text = `Пользователь с таким логином уже существует. Код ошибки: ${response.status}`;
+      SDialog.createDialog(dialogData);
     } else {
-      wrongDataDialog.title = `Неизвестная ошибка.`;
-      wrongDataDialog.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
-      SDialog.createDialog(wrongDataDialog);
+      dialogData.title = `Неизвестная ошибка.`;
+      dialogData.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
+      SDialog.createDialog(dialogData);
     }
   }
 

@@ -8,6 +8,10 @@ import SDialog from "../store/SDialog";
 import SCounters from "../store/SCounters";
 import SCounterDialog from "../store/SCounterDialog";
 
+// local functions
+import counterStorage from "../func/setStorage";
+import { errText, logResponse, logText, warnResponse } from "../func/console";
+
 // interfaces
 import ISureDialog from "../interfaces/ISureDialog";
 
@@ -32,44 +36,60 @@ const ApplicationPage = observer(() => {
     canClose: false,
     yesFunction: () => {
       try {
-        console.log(`[LOG]: Application (dialog): POST started...`);
-        if (localStorage.getItem("All Counters")) {
+        console.log(logText("Application", "dialog", "POST started..."));
+        if (localStorage.getItem(counterStorage())) {
           SCounters.loadFromLocalStorage();
           console.log(
-            `[LOG]: Application (dialog): Found localStorage data...`
+            logText("Application", "dialog", "Found localStorage data...")
           );
         }
         SCounters.fetchPostCounters();
-        console.log(`[LOG]: Application (dialog): POST finished. Done.`);
+        console.log(logText("Application", "dialog", "POST finished. Done"));
         SDialog.deleteDialog();
       } catch (error) {
         console.error(
-          `[ERROR]: Application (dialog): Sendidng finished with error ${error}.`
+          errText(
+            "Application",
+            "dialog",
+            `Sendidng finished with error ${error}`
+          )
         );
       }
     },
     noFunction: () => {
       try {
-        console.log(`[LOG]: Application (dialog): GET started...`);
+        console.log(logText("Application", "dialog", "GET started..."));
         SCounters.fetchGetCounters();
         console.log(
-          `[LOG]: Application (dialog): Saved to localStorage. Done.`
+          logText("Application", "dialog", "Saved to localStorage. Done")
         );
         SDialog.deleteDialog();
       } catch (error) {
         console.error(
-          `[ERROR]: Application (dialog): Sendidng finished with error ${error}.`
+          errText(
+            "Application",
+            "dialog",
+            `Sendidng finished with error ${error}`
+          )
         );
       }
     },
   };
 
   async function countersLogic() {
+    SCounters.clearCounters();
+
     const getResult = await SCounters.fetchGetCounters(true);
 
     if (import.meta.env.PROD && getResult === 401) {
       console.warn(
-        `[WARN]: Application GET (if). More info: ${getResult}. Войдите в аккаунт, прежде чем открывать приложение!`
+        warnResponse(
+          "Application",
+          "GET",
+          "if",
+          getResult,
+          "Войдите в аккаунт, прежде чем открывать приложение!"
+        )
       );
       navigator("/");
       return;
@@ -82,7 +102,13 @@ const ApplicationPage = observer(() => {
 
     if (getResult !== undefined) {
       console.log(
-        `[LOG]: Application GET fetch finished. Response status: ${getResult}.`
+        logResponse(
+          "Application",
+          "GET",
+          "fetch finish",
+          getResult,
+          "По кайфу работает"
+        )
       );
     }
   }

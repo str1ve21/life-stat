@@ -1,6 +1,18 @@
+// react, router, mobx
 import { makeAutoObservable, runInAction, toJS } from "mobx";
-import ICounter from "../interfaces/ICounter";
+
+// local functions
+import counterStorage from "../func/setStorage";
+import {
+  errResponse,
+  logResponse,
+  logText,
+  warnResponse,
+} from "../func/console";
 import { serverURL, getBody, postCountersBody } from "../func/fetchData";
+
+// interfaces
+import ICounter from "../interfaces/ICounter";
 
 class counterStore {
   constructor() {
@@ -62,34 +74,60 @@ class counterStore {
       const response = await fetch(`${serverURL()}/allCounters`, getBody());
 
       if (response.status !== 200) {
-        console.error(
-          `[ERROR]: SCounters GET (if). More info: ${response.status}.`
-        );
+        console.error(errResponse("SCounters", "GET", "if", response.status));
         return response.status;
       }
 
       console.log(
-        `[LOG]: SCounters GET (response). More info: ${response.status}. По кайфу работает.`
+        logResponse(
+          "SCounters",
+          "GET",
+          "response",
+          response.status,
+          "По кайфу работает"
+        )
       );
 
       const serverCounters: ICounter[] = await response.json();
 
       if (isInitial && serverCounters !== null) {
-        console.log(`[LOG]: SCounters GET (initial). Started...`);
+        console.log(
+          logResponse(
+            "SCounters",
+            "GET",
+            "initial",
+            response.status,
+            "Started..."
+          )
+        );
 
         const isSynced: boolean =
-          localStorage.getItem("All Counters") ===
+          localStorage.getItem(counterStorage()) ===
           JSON.stringify(serverCounters);
 
         console.log(
-          `[LOG]: LocalStorage data: ${localStorage.getItem(
-            "All Counters"
-          )}\n\n[LOG]: Server data: ${JSON.stringify(serverCounters)}`
+          logText(
+            "SCounters",
+            "isInitial",
+            `LocalStorage data: ${localStorage.getItem(counterStorage())}`
+          ),
+          "\n\n",
+          logText(
+            "SCounters",
+            "isInitial",
+            `Server data: ${JSON.stringify(serverCounters)}`
+          )
         );
 
         if (!isSynced) {
           console.warn(
-            `[WARN]: SCounters GET (sync check). More info: ${isSynced} (isSynced).`
+            warnResponse(
+              "SCounters",
+              "GET",
+              "sync check",
+              undefined,
+              `isSynced: ${isSynced}, data conflict`
+            )
           );
           return "Data conflict";
         }
@@ -105,10 +143,16 @@ class counterStore {
 
       return response.status;
     } catch (error) {
-      console.error(`[ERROR]: SCounters GET (catch). More info: ${error}.`);
+      console.error(errResponse("SCounters", "GET", "catch", undefined, error));
 
-      console.warn(
-        `[WARN]: SCounters GET (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
+      console.log(
+        logResponse(
+          "SCounters",
+          "GET",
+          "catch",
+          undefined,
+          "Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета"
+        )
       );
 
       this.loadFromLocalStorage();
@@ -125,15 +169,29 @@ class counterStore {
       );
 
       console.log(
-        `[LOG]: SCounters POST (response). More info: ${response.status}. По кайфу работает.`
+        logResponse(
+          "SCounters",
+          "POST",
+          "response",
+          response.status,
+          "По кайфу работает"
+        )
       );
 
       this.saveToLocalStorage();
     } catch (error) {
-      console.error(`[ERROR]: SCounters POST (catch). More info: ${error}.`);
+      console.error(
+        errResponse("SCounters", "POST", "catch", undefined, error)
+      );
 
-      console.warn(
-        `[WARN]: SCounters POST (catch). Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета.`
+      console.log(
+        logResponse(
+          "SCounters",
+          "POST",
+          "catch",
+          undefined,
+          "Внимание! Используется локальное хранилище вместо сохранения на сервере. Возможно причина тому отсутствие интернета"
+        )
       );
 
       this.saveToLocalStorage();
@@ -141,18 +199,18 @@ class counterStore {
   }
 
   clearLocalStorage() {
-    localStorage.removeItem("All Counters");
+    localStorage.removeItem(counterStorage());
   }
 
   saveToLocalStorage() {
     const savedCountersArray = JSON.stringify(toJS(this.countersData));
-    localStorage.setItem("All Counters", savedCountersArray);
+    localStorage.setItem(counterStorage(), savedCountersArray);
   }
 
   loadFromLocalStorage() {
     this.countersData = [];
     const loadedCountersArray: ICounter[] = JSON.parse(
-      localStorage.getItem("All Counters")!
+      localStorage.getItem(counterStorage())!
     );
     loadedCountersArray.forEach((item) => {
       this.countersData.push(item);
