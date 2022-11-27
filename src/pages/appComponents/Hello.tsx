@@ -96,6 +96,7 @@ export default function WelcomePage() {
     const response = await fetch(`${serverURL()}/user`, getBody());
     const serverData = await response.json();
     setUsername(serverData.message);
+    localStorage.setItem("Username", serverData.message);
   }
 
   useEffect(() => {
