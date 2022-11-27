@@ -74,7 +74,7 @@ class counterStore {
 
       const serverCounters: ICounter[] = await response.json();
 
-      if (isInitial) {
+      if (isInitial && serverCounters !== null) {
         console.log(`[LOG]: SCounters GET (initial). Started...`);
 
         const isSynced: boolean =
