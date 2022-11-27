@@ -52,7 +52,6 @@ const ApplicationPage = observer(() => {
       try {
         console.log(`[LOG]: Application (dialog): GET started...`);
         SCounters.fetchGetCounters();
-        console.log(`[LOG]: Application (dialog): GET finished...`);
         console.log(
           `[LOG]: Application (dialog): Saved to localStorage. Done.`
         );
