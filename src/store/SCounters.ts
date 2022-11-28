@@ -89,8 +89,11 @@ class counterStore {
       );
 
       const serverCounters: ICounter[] = await response.json();
+      const localCounters: ICounter[] = JSON.parse(
+        localStorage.getItem(counterStorage())!
+      );
 
-      if (isInitial && serverCounters) {
+      if (isInitial && serverCounters && localCounters) {
         console.log(
           logResponse(
             "SCounters",
@@ -101,16 +104,12 @@ class counterStore {
           )
         );
 
-        const local: ICounter[] = JSON.parse(
-          localStorage.getItem(counterStorage())!
-        );
-        const server: ICounter[] = serverCounters;
         let isSynced: boolean = true;
 
-        console.log(local, server);
+        console.log(localCounters, serverCounters);
 
-        for (let i = 0; i < server.length; i++) {
-          server[i].lastEdit === local[i].lastEdit
+        for (let i = 0; i < serverCounters.length; i++) {
+          serverCounters[i].lastEdit === localCounters[i].lastEdit
             ? (isSynced = true)
             : (isSynced = false);
           if (!isSynced) break;
@@ -120,13 +119,13 @@ class counterStore {
           logText(
             "SCounters",
             "isInitial",
-            `LocalStorage data: ${JSON.stringify(local)}`
+            `LocalStorage data: ${JSON.stringify(localCounters)}`
           ),
           "\n\n",
           logText(
             "SCounters",
             "isInitial",
-            `Server data: ${JSON.stringify(server)}`
+            `Server data: ${JSON.stringify(serverCounters)}`
           )
         );
 
