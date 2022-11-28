@@ -90,7 +90,7 @@ class counterStore {
 
       const serverCounters: ICounter[] = await response.json();
 
-      if (isInitial && serverCounters !== null) {
+      if (isInitial && serverCounters) {
         console.log(
           logResponse(
             "SCounters",
@@ -107,8 +107,8 @@ class counterStore {
         const server: ICounter[] = serverCounters;
         let isSynced: boolean = true;
 
-        for (let i = 0; i < local.length; i++) {
-          local[i].lastEdit === server[i].lastEdit
+        for (let i = 0; i < server.length; i++) {
+          server[i].lastEdit === local[i].lastEdit
             ? (isSynced = true)
             : (isSynced = false);
           if (!isSynced) break;
