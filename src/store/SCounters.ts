@@ -106,8 +106,6 @@ class counterStore {
 
         let isSynced: boolean = true;
 
-        console.log(localCounters, serverCounters);
-
         for (let i = 0; i < serverCounters.length; i++) {
           serverCounters[i].lastEdit === localCounters[i].lastEdit
             ? (isSynced = true)
