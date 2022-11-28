@@ -179,6 +179,8 @@ class counterStore {
       );
 
       this.saveToLocalStorage();
+
+      console.log(localStorage.getItem(counterStorage()), "\n\n", JSONStore);
     } catch (error) {
       console.error(
         errResponse("SCounters", "POST", "catch", undefined, error)
