@@ -160,8 +160,9 @@ class counterStore {
   }
 
   async fetchPostCounters() {
+    this.saveToLocalStorage();
     try {
-      const JSONStore: string = JSON.stringify(toJS(this.countersData));
+      const JSONStore: string = localStorage.getItem(counterStorage())!;
 
       const response = await fetch(
         `${serverURL()}/saveCounters`,
@@ -177,10 +178,6 @@ class counterStore {
           "По кайфу работает"
         )
       );
-
-      this.saveToLocalStorage();
-
-      console.log("post", JSONStore);
     } catch (error) {
       console.error(
         errResponse("SCounters", "POST", "catch", undefined, error)
@@ -206,18 +203,14 @@ class counterStore {
 
   saveToLocalStorage() {
     const savedCountersArray = JSON.stringify(toJS(this.countersData));
-    console.log("save", savedCountersArray);
     localStorage.setItem(counterStorage(), savedCountersArray);
   }
 
   loadFromLocalStorage() {
-    this.countersData = [];
     const loadedCountersArray: ICounter[] = JSON.parse(
       localStorage.getItem(counterStorage())!
     );
-    loadedCountersArray.forEach((item) => {
-      this.countersData.push(item);
-    });
+    this.setStorage(loadedCountersArray);
   }
 }
 
