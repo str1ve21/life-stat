@@ -18,7 +18,7 @@ import ICounterDialog from "../../interfaces/ICounterDialog";
 import Settings from "./Settings";
 
 export default function WelcomePage() {
-  let [username, setUsername] = useState("anon");
+  let [username, setUsername] = useState(localStorage.getItem("Username"));
 
   const createCounterDialog: ICounterDialog = {
     id: "counterDialog",
@@ -95,8 +95,10 @@ export default function WelcomePage() {
   async function getUser() {
     const response = await fetch(`${serverURL()}/user`, getBody());
     const serverData = await response.json();
-    setUsername(serverData.message);
-    localStorage.setItem("Username", serverData.message);
+    if (username !== serverData.message) {
+      setUsername(serverData.message);
+      localStorage.setItem("Username", serverData.message);
+    }
   }
 
   useEffect(() => {
