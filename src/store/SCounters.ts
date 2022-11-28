@@ -2,7 +2,7 @@
 import { makeAutoObservable, runInAction, toJS } from "mobx";
 
 // local functions
-import counterStorage from "../func/setStorage";
+import counterStorage from "../func/counterStorage";
 import {
   errResponse,
   logResponse,
@@ -140,9 +140,13 @@ class counterStore {
           );
           return "Data conflict";
         }
+
+        console.log(
+          logResponse("SCounters", "GET", "initial", response.status, "Done")
+        );
       }
 
-      if (serverCounters !== null) {
+      if (serverCounters) {
         runInAction(() => {
           this.setStorage(serverCounters);
         });

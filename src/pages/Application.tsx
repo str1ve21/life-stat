@@ -9,7 +9,7 @@ import SCounters from "../store/SCounters";
 import SCounterDialog from "../store/SCounterDialog";
 
 // local functions
-import counterStorage from "../func/setStorage";
+import counterStorage from "../func/counterStorage";
 import { errText, logResponse, logText, warnResponse } from "../func/console";
 
 // interfaces
