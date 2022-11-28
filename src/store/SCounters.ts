@@ -180,7 +180,7 @@ class counterStore {
 
       this.saveToLocalStorage();
 
-      console.log(localStorage.getItem(counterStorage()), "\n\n", JSONStore);
+      console.log("post", JSONStore);
     } catch (error) {
       console.error(
         errResponse("SCounters", "POST", "catch", undefined, error)
@@ -206,6 +206,7 @@ class counterStore {
 
   saveToLocalStorage() {
     const savedCountersArray = JSON.stringify(toJS(this.countersData));
+    console.log("save", savedCountersArray);
     localStorage.setItem(counterStorage(), savedCountersArray);
   }
 
