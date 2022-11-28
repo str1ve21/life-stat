@@ -3,6 +3,18 @@
 @tailwind utilities;
 
 @layer components {
+  ::-webkit-scrollbar {
+    @apply w-[7.5px];
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply dark:bg-neutral-900 bg-neutral-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply dark:bg-neutral-600 bg-neutral-400 rounded-full;
+  }
+
   section {
     @apply min-w-[320px] min-h-[700px];
   }

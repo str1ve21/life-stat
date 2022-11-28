@@ -28,7 +28,6 @@ class counterStore {
   addCounter(newCounterData: ICounter) {
     this.countersData.push(newCounterData);
 
-    this.saveToLocalStorage();
     this.fetchPostCounters();
   }
 
@@ -39,7 +38,6 @@ class counterStore {
 
     this.countersData.splice(counterToEdit, 1, editedCounter);
 
-    this.saveToLocalStorage();
     this.fetchPostCounters();
   }
 
@@ -50,7 +48,6 @@ class counterStore {
 
     this.countersData.splice(idToRemove, 1);
 
-    this.saveToLocalStorage();
     this.fetchPostCounters();
   }
 
@@ -62,7 +59,6 @@ class counterStore {
     this.countersData[objToChange].lastEdit = Date.now();
     this.countersData[objToChange].counter += inputValue;
 
-    this.saveToLocalStorage();
     this.fetchPostCounters();
   }
 
@@ -92,9 +88,9 @@ class counterStore {
         )
       );
 
-      const serverCounters: string = await response.text();
+      const serverCounters: ICounter[] = await response.json();
 
-      if (isInitial && serverCounters !== "null") {
+      if (isInitial && serverCounters !== null) {
         console.log(
           logResponse(
             "SCounters",
@@ -105,14 +101,31 @@ class counterStore {
           )
         );
 
-        const local = localStorage.getItem(counterStorage());
-        const server = serverCounters;
-        const isSynced: boolean = local === server;
+        const local: ICounter[] = JSON.parse(
+          localStorage.getItem(counterStorage())!
+        );
+        const server: ICounter[] = serverCounters;
+        let isSynced: boolean = true;
+
+        for (let i = 0; i < local.length; i++) {
+          local[i].lastEdit === server[i].lastEdit
+            ? (isSynced = true)
+            : (isSynced = false);
+          if (!isSynced) break;
+        }
 
         console.log(
-          logText("SCounters", "isInitial", `LocalStorage data: ${local}`),
+          logText(
+            "SCounters",
+            "isInitial",
+            `LocalStorage data: ${JSON.stringify(local)}`
+          ),
           "\n\n",
-          logText("SCounters", "isInitial", `Server data: ${server}`)
+          logText(
+            "SCounters",
+            "isInitial",
+            `Server data: ${JSON.stringify(server)}`
+          )
         );
 
         if (!isSynced) {
@@ -129,9 +142,9 @@ class counterStore {
         }
       }
 
-      if (serverCounters !== "null") {
+      if (serverCounters !== null) {
         runInAction(() => {
-          this.setStorage(JSON.parse(serverCounters));
+          this.setStorage(serverCounters);
         });
       }
 
@@ -156,8 +169,9 @@ class counterStore {
   }
 
   async fetchPostCounters() {
+    this.saveToLocalStorage();
     try {
-      const JSONStore: string = localStorage.getItem(counterStorage())!;
+      const JSONStore: string = JSON.stringify(toJS(this.countersData));
 
       const response = await fetch(
         `${serverURL()}/saveCounters`,
