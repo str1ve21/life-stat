@@ -107,6 +107,8 @@ class counterStore {
         const server: ICounter[] = serverCounters;
         let isSynced: boolean = true;
 
+        console.log(local, server);
+
         for (let i = 0; i < server.length; i++) {
           server[i].lastEdit === local[i].lastEdit
             ? (isSynced = true)
@@ -220,10 +222,12 @@ class counterStore {
   }
 
   loadFromLocalStorage() {
-    const loadedCountersArray: ICounter[] = JSON.parse(
-      localStorage.getItem(counterStorage())!
-    );
-    this.setStorage(loadedCountersArray);
+    if (localStorage.getItem(counterStorage())) {
+      const loadedCountersArray: ICounter[] = JSON.parse(
+        localStorage.getItem(counterStorage())!
+      );
+      this.setStorage(loadedCountersArray);
+    }
   }
 }
 
