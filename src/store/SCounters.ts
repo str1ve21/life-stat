@@ -28,6 +28,7 @@ class counterStore {
   addCounter(newCounterData: ICounter) {
     this.countersData.push(newCounterData);
 
+    this.saveToLocalStorage();
     this.fetchPostCounters();
   }
 
@@ -38,6 +39,7 @@ class counterStore {
 
     this.countersData.splice(counterToEdit, 1, editedCounter);
 
+    this.saveToLocalStorage();
     this.fetchPostCounters();
   }
 
@@ -48,6 +50,7 @@ class counterStore {
 
     this.countersData.splice(idToRemove, 1);
 
+    this.saveToLocalStorage();
     this.fetchPostCounters();
   }
 
@@ -59,6 +62,7 @@ class counterStore {
     this.countersData[objToChange].lastEdit = Date.now();
     this.countersData[objToChange].counter += inputValue;
 
+    this.saveToLocalStorage();
     this.fetchPostCounters();
   }
 
@@ -88,9 +92,9 @@ class counterStore {
         )
       );
 
-      const serverCounters: ICounter[] = await response.json();
+      const serverCounters: string = await response.text();
 
-      if (isInitial && serverCounters !== null) {
+      if (isInitial && serverCounters !== "null") {
         console.log(
           logResponse(
             "SCounters",
@@ -101,22 +105,14 @@ class counterStore {
           )
         );
 
-        const isSynced: boolean =
-          localStorage.getItem(counterStorage()) ===
-          JSON.stringify(serverCounters);
+        const local = localStorage.getItem(counterStorage());
+        const server = serverCounters;
+        const isSynced: boolean = local === server;
 
         console.log(
-          logText(
-            "SCounters",
-            "isInitial",
-            `LocalStorage data: ${localStorage.getItem(counterStorage())}`
-          ),
+          logText("SCounters", "isInitial", `LocalStorage data: ${local}`),
           "\n\n",
-          logText(
-            "SCounters",
-            "isInitial",
-            `Server data: ${JSON.stringify(serverCounters)}`
-          )
+          logText("SCounters", "isInitial", `Server data: ${server}`)
         );
 
         if (!isSynced) {
@@ -133,9 +129,9 @@ class counterStore {
         }
       }
 
-      if (serverCounters !== null) {
+      if (serverCounters !== "null") {
         runInAction(() => {
-          this.setStorage(serverCounters);
+          this.setStorage(JSON.parse(serverCounters));
         });
       }
 
@@ -160,7 +156,6 @@ class counterStore {
   }
 
   async fetchPostCounters() {
-    this.saveToLocalStorage();
     try {
       const JSONStore: string = localStorage.getItem(counterStorage())!;
 
