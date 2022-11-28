@@ -22,7 +22,7 @@ const Main = observer(() => {
         {SCounters.countersData.length <= 0 && (
           <div className="text-center">
             <h2 className="hello-title my-[40px] text-neutral-400 dark:text-neutral-600">
-              /ᐠᵕ̩̩̥ ‸ᵕ̩̩̥ ᐟ\
+              /ᐠᵕ̩ ‸ᵕ̩ ᐟ\
             </h2>
             <p className="hello-subtitle text-neutral-400 dark:text-neutral-600">{`"Пусто и одиноко тут..." - грустно промяукал котик.`}</p>
           </div>
