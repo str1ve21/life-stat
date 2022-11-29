@@ -88,14 +88,18 @@ class counterStore {
         )
       );
 
-      if (localStorage.getItem(counterStorage()) === null) {
-        localStorage.setItem(counterStorage(), "[]");
-      }
-
-      const serverCounters: ICounter[] = await response.json();
-      const localCounters: ICounter[] = JSON.parse(
+      let serverCounters: ICounter[] = await response.json();
+      let localCounters: ICounter[] = JSON.parse(
         localStorage.getItem(counterStorage())!
       );
+
+      if (serverCounters === null) {
+        serverCounters = [];
+      }
+      if (localCounters === null) {
+        localCounters = [];
+        localStorage.setItem(counterStorage(), "[]");
+      }
 
       if (isInitial) {
         console.log(
