@@ -17,7 +17,7 @@ interface IProps {
 
 const CounterSetValue = observer((props: IProps) => {
   return (
-    <div className="grid grid-cols-2 gap-[10px] md:gap-[20px] mt-[10px]">
+    <div className="grid grid-cols-2 gap-[10px] md:gap-[20px] mt-[5px] md:mt-[10px]">
       <input
         type="number"
         defaultValue={props.defInput}
