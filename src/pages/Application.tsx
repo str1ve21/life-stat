@@ -13,6 +13,7 @@ import counterStorage from "../func/counterStorage";
 import { errText, logResponse, logText, warnResponse } from "../func/console";
 
 // interfaces
+import ICounter from "../interfaces/ICounter";
 import ISureDialog from "../interfaces/ISureDialog";
 
 // components
@@ -28,7 +29,7 @@ const ApplicationPage = observer(() => {
   const dataDialog: ISureDialog = {
     id: `conflictDialog`,
     title: `Конфликт данных.`,
-    text: `Обнаружена разница между данными счётчиков на сервере и локальным хранилищем. Возможно это было вызвано внесением изменений офлайн. В данной ситуации вы можете или отправить локальные данные на сервер, либо загрузить данные с сервера и заменить ими локальные.`,
+    text: "",
     yesText: "Отправить на сервер",
     noText: "Загрузить с сервера",
     isYesFunc: true,
@@ -81,13 +82,15 @@ const ApplicationPage = observer(() => {
 
     const getResult = await SCounters.fetchGetCounters(true);
 
-    if (import.meta.env.PROD && getResult === 401) {
+    if (getResult === undefined) return;
+
+    if (import.meta.env.PROD && getResult.code === 401) {
       console.warn(
         warnResponse(
           "Application",
           "GET",
           "if",
-          getResult,
+          getResult.code,
           "Войдите в аккаунт, прежде чем открывать приложение!"
         )
       );
@@ -95,22 +98,23 @@ const ApplicationPage = observer(() => {
       return;
     }
 
-    if (getResult === "Data conflict") {
+    if (getResult.type) {
+      dataDialog.text = `Обнаружена разница между данными счётчиков на сервере и локальным хранилищем.
+      Возможно это было вызвано внесением изменений офлайн.
+      В данной ситуации вы можете или отправить локальные данные на сервер, либо загрузить данные с сервера и заменить ими локальные.`;
       SDialog.createDialog(dataDialog);
       return;
     }
 
-    if (getResult !== undefined) {
-      console.log(
-        logResponse(
-          "Application",
-          "GET",
-          "fetch finish",
-          getResult,
-          "По кайфу работает"
-        )
-      );
-    }
+    console.log(
+      logResponse(
+        "Application",
+        "GET",
+        "fetch finish",
+        getResult.code,
+        "По кайфу работает"
+      )
+    );
   }
 
   useEffect(() => {

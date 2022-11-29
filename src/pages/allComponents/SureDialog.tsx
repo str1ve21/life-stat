@@ -28,7 +28,7 @@ export default function SureDialog() {
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
-        <h3
+        <p
           className={`subtitle ${
             !dialogElementData.isNoFunc && !dialogElementData.isYesFunc
               ? "mb-0"
@@ -36,7 +36,7 @@ export default function SureDialog() {
           }`}
         >
           {dialogElementData.text}
-        </h3>
+        </p>
       </div>
       <div className="flex gap-[10px] md:gap-[20px]">
         {dialogElementData.isYesFunc && (
