@@ -33,7 +33,7 @@ const Counter = observer((props: IProps) => {
       style={{ background: props.data.color, color: props.data.textColor }}
     >
       <div
-        className="flex flex-col justify-between h-full mb-[10px] counter-padding pr-[40px] md:pr-[80px] border-2 leading-none backdrop-invert-[0.075] rounded-2xl"
+        className="flex flex-col justify-between h-full counter-padding pr-[40px] md:pr-[80px] mb-[5px] md:mb-[10px] border-2 leading-none backdrop-invert-[0.075] rounded-2xl"
         style={{ borderColor: props.data.textColor }}
       >
         <div>
@@ -71,11 +71,11 @@ const Counter = observer((props: IProps) => {
       </div>
       {!!props.data.goal && (
         <div
-          className="w-full h-[40px] border-2 backdrop-invert-[0.075] rounded-2xl overflow-hidden"
+          className="w-full h-[40px] my-[5px] md:my-0 border-2 backdrop-invert-[0.075] rounded-2xl overflow-hidden"
           style={{ borderColor: props.data.textColor }}
         >
           <div
-            className="h-full opacity-75 rounded-2xl overflow-hidden duration-200"
+            className="h-full opacity-75 overflow-hidden duration-200"
             style={{
               width:
                 props.data.goal >= props.data.counter
