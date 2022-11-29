@@ -22,7 +22,7 @@ const CounterSetValue = observer((props: IProps) => {
         type="number"
         defaultValue={props.defInput}
         id={`CounterInput${props.storeCounterID}`}
-        className="min-h-[50px] px-2 py-2 text-base md:text-lg border-2 bg-transparent backdrop-invert-[0.15] text-raleway rounded-xl"
+        className="min-h-[50px] px-2 py-2 text-base md:text-lg border-2 bg-transparent backdrop-invert-[0.15] text-raleway rounded-2xl"
         style={{ borderColor: props.accentColor }}
       />
       <button

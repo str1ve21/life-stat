@@ -75,7 +75,7 @@ class counterStore {
 
       if (response.status !== 200) {
         console.error(errResponse("SCounters", "GET", "if", response.status));
-        return response.status;
+        return { code: response.status };
       }
 
       console.log(
@@ -88,66 +88,42 @@ class counterStore {
         )
       );
 
-      const serverCounters: ICounter[] | null = await response.json();
-      const localCounters: ICounter[] | null = JSON.parse(
+      if (localStorage.getItem(counterStorage()) === null) {
+        localStorage.setItem(counterStorage(), "[]");
+      }
+
+      const serverCounters: ICounter[] = await response.json();
+      const localCounters: ICounter[] = JSON.parse(
         localStorage.getItem(counterStorage())!
       );
 
       if (isInitial) {
-        if (serverCounters === null && localCounters !== null) {
-          console.warn(
-            warnResponse(
-              "SCounters",
-              "GET",
-              "null check",
-              response.status,
-              `server is null, and local no, data conflict`
-            )
-          );
-          return "Data conflict";
-        }
+        console.log(
+          logResponse(
+            "SCounters",
+            "GET",
+            "initial",
+            response.status,
+            "Started..."
+          )
+        );
 
-        if (serverCounters !== null && localCounters === null) {
-          console.warn(
-            warnResponse(
-              "SCounters",
-              "GET",
-              "null check",
-              response.status,
-              `local is null, and server no, data conflict`
-            )
-          );
-          return "Data conflict";
-        }
+        console.log(
+          `\n${logText(
+            "SCounters",
+            "isInitial",
+            `LocalStorage data: ${JSON.stringify(localCounters)}`
+          )}\n\n${logText(
+            "SCounters",
+            "isInitial",
+            `Server data: ${JSON.stringify(serverCounters)}`
+          )}\n\n`
+        );
 
-        if (serverCounters && localCounters) {
-          console.log(
-            logResponse(
-              "SCounters",
-              "GET",
-              "initial",
-              response.status,
-              "Started..."
-            )
-          );
+        let isSynced: boolean = true;
 
-          console.log(
-            logText(
-              "SCounters",
-              "isInitial",
-              `LocalStorage data: ${JSON.stringify(localCounters)}`
-            ),
-            "\n\n",
-            logText(
-              "SCounters",
-              "isInitial",
-              `Server data: ${JSON.stringify(serverCounters)}`
-            )
-          );
-
-          let isSynced: boolean = true;
-
-          for (let i = 0; i < serverCounters.length; i++) {
+        for (let i = 0; i < serverCounters.length; i++) {
+          try {
             serverCounters[i].lastEdit === localCounters[i].lastEdit
               ? (isSynced = true)
               : (isSynced = false);
@@ -156,25 +132,40 @@ class counterStore {
                 warnResponse(
                   "SCounters",
                   "GET",
-                  "sync check",
+                  "for sync check",
                   undefined,
                   `isSynced: ${isSynced}, data conflict`
                 )
               );
-              return "Data conflict";
+              return {
+                type: "Data conflict",
+              };
             }
+          } catch (error) {
+            console.warn(
+              warnResponse(
+                "SCounters",
+                "GET",
+                "for catch",
+                undefined,
+                `Something is undefined, data conflict`
+              )
+            );
+            return {
+              type: "Data conflict",
+            };
           }
-
-          console.log(
-            logResponse(
-              "SCounters",
-              "GET",
-              "initial",
-              response.status,
-              "Done, same data"
-            )
-          );
         }
+
+        console.log(
+          logResponse(
+            "SCounters",
+            "GET",
+            "initial",
+            response.status,
+            "Done, same data"
+          )
+        );
       }
 
       if (serverCounters) {
@@ -185,7 +176,7 @@ class counterStore {
 
       this.saveToLocalStorage();
 
-      return response.status;
+      return { code: response.status };
     } catch (error) {
       console.error(errResponse("SCounters", "GET", "catch", undefined, error));
 

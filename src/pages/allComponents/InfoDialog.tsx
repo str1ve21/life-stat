@@ -28,7 +28,7 @@ export default function InfoDialog() {
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
-        <h3 className="subtitle">{dialogElementData.description}</h3>
+        <p className="subtitle">{dialogElementData.description}</p>
       </div>
       <div className="flex flex-col gap-[10px]">
         {SInfoDialog.infoDialogData[0].text.map((item) => {
