@@ -93,86 +93,88 @@ class counterStore {
         localStorage.getItem(counterStorage())!
       );
 
-      if (serverCounters === null && localCounters !== null) {
-        console.warn(
-          warnResponse(
-            "SCounters",
-            "GET",
-            "null check",
-            response.status,
-            `server is null, and local no, data conflict`
-          )
-        );
-        return "Data conflict";
-      }
-
-      if (serverCounters !== null && localCounters === null) {
-        console.warn(
-          warnResponse(
-            "SCounters",
-            "GET",
-            "null check",
-            response.status,
-            `local is null, and server no, data conflict`
-          )
-        );
-        return "Data conflict";
-      }
-
-      if (isInitial && serverCounters && localCounters) {
-        console.log(
-          logResponse(
-            "SCounters",
-            "GET",
-            "initial",
-            response.status,
-            "Started..."
-          )
-        );
-
-        console.log(
-          logText(
-            "SCounters",
-            "isInitial",
-            `LocalStorage data: ${JSON.stringify(localCounters)}`
-          ),
-          "\n\n",
-          logText(
-            "SCounters",
-            "isInitial",
-            `Server data: ${JSON.stringify(serverCounters)}`
-          )
-        );
-
-        let isSynced: boolean = true;
-
-        for (let i = 0; i < serverCounters.length; i++) {
-          serverCounters[i].lastEdit === localCounters[i].lastEdit
-            ? (isSynced = true)
-            : (isSynced = false);
-          if (!isSynced) {
-            console.warn(
-              warnResponse(
-                "SCounters",
-                "GET",
-                "sync check",
-                undefined,
-                `isSynced: ${isSynced}, data conflict`
-              )
-            );
-            return "Data conflict";
-          }
+      if (isInitial) {
+        if (serverCounters === null && localCounters !== null) {
+          console.warn(
+            warnResponse(
+              "SCounters",
+              "GET",
+              "null check",
+              response.status,
+              `server is null, and local no, data conflict`
+            )
+          );
+          return "Data conflict";
         }
 
-        console.log(
-          logResponse(
-            "SCounters",
-            "GET",
-            "initial",
-            response.status,
-            "Done, same data"
-          )
-        );
+        if (serverCounters !== null && localCounters === null) {
+          console.warn(
+            warnResponse(
+              "SCounters",
+              "GET",
+              "null check",
+              response.status,
+              `local is null, and server no, data conflict`
+            )
+          );
+          return "Data conflict";
+        }
+
+        if (serverCounters && localCounters) {
+          console.log(
+            logResponse(
+              "SCounters",
+              "GET",
+              "initial",
+              response.status,
+              "Started..."
+            )
+          );
+
+          console.log(
+            logText(
+              "SCounters",
+              "isInitial",
+              `LocalStorage data: ${JSON.stringify(localCounters)}`
+            ),
+            "\n\n",
+            logText(
+              "SCounters",
+              "isInitial",
+              `Server data: ${JSON.stringify(serverCounters)}`
+            )
+          );
+
+          let isSynced: boolean = true;
+
+          for (let i = 0; i < serverCounters.length; i++) {
+            serverCounters[i].lastEdit === localCounters[i].lastEdit
+              ? (isSynced = true)
+              : (isSynced = false);
+            if (!isSynced) {
+              console.warn(
+                warnResponse(
+                  "SCounters",
+                  "GET",
+                  "sync check",
+                  undefined,
+                  `isSynced: ${isSynced}, data conflict`
+                )
+              );
+              return "Data conflict";
+            }
+          }
+
+          console.log(
+            logResponse(
+              "SCounters",
+              "GET",
+              "initial",
+              response.status,
+              "Done, same data"
+            )
+          );
+        }
       }
 
       if (serverCounters) {
