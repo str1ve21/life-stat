@@ -88,10 +88,36 @@ class counterStore {
         )
       );
 
-      const serverCounters: ICounter[] = await response.json();
-      const localCounters: ICounter[] = JSON.parse(
+      const serverCounters: ICounter[] | null = await response.json();
+      const localCounters: ICounter[] | null = JSON.parse(
         localStorage.getItem(counterStorage())!
       );
+
+      if (serverCounters === null && localCounters !== null) {
+        console.warn(
+          warnResponse(
+            "SCounters",
+            "GET",
+            "null check",
+            response.status,
+            `server is null, and local no, data conflict`
+          )
+        );
+        return "Data conflict";
+      }
+
+      if (serverCounters !== null && localCounters === null) {
+        console.warn(
+          warnResponse(
+            "SCounters",
+            "GET",
+            "null check",
+            response.status,
+            `local is null, and server no, data conflict`
+          )
+        );
+        return "Data conflict";
+      }
 
       if (isInitial && serverCounters && localCounters) {
         console.log(
@@ -103,15 +129,6 @@ class counterStore {
             "Started..."
           )
         );
-
-        let isSynced: boolean = true;
-
-        for (let i = 0; i < serverCounters.length; i++) {
-          serverCounters[i].lastEdit === localCounters[i].lastEdit
-            ? (isSynced = true)
-            : (isSynced = false);
-          if (!isSynced) break;
-        }
 
         console.log(
           logText(
@@ -127,21 +144,34 @@ class counterStore {
           )
         );
 
-        if (!isSynced) {
-          console.warn(
-            warnResponse(
-              "SCounters",
-              "GET",
-              "sync check",
-              undefined,
-              `isSynced: ${isSynced}, data conflict`
-            )
-          );
-          return "Data conflict";
+        let isSynced: boolean = true;
+
+        for (let i = 0; i < serverCounters.length; i++) {
+          serverCounters[i].lastEdit === localCounters[i].lastEdit
+            ? (isSynced = true)
+            : (isSynced = false);
+          if (!isSynced) {
+            console.warn(
+              warnResponse(
+                "SCounters",
+                "GET",
+                "sync check",
+                undefined,
+                `isSynced: ${isSynced}, data conflict`
+              )
+            );
+            return "Data conflict";
+          }
         }
 
         console.log(
-          logResponse("SCounters", "GET", "initial", response.status, "Done")
+          logResponse(
+            "SCounters",
+            "GET",
+            "initial",
+            response.status,
+            "Done, same data"
+          )
         );
       }
 
