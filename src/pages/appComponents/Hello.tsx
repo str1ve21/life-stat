@@ -120,7 +120,7 @@ export default function WelcomePage() {
         id="hello-content"
         className="flex flex-col justify-center gap-[20px]"
       >
-        <h1 className="hello-title text-center leading-none break-all">
+        <h1 className="hello-title text-center leading-none break-words">
           {helloText[Math.floor(Math.random() * helloText.length)]}, {username}!
         </h1>
         <p className="hello-subtitle text-center leading-none">
