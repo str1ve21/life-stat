@@ -20,10 +20,10 @@ export default function Benefit() {
   const benefitParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#benefit-title",
-      power: 1.5,
+      power: 6,
       startFrom: 40,
-      initialTranslateY: -131,
-      finishAfter: 60,
+      block: 3,
+      finishBefore: 5,
     },
   ];
 
@@ -63,9 +63,9 @@ export default function Benefit() {
   return (
     <section
       id="Польза"
-      className="relative flex flex-col lg:flex-row h-max z-30 rounded-[40px] overflow-hidden"
+      className="relative flex justify-between flex-col lg:flex-row h-max z-30 rounded-[40px] overflow-hidden"
     >
-      <div className="flex flex-col justify-center min-h-[700px] lg:min-h-screen w-full lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
+      <div className="content-text">
         <div id="benefit-title">
           <h2 className="hello-title">Стоит ли тебе его использовать?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px]">
@@ -84,11 +84,11 @@ export default function Benefit() {
           Создать аккаунт
         </a>
       </div>
-      <div className="flex justify-center lg:justify-end items-center w-full lg:min-h-[700px] lg:h-screen px-[40px] lg:p-0">
+      <div className="content-image">
         <img
           src={UseAsset}
           alt="UseAsset"
-          className="h-[20vh] lg:h-2/3 object-cover rounded-t-full lg:rounded-tr-none lg:rounded-l-full"
+          className="rounded-t-[80px] lg:rounded-tr-none lg:rounded-l-full"
         />
       </div>
     </section>

@@ -20,17 +20,19 @@ export default function Hello() {
   const welcomeParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#welcome-text",
-      power: 1.5,
+      power: 6,
       startFrom: 0,
-      initialTranslateY: -140,
+      block: 1,
+      finishBefore: 0,
       finishAfter: 50,
     },
     {
       elem: "#welcome-image",
-      power: 5,
+      power: 2,
       startFrom: 10,
-      initialTranslateY: -25,
-      finishAfter: 50,
+      block: 1,
+      finishBefore: 0,
+      finishAfter: 60,
     },
   ];
 

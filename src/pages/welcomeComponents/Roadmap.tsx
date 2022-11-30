@@ -29,10 +29,10 @@ export default function Roadmap() {
   const benefitParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#roadmap-title",
-      power: 1.5,
+      power: 6,
       startFrom: 60,
-      initialTranslateY: -132,
-      finishAfter: 80,
+      block: 4,
+      finishBefore: 5,
     },
   ];
 
@@ -72,9 +72,9 @@ export default function Roadmap() {
   return (
     <section
       id="Планы"
-      className="relative flex flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-500 dark:from-app-550 to-app-600 dark:to-app-650 z-40 rounded-[40px] overflow-hidden"
+      className="relative flex justify-between flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-500 dark:from-app-550 to-app-600 dark:to-app-650 z-40 rounded-[40px] overflow-hidden"
     >
-      <div className="flex flex-col justify-center min-h-[700px] lg:min-h-screen w-full lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding">
+      <div className="content-text">
         <div id="roadmap-title">
           <h2 className="hello-title lg:text-right">Планы.</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">
@@ -94,11 +94,11 @@ export default function Roadmap() {
           })}
         </div>
       </div>
-      <div className="flex justify-center lg:justify-end items-center w-full lg:min-h-[700px] lg:h-screen px-[40px] lg:p-0">
+      <div className="content-image">
         <img
           src={RoadmapAsset}
           alt="RoadmapAsset"
-          className="h-[20vh] lg:h-2/3 object-cover rounded-t-full lg:rounded-tl-none lg:rounded-r-full"
+          className="rounded-t-[80px] lg:rounded-tl-none lg:rounded-r-full"
         />
       </div>
     </section>

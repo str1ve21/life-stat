@@ -9,10 +9,12 @@ export function createParallaxY(options: IParallaxYOptions): void {
     return;
   }
 
-  const initialTranslateValue = options.initialTranslateY || 0;
-  const startFromValue = options.startFrom! || 0;
-  const finishAfterValue = options.finishAfter! || window.outerHeight;
+  const startFromValue: number = options.startFrom! || 0;
+  const finishAfterValue: number = options.finishAfter! || 0;
+  const finishBeforeValue: number = options.finishBefore;
   const HTMLElement: HTMLElement = document.documentElement;
+  const block: number = options.block;
+  let whenZero: number;
   let scrolledFromTop: number;
   let parallaxNumber: number;
 
@@ -24,22 +26,36 @@ export function createParallaxY(options: IParallaxYOptions): void {
         (HTMLElement.scrollHeight - HTMLElement.clientHeight)) *
       100;
 
+    whenZero =
+      ((document.documentElement.clientHeight * block) /
+        (document.documentElement.scrollHeight -
+          document.documentElement.clientHeight)) *
+      100;
+
     if (scrolledFromTop < startFromValue) return;
 
-    if (scrolledFromTop > finishAfterValue) {
-      document.querySelector<HTMLElement>(
-        options.elem
-      )!.style.transform = `translateY(${0}%)`;
-      return;
+    if (finishAfterValue) {
+      if (scrolledFromTop > finishAfterValue) {
+        document.querySelector<HTMLElement>(
+          options.elem
+        )!.style.transform = `translateY(0%)`;
+        return;
+      }
+    } else {
+      if (scrolledFromTop > whenZero - finishBeforeValue) {
+        document.querySelector<HTMLElement>(
+          options.elem
+        )!.style.transform = `translateY(0%)`;
+        return;
+      }
     }
 
-    parallaxNumber = ((scrolledFromTop - startFromValue) / options.power) * 10;
+    parallaxNumber =
+      (-whenZero + finishBeforeValue + scrolledFromTop) * options.power;
 
     document.querySelector<HTMLElement>(
       options.elem
-    )!.style.transform = `translateY(${
-      initialTranslateValue + parallaxNumber
-    }%)`;
+    )!.style.transform = `translateY(${parallaxNumber}%)`;
   };
 
   return parallaxFunction();

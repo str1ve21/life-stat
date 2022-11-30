@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import SDialog from "../../store/SDialog";
 
 // local functions
-import { getInputValue } from "../../func/getInputValue";
+import { getCheckboxValue, getInputValue } from "../../func/getInputValue";
 import { postAccountBody, serverURL } from "../../func/fetchData";
 
 // interfaces
@@ -41,6 +41,9 @@ export default function Account() {
       password: getInputValue("#input-password"),
     };
 
+    const checkboxLicense: boolean = getCheckboxValue("#checkbox-license");
+    const checkboxUserData: boolean = getCheckboxValue("#checkbox-userdata");
+
     if (data.username.length < 3) {
       dialogData.title = `Короткий логин.`;
       dialogData.text = `Длинна логина должна быть больше 4 символов.`;
@@ -74,6 +77,20 @@ export default function Account() {
         dialogData.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
         SDialog.createDialog(dialogData);
       }
+      return;
+    }
+
+    if (!checkboxLicense) {
+      dialogData.title = `Пользовательское соглашение.`;
+      dialogData.text = `При регистрации вы не поставили галочку напротив пользовательского соглашения. Это необходимо для дальнейшей регистрации`;
+      SDialog.createDialog(dialogData);
+      return;
+    }
+
+    if (!checkboxUserData) {
+      dialogData.title = `Персональные данные.`;
+      dialogData.text = `При регистрации вы не поставили галочку напротив согласия на передачу пользовательских данных. Это необходимо для дальнейшей регистрации`;
+      SDialog.createDialog(dialogData);
       return;
     }
 
@@ -215,13 +232,41 @@ export default function Account() {
             </div>
           )}
           {isLogin === false && (
-            <button
-              onClick={accountLogic}
-              type="submit"
-              className="button w-full mx-auto bg-neutral-200 dark:bg-neutral-800"
-            >
-              Регистрация
-            </button>
+            <>
+              <button
+                onClick={accountLogic}
+                type="submit"
+                className="button w-full mx-auto bg-neutral-200 dark:bg-neutral-800"
+              >
+                Регистрация
+              </button>
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  className="checkbox ml-3"
+                  id="checkbox-license"
+                />
+                <span className="text-ssp ml-3 leading-none">
+                  Я прочитал{" "}
+                  <a href="#" className="text-app-150 dark:text-app-100">
+                    пользовательское соглашение
+                  </a>
+                </span>
+              </label>
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  className="checkbox ml-3"
+                  id="checkbox-userdata"
+                />
+                <span className="text-ssp ml-3 leading-none">
+                  Я согласен с{" "}
+                  <a href="#" className="text-app-150 dark:text-app-100">
+                    обработкой персональных данных
+                  </a>
+                </span>
+              </label>
+            </>
           )}
         </form>
       </div>
