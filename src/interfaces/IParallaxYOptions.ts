@@ -1,7 +1,8 @@
 export default interface IParallaxYOptions {
-  readonly elem: string;
-  readonly power: number;
-  readonly startFrom?: number;
-  readonly finishAfter?: number;
-  readonly initialTranslateY?: number;
+  elem: string;
+  power: number;
+  block: number;
+  finishBefore: number;
+  startFrom?: number;
+  finishAfter?: number;
 }

@@ -19,6 +19,18 @@
     @apply min-w-[320px] min-h-[700px];
   }
 
+  .content-text {
+    @apply flex flex-col justify-center min-h-[60vh] lg:min-h-screen w-full lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding;
+  }
+
+  .content-image {
+    @apply flex justify-center lg:justify-end items-center w-full lg:min-h-[700px] lg:h-screen px-[40px] lg:p-0;
+  }
+
+  .content-image img {
+    @apply h-[40vh] lg:h-2/3 object-cover;
+  }
+
   .content-padding {
     @apply px-[20px] md:px-[40px] lg:px-[60px] py-[20px];
   }
@@ -108,11 +120,11 @@
   }
 
   .checkbox {
-    @apply w-[20px] h-[20px] text-neutral-900 dark:text-neutral-100;
+    @apply w-[20px] h-[20px] accent-app-100 dark:accent-app-150;
   }
 
   .checkbox-label {
-    @apply flex justify-center items-center gap-[20px] py-2 text-lg text-raleway text-center rounded-2xl text-neutral-900 dark:text-neutral-100;
+    @apply flex justify-center items-center text-lg text-raleway rounded-2xl text-neutral-900 dark:text-neutral-100;
   }
 
   .account-form {
