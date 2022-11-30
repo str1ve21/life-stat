@@ -85,10 +85,11 @@ export default function WelcomePage() {
   const welcomeParallaxItems: IParallaxYOptions[] = [
     {
       elem: "#hello-content",
-      power: 10,
+      power: 2,
       startFrom: 0,
-      initialTranslateY: 0,
-      finishAfter: 100,
+      block: 0,
+      finishBefore: 0,
+      finishAfter: 75,
     },
   ];
 
