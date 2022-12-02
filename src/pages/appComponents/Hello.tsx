@@ -134,6 +134,7 @@ export default function WelcomePage() {
             onClick={() => {
               SCounterDialog.createDialog(createCounterDialog);
             }}
+            aria-label="Создать счётчик"
             className="button bg-emerald-300 dark:bg-emerald-600"
           >
             <svg
@@ -157,6 +158,7 @@ export default function WelcomePage() {
                 .querySelector<HTMLDialogElement>("#settingsDialog")
                 ?.showModal();
             }}
+            aria-label="Настройки приложения"
             className="button bg-sky-300 dark:bg-sky-600"
           >
             <svg

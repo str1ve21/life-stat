@@ -43,6 +43,7 @@ export default function SureDialog() {
           <button
             onClick={dialogElementData.yesFunction}
             className="button bg-emerald-300 dark:bg-emerald-600"
+            aria-label={dialogElementData.yesText}
           >
             {dialogElementData.yesText}
           </button>
@@ -51,6 +52,7 @@ export default function SureDialog() {
           <button
             onClick={dialogElementData.noFunction}
             className="button bg-rose-300 dark:bg-rose-600"
+            aria-label={dialogElementData.noText}
           >
             {dialogElementData.noText}
           </button>
@@ -67,6 +69,7 @@ export default function SureDialog() {
           onClick={() => {
             SDialog.deleteDialog();
           }}
+          aria-label="Закрыть диалоговое окно"
         >
           <path
             strokeLinecap="round"

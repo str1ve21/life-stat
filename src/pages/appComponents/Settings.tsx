@@ -1,6 +1,9 @@
 //react, router, mobx
 import React, { useState } from "react";
 
+// components
+import SettingsAccount from "./SettingsAccount";
+
 export default function InfoDialog() {
   let [currentSetting, setCurrentSetting] = useState("account");
 
@@ -11,14 +14,9 @@ export default function InfoDialog() {
     >
       <div className="dialog-header">
         <h2 className="title">Настройки.</h2>
-        <h3 className="subtitle">
-          Настройки приложения... Ожидаемо, наверное.
-        </h3>
+        <h3 className="subtitle">Настройки приложенияи аккаунта.</h3>
       </div>
-      <p className="text">
-        Люди добровые, извините, в разработке, пока нечего настраивать.
-      </p>
-      {/* <div className="buttons-navbar w-max mb-[20px] md:mb-[40px]">
+      <div className="buttons-navbar w-max mb-[20px] md:mb-[40px]">
         <button
           onClick={() => {
             setCurrentSetting("account");
@@ -44,7 +42,7 @@ export default function InfoDialog() {
           Приложение
         </button>
       </div>
-      {currentSetting === "account" && <div>acc</div>} */}
+      {currentSetting === "account" && <SettingsAccount></SettingsAccount>}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
