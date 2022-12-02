@@ -29,26 +29,32 @@ const Counter = observer((props: IProps) => {
   return (
     <div
       id={`Counter-${props.data.id}`}
-      className="flex flex-col justify-between min-w-[280px] w-max counter-padding break-words rounded-2xl"
+      className="flex flex-col justify-between min-w-[280px] w-max counter-padding break-words rounded-2xl duration-[2000ms]"
       style={{ background: props.data.color, color: props.data.textColor }}
     >
       <div
-        className="flex flex-col justify-between h-full counter-padding pr-[40px] md:pr-[80px] mb-[5px] md:mb-[10px] border-2 leading-none backdrop-invert-[0.075] rounded-2xl"
+        className="flex flex-col justify-between h-full counter-padding pr-[40px] md:pr-[80px] mb-[5px] md:mb-[10px] border-2 leading-none backdrop-invert-[0.075] rounded-2xl duration-[2000ms]"
         style={{ borderColor: props.data.textColor }}
       >
         <div>
-          <h2 className="title" style={{ color: props.data.textColor }}>
+          <h2
+            className="title duration-[2000ms]"
+            style={{ color: props.data.textColor }}
+          >
             {inArrayID + 1}. {props.data.title}
           </h2>
           {props.data.description && (
-            <p className="subtitle m-0" style={{ color: props.data.textColor }}>
+            <p
+              className="subtitle m-0 duration-[2000ms]"
+              style={{ color: props.data.textColor }}
+            >
               {props.data.description}
             </p>
           )}
         </div>
         <p
           className="counter-value mt-[20px] break-words text-justify"
-          style={{ color: props.data.textColor }}
+          style={{ color: props.data.textColor, transition: "color 2000ms" }}
         >
           {numeral(props.data.counter).format("0.[000]a")}
           {props.data.goal !== 0 && (
@@ -71,11 +77,11 @@ const Counter = observer((props: IProps) => {
       </div>
       {!!props.data.goal && (
         <div
-          className="w-full h-[40px] my-[5px] md:my-0 border-2 backdrop-invert-[0.075] rounded-2xl overflow-hidden"
+          className="w-full h-[40px] my-[5px] md:my-0 border-2 backdrop-invert-[0.075] rounded-2xl overflow-hidden duration-[2000ms]"
           style={{ borderColor: props.data.textColor }}
         >
           <div
-            className="h-full opacity-75 overflow-hidden duration-200"
+            className="h-full opacity-75 overflow-hidden"
             style={{
               width:
                 props.data.goal >= props.data.counter
@@ -84,6 +90,7 @@ const Counter = observer((props: IProps) => {
                     : "0%"
                   : "100%",
               background: props.data.textColor,
+              transition: "width 200ms ease-in-out, background 2000ms",
             }}
           ></div>
         </div>

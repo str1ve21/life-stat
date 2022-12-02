@@ -6,14 +6,12 @@ import { observer } from "mobx-react-lite";
 // stores
 import SDialog from "../store/SDialog";
 import SCounters from "../store/SCounters";
-import SCounterDialog from "../store/SCounterDialog";
 
 // local functions
 import counterStorage from "../func/counterStorage";
 import { errText, logResponse, logText, warnResponse } from "../func/console";
 
 // interfaces
-import ICounter from "../interfaces/ICounter";
 import ISureDialog from "../interfaces/ISureDialog";
 
 // components
@@ -21,7 +19,6 @@ import Hello from "./appComponents/Hello";
 import Main from "./appComponents/Main";
 import Navbar from "./allComponents/Navbar";
 import Footer from "./allComponents/Footer";
-import CounterDialog from "./appComponents/CounterDialog";
 
 const ApplicationPage = observer(() => {
   const navigator = useNavigate();
@@ -123,9 +120,6 @@ const ApplicationPage = observer(() => {
 
   return (
     <main id="app" className="bg-neutral-200 dark:bg-neutral-900">
-      {SCounterDialog.counterDialogData.length > 0 && (
-        <CounterDialog></CounterDialog>
-      )}
       <Navbar href="/" isMobileExist={false} customClass="absolute"></Navbar>
       <Hello></Hello>
       <Main></Main>

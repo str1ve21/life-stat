@@ -51,6 +51,10 @@
     @apply bg-neutral-100/75 dark:bg-neutral-900/75;
   }
 
+  .dialog-anim {
+    @apply opacity-0 -translate-y-[40px];
+  }
+
   .dialog-padding {
     @apply p-[20px] md:p-[40px];
   }

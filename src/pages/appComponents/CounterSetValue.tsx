@@ -24,18 +24,26 @@ const CounterSetValue = observer((props: IProps) => {
         aria-label="Значение для изменения счётчика"
         id={`CounterInput${props.storeCounterID}`}
         className="min-h-[50px] px-2 py-2 text-base md:text-lg border-2 bg-transparent backdrop-invert-[0.15] text-raleway rounded-2xl"
-        style={{ borderColor: props.accentColor }}
+        style={{
+          borderColor: props.accentColor,
+          transition: "border 2000ms, background 2000ms, color 500ms",
+        }}
       />
       <button
         onClick={() => {
-          SCounters.changeValue(
-            props.storeCounterID,
-            +getInputValue(`#CounterInput${props.storeCounterID}`)
-          );
+          if (+getInputValue(`#CounterInput${props.storeCounterID}`) !== 0) {
+            SCounters.changeValue(
+              props.storeCounterID,
+              +getInputValue(`#CounterInput${props.storeCounterID}`)
+            );
+          }
         }}
         aria-label="Добавить значение"
-        className="p-auto border-2 hover:scale-95 text-base md:text-lg text-raleway backdrop-invert-[0.15] rounded-2xl duration-200"
-        style={{ borderColor: props.accentColor }}
+        className="p-auto border-2 hover:scale-95 text-base md:text-lg text-raleway backdrop-invert-[0.15] rounded-2xl"
+        style={{
+          borderColor: props.accentColor,
+          transition: "border 2000ms, background 2000ms, transform 200ms",
+        }}
       >
         Добавить
       </button>
