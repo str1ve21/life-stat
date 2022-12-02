@@ -6,6 +6,7 @@ import { observer } from "mobx-react-lite";
 import SDialog from "../../store/SDialog";
 import SCounters from "../../store/SCounters";
 import SInfoDialog from "../../store/SInfoDialog";
+import SCounterDialog from "../../store/SCounterDialog";
 
 // interfaces
 import ICounter from "../../interfaces/ICounter";
@@ -14,10 +15,14 @@ import ICounter from "../../interfaces/ICounter";
 import Counter from "./Counter";
 import SureDialog from "../allComponents/SureDialog";
 import InfoDialog from "../allComponents/InfoDialog";
+import CounterDialog from "./CounterDialog";
 
 const Main = observer(() => {
   return (
     <section className="min-h-[75vh] h-max content-padding">
+      {SCounterDialog.counterDialogData.length > 0 && (
+        <CounterDialog></CounterDialog>
+      )}
       <div id="counters" className="flex flex-wrap justify-center gap-[20px]">
         {SCounters.countersData.length <= 0 && (
           <div className="text-center">

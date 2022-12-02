@@ -10,11 +10,11 @@ export default function InfoDialog() {
   return (
     <dialog
       id="settingsDialog"
-      className="dialog mx-[20px] md:mx-auto md:max-w-6xl w-full dialog-padding rounded-2xl"
+      className="dialog dialog-anim dialog-padding md:max-w-6xl w-full mx-[20px] md:mx-auto rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">Настройки.</h2>
-        <h3 className="subtitle">Настройки приложенияи аккаунта.</h3>
+        <h3 className="subtitle">Настройки приложения и аккаунта.</h3>
       </div>
       <div className="buttons-navbar w-max mb-[20px] md:mb-[40px]">
         <button
@@ -51,7 +51,12 @@ export default function InfoDialog() {
         stroke="currentColor"
         className="dialog-close"
         onClick={() => {
-          document.querySelector<HTMLDialogElement>("#settingsDialog")?.close();
+          const dialog =
+            document.querySelector<HTMLDialogElement>("#settingsDialog")!;
+          dialog.classList.toggle("dialog-anim");
+          setTimeout(() => {
+            dialog.close();
+          }, 200);
         }}
       >
         <path

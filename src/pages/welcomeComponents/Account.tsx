@@ -30,7 +30,9 @@ export default function Account() {
     isNoFunc: true,
     canClose: true,
     noFunction: () => {
-      document.querySelector<HTMLDialogElement>("#" + dialogData.id)!.close();
+      document
+        .querySelector<HTMLDialogElement>("#sureDialog" + dialogData.id)!
+        .close();
       SDialog.deleteDialog();
     },
   };

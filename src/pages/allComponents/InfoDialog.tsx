@@ -12,19 +12,22 @@ export default function InfoDialog() {
 
   useEffect(() => {
     if (
-      !document.querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
-        .open
+      !document.querySelector<HTMLDialogElement>(
+        "#infoDialog" + dialogElementData.id
+      )!.open
     ) {
-      document
-        .querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
-        .showModal();
+      const dialog = document.querySelector<HTMLDialogElement>(
+        "#infoDialog" + dialogElementData.id
+      )!;
+      dialog.showModal();
+      dialog.classList.toggle("dialog-anim");
     }
   }, []);
 
   return (
     <dialog
-      id={dialogElementData.id}
-      className="dialog mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl"
+      id={`infoDialog${dialogElementData.id}`}
+      className="dialog dialog-anim dialog-padding md:max-w-2xl w-full mx-[20px] md:mx-auto rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
@@ -50,7 +53,21 @@ export default function InfoDialog() {
         stroke="currentColor"
         className="dialog-close"
         onClick={() => {
-          SInfoDialog.deleteDialog();
+          document
+            .querySelector<HTMLDialogElement>(
+              `#counterMenu${dialogElementData.id}`
+            )!
+            .classList.toggle("opacity-0");
+
+          document
+            .querySelector<HTMLDialogElement>(
+              `#infoDialog${dialogElementData.id}`
+            )!
+            .classList.toggle("dialog-anim");
+
+          setTimeout(() => {
+            SInfoDialog.deleteDialog();
+          }, 200);
         }}
         aria-label="Закрыть диалоговое окно"
       >

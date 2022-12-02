@@ -44,7 +44,7 @@ const ThemeSwitcher = observer(() => {
   return (
     <>
       <button
-        className="h-max p-[5px] lg:p-[10px] bg-white dark:bg-black rounded-full"
+        className="h-max p-[5px] lg:p-[10px] hover:scale-95 bg-white dark:bg-black rounded-full duration-200"
         aria-label="Переключение темы"
         onClick={() => {
           STheme.toggleVisibility();
@@ -92,8 +92,10 @@ const ThemeSwitcher = observer(() => {
         </svg>
       </button>
       <div
-        className={`absolute flex-col gap-[10px] top-[65px] md:top-[70px] lg:top-[110px] right-[15px] md:right-[35px] lg:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl ${
-          STheme.themeData.isMenuVisible ? "flex" : "hidden"
+        className={`absolute flex flex-col gap-[10px] top-[65px] md:top-[70px] lg:top-[110px] right-[15px] md:right-[35px] lg:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl duration-200 ${
+          STheme.themeData.isMenuVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-[20px]"
         }`}
       >
         <button>

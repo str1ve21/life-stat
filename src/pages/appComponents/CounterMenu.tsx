@@ -33,7 +33,7 @@ export default function CounterMenu(props: IProps) {
   const inArrayID: number = inArrayIDByID(props.id);
 
   const deleteDialog: ISureDialog = {
-    id: `deleteCounter${props.id}`,
+    id: props.id,
     title: `Удаление счётчика.`,
     text: `Вы уверены, что хотите удалить счётчик с номером ${
       inArrayID + 1
@@ -48,7 +48,9 @@ export default function CounterMenu(props: IProps) {
       SDialog.deleteDialog();
     },
     noFunction: () => {
-      document.querySelector<HTMLDialogElement>("#" + deleteDialog.id)!.close();
+      document
+        .querySelector<HTMLDialogElement>("#sureDialog" + deleteDialog.id)!
+        .close();
       SDialog.deleteDialog();
     },
   };
@@ -62,7 +64,7 @@ export default function CounterMenu(props: IProps) {
   };
 
   const infoDialog: IInfoDialog = {
-    id: `infoDialog${props.id}`,
+    id: props.id,
     dateID: props.dateID,
     title: "Информация о счётчике.",
     description: "Здесь будет некоторая информация о вашем счётчике.",
@@ -91,7 +93,7 @@ export default function CounterMenu(props: IProps) {
         onClick={() => {
           document
             .querySelector<HTMLDialogElement>(`#counterMenu${props.id}`)!
-            .classList.toggle("invisible");
+            .classList.toggle("opacity-0");
         }}
       >
         <svg
@@ -100,7 +102,7 @@ export default function CounterMenu(props: IProps) {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-[30px] md:w-[40px] duration-200"
+          className="w-[30px] md:w-[40px] duration-[2000ms]"
           style={{
             color: props.textColor,
           }}
@@ -114,7 +116,7 @@ export default function CounterMenu(props: IProps) {
       </button>
       <div
         id={`counterMenu${props.id}`}
-        className="invisible absolute flex flex-col top-[30px] md:top-[60px] right-[10px] md:right-[20px] mr-0 px-[20px] py-[10px] border-2 rounded-2xl z-[100]"
+        className="opacity-0 absolute flex flex-col top-[30px] md:top-[60px] right-[10px] md:right-[20px] mr-0 px-[20px] py-[10px] border-2 rounded-2xl z-[100] duration-200"
         style={{
           background: props.color,
           borderColor: props.textColor,
@@ -125,7 +127,7 @@ export default function CounterMenu(props: IProps) {
             SDialog.createDialog(deleteDialog);
           }}
           aria-label="Удалить счётчик"
-          className="font-raleway pb-[10px] border-b-2"
+          className="font-raleway pb-[10px] border-b-2 duration-200"
           style={{ borderColor: props.textColor }}
         >
           Удалить
@@ -135,7 +137,7 @@ export default function CounterMenu(props: IProps) {
             SCounterDialog.createDialog(сounterDialog);
           }}
           aria-label="Изменить счётчик"
-          className="font-raleway py-[10px] border-b-2"
+          className="font-raleway py-[10px] border-b-2 duration-200"
           style={{ borderColor: props.textColor }}
         >
           Изменить
@@ -145,7 +147,7 @@ export default function CounterMenu(props: IProps) {
             SInfoDialog.createDialog(infoDialog);
           }}
           aria-label="Информация о счётчике"
-          className="font-raleway pt-[10px]"
+          className="font-raleway pt-[10px] duration-200"
         >
           Информация
         </button>

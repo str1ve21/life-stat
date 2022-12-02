@@ -12,19 +12,22 @@ export default function SureDialog() {
 
   useEffect(() => {
     if (
-      !document.querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
-        .open
+      !document.querySelector<HTMLDialogElement>(
+        "#sureDialog" + dialogElementData.id
+      )!.open
     ) {
-      document
-        .querySelector<HTMLDialogElement>("#" + dialogElementData.id)!
-        .showModal();
+      const dialog = document.querySelector<HTMLDialogElement>(
+        "#sureDialog" + dialogElementData.id
+      )!;
+      dialog.showModal();
+      dialog.classList.toggle("dialog-anim");
     }
   }, []);
 
   return (
     <dialog
-      id={dialogElementData.id}
-      className="dialog mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl"
+      id={`sureDialog${dialogElementData.id}`}
+      className="dialog dialog-anim mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
@@ -41,7 +44,25 @@ export default function SureDialog() {
       <div className="flex gap-[10px] md:gap-[20px]">
         {dialogElementData.isYesFunc && (
           <button
-            onClick={dialogElementData.yesFunction}
+            onClick={() => {
+              if (dialogElementData.title === "Удаление счётчика.") {
+                document
+                  .querySelector<HTMLDialogElement>(
+                    `#counterMenu${dialogElementData.id}`
+                  )!
+                  .classList.toggle("opacity-0");
+              }
+
+              document
+                .querySelector<HTMLDialogElement>(
+                  `#sureDialog${dialogElementData.id}`
+                )!
+                .classList.toggle("dialog-anim");
+
+              setTimeout(() => {
+                dialogElementData.yesFunction!();
+              }, 200);
+            }}
             className="button bg-emerald-300 dark:bg-emerald-600"
             aria-label={dialogElementData.yesText}
           >
@@ -50,7 +71,25 @@ export default function SureDialog() {
         )}
         {dialogElementData.isNoFunc && (
           <button
-            onClick={dialogElementData.noFunction}
+            onClick={() => {
+              if (dialogElementData.title === "Удаление счётчика.") {
+                document
+                  .querySelector<HTMLDialogElement>(
+                    `#counterMenu${dialogElementData.id}`
+                  )!
+                  .classList.toggle("opacity-0");
+              }
+
+              document
+                .querySelector<HTMLDialogElement>(
+                  `#sureDialog${dialogElementData.id}`
+                )!
+                .classList.toggle("dialog-anim");
+
+              setTimeout(() => {
+                dialogElementData.noFunction!();
+              }, 200);
+            }}
             className="button bg-rose-300 dark:bg-rose-600"
             aria-label={dialogElementData.noText}
           >
@@ -67,7 +106,23 @@ export default function SureDialog() {
           stroke="currentColor"
           className="dialog-close"
           onClick={() => {
-            SDialog.deleteDialog();
+            if (dialogElementData.title === "Удаление счётчика.") {
+              document
+                .querySelector<HTMLDialogElement>(
+                  `#counterMenu${dialogElementData.id}`
+                )!
+                .classList.toggle("opacity-0");
+            }
+
+            document
+              .querySelector<HTMLDialogElement>(
+                `#sureDialog${dialogElementData.id}`
+              )!
+              .classList.toggle("dialog-anim");
+
+            setTimeout(() => {
+              SDialog.deleteDialog();
+            }, 200);
           }}
           aria-label="Закрыть диалоговое окно"
         >
