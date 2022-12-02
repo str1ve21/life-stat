@@ -126,6 +126,7 @@ export default function Account() {
             onClick={() => {
               setIsLogin((isLogin = true));
             }}
+            aria-label="Вход"
             className={`button ${
               isLogin
                 ? "bg-app-100 dark:bg-app-150"
@@ -138,6 +139,7 @@ export default function Account() {
             onClick={() => {
               setIsLogin((isLogin = false));
             }}
+            aria-label="Регистрация"
             className={`button ${
               isLogin
                 ? "bg-neutral-200 dark:bg-neutral-800"
@@ -216,6 +218,7 @@ export default function Account() {
               <button
                 onClick={accountLogic}
                 type="submit"
+                aria-label="Вход"
                 className="button w-full bg-neutral-200 dark:bg-neutral-800"
               >
                 Вход
@@ -225,6 +228,7 @@ export default function Account() {
                   alert("Вспоминайте, функция пока в разработке :(");
                   console.log(import.meta.env.VITE_TEST_DATA);
                 }}
+                aria-label="Восстановление пароля"
                 className="button w-full bg-neutral-200 dark:bg-neutral-800"
               >
                 Забыли пароль?
@@ -236,6 +240,7 @@ export default function Account() {
               <button
                 onClick={accountLogic}
                 type="submit"
+                aria-label="Регистрация"
                 className="button w-full mx-auto bg-neutral-200 dark:bg-neutral-800"
               >
                 Регистрация

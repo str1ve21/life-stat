@@ -52,6 +52,7 @@ export default function InfoDialog() {
         onClick={() => {
           SInfoDialog.deleteDialog();
         }}
+        aria-label="Закрыть диалоговое окно"
       >
         <path
           strokeLinecap="round"

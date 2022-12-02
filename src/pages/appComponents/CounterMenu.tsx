@@ -87,6 +87,7 @@ export default function CounterMenu(props: IProps) {
     <>
       <button
         className="absolute top-0 md:top-[10px] right-[10px] md:right-[20px] w-[30px] md:w-[40px] cursor-pointer z-[100]"
+        aria-label="Настройки счётчика"
         onClick={() => {
           document
             .querySelector<HTMLDialogElement>(`#counterMenu${props.id}`)!
@@ -123,6 +124,7 @@ export default function CounterMenu(props: IProps) {
           onClick={() => {
             SDialog.createDialog(deleteDialog);
           }}
+          aria-label="Удалить счётчик"
           className="font-raleway pb-[10px] border-b-2"
           style={{ borderColor: props.textColor }}
         >
@@ -132,6 +134,7 @@ export default function CounterMenu(props: IProps) {
           onClick={() => {
             SCounterDialog.createDialog(сounterDialog);
           }}
+          aria-label="Изменить счётчик"
           className="font-raleway py-[10px] border-b-2"
           style={{ borderColor: props.textColor }}
         >
@@ -141,6 +144,7 @@ export default function CounterMenu(props: IProps) {
           onClick={() => {
             SInfoDialog.createDialog(infoDialog);
           }}
+          aria-label="Информация о счётчике"
           className="font-raleway pt-[10px]"
         >
           Информация

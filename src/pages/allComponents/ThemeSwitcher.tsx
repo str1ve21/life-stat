@@ -45,6 +45,7 @@ const ThemeSwitcher = observer(() => {
     <>
       <button
         className="h-max p-[5px] lg:p-[10px] bg-white dark:bg-black rounded-full"
+        aria-label="Переключение темы"
         onClick={() => {
           STheme.toggleVisibility();
         }}

@@ -171,6 +171,7 @@ export default function AddDialog() {
         onClick={() => {
           submit();
         }}
+        aria-label={dialogElementData.buttonText}
         className="button bg-app-100 dark:bg-app-150"
       >
         {dialogElementData.buttonText}
@@ -182,6 +183,7 @@ export default function AddDialog() {
         strokeWidth={1.5}
         stroke="currentColor"
         className="dialog-close"
+        aria-label="Закрыть диалоговое окно"
         onClick={() => {
           SCounterDialog.deleteDialog();
           if (dialogElementData.isEdit) {
