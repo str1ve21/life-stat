@@ -1,15 +1,8 @@
 // react, router, mobx
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 // plugins, libs
-import { throttle } from "throttle-debounce";
-
-//local functions
-import { createParallaxY } from "../../func/parallax";
-
-// interfaces
-import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
+import { animate, inView, timeline } from "motion";
 
 // images
 import welcomeAssetPC from "@/src/assets/WelcomeAssets/PC_Interface.png";
@@ -17,32 +10,25 @@ import welcomeAssetTablet from "@/src/assets/WelcomeAssets/Tablet_Interface.png"
 import welcomeAssetPhone from "@/src/assets/WelcomeAssets/Phone_Interface.png";
 
 export default function Hello() {
-  const welcomeParallaxItems: IParallaxYOptions[] = [
-    {
-      elem: "#welcome-text",
-      power: 6,
-      startFrom: 0,
-      block: 1,
-      finishBefore: 0,
-      finishAfter: 50,
-    },
-    {
-      elem: "#welcome-image",
-      power: 2,
-      startFrom: 10,
-      block: 1,
-      finishBefore: 0,
-      finishAfter: 60,
-    },
+  const sequence: any[] = [
+    [
+      "#welcome-image",
+      { top: ["10vh", "0vh"], filter: ["opacity(0)", "opacity(1)"] },
+      { duration: 0.35, delay: 0.25, easing: "ease-out" },
+    ],
+    [
+      "#welcome-text",
+      { top: ["15vh", "-2vh", "0vh"], filter: ["opacity(0)", "opacity(1)"] },
+      { duration: 0.5, easing: "ease-out" },
+    ],
   ];
-
   useEffect(() => {
-    welcomeParallaxItems.forEach((item) => {
-      window.addEventListener(
-        "scroll",
-        throttle(15, () => {
-          createParallaxY(item);
-        })
+    timeline(sequence);
+    inView("#welcome-text", () => {
+      animate(
+        "#title-logo",
+        { color: ["#E8995A", "#EA81B6", "#EA81B6", "#E8995A"] },
+        { duration: 5, repeat: Infinity }
       );
     });
   }, []);
@@ -52,20 +38,19 @@ export default function Hello() {
       <div className="flex flex-col justify-between w-full h-full content-padding">
         <div
           id="welcome-text"
-          className="flex flex-col justify-end h-full w-full mb-[80px] z-[12]"
+          className="relative flex flex-col justify-end h-full w-full mb-[80px] z-[12]"
         >
           <h1 className="hello-title text-center">
-            Приложение{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-br from-app-600 to-app-100">
-              LifeStat
-            </span>
-            .
+            Приложение <span id="title-logo">LifeStat</span>.
           </h1>
           <h2 className="hello-subtitle text-center mt-[20px]">
             Облегчит ведение статистики в разы.
           </h2>
         </div>
-        <div id="welcome-image" className="flex justify-center h-[50vh] z-[13]">
+        <div
+          id="welcome-image"
+          className="relative flex justify-center h-[50vh] z-[13]"
+        >
           <img
             className="hidden xl:block h-full object-contain object-center"
             src={welcomeAssetPC}

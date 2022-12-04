@@ -1,69 +1,43 @@
 // react, router, mobx
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 // plugins, libs
-import { throttle } from "throttle-debounce";
-
-//local functions
-import { createParallaxY } from "../../func/parallax";
-import { createFilter } from "../../func/filter";
-
-// interfaces
-import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
-import IFilterOptions from "../../interfaces/IFilterOptions";
+import { animate, inView } from "motion";
 
 // images
 import ReasonAsset from "@/src/assets/WelcomeAssets/reason.jpg";
 
 export default function Reason() {
-  const reasonParallaxItems: IParallaxYOptions[] = [
-    {
-      elem: "#reason-title",
-      power: 6,
-      startFrom: 20,
-      block: 2,
-      finishBefore: 5,
-    },
-  ];
-
-  const reasonFilterItems: IFilterOptions[] = [
-    {
-      elem: "#reason-text",
-      filterType: "opacity",
-      initialFilterValue: 0,
-      startFrom: 35,
-      finishAfter: 45,
-    },
-  ];
-
   useEffect(() => {
-    reasonParallaxItems.forEach((item) => {
-      window.addEventListener(
-        "scroll",
-        throttle(15, () => {
-          createParallaxY(item);
-        })
+    inView("#reason-title", (elem) => {
+      animate(
+        elem.target,
+        { filter: ["opacity(0)", "opacity(1)"], x: ["100px", "0px"] },
+        { duration: 0.5, delay: 0.5 }
       );
     });
-    reasonFilterItems.forEach((item) => {
-      document.querySelector<HTMLElement>(
-        item.elem
-      )!.style.filter = `${item.filterType}(${item.initialFilterValue})`;
-
-      window.addEventListener(
-        "scroll",
-        throttle(15, () => {
-          createFilter(item);
-        })
+    inView("#reason-info", (elem) => {
+      animate(
+        elem.target,
+        { filter: ["opacity(0)", "opacity(1)"], y: ["100px", "0px"] },
+        { duration: 0.5, delay: 0.5 }
       );
     });
+    if (window.innerWidth >= 1024) {
+      window.addEventListener("pointermove", (event) => {
+        document.querySelector<HTMLImageElement>(
+          "#reason-image"
+        )!.style.transform = `scale(1.1) translate(${
+          -event.clientX / 75 + "px"
+        }, ${-event.clientY / 50 + "px"})`;
+      });
+    }
   }, []);
 
   return (
     <section
       id="Смысл"
-      className="relative flex justify-between flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-300 dark:from-app-350 to-app-400 dark:to-app-450 z-20 rounded-[40px] overflow-hidden"
+      className="relative flex justify-between flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-300 dark:from-app-350 to-app-400 dark:to-app-450 z-20 overflow-hidden"
     >
       <div className="content-text">
         <div id="reason-title">
@@ -72,24 +46,24 @@ export default function Reason() {
             Почему это приложение появилось на свет.
           </p>
         </div>
-        <p id="reason-text" className="text lg:text-right">
-          Мне всегда было интересно знать некоторые вещи о себе. Например,
-          сколько раз я гулял? Использовать блокнот или заметки в телефоне не
-          очень удобно, поэтому для этих целей я решил создать это приложение.
-        </p>
-        <a
-          className="mr-auto lg:mr-0 lg:ml-auto button bg-neutral-100 dark:bg-neutral-800"
-          href="#Польза"
-        >
-          А нужно ли оно мне?
-        </a>
+        <div id="reason-info" className="flex flex-col">
+          <p id="reason-text" className="text lg:text-right">
+            Мне всегда было интересно знать некоторые вещи о себе. Например,
+            сколько раз я гулял? Использовать блокнот или заметки в телефоне не
+            очень удобно, поэтому для этих целей я решил создать это приложение.
+          </p>
+          <a
+            className="mr-auto lg:mr-0 lg:ml-auto button bg-neutral-100 dark:bg-neutral-800"
+            href="#Польза"
+          >
+            А нужно ли оно мне?
+          </a>
+        </div>
       </div>
       <div className="content-image">
-        <img
-          src={ReasonAsset}
-          alt="ReasonAsset"
-          className="rounded-t-[80px] lg:rounded-tl-none lg:rounded-r-full"
-        />
+        <div className="image-crop rounded-t-[80px] lg:rounded-tl-none lg:rounded-r-full">
+          <img src={ReasonAsset} alt="ReasonAsset" id="reason-image" />
+        </div>
       </div>
     </section>
   );

@@ -2,12 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 // local functions
-import { throttle } from "throttle-debounce";
-import { createParallaxY } from "../../func/parallax";
 import { getBody, serverURL } from "../../func/fetchData";
-
-// interfaces
-import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
 
 // components
 import Settings from "./Settings";
@@ -69,17 +64,6 @@ export default function WelcomePage() {
     "owo uwu",
   ];
 
-  const welcomeParallaxItems: IParallaxYOptions[] = [
-    {
-      elem: "#hello-content",
-      power: 2,
-      startFrom: 0,
-      block: 0,
-      finishBefore: 0,
-      finishAfter: 75,
-    },
-  ];
-
   async function getUser() {
     const response = await fetch(`${serverURL()}/user`, getBody());
     const serverData = await response.json();
@@ -91,14 +75,6 @@ export default function WelcomePage() {
 
   useEffect(() => {
     getUser();
-    welcomeParallaxItems.forEach((item) => {
-      window.addEventListener(
-        "scroll",
-        throttle(15, () => {
-          createParallaxY(item);
-        })
-      );
-    });
   }, []);
 
   return (
