@@ -23,7 +23,7 @@ export default function Navbar(props: IProps) {
 
   return (
     <header
-      className={`${props.customClass} flex justify-between min-w-[320px] w-full h-[60px] md:h-[70px] lg:h-max py-[10px] lg:py-[20px] content-padding backdrop-blur-[8px] z-[100] rounded-b-2xl lg:rounded-b-[40px]`}
+      className={`${props.customClass} flex justify-between min-w-[320px] w-full h-[60px] md:h-[70px] lg:h-max py-[10px] lg:py-[20px] content-padding z-[100] rounded-b-2xl lg:rounded-b-[40px]`}
     >
       <Link
         to={props.href}

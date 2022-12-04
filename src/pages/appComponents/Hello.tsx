@@ -78,7 +78,7 @@ export default function WelcomePage() {
   }, []);
 
   return (
-    <section className="grid place-content-center min-h-[420px] h-[50vh] content-padding bg-neutral-100 dark:bg-neutral-800 rounded-b-[40px] overflow-hidden">
+    <section className="grid place-content-center min-h-[420px] h-[50vh] content-padding bg-neutral-100 dark:bg-neutral-800 rounded-t-none overflow-hidden">
       <div
         id="hello-content"
         className="flex flex-col justify-center gap-[20px]"
