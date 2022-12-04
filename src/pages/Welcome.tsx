@@ -38,7 +38,7 @@ const WelcomePage = observer(() => {
         <Navbar
           href="/"
           isMobileExist={true}
-          customClass="fixed bg-white/50 dark:bg-black/30"
+          customClass="fixed bg-white/50 dark:bg-black/30 backdrop-blur-[8px]"
           linksArray={links}
         />
         <Account />

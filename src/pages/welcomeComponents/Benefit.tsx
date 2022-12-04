@@ -1,69 +1,43 @@
 // react, router, mobx
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 // plugins, libs
-import { throttle } from "throttle-debounce";
-
-// local functions
-import { createFilter } from "../../func/filter";
-import { createParallaxY } from "../../func/parallax";
-
-// interfaces
-import IFilterOptions from "../../interfaces/IFilterOptions";
-import IParallaxYOptions from "../../interfaces/IParallaxYOptions";
+import { animate, inView } from "motion";
 
 // images
 import UseAsset from "@/src/assets/WelcomeAssets/use.jpg";
 
 export default function Benefit() {
-  const benefitParallaxItems: IParallaxYOptions[] = [
-    {
-      elem: "#benefit-title",
-      power: 6,
-      startFrom: 40,
-      block: 3,
-      finishBefore: 5,
-    },
-  ];
-
-  const benefitFilterItems: IFilterOptions[] = [
-    {
-      elem: "#benefit-text",
-      filterType: "opacity",
-      initialFilterValue: 0,
-      startFrom: 55,
-      finishAfter: 65,
-    },
-  ];
-
   useEffect(() => {
-    benefitParallaxItems.forEach((item) => {
-      window.addEventListener(
-        "scroll",
-        throttle(15, () => {
-          createParallaxY(item);
-        })
+    inView("#benefit-title", (elem) => {
+      animate(
+        elem.target,
+        { filter: ["opacity(0)", "opacity(1)"], x: ["-100px", "0px"] },
+        { duration: 0.5, delay: 0.5 }
       );
     });
-    benefitFilterItems.forEach((item) => {
-      document.querySelector<HTMLElement>(
-        item.elem
-      )!.style.filter = `${item.filterType}(${item.initialFilterValue})`;
-
-      window.addEventListener(
-        "scroll",
-        throttle(15, () => {
-          createFilter(item);
-        })
+    inView("#benefit-info", (elem) => {
+      animate(
+        elem.target,
+        { filter: ["opacity(0)", "opacity(1)"], y: ["100px", "0px"] },
+        { duration: 0.5, delay: 0.5 }
       );
     });
+    if (window.innerWidth >= 1024) {
+      window.addEventListener("pointermove", (event) => {
+        document.querySelector<HTMLImageElement>(
+          "#benefit-image"
+        )!.style.transform = `scale(1.1) translate(${
+          -event.clientX / 75 + "px"
+        }, ${-event.clientY / 50 + "px"})`;
+      });
+    }
   }, []);
 
   return (
     <section
       id="Польза"
-      className="relative flex justify-between flex-col lg:flex-row h-max z-30 rounded-[40px] overflow-hidden"
+      className="relative flex justify-between flex-col lg:flex-row h-max z-30 overflow-hidden"
     >
       <div className="content-text">
         <div id="benefit-title">
@@ -72,24 +46,24 @@ export default function Benefit() {
             Что тебе даст использование приложения?
           </p>
         </div>
-        <p id="benefit-text" className="text">
-          В первую очередь оно подойдёт тем, кто собирается вести разного рода
-          статистику. Если же у вас есть область, за которой вы хотите следить -
-          думаю, вам стоит попробовать это приложение.
-        </p>
-        <a
-          className="mr-auto button bg-app-400 dark:bg-app-450"
-          href="#Аккаунт"
-        >
-          Создать аккаунт
-        </a>
+        <div id="benefit-info" className="flex flex-col">
+          <p id="benefit-text" className="text">
+            В первую очередь оно подойдёт тем, кто собирается вести разного рода
+            статистику. Если же у вас есть область, за которой вы хотите следить
+            - думаю, вам стоит попробовать это приложение.
+          </p>
+          <a
+            className="mr-auto button bg-app-400 dark:bg-app-450"
+            href="#Аккаунт"
+          >
+            Создать аккаунт
+          </a>
+        </div>
       </div>
       <div className="content-image">
-        <img
-          src={UseAsset}
-          alt="UseAsset"
-          className="rounded-t-[80px] lg:rounded-tr-none lg:rounded-l-full"
-        />
+        <div className="image-crop rounded-t-[80px] lg:rounded-tr-none lg:rounded-l-full">
+          <img src={UseAsset} alt="UseAsset" id="benefit-image" />
+        </div>
       </div>
     </section>
   );
