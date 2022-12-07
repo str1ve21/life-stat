@@ -1,7 +1,7 @@
 {
   "name": "life-stat",
   "private": true,
-  "version": "1.36.1222",
+  "version": "1.37.1222",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",

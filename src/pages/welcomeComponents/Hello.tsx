@@ -13,12 +13,12 @@ export default function Hello() {
   const sequence: any[] = [
     [
       "#welcome-image",
-      { top: ["10vh", "0vh"], filter: ["opacity(0)", "opacity(1)"] },
+      { top: ["10vh", "0vh"], filter: "opacity(1)" },
       { duration: 0.35, delay: 0.25, easing: "ease-out" },
     ],
     [
       "#welcome-text",
-      { top: ["15vh", "-2vh", "0vh"], filter: ["opacity(0)", "opacity(1)"] },
+      { top: ["15vh", "-2vh", "0vh"], filter: "opacity(1)" },
       { duration: 0.5, easing: "ease-out" },
     ],
   ];
@@ -30,6 +30,17 @@ export default function Hello() {
         { color: ["#E8995A", "#EA81B6", "#EA81B6", "#E8995A"] },
         { duration: 5, repeat: Infinity }
       );
+      setTimeout(() => {
+        if (window.innerWidth >= 1024) {
+          window.addEventListener("pointermove", (event) => {
+            document.querySelector<HTMLImageElement>(
+              "#welcome-text"
+            )!.style.transform = `translate(${event.clientX / 200 + "px"}, ${
+              event.clientY / 150 + "px"
+            })`;
+          });
+        }
+      }, 1000);
     });
   }, []);
 
@@ -39,6 +50,7 @@ export default function Hello() {
         <div
           id="welcome-text"
           className="relative flex flex-col justify-end h-full w-full mb-[80px] z-[12]"
+          style={{ filter: "opacity(0)" }}
         >
           <h1 className="hello-title text-center">
             Приложение <span id="title-logo">LifeStat</span>.
@@ -50,6 +62,7 @@ export default function Hello() {
         <div
           id="welcome-image"
           className="relative flex justify-center h-[50vh] z-[13]"
+          style={{ filter: "opacity(0)" }}
         >
           <img
             className="hidden xl:block h-full object-contain object-center"

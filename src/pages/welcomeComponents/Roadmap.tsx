@@ -21,14 +21,14 @@ export default function Roadmap() {
     inView("#roadmap-title", (elem) => {
       animate(
         elem.target,
-        { filter: ["opacity(0)", "opacity(1)"], x: ["100px", "0px"] },
+        { filter: "opacity(1)", x: ["100px", "0px"] },
         { duration: 0.5, delay: 0.5 }
       );
     });
     inView("#roadmap", (elem) => {
       animate(
         elem.target,
-        { filter: ["opacity(0)", "opacity(1)"], y: ["100px", "0px"] },
+        { filter: "opacity(1)", y: ["100px", "0px"] },
         { duration: 0.5, delay: 0.5 }
       );
     });
@@ -46,16 +46,20 @@ export default function Roadmap() {
   return (
     <section
       id="Планы"
-      className="relative flex justify-between flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-500 dark:from-app-550 to-app-600 dark:to-app-650 z-40 overflow-hidden"
+      className="relative flex justify-center flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-500 dark:from-app-550 to-app-600 dark:to-app-650 round rounded-t-none z-40 overflow-hidden"
     >
       <div className="content-text">
-        <div id="roadmap-title">
+        <div id="roadmap-title" style={{ filter: "opacity(0)" }}>
           <h2 className="hello-title lg:text-right">Планы.</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">
             Обновления, которые появятся в скором времени.
           </p>
         </div>
-        <div id="roadmap" className="flex flex-col rounded-2xl">
+        <div
+          id="roadmap"
+          className="flex flex-col rounded-2xl"
+          style={{ filter: "opacity(0)" }}
+        >
           {roadmapText.map((item) => {
             return (
               <p
@@ -69,7 +73,7 @@ export default function Roadmap() {
         </div>
       </div>
       <div className="content-image">
-        <div className="image-crop rounded-t-[80px] lg:rounded-tl-none lg:rounded-r-full">
+        <div className="image-crop">
           <img src={RoadmapAsset} alt="RoadmapAsset" id="roadmap-image" />
         </div>
       </div>
