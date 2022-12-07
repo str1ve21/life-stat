@@ -12,14 +12,14 @@ export default function Benefit() {
     inView("#benefit-title", (elem) => {
       animate(
         elem.target,
-        { filter: ["opacity(0)", "opacity(1)"], x: ["-100px", "0px"] },
+        { filter: "opacity(1)", x: ["-100px", "0px"] },
         { duration: 0.5, delay: 0.5 }
       );
     });
     inView("#benefit-info", (elem) => {
       animate(
         elem.target,
-        { filter: ["opacity(0)", "opacity(1)"], y: ["100px", "0px"] },
+        { filter: "opacity(1)", y: ["100px", "0px"] },
         { duration: 0.5, delay: 0.5 }
       );
     });
@@ -28,8 +28,8 @@ export default function Benefit() {
         document.querySelector<HTMLImageElement>(
           "#benefit-image"
         )!.style.transform = `scale(1.1) translate(${
-          -event.clientX / 75 + "px"
-        }, ${-event.clientY / 50 + "px"})`;
+          event.clientX / 75 + "px"
+        }, ${event.clientY / 50 + "px"})`;
       });
     }
   }, []);
@@ -37,16 +37,20 @@ export default function Benefit() {
   return (
     <section
       id="Польза"
-      className="relative flex justify-between flex-col lg:flex-row h-max z-30 overflow-hidden"
+      className="relative flex justify-center flex-col lg:flex-row h-max rounded-none z-30 overflow-hidden"
     >
       <div className="content-text">
-        <div id="benefit-title">
-          <h2 className="hello-title">Стоит ли тебе его использовать?</h2>
+        <div id="benefit-title" style={{ filter: "opacity(0)" }}>
+          <h2 className="hello-title">Стоит ли использовать?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px]">
             Что тебе даст использование приложения?
           </p>
         </div>
-        <div id="benefit-info" className="flex flex-col">
+        <div
+          id="benefit-info"
+          className="flex flex-col"
+          style={{ filter: "opacity(0)" }}
+        >
           <p id="benefit-text" className="text">
             В первую очередь оно подойдёт тем, кто собирается вести разного рода
             статистику. Если же у вас есть область, за которой вы хотите следить
@@ -61,7 +65,7 @@ export default function Benefit() {
         </div>
       </div>
       <div className="content-image">
-        <div className="image-crop rounded-t-[80px] lg:rounded-tr-none lg:rounded-l-full">
+        <div className="image-crop">
           <img src={UseAsset} alt="UseAsset" id="benefit-image" />
         </div>
       </div>

@@ -32,7 +32,7 @@ export default function Navbar(props: IProps) {
         <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
         <span className="ml-[10px] lg:ml-[20px] text-logo">LifeStat</span>
       </Link>
-      <nav className="hidden lg:flex justify-around items-center w-max ml-auto mr-[60px] text-nav bg-clip-text bg-gradient-to-r from-app-600 to-app-100">
+      <nav className="hidden lg:flex justify-around items-center w-max ml-auto mr-[60px] text-nav bg-clip-text bg-gradient-to-r from-app-100 to-app-600">
         {linksArray.map((item: string) => {
           return (
             <a

@@ -16,19 +16,23 @@
   }
 
   section {
-    @apply min-w-[320px] min-h-[700px] rounded-[20px] md:rounded-[40px];
+    @apply min-w-[320px] min-h-[700px];
+  }
+
+  .round {
+    @apply rounded-[20px] md:rounded-[40px] lg:rounded-[60px];
   }
 
   .content-text {
-    @apply flex flex-col justify-center min-h-[40vh] lg:min-h-screen w-full lg:max-w-[70vw] 2xl:max-w-[50vw] content-padding;
+    @apply flex flex-col justify-center lg:min-h-[80vh] lg:w-[70%] xl:w-[60%] 2xl:w-[50%] content-padding mx-[20px] lg:m-0 bg-neutral-100/30 dark:bg-neutral-900/30 lg:bg-transparent dark:lg:bg-transparent z-[100] round lg:rounded-none backdrop-blur-[8px] lg:backdrop-blur-none;
   }
 
   .content-image {
-    @apply flex justify-center lg:justify-end items-center w-full lg:min-h-[700px] lg:h-screen px-[20px] md:px-[40px] lg:p-0;
+    @apply absolute lg:relative flex justify-center items-center h-full lg:h-auto lg:min-h-[80vh] w-full lg:w-[30%] xl:w-[40%] 2xl:w-[50%] opacity-50 lg:opacity-100;
   }
 
   .image-crop {
-    @apply h-[40vh] lg:h-2/3 overflow-hidden;
+    @apply h-full overflow-hidden;
   }
 
   .image-crop img {
@@ -36,7 +40,7 @@
   }
 
   .content-padding {
-    @apply px-[20px] md:px-[40px] lg:px-[60px] py-[20px];
+    @apply px-[20px] md:px-[40px] 2xl:px-[60px] py-[20px] xl:py-[40px];
   }
 
   .content-gap {
@@ -136,7 +140,7 @@
   }
 
   .account-form {
-    @apply flex flex-col w-full max-w-xl gap-[20px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-100/50 dark:bg-neutral-800/50 rounded-[40px] text-neutral-900 dark:text-neutral-100;
+    @apply flex flex-col w-full max-w-xl gap-[20px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-100/50 dark:bg-neutral-800/50 round text-neutral-900 dark:text-neutral-100;
   }
 
   .account-label {

@@ -12,14 +12,14 @@ export default function Reason() {
     inView("#reason-title", (elem) => {
       animate(
         elem.target,
-        { filter: ["opacity(0)", "opacity(1)"], x: ["100px", "0px"] },
+        { filter: "opacity(1)", x: ["100px", "0px"] },
         { duration: 0.5, delay: 0.5 }
       );
     });
     inView("#reason-info", (elem) => {
       animate(
         elem.target,
-        { filter: ["opacity(0)", "opacity(1)"], y: ["100px", "0px"] },
+        { filter: "opacity(1)", y: ["100px", "0px"] },
         { duration: 0.5, delay: 0.5 }
       );
     });
@@ -37,16 +37,20 @@ export default function Reason() {
   return (
     <section
       id="Смысл"
-      className="relative flex justify-between flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-300 dark:from-app-350 to-app-400 dark:to-app-450 z-20 overflow-hidden"
+      className="relative flex flex-col lg:flex-row-reverse justify-center h-max bg-gradient-to-b from-app-300 dark:from-app-350 to-app-400 dark:to-app-450 round rounded-b-none z-20 overflow-hidden"
     >
       <div className="content-text">
-        <div id="reason-title">
+        <div id="reason-title" style={{ filter: "opacity(0)" }}>
           <h2 className="hello-title lg:text-right">В чём смысл?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">
             Почему это приложение появилось на свет.
           </p>
         </div>
-        <div id="reason-info" className="flex flex-col">
+        <div
+          id="reason-info"
+          className="flex flex-col"
+          style={{ filter: "opacity(0)" }}
+        >
           <p id="reason-text" className="text lg:text-right">
             Мне всегда было интересно знать некоторые вещи о себе. Например,
             сколько раз я гулял? Использовать блокнот или заметки в телефоне не
@@ -61,7 +65,7 @@ export default function Reason() {
         </div>
       </div>
       <div className="content-image">
-        <div className="image-crop rounded-t-[80px] lg:rounded-tl-none lg:rounded-r-full">
+        <div className="image-crop">
           <img src={ReasonAsset} alt="ReasonAsset" id="reason-image" />
         </div>
       </div>
