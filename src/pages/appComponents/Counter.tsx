@@ -29,23 +29,23 @@ const Counter = observer((props: IProps) => {
   return (
     <div
       id={`Counter-${props.data.id}`}
-      className="flex flex-col justify-between min-w-[280px] w-max counter-padding break-words rounded-2xl duration-[2000ms]"
+      className="flex flex-col justify-between min-w-[280px] w-max counter-padding break-words rounded-2xl duration-[2000ms] transition-colors"
       style={{ background: props.data.color, color: props.data.textColor }}
     >
       <div
-        className="flex flex-col justify-between h-full counter-padding pr-[40px] md:pr-[80px] mb-[5px] md:mb-[10px] border-2 leading-none backdrop-invert-[0.075] rounded-2xl duration-[2000ms]"
+        className="flex flex-col justify-between h-full counter-padding pr-[40px] md:pr-[80px] mb-[5px] md:mb-[10px] border-2 leading-none backdrop-invert-[0.075] rounded-2xl duration-[2000ms] transition-colors"
         style={{ borderColor: props.data.textColor }}
       >
         <div>
           <h2
-            className="title duration-[2000ms]"
+            className="title duration-[2000ms] transition-colors"
             style={{ color: props.data.textColor }}
           >
             {inArrayID + 1}. {props.data.title}
           </h2>
           {props.data.description && (
             <p
-              className="subtitle m-0 duration-[2000ms]"
+              className="subtitle m-0 duration-[2000ms] transition-colors"
               style={{ color: props.data.textColor }}
             >
               {props.data.description}
@@ -77,7 +77,7 @@ const Counter = observer((props: IProps) => {
       </div>
       {!!props.data.goal && (
         <div
-          className="w-full h-[40px] my-[5px] md:my-0 border-2 backdrop-invert-[0.075] rounded-2xl overflow-hidden duration-[2000ms]"
+          className="w-full h-[40px] my-[5px] md:my-0 border-2 backdrop-invert-[0.075] rounded-2xl overflow-hidden duration-[2000ms] transition-colors"
           style={{ borderColor: props.data.textColor }}
         >
           <div
