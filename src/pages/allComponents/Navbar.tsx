@@ -88,8 +88,10 @@ export default function Navbar(props: IProps) {
           </button>
         )}
         <div
-          className={`absolute flex lg:hidden flex-col w-[calc(100%-95px)] md:w-[calc(100%-110px)] gap-[10px] top-[65px] md:top-[70px] left-[20px] right-[75px] md:right-[120px] p-[20px] bg-white dark:bg-black rounded-2xl ${
-            isMobileMenu ? "flex" : "hidden"
+          className={`absolute flex lg:hidden flex-col w-[calc(100%-95px)] md:w-[calc(100%-110px)] gap-[10px] top-[65px] md:top-[70px] left-[20px] right-[75px] md:right-[120px] p-[20px] bg-white dark:bg-black rounded-2xl duration-200 ${
+            isMobileMenu
+              ? "visible opacity-100 translate-y-0"
+              : "invisible opacity-0 -translate-y-[20px]"
           }`}
         >
           <nav className="flex flex-wrap gap-[10px] h-max text-nav bg-clip-text bg-gradient-to-r from-app-600 to-app-100">
