@@ -11,6 +11,7 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 COPY --from=prod /app/docs .
 COPY ./nginx.conf /etc/nginx/
+COPY ./robots.txt /usr/share/nginx/html/
 EXPOSE 3000
 # run nginx with global directives and daemon off
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
