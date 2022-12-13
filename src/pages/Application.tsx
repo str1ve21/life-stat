@@ -57,7 +57,7 @@ const ApplicationPage = observer(() => {
     noFunction: () => {
       try {
         console.log(logText("Application", "dialog", "GET started..."));
-        SCounters.fetchGetCounters();
+        SCounters.fetchGetCounters({ isInitial: false });
         console.log(
           logText("Application", "dialog", "Saved to localStorage. Done")
         );
@@ -77,7 +77,7 @@ const ApplicationPage = observer(() => {
   async function countersLogic() {
     SCounters.clearCounters();
 
-    const getResult = await SCounters.fetchGetCounters(true);
+    const getResult = await SCounters.fetchGetCounters({ isInitial: true });
 
     if (getResult === undefined) return;
 
