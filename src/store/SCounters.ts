@@ -69,7 +69,7 @@ class counterStore {
     });
   }
 
-  async fetchGetCounters(isInitial?: boolean) {
+  async fetchGetCounters(options: { isInitial: boolean }) {
     try {
       const response = await fetch(`${serverURL()}/allCounters`, getBody());
 
@@ -101,7 +101,7 @@ class counterStore {
         localStorage.setItem(counterStorage(), "[]");
       }
 
-      if (isInitial) {
+      if (options.isInitial) {
         console.log(
           logResponse(
             "SCounters",

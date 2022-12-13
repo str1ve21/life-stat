@@ -13,6 +13,9 @@ import { postAccountBody, serverURL } from "../../func/fetchData";
 import IAccountData from "../../interfaces/IAccountData";
 import ISureDialog from "../../interfaces/ISureDialog";
 
+// components
+//import HCaptcha from "@hcaptcha/react-hcaptcha";
+
 export default function Account() {
   const navigation = useNavigate();
 
@@ -65,19 +68,22 @@ export default function Account() {
         `${serverURL()}/login`,
         postAccountBody(data)
       );
-      if (response.status === 200) {
-        localStorage.setItem("Username", data.username);
-        navigation("/app");
-        return;
-      } else if (response.status === 403) {
-        dialogData.title = `Неверный логин или пароль.`;
-        dialogData.text = `Вероятно, что вы ввели неверный логин или пароль. Код ошибки: ${response.status}`;
-        SDialog.createDialog(dialogData);
-        return;
-      } else {
-        dialogData.title = `Неизвестная ошибка.`;
-        dialogData.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
-        SDialog.createDialog(dialogData);
+      switch (response.status) {
+        case 200:
+          localStorage.setItem("Username", data.username);
+          navigation("/app");
+          break;
+
+        case 403:
+          dialogData.title = `Неверный логин или пароль.`;
+          dialogData.text = `Вероятно, что вы ввели неверный логин или пароль. Код ошибки: ${response.status}`;
+          SDialog.createDialog(dialogData);
+          break;
+
+        default:
+          dialogData.title = `Неизвестная ошибка.`;
+          dialogData.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
+          SDialog.createDialog(dialogData);
       }
       return;
     }
@@ -100,22 +106,31 @@ export default function Account() {
       `${serverURL()}/register`,
       postAccountBody(data)
     );
-    if (response.status === 200) {
-      setFormState((formState = "login"));
-      localStorage.setItem("Username", data.username);
-      dialogData.title = `Регистрация успешна.`;
-      dialogData.text = `Теперь вы можете войти в свой аккаунт. Сохраните данные, восстановление пароля пока не работает!`;
-      SDialog.createDialog(dialogData);
-    } else if (response.status === 409) {
-      dialogData.title = `Пользователь уже существует.`;
-      dialogData.text = `Пользователь с таким логином уже существует. Код ошибки: ${response.status}`;
-      SDialog.createDialog(dialogData);
-    } else {
-      dialogData.title = `Неизвестная ошибка.`;
-      dialogData.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
-      SDialog.createDialog(dialogData);
+    switch (response.status) {
+      case 200:
+        setFormState((formState = "login"));
+        localStorage.setItem("Username", data.username);
+        dialogData.title = `Регистрация успешна.`;
+        dialogData.text = `Теперь вы можете войти в свой аккаунт. Сохраните данные, восстановление пароля пока не работает!`;
+        SDialog.createDialog(dialogData);
+        break;
+
+      case 409:
+        dialogData.title = `Пользователь уже существует.`;
+        dialogData.text = `Пользователь с таким логином уже существует. Код ошибки: ${response.status}`;
+        SDialog.createDialog(dialogData);
+        break;
+
+      default:
+        dialogData.title = `Неизвестная ошибка.`;
+        dialogData.text = `Возможно это проблема с сервером. Для большей информации поищите код ошибки сервера: ${response.status}`;
+        SDialog.createDialog(dialogData);
     }
   }
+
+  // function onVerifyCaptcha(token: any) {
+  //   console.log("Token is: " + token);
+  // }
 
   return (
     <section
@@ -298,6 +313,12 @@ export default function Account() {
               </label>
             </>
           )}
+          {/* <div className="mx-auto rounded-xl overflow-hidden">
+            <HCaptcha
+              sitekey={import.meta.env.VITE_HCAPTCHA_SITEKEY}
+              onVerify={onVerifyCaptcha}
+            ></HCaptcha>
+          </div> */}
         </form>
       </div>
     </section>
