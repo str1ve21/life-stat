@@ -14,7 +14,7 @@ interface IProps {
 }
 
 // images
-import IconAsset from "@/src/assets/logo.svg";
+import IconAsset from "@/src/assets/maskable_icon_x128.png";
 
 export default function Navbar(props: IProps) {
   const linksArray: string[] = props.linksArray! || [];
@@ -30,13 +30,13 @@ export default function Navbar(props: IProps) {
         className="flex items-center h-[30px] md:h-[40px] lg:h-[50px] my-auto"
       >
         <img src={IconAsset} alt="Logo" className="h-full rounded-lg" />
-        <span className="ml-[10px] lg:ml-[20px] text-logo">LifeStat</span>
+        <span className="text-logo">LifeStat</span>
       </Link>
       <nav className="hidden lg:flex justify-around items-center w-max ml-auto mr-[60px] text-nav bg-clip-text bg-gradient-to-r from-app-100 to-app-600">
         {linksArray.map((item: string) => {
           return (
             <a
-              className="ml-[20px] w-max hover:text-transparent text-raleway duration-200"
+              className="ml-[20px] w-max hover:text-transparent text-manrope duration-200"
               href={"#" + item}
               key={item}
             >
@@ -98,7 +98,7 @@ export default function Navbar(props: IProps) {
             {linksArray.map((item: string) => {
               return (
                 <a
-                  className="mx-auto hover:text-transparent text-raleway duration-200"
+                  className="mx-auto hover:text-transparent text-manrope duration-200"
                   href={"#" + item}
                   key={item}
                   onClick={() => {

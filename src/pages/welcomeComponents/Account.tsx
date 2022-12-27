@@ -198,15 +198,14 @@ export default function Account() {
           {(formState === "login" || formState === "register") && (
             <>
               <label className="account-label">
-                <span className="text-ssp ml-3">Логин</span>
-                <input type="text" id="input-login" className="account-input" />
+                <span>Логин</span>
+                <input id="input-login" type="text" />
               </label>
-              <label className="account-label relative">
-                <span className="text-ssp ml-3">Пароль</span>
+              <label className="account-label">
+                <span>Пароль</span>
                 <input
-                  type={isShowPass ? "text" : "password"}
                   id="input-password"
-                  className="account-input"
+                  type={isShowPass ? "text" : "password"}
                 />
                 <svg
                   onClick={() => {
@@ -291,7 +290,7 @@ export default function Account() {
                   className="checkbox ml-3"
                   id="checkbox-userdata"
                 />
-                <span className="text-ssp ml-3 leading-none">
+                <span className="text-manrope ml-3 leading-none">
                   Я согласен с{" "}
                   <a href="#" className="text-app-150 dark:text-app-100">
                     обработкой персональных данных
@@ -304,7 +303,7 @@ export default function Account() {
                   className="checkbox ml-3"
                   id="checkbox-license"
                 />
-                <span className="text-ssp ml-3 leading-none">
+                <span className="text-manrope ml-3 leading-none">
                   Я прочитал{" "}
                   <a href="#" className="text-app-150 dark:text-app-100">
                     пользовательское соглашение

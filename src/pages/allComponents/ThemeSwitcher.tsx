@@ -92,7 +92,7 @@ const ThemeSwitcher = observer(() => {
         </svg>
       </button>
       <div
-        className={`absolute flex flex-col gap-[10px] top-[65px] md:top-[70px] lg:top-[110px] right-[15px] md:right-[35px] lg:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl duration-200 ${
+        className={`absolute flex flex-col gap-[10px] top-[65px] md:top-[90px] lg:top-[110px] right-[15px] md:right-[35px] lg:right-[40px] xl:right-[60px] p-[10px] bg-white dark:bg-black rounded-2xl duration-200 ${
           STheme.themeData.isMenuVisible
             ? "visible opacity-100 translate-y-0"
             : "invisible opacity-0 -translate-y-[20px]"
