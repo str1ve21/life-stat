@@ -113,23 +113,16 @@ export default function AddDialog() {
   function submit() {
     SCounterDialog.deleteDialog();
     sendCounterData();
-    if (dialogElementData.isEdit) {
-      document
-        .querySelector<HTMLDialogElement>(
-          `#counterMenu${dialogElementData.id}`
-        )!
-        .classList.toggle("opacity-0");
-    }
   }
 
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>(
-        "#counterDialog" + dialogElementData.id
+        "#CounterDialog-" + dialogElementData.id
       )!.open
     ) {
       const dialog = document.querySelector<HTMLDialogElement>(
-        "#counterDialog" + dialogElementData.id
+        "#CounterDialog-" + dialogElementData.id
       )!;
       dialog.showModal();
       dialog.classList.toggle("dialog-anim");
@@ -138,7 +131,7 @@ export default function AddDialog() {
 
   return (
     <dialog
-      id={`counterDialog${dialogElementData.id}`}
+      id={`CounterDialog-${dialogElementData.id}`}
       className="dialog dialog-anim dialog-padding w-full mx-[20px] md:mx-auto md:max-w-3xl rounded-2xl duration-200"
     >
       <div className="dialog-header">
@@ -185,17 +178,9 @@ export default function AddDialog() {
         className="dialog-close"
         aria-label="Закрыть диалоговое окно"
         onClick={() => {
-          if (dialogElementData.isEdit) {
-            document
-              .querySelector<HTMLDivElement>(
-                `#counterMenu${dialogElementData.id}`
-              )!
-              .classList.toggle("opacity-0");
-          }
-
           document
             .querySelector<HTMLDialogElement>(
-              `#counterDialog${dialogElementData.id}`
+              `#CounterDialog-${dialogElementData.id}`
             )!
             .classList.toggle("dialog-anim");
 

@@ -13,11 +13,11 @@ export default function SureDialog() {
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>(
-        "#sureDialog" + dialogElementData.id
+        "#SureDialog-" + dialogElementData.id
       )!.open
     ) {
       const dialog = document.querySelector<HTMLDialogElement>(
-        "#sureDialog" + dialogElementData.id
+        "#SureDialog-" + dialogElementData.id
       )!;
       dialog.showModal();
       dialog.classList.toggle("dialog-anim");
@@ -26,7 +26,7 @@ export default function SureDialog() {
 
   return (
     <dialog
-      id={`sureDialog${dialogElementData.id}`}
+      id={`SureDialog-${dialogElementData.id}`}
       className="dialog dialog-anim mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl duration-200"
     >
       <div className="dialog-header">
@@ -45,17 +45,9 @@ export default function SureDialog() {
         {dialogElementData.isYesFunc && (
           <button
             onClick={() => {
-              if (dialogElementData.title === "Удаление счётчика.") {
-                document
-                  .querySelector<HTMLDialogElement>(
-                    `#counterMenu${dialogElementData.id}`
-                  )!
-                  .classList.toggle("opacity-0");
-              }
-
               document
                 .querySelector<HTMLDialogElement>(
-                  `#sureDialog${dialogElementData.id}`
+                  `#SureDialog-${dialogElementData.id}`
                 )!
                 .classList.toggle("dialog-anim");
 
@@ -72,17 +64,9 @@ export default function SureDialog() {
         {dialogElementData.isNoFunc && (
           <button
             onClick={() => {
-              if (dialogElementData.title === "Удаление счётчика.") {
-                document
-                  .querySelector<HTMLDialogElement>(
-                    `#counterMenu${dialogElementData.id}`
-                  )!
-                  .classList.toggle("opacity-0");
-              }
-
               document
                 .querySelector<HTMLDialogElement>(
-                  `#sureDialog${dialogElementData.id}`
+                  `#SureDialog-${dialogElementData.id}`
                 )!
                 .classList.toggle("dialog-anim");
 
@@ -106,17 +90,9 @@ export default function SureDialog() {
           stroke="currentColor"
           className="dialog-close"
           onClick={() => {
-            if (dialogElementData.title === "Удаление счётчика.") {
-              document
-                .querySelector<HTMLDialogElement>(
-                  `#counterMenu${dialogElementData.id}`
-                )!
-                .classList.toggle("opacity-0");
-            }
-
             document
               .querySelector<HTMLDialogElement>(
-                `#sureDialog${dialogElementData.id}`
+                `#SureDialog-${dialogElementData.id}`
               )!
               .classList.toggle("dialog-anim");
 

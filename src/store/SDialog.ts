@@ -8,15 +8,14 @@ class dialogStore {
 
   sureDialogData: ISureDialog[] = [];
 
-  createDialog(item: ISureDialog) {
-    document.querySelector<HTMLDialogElement>("dialog")?.close();
-    this.sureDialogData = [];
-    this.sureDialogData.push(item);
-  }
-
   deleteDialog() {
     document.querySelector<HTMLDialogElement>("dialog")?.close();
     this.sureDialogData = [];
+  }
+
+  createDialog(item: ISureDialog) {
+    this.deleteDialog();
+    this.sureDialogData.push(item);
   }
 }
 
