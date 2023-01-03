@@ -11,8 +11,6 @@ export default function HelloButtons() {
   const createCounterDialog: ICounterDialog = {
     id: "",
     text: "Добавление счётчика.",
-    title:
-      "Здесь вы можете создать новый счётчик со своими параметрами, и кастомизировать его. Необязательными являются заголовок, описание и цель.",
     buttonText: "Создать",
     isEdit: false,
   };

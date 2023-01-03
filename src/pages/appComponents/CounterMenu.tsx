@@ -58,7 +58,6 @@ export default function CounterMenu(props: IProps) {
   const сounterDialog: ICounterDialog = {
     id: props.id,
     text: "Изменеие счётчика.",
-    title: `Здесь вы можете изменить ваш счётчик под номером ${inArrayID + 1}.`,
     buttonText: "Изменить",
     isEdit: true,
   };

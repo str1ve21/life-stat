@@ -12,7 +12,7 @@ import { getInputValue } from "../../func/getInputValue";
 interface IProps {
   storeCounterID: string;
   defInput: number;
-  accentColor: string;
+  textColor: string;
 }
 
 const CounterSetValue = observer((props: IProps) => {
@@ -24,9 +24,9 @@ const CounterSetValue = observer((props: IProps) => {
           defaultValue={props.defInput}
           aria-label="Значение для изменения счётчика"
           id={`CounterInput-${props.storeCounterID}`}
-          className="px-[10px] py-[10px] text-base md:text-lg text-manrope bg-white rounded-2xl rounded-r-none"
+          className="px-[10px] py-[10px] text-base md:text-lg text-manrope bg-white border-r-2 rounded-2xl rounded-r-none"
           style={{
-            borderColor: props.accentColor,
+            borderColor: props.textColor,
             transition: "background 2000ms, color 500ms",
           }}
         />
@@ -42,7 +42,7 @@ const CounterSetValue = observer((props: IProps) => {
           aria-label="Добавить значение"
           className="button h-full w-full bg-white hover:scale-100 hover:opacity-90 rounded-2xl rounded-l-none"
           style={{
-            borderColor: props.accentColor,
+            borderColor: props.textColor,
             transition: "background 2000ms, opacity 200ms",
           }}
         >

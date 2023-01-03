@@ -1,5 +1,5 @@
 // react, router, mobx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // plugins, libs
 import { v4 as uuidv4 } from "uuid";
@@ -13,7 +13,7 @@ import { findCounterByID } from "../../func/currentCounter";
 import { getInputValue } from "../../func/getInputValue";
 
 // interfaces
-import IAddInputsArray from "../../interfaces/IAddInputsArray";
+import IInputsArray from "../../interfaces/IInputsArray";
 import ICounter from "../../interfaces/ICounter";
 import ICounterDialog from "../../interfaces/ICounterDialog";
 
@@ -24,7 +24,10 @@ export default function AddDialog() {
     dialogElementData.id
   );
 
-  const AddInputsArray: IAddInputsArray[] = [
+  // info, func, custom
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const infoInputsArray: IInputsArray[] = [
     {
       id: 0,
       type: "text",
@@ -49,8 +52,11 @@ export default function AddDialog() {
       placeholder: "Станд.: 0",
       defValue: dialogElementData.isEdit ? currentCounter?.counter : "0",
     },
+  ];
+
+  const funcInputsArray: IInputsArray[] = [
     {
-      id: 3,
+      id: 0,
       type: "number",
       htmlId: "goalInput",
       labelText: "Цель",
@@ -58,22 +64,25 @@ export default function AddDialog() {
       defValue: dialogElementData.isEdit ? currentCounter?.goal : "0",
     },
     {
-      id: 4,
+      id: 1,
       type: "number",
       htmlId: "defaultInput",
       labelText: "Стандартное значение ввода",
       placeholder: "Станд.: 1",
       defValue: dialogElementData.isEdit ? currentCounter?.defaultInput : "1",
     },
+  ];
+
+  const customInputsArray: IInputsArray[] = [
     {
-      id: 5,
+      id: 0,
       type: "color",
-      htmlId: "borderColorInput",
+      htmlId: "colorInput",
       labelText: "Цвет фона",
       defValue: dialogElementData.isEdit ? currentCounter?.color : "#FF9B41",
     },
     {
-      id: 6,
+      id: 1,
       type: "color",
       htmlId: "textColorInput",
       labelText: "Цвет текста",
@@ -83,19 +92,20 @@ export default function AddDialog() {
     },
   ];
 
+  let tempItem: ICounter = {
+    id: "",
+    dateID: 0,
+    lastEdit: Date.now(),
+    title: "",
+    description: "",
+    counter: 0,
+    goal: 0,
+    defaultInput: 0,
+    color: "",
+    textColor: "",
+  };
+
   function sendCounterData() {
-    const tempItem: ICounter = {
-      id: "",
-      dateID: 0,
-      lastEdit: Date.now(),
-      title: getInputValue("#titleInput"),
-      description: getInputValue("#descriptionInput"),
-      counter: +getInputValue("#countInput"),
-      goal: +getInputValue("#goalInput"),
-      defaultInput: +getInputValue("#defaultInput"),
-      color: getInputValue("#borderColorInput"),
-      textColor: getInputValue("#textColorInput"),
-    };
     if (currentCounter && dialogElementData.isEdit) {
       tempItem.id = currentCounter.id;
       tempItem.dateID = currentCounter.dateID;
@@ -113,6 +123,18 @@ export default function AddDialog() {
   function submit() {
     SCounterDialog.deleteDialog();
     sendCounterData();
+  }
+
+  function whatToRender(): IInputsArray[] {
+    switch (currentSlide) {
+      case 0:
+        return infoInputsArray;
+      case 1:
+        return funcInputsArray;
+      case 2:
+        return customInputsArray;
+    }
+    return infoInputsArray;
   }
 
   useEffect(() => {
@@ -136,7 +158,7 @@ export default function AddDialog() {
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.text}</h2>
-        <h3 className="subtitle">{dialogElementData.title}</h3>
+        <h3 className="subtitle"></h3>
       </div>
       <form
         onSubmit={(e) => {
@@ -144,10 +166,10 @@ export default function AddDialog() {
         }}
         className="form"
       >
-        {AddInputsArray.map((item: IAddInputsArray) => {
+        {whatToRender().map((item: IInputsArray) => {
           return (
             <label key={item.id} className="label">
-              <span className="text-raleway ml-3">{item.labelText}</span>
+              <span>{item.labelText}</span>
               <input
                 type={item.type}
                 placeholder={item.placeholder}
@@ -160,15 +182,71 @@ export default function AddDialog() {
           );
         })}
       </form>
-      <button
-        onClick={() => {
-          submit();
-        }}
-        aria-label={dialogElementData.buttonText}
-        className="button bg-app-100 dark:bg-app-150"
-      >
-        {dialogElementData.buttonText}
-      </button>
+      {currentSlide === 0 && (
+        <button
+          onClick={() => {
+            tempItem.title = getInputValue("#titleInput");
+            tempItem.description = getInputValue("#descriptionInput");
+            tempItem.counter = +getInputValue("#countInput");
+            console.log(tempItem);
+            setCurrentSlide((current) => (current = 1));
+          }}
+          aria-label="Далее"
+          className="button bg-app-100 dark:bg-app-150"
+        >
+          Далее
+        </button>
+      )}
+      {currentSlide === 1 && (
+        <div className="flex flex-wrap gap-[10px]">
+          <button
+            onClick={() => {
+              tempItem.goal = +getInputValue("#goalInput");
+              tempItem.defaultInput = +getInputValue("#defaultInput");
+              console.log(tempItem);
+              setCurrentSlide((current) => (current = 2));
+            }}
+            aria-label="Далее"
+            className="button bg-app-100 dark:bg-app-150"
+          >
+            Далее
+          </button>
+          <button
+            onClick={() => {
+              setCurrentSlide((current) => (current = 0));
+            }}
+            aria-label="Назад"
+            className="button bg-app-100 dark:bg-app-150"
+          >
+            Назад
+          </button>
+        </div>
+      )}
+      {currentSlide === 2 && (
+        <div className="flex flex-wrap gap-[10px]">
+          <button
+            onClick={() => {
+              tempItem.color = getInputValue("#colorInput");
+              tempItem.textColor = getInputValue("#textColorInput");
+              console.log(tempItem);
+              submit();
+            }}
+            aria-label={dialogElementData.buttonText}
+            className="button bg-app-100 dark:bg-app-150"
+          >
+            {dialogElementData.buttonText}
+          </button>
+          <button
+            onClick={() => {
+              setCurrentSlide((current) => (current = 1));
+            }}
+            aria-label="Назад"
+            className="button bg-app-100 dark:bg-app-150"
+          >
+            Назад
+          </button>
+        </div>
+      )}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

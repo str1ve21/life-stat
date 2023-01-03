@@ -97,7 +97,7 @@ const Counter = observer((props: IProps) => {
       <CounterSetValue
         storeCounterID={props.data.id}
         defInput={props.data.defaultInput}
-        accentColor={props.data.textColor}
+        textColor={props.data.textColor}
       ></CounterSetValue>
     </div>
   );

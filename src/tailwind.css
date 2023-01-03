@@ -116,7 +116,7 @@
   }
 
   .button {
-    @apply px-[25px] py-[7.5px] hover:scale-95 text-base md:text-lg xl:text-xl text-manrope text-center rounded-2xl duration-200;
+    @apply px-[25px] py-[7.5px] hover:scale-95 text-base md:text-lg xl:text-xl text-manrope text-center rounded-2xl duration-200 disabled:grayscale disabled:scale-95;
   }
 
   .button-sm {
@@ -129,6 +129,10 @@
 
   .label {
     @apply flex flex-col gap-[5px] md:gap-[10px] text-neutral-900 dark:text-neutral-100;
+  }
+
+  .label span {
+    @apply text-manrope ml-3;
   }
 
   .input {
