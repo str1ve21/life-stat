@@ -170,26 +170,31 @@ export default function AddDialog() {
           e.preventDefault();
         }}
         id="inputsParent"
-        className="flex gap-[20px] md:gap-[40px] overflow-x-hidden"
       >
-        {inputsArray[currentSlide].array.map((item: IInputsArray) => {
+        {inputsArray.map((inputs) => {
           return (
             <div
-              key={item.id}
-              id={`inputsArray-${item.id}`}
-              className="form min-w-full h-max"
+              key={inputs.id}
+              id={`inputsArray-${inputs.id}`}
+              className={`${
+                currentSlide === inputs.id ? "" : "hidden"
+              } form w-full`}
             >
-              <label key={item.id} className="label">
-                <span>{item.labelText}</span>
-                <input
-                  type={item.type}
-                  placeholder={item.placeholder}
-                  defaultValue={item.defValue}
-                  id={item.htmlId}
-                  name={item.htmlId}
-                  className="input"
-                />
-              </label>
+              {inputs.array.map((input) => {
+                return (
+                  <label key={input.id} className="label">
+                    <span>{input.labelText}</span>
+                    <input
+                      type={input.type}
+                      placeholder={input.placeholder}
+                      defaultValue={input.defValue}
+                      id={input.htmlId}
+                      name={input.htmlId}
+                      className="input"
+                    />
+                  </label>
+                );
+              })}
             </div>
           );
         })}
