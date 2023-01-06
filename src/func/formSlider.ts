@@ -1,12 +1,9 @@
 export function sliderAnimation(
-  parentQuery: string,
-  slide: number,
+  oldElement: string,
+  newElement: string,
+  timeoutFunc: void,
   duration?: number
 ): void {
-  const parent = document.querySelector(parentQuery);
-  parent?.scrollTo({
-    top: 0,
-    left: parent.clientWidth * slide,
-    behavior: "smooth",
-  });
+  const oldElemQuery = document.querySelector(oldElement);
+  const newElemQuery = document.querySelector(newElement);
 }

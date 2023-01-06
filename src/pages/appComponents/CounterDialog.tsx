@@ -142,11 +142,16 @@ export default function AddDialog() {
     sendCounterData();
   }
 
-  function subtitleText(slide: number) {
+  function subtitleText(slide: number): string {
     switch (slide) {
       case 0:
-        "";
+        return "Здесь вы можете добавить основную информацию. Можете оставить поля заголовка и описания пустыми, тогда будет только номер счётчика.";
+      case 1:
+        return "Функциональность счётчика даст вам более гибкую и удобную работу с ним. В будущем, тут будут более интересные пункты.";
+      case 2:
+        return "Данный раздел позволит вам касотимизровать ваш счётчик. После создания вы можете отредактировать любой из пунктов.";
     }
+    return "";
   }
 
   useEffect(() => {
@@ -170,7 +175,7 @@ export default function AddDialog() {
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.text}</h2>
-        <p className="subtitle">{}</p>
+        <p className="subtitle">{subtitleText(currentSlide)}</p>
       </div>
       <form
         onSubmit={(e) => {
@@ -210,8 +215,9 @@ export default function AddDialog() {
         <button
           onClick={() => {
             if (currentSlide !== 2) {
+              console.log(currentSlide);
               setCurrentSlide(currentSlide + 1);
-              sliderAnimation("#inputsParent", currentSlide);
+              // sliderAnimation("#inputsParent", currentSlide);
               return;
             }
             submit();
@@ -226,7 +232,7 @@ export default function AddDialog() {
         <button
           onClick={() => {
             setCurrentSlide(currentSlide - 1);
-            sliderAnimation("#inputsParent", currentSlide);
+            // sliderAnimation("#inputsParent", currentSlide);
           }}
           aria-label="Назад"
           className="button bg-app-100 dark:bg-app-150"
