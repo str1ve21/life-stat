@@ -20,14 +20,14 @@ export default function SureDialog() {
         "#SureDialog-" + dialogElementData.id
       )!;
       dialog.showModal();
-      dialog.classList.toggle("dialog-anim");
+      dialog.classList.toggle("anim-y");
     }
   }, []);
 
   return (
     <dialog
       id={`SureDialog-${dialogElementData.id}`}
-      className="dialog dialog-anim mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl duration-200"
+      className="dialog anim-y mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
@@ -49,7 +49,7 @@ export default function SureDialog() {
                 .querySelector<HTMLDialogElement>(
                   `#SureDialog-${dialogElementData.id}`
                 )!
-                .classList.toggle("dialog-anim");
+                .classList.toggle("anim-y");
 
               setTimeout(() => {
                 dialogElementData.yesFunction!();
@@ -68,7 +68,7 @@ export default function SureDialog() {
                 .querySelector<HTMLDialogElement>(
                   `#SureDialog-${dialogElementData.id}`
                 )!
-                .classList.toggle("dialog-anim");
+                .classList.toggle("anim-y");
 
               setTimeout(() => {
                 dialogElementData.noFunction!();
@@ -94,7 +94,7 @@ export default function SureDialog() {
               .querySelector<HTMLDialogElement>(
                 `#SureDialog-${dialogElementData.id}`
               )!
-              .classList.toggle("dialog-anim");
+              .classList.toggle("anim-y");
 
             setTimeout(() => {
               SDialog.deleteDialog();

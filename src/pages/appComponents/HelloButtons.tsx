@@ -48,7 +48,7 @@ export default function HelloButtons() {
           const dialog =
             document.querySelector<HTMLDialogElement>("#settingsDialog")!;
           dialog.showModal();
-          dialog.classList.toggle("dialog-anim");
+          dialog.classList.toggle("anim-y");
         }}
         aria-label="Настройки приложения"
         className="flex items-center gap-[10px] button bg-sky-300 dark:bg-sky-600"

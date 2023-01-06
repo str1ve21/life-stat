@@ -11,6 +11,7 @@ import SCounterDialog from "../../store/SCounterDialog";
 // local functions
 import { findCounterByID } from "../../func/currentCounter";
 import { getInputValue } from "../../func/getInputValue";
+import { sliderAnimation } from "../../func/formSlider";
 
 // interfaces
 import IInputsArray from "../../interfaces/IInputsArray";
@@ -56,7 +57,7 @@ export default function AddDialog() {
 
   const funcInputsArray: IInputsArray[] = [
     {
-      id: 0,
+      id: 3,
       type: "number",
       htmlId: "goalInput",
       labelText: "Цель",
@@ -64,7 +65,7 @@ export default function AddDialog() {
       defValue: dialogElementData.isEdit ? currentCounter?.goal : "0",
     },
     {
-      id: 1,
+      id: 4,
       type: "number",
       htmlId: "defaultInput",
       labelText: "Стандартное значение ввода",
@@ -75,14 +76,23 @@ export default function AddDialog() {
 
   const customInputsArray: IInputsArray[] = [
     {
-      id: 0,
+      id: 5,
       type: "color",
       htmlId: "colorInput",
       labelText: "Цвет фона",
       defValue: dialogElementData.isEdit ? currentCounter?.color : "#FF9B41",
     },
     {
-      id: 1,
+      id: 6,
+      type: "color",
+      htmlId: "additionalColorInput",
+      labelText: "Второстепенный цвет",
+      defValue: dialogElementData.isEdit
+        ? currentCounter?.additionalColor
+        : "#F4AE71",
+    },
+    {
+      id: 7,
       type: "color",
       htmlId: "textColorInput",
       labelText: "Цвет текста",
@@ -92,20 +102,27 @@ export default function AddDialog() {
     },
   ];
 
-  let tempItem: ICounter = {
-    id: "",
-    dateID: 0,
-    lastEdit: Date.now(),
-    title: "",
-    description: "",
-    counter: 0,
-    goal: 0,
-    defaultInput: 0,
-    color: "",
-    textColor: "",
-  };
+  const inputsArray = [
+    { id: 0, array: infoInputsArray },
+    { id: 1, array: funcInputsArray },
+    { id: 2, array: customInputsArray },
+  ];
 
   function sendCounterData() {
+    const tempItem: ICounter = {
+      id: "",
+      dateID: 0,
+      lastEdit: Date.now(),
+      title: getInputValue("#titleInput"),
+      description: getInputValue("#descriptionInput"),
+      counter: +getInputValue("#countInput"),
+      goal: +getInputValue("#goalInput"),
+      defaultInput: +getInputValue("#defaultInput"),
+      color: getInputValue("#colorInput"),
+      additionalColor: getInputValue("#accentColorInput"),
+      textColor: getInputValue("#textColorInput"),
+    };
+
     if (currentCounter && dialogElementData.isEdit) {
       tempItem.id = currentCounter.id;
       tempItem.dateID = currentCounter.dateID;
@@ -125,18 +142,6 @@ export default function AddDialog() {
     sendCounterData();
   }
 
-  function whatToRender(): IInputsArray[] {
-    switch (currentSlide) {
-      case 0:
-        return infoInputsArray;
-      case 1:
-        return funcInputsArray;
-      case 2:
-        return customInputsArray;
-    }
-    return infoInputsArray;
-  }
-
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>(
@@ -147,106 +152,77 @@ export default function AddDialog() {
         "#CounterDialog-" + dialogElementData.id
       )!;
       dialog.showModal();
-      dialog.classList.toggle("dialog-anim");
+      dialog.classList.toggle("anim-y");
     }
   }, []);
 
   return (
     <dialog
       id={`CounterDialog-${dialogElementData.id}`}
-      className="dialog dialog-anim dialog-padding w-full mx-[20px] md:mx-auto md:max-w-3xl rounded-2xl duration-200"
+      className="dialog anim-y dialog-padding w-full mx-[20px] md:mx-auto md:max-w-3xl rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.text}</h2>
-        <h3 className="subtitle"></h3>
+        <p className="subtitle"></p>
       </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="form"
+        id="inputsParent"
+        className="flex gap-[20px] md:gap-[40px] overflow-x-hidden"
       >
-        {whatToRender().map((item: IInputsArray) => {
+        {inputsArray[currentSlide].array.map((item: IInputsArray) => {
           return (
-            <label key={item.id} className="label">
-              <span>{item.labelText}</span>
-              <input
-                type={item.type}
-                placeholder={item.placeholder}
-                defaultValue={item.defValue}
-                id={item.htmlId}
-                name={item.htmlId}
-                className="input"
-              />
-            </label>
+            <div
+              key={item.id}
+              id={`inputsArray-${item.id}`}
+              className="form min-w-full h-max"
+            >
+              <label key={item.id} className="label">
+                <span>{item.labelText}</span>
+                <input
+                  type={item.type}
+                  placeholder={item.placeholder}
+                  defaultValue={item.defValue}
+                  id={item.htmlId}
+                  name={item.htmlId}
+                  className="input"
+                />
+              </label>
+            </div>
           );
         })}
       </form>
-      {currentSlide === 0 && (
+      <div className="flex flex-wrap gap-[10px]">
         <button
           onClick={() => {
-            tempItem.title = getInputValue("#titleInput");
-            tempItem.description = getInputValue("#descriptionInput");
-            tempItem.counter = +getInputValue("#countInput");
-            console.log(tempItem);
-            setCurrentSlide((current) => (current = 1));
+            if (currentSlide !== 2) {
+              setCurrentSlide(currentSlide + 1);
+              sliderAnimation("#inputsParent", currentSlide);
+              return;
+            }
+            submit();
           }}
-          aria-label="Далее"
+          aria-label={
+            currentSlide === 2 ? dialogElementData.buttonText : "Далее"
+          }
           className="button bg-app-100 dark:bg-app-150"
         >
-          Далее
+          {currentSlide === 2 ? dialogElementData.buttonText : "Далее"}
         </button>
-      )}
-      {currentSlide === 1 && (
-        <div className="flex flex-wrap gap-[10px]">
-          <button
-            onClick={() => {
-              tempItem.goal = +getInputValue("#goalInput");
-              tempItem.defaultInput = +getInputValue("#defaultInput");
-              console.log(tempItem);
-              setCurrentSlide((current) => (current = 2));
-            }}
-            aria-label="Далее"
-            className="button bg-app-100 dark:bg-app-150"
-          >
-            Далее
-          </button>
-          <button
-            onClick={() => {
-              setCurrentSlide((current) => (current = 0));
-            }}
-            aria-label="Назад"
-            className="button bg-app-100 dark:bg-app-150"
-          >
-            Назад
-          </button>
-        </div>
-      )}
-      {currentSlide === 2 && (
-        <div className="flex flex-wrap gap-[10px]">
-          <button
-            onClick={() => {
-              tempItem.color = getInputValue("#colorInput");
-              tempItem.textColor = getInputValue("#textColorInput");
-              console.log(tempItem);
-              submit();
-            }}
-            aria-label={dialogElementData.buttonText}
-            className="button bg-app-100 dark:bg-app-150"
-          >
-            {dialogElementData.buttonText}
-          </button>
-          <button
-            onClick={() => {
-              setCurrentSlide((current) => (current = 1));
-            }}
-            aria-label="Назад"
-            className="button bg-app-100 dark:bg-app-150"
-          >
-            Назад
-          </button>
-        </div>
-      )}
+        <button
+          onClick={() => {
+            setCurrentSlide(currentSlide - 1);
+            sliderAnimation("#inputsParent", currentSlide);
+          }}
+          aria-label="Назад"
+          className="button bg-app-100 dark:bg-app-150"
+          disabled={currentSlide === 0 ? true : false}
+        >
+          Назад
+        </button>
+      </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -260,7 +236,7 @@ export default function AddDialog() {
             .querySelector<HTMLDialogElement>(
               `#CounterDialog-${dialogElementData.id}`
             )!
-            .classList.toggle("dialog-anim");
+            .classList.toggle("anim-y");
 
           setTimeout(() => {
             SCounterDialog.deleteDialog();

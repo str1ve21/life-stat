@@ -20,14 +20,14 @@ export default function InfoDialog() {
         "#InfoDialog-" + dialogElementData.id
       )!;
       dialog.showModal();
-      dialog.classList.toggle("dialog-anim");
+      dialog.classList.toggle("anim-y");
     }
   }, []);
 
   return (
     <dialog
       id={`InfoDialog-${dialogElementData.id}`}
-      className="dialog dialog-anim dialog-padding md:max-w-3xl w-full mx-[20px] md:mx-auto rounded-2xl duration-200"
+      className="dialog anim-y dialog-padding md:max-w-3xl w-full mx-[20px] md:mx-auto rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
@@ -57,7 +57,7 @@ export default function InfoDialog() {
             .querySelector<HTMLDialogElement>(
               `#InfoDialog-${dialogElementData.id}`
             )!
-            .classList.toggle("dialog-anim");
+            .classList.toggle("anim-y");
 
           setTimeout(() => {
             SInfoDialog.deleteDialog();

@@ -23,6 +23,14 @@
     @apply rounded-[20px] md:rounded-[40px] lg:rounded-[60px];
   }
 
+  .anim-y {
+    @apply transform-gpu opacity-0 translate-y-[40px] duration-200;
+  }
+
+  .anim-x {
+    @apply transform-gpu opacity-0 -translate-x-[40px] duration-200;
+  }
+
   .content-text {
     @apply flex flex-col justify-center lg:min-h-[80vh] lg:w-[70%] xl:w-[60%] 2xl:w-[50%] content-padding mx-[20px] lg:m-0 bg-neutral-100/30 dark:bg-neutral-900/30 lg:bg-transparent dark:lg:bg-transparent z-[100] round lg:rounded-none backdrop-blur-[8px] lg:backdrop-blur-none;
   }
@@ -60,7 +68,7 @@
   }
 
   .dialog-anim {
-    @apply opacity-0 -translate-y-[40px];
+    @apply transform-gpu opacity-0 translate-y-[40px];
   }
 
   .dialog-padding {
@@ -112,7 +120,7 @@
   }
 
   .icon {
-    @apply w-[20px] lg:w-[30px] duration-200 text-neutral-900 dark:text-neutral-100;
+    @apply w-[15px] lg:w-[20px] duration-200 text-neutral-900 dark:text-neutral-100;
   }
 
   .button {
