@@ -43,7 +43,7 @@ export default function HelloButtons() {
         </svg>
         Новый счётчик
       </button>
-      <button
+      {/* <button
         onClick={() => {
           const dialog =
             document.querySelector<HTMLDialogElement>("#settingsDialog")!;
@@ -73,7 +73,7 @@ export default function HelloButtons() {
           />
         </svg>
         Настройки
-      </button>
+      </button> */}
     </div>
   );
 }

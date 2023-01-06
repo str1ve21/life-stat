@@ -119,7 +119,7 @@ export default function AddDialog() {
       goal: +getInputValue("#goalInput"),
       defaultInput: +getInputValue("#defaultInput"),
       color: getInputValue("#colorInput"),
-      additionalColor: getInputValue("#accentColorInput"),
+      additionalColor: getInputValue("#additionalColorInput"),
       textColor: getInputValue("#textColorInput"),
     };
 
@@ -128,7 +128,7 @@ export default function AddDialog() {
       tempItem.dateID = currentCounter.dateID;
       SCounters.editCounter(tempItem);
       document.querySelector<HTMLInputElement>(
-        `#CounterInput${currentCounter.id}`
+        `#CounterInput-${currentCounter.id}`
       )!.value = `${tempItem.defaultInput}`;
       return;
     }
@@ -140,6 +140,13 @@ export default function AddDialog() {
   function submit() {
     SCounterDialog.deleteDialog();
     sendCounterData();
+  }
+
+  function subtitleText(slide: number) {
+    switch (slide) {
+      case 0:
+        "";
+    }
   }
 
   useEffect(() => {
@@ -163,7 +170,7 @@ export default function AddDialog() {
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.text}</h2>
-        <p className="subtitle"></p>
+        <p className="subtitle">{}</p>
       </div>
       <form
         onSubmit={(e) => {

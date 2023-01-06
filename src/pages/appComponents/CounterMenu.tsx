@@ -23,6 +23,7 @@ interface IProps {
   dateID: number;
   lastEdit: number;
   color: string;
+  additionalColor: string;
   textColor: string;
   counter: number;
   goal: number;
@@ -93,8 +94,11 @@ export default function CounterMenu(props: IProps) {
         <button
           onClick={() => {}}
           aria-label="Сдвинуть счётчик левее"
-          className="button-sm bg-white"
-          style={{ borderColor: props.textColor }}
+          className="button-sm"
+          style={{
+            background: props.additionalColor,
+            transition: "background 2000ms, color 500ms",
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +118,11 @@ export default function CounterMenu(props: IProps) {
         <button
           onClick={() => {}}
           aria-label="Сдвинуть счётчик правее"
-          className="button-sm bg-white"
-          style={{ borderColor: props.textColor }}
+          className="button-sm"
+          style={{
+            background: props.additionalColor,
+            transition: "background 2000ms, color 500ms",
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -137,8 +144,11 @@ export default function CounterMenu(props: IProps) {
             SDialog.createDialog(deleteDialog);
           }}
           aria-label="Удалить счётчик"
-          className="button-sm bg-white"
-          style={{ borderColor: props.textColor }}
+          className="button-sm"
+          style={{
+            background: props.additionalColor,
+            transition: "background 2000ms, color 500ms",
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -160,8 +170,11 @@ export default function CounterMenu(props: IProps) {
             SCounterDialog.createDialog(сounterDialog);
           }}
           aria-label="Изменить счётчик"
-          className="button-sm bg-white"
-          style={{ borderColor: props.textColor }}
+          className="button-sm"
+          style={{
+            background: props.additionalColor,
+            transition: "background 2000ms, color 500ms",
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +196,11 @@ export default function CounterMenu(props: IProps) {
             SInfoDialog.createDialog(infoDialog);
           }}
           aria-label="Информация о счётчике"
-          className="button-sm bg-white"
+          className="button-sm"
+          style={{
+            background: props.additionalColor,
+            transition: "background 2000ms, color 500ms",
+          }}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
