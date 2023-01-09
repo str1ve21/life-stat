@@ -39,7 +39,7 @@ export default function Reason() {
       id="Смысл"
       className="relative flex flex-col lg:flex-row-reverse justify-center h-max bg-gradient-to-b from-app-300 dark:from-app-350 to-app-400 dark:to-app-450 round rounded-b-none z-20 overflow-hidden"
     >
-      <div className="content-text">
+      <div className="content-data">
         <div id="reason-title" style={{ filter: "opacity(0)" }}>
           <h2 className="hello-title lg:text-right">В чём смысл?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">

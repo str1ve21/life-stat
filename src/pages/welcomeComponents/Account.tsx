@@ -16,6 +16,9 @@ import ISureDialog from "../../interfaces/ISureDialog";
 // components
 //import HCaptcha from "@hcaptcha/react-hcaptcha";
 
+// images
+import AccountAsset from "@/src/assets/WelcomeAssets/account.jpg";
+
 export default function Account() {
   const navigation = useNavigate();
 
@@ -135,55 +138,14 @@ export default function Account() {
   return (
     <section
       id="Аккаунт"
-      className="relative h-max bg-gradient-to-b from-app-100 dark:from-app-150 to-app-200 dark:to-app-250 z-50 round rounded-t-none"
+      className="relative flex flex-col lg:flex-row justify-center h-screen min-h-[800px] bg-gradient-to-b from-app-100 dark:from-app-150 to-app-200 dark:to-app-250 round rounded-t-none overflow-hidden z-50"
     >
-      <div className="flex flex-col justify-center items-center gap-[20px] md:gap-[40px] w-full h-screen min-h-[800px] content-padding">
-        <div className="buttons-navbar">
-          <button
-            onClick={() => {
-              setFormState((formState = "login"));
-            }}
-            aria-label="Вход"
-            className={`button ${
-              formState === "login"
-                ? "bg-app-100 dark:bg-app-150"
-                : "bg-neutral-200 dark:bg-neutral-800"
-            }`}
-          >
-            Вход
-          </button>
-          <button
-            onClick={() => {
-              setFormState((formState = "register"));
-            }}
-            aria-label="Регистрация"
-            className={`button ${
-              formState === "register"
-                ? "bg-app-100 dark:bg-app-150"
-                : "bg-neutral-200 dark:bg-neutral-800"
-            }`}
-          >
-            Регистрация
-          </button>
-          <button
-            onClick={() => {
-              setFormState((formState = "oauth"));
-            }}
-            aria-label="Регистрация"
-            className={`button ${
-              formState === "oauth"
-                ? "bg-app-100 dark:bg-app-150"
-                : "bg-neutral-200 dark:bg-neutral-800"
-            }`}
-          >
-            Другие способы
-          </button>
-        </div>
+      <div className="content-data">
         <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="account-form"
+          className="form-vertical max-w-xl w-full mx-auto"
         >
           <h2
             className="title my-0 md:mb-[20px] md:mx-[40px] text-center"
@@ -195,19 +157,60 @@ export default function Account() {
               ? "Добро пожаловать!"
               : "В разработке :("}
           </h2>
+          <div className="buttons-bar">
+            <button
+              onClick={() => {
+                setFormState((formState = "login"));
+              }}
+              aria-label="Вход"
+              className={`button ${
+                formState === "login"
+                  ? "dark:bg-neutral-200 dark:text-neutral-800 bg-neutral-800 text-neutral-200"
+                  : "bg-neutral-200 dark:bg-neutral-800"
+              }`}
+            >
+              Вход
+            </button>
+            <button
+              onClick={() => {
+                setFormState((formState = "register"));
+              }}
+              aria-label="Регистрация"
+              className={`button ${
+                formState === "register"
+                  ? "dark:bg-neutral-200 dark:text-neutral-800 bg-neutral-800 text-neutral-200"
+                  : "bg-neutral-200 dark:bg-neutral-800"
+              }`}
+            >
+              Регистрация
+            </button>
+            <button
+              onClick={() => {
+                setFormState((formState = "oauth"));
+              }}
+              aria-label="Регистрация"
+              className={`button ${
+                formState === "oauth"
+                  ? "dark:bg-neutral-200 dark:text-neutral-800 bg-neutral-800 text-neutral-200"
+                  : "bg-neutral-200 dark:bg-neutral-800"
+              }`}
+            >
+              Другие способы
+            </button>
+          </div>
           {(formState === "login" || formState === "register") && (
             <>
-              <label className="account-label">
+              <label className="label">
                 <span>Логин</span>
                 <input id="input-login" type="text" />
               </label>
-              <label className="account-label">
+              <label className="label">
                 <span>Пароль</span>
                 <input
                   id="input-password"
                   type={isShowPass ? "text" : "password"}
                 />
-                <div className="absolute grid place-content-center right-[10px] bottom-[10px] h-[30px] w-[30px] dark:bg-neutral-200 bg-neutral-800 hover:scale-95 duration-200 cursor-pointer z-[100] rounded-md">
+                <div className="absolute grid place-content-center right-[10px] bottom-[10px] h-[30px] w-[30px] dark:bg-neutral-200 bg-neutral-800 hover:scale-95 duration-200 cursor-pointer z-[100] rounded-full">
                   <svg
                     onClick={() => {
                       setIsShowPass(true);
@@ -321,6 +324,11 @@ export default function Account() {
             ></HCaptcha>
           </div> */}
         </form>
+      </div>
+      <div className="content-image">
+        <div className="image-crop">
+          <img src={AccountAsset} alt="AccountAsset" id="reason-image" />
+        </div>
       </div>
     </section>
   );

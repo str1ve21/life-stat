@@ -92,7 +92,9 @@ export default function CounterMenu(props: IProps) {
         className="flex gap-[10px] lg:gap-[20px] mb-[10px] lg:mb-[20px] rounded-2xl z-[100] duration-200"
       >
         <button
-          onClick={() => {}}
+          onClick={() => {
+            alert("В разработке");
+          }}
           aria-label="Сдвинуть счётчик левее"
           className="button-sm"
           style={{
@@ -116,7 +118,9 @@ export default function CounterMenu(props: IProps) {
           </svg>
         </button>
         <button
-          onClick={() => {}}
+          onClick={() => {
+            alert("В разработке");
+          }}
           aria-label="Сдвинуть счётчик правее"
           className="button-sm"
           style={{

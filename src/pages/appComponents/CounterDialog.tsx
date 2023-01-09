@@ -202,7 +202,6 @@ export default function AddDialog() {
                       defaultValue={input.defValue}
                       id={input.htmlId}
                       name={input.htmlId}
-                      className="input"
                     />
                   </label>
                 );

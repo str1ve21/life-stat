@@ -25,7 +25,7 @@ const CounterSetValue = observer((props: IProps) => {
           defaultValue={props.defInput}
           aria-label="Значение для изменения счётчика"
           id={`CounterInput-${props.storeCounterID}`}
-          className="px-[10px] py-[10px] text-base md:text-lg text-manrope border-r-2 rounded-2xl rounded-r-none"
+          className="px-[15px] py-[10px] text-base md:text-lg text-manrope border-r-2 rounded-full rounded-r-none"
           style={{
             borderColor: props.textColor,
             background: props.additionalColor,
@@ -42,7 +42,7 @@ const CounterSetValue = observer((props: IProps) => {
             }
           }}
           aria-label="Добавить значение"
-          className="button h-full w-full hover:scale-100 hover:opacity-90 rounded-2xl rounded-l-none"
+          className="button h-full w-full hover:scale-100 hover:opacity-90 rounded-full rounded-l-none"
           style={{
             background: props.additionalColor,
             transition: "background 2000ms, opacity 200ms",

@@ -48,7 +48,7 @@ export default function Roadmap() {
       id="Планы"
       className="relative flex justify-center flex-col lg:flex-row-reverse h-max bg-gradient-to-b from-app-500 dark:from-app-550 to-app-600 dark:to-app-650 round rounded-t-none z-40 overflow-hidden"
     >
-      <div className="content-text">
+      <div className="content-data">
         <div id="roadmap-title" style={{ filter: "opacity(0)" }}>
           <h2 className="hello-title lg:text-right">Планы.</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px] lg:text-right">
