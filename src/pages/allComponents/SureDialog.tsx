@@ -13,21 +13,21 @@ export default function SureDialog() {
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>(
-        "#sureDialog" + dialogElementData.id
+        "#SureDialog-" + dialogElementData.id
       )!.open
     ) {
       const dialog = document.querySelector<HTMLDialogElement>(
-        "#sureDialog" + dialogElementData.id
+        "#SureDialog-" + dialogElementData.id
       )!;
       dialog.showModal();
-      dialog.classList.toggle("dialog-anim");
+      dialog.classList.toggle("anim-y");
     }
   }, []);
 
   return (
     <dialog
-      id={`sureDialog${dialogElementData.id}`}
-      className="dialog dialog-anim mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl duration-200"
+      id={`SureDialog-${dialogElementData.id}`}
+      className="dialog anim-y mx-[20px] md:mx-auto md:max-w-2xl w-full dialog-padding rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
@@ -45,19 +45,11 @@ export default function SureDialog() {
         {dialogElementData.isYesFunc && (
           <button
             onClick={() => {
-              if (dialogElementData.title === "Удаление счётчика.") {
-                document
-                  .querySelector<HTMLDialogElement>(
-                    `#counterMenu${dialogElementData.id}`
-                  )!
-                  .classList.toggle("opacity-0");
-              }
-
               document
                 .querySelector<HTMLDialogElement>(
-                  `#sureDialog${dialogElementData.id}`
+                  `#SureDialog-${dialogElementData.id}`
                 )!
-                .classList.toggle("dialog-anim");
+                .classList.toggle("anim-y");
 
               setTimeout(() => {
                 dialogElementData.yesFunction!();
@@ -72,19 +64,11 @@ export default function SureDialog() {
         {dialogElementData.isNoFunc && (
           <button
             onClick={() => {
-              if (dialogElementData.title === "Удаление счётчика.") {
-                document
-                  .querySelector<HTMLDialogElement>(
-                    `#counterMenu${dialogElementData.id}`
-                  )!
-                  .classList.toggle("opacity-0");
-              }
-
               document
                 .querySelector<HTMLDialogElement>(
-                  `#sureDialog${dialogElementData.id}`
+                  `#SureDialog-${dialogElementData.id}`
                 )!
-                .classList.toggle("dialog-anim");
+                .classList.toggle("anim-y");
 
               setTimeout(() => {
                 dialogElementData.noFunction!();
@@ -106,19 +90,11 @@ export default function SureDialog() {
           stroke="currentColor"
           className="dialog-close"
           onClick={() => {
-            if (dialogElementData.title === "Удаление счётчика.") {
-              document
-                .querySelector<HTMLDialogElement>(
-                  `#counterMenu${dialogElementData.id}`
-                )!
-                .classList.toggle("opacity-0");
-            }
-
             document
               .querySelector<HTMLDialogElement>(
-                `#sureDialog${dialogElementData.id}`
+                `#SureDialog-${dialogElementData.id}`
               )!
-              .classList.toggle("dialog-anim");
+              .classList.toggle("anim-y");
 
             setTimeout(() => {
               SDialog.deleteDialog();

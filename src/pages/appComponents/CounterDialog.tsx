@@ -1,5 +1,5 @@
 // react, router, mobx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // plugins, libs
 import { v4 as uuidv4 } from "uuid";
@@ -11,9 +11,10 @@ import SCounterDialog from "../../store/SCounterDialog";
 // local functions
 import { findCounterByID } from "../../func/currentCounter";
 import { getInputValue } from "../../func/getInputValue";
+import { sliderAnimation } from "../../func/formSlider";
 
 // interfaces
-import IAddInputsArray from "../../interfaces/IAddInputsArray";
+import IInputsArray from "../../interfaces/IInputsArray";
 import ICounter from "../../interfaces/ICounter";
 import ICounterDialog from "../../interfaces/ICounterDialog";
 
@@ -24,7 +25,10 @@ export default function AddDialog() {
     dialogElementData.id
   );
 
-  const AddInputsArray: IAddInputsArray[] = [
+  // info, func, custom
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const infoInputsArray: IInputsArray[] = [
     {
       id: 0,
       type: "text",
@@ -49,6 +53,9 @@ export default function AddDialog() {
       placeholder: "Станд.: 0",
       defValue: dialogElementData.isEdit ? currentCounter?.counter : "0",
     },
+  ];
+
+  const funcInputsArray: IInputsArray[] = [
     {
       id: 3,
       type: "number",
@@ -65,15 +72,27 @@ export default function AddDialog() {
       placeholder: "Станд.: 1",
       defValue: dialogElementData.isEdit ? currentCounter?.defaultInput : "1",
     },
+  ];
+
+  const customInputsArray: IInputsArray[] = [
     {
       id: 5,
       type: "color",
-      htmlId: "borderColorInput",
+      htmlId: "colorInput",
       labelText: "Цвет фона",
       defValue: dialogElementData.isEdit ? currentCounter?.color : "#FF9B41",
     },
     {
       id: 6,
+      type: "color",
+      htmlId: "additionalColorInput",
+      labelText: "Второстепенный цвет",
+      defValue: dialogElementData.isEdit
+        ? currentCounter?.additionalColor
+        : "#F4AE71",
+    },
+    {
+      id: 7,
       type: "color",
       htmlId: "textColorInput",
       labelText: "Цвет текста",
@@ -81,6 +100,12 @@ export default function AddDialog() {
         ? currentCounter?.textColor
         : "#000000",
     },
+  ];
+
+  const inputsArray = [
+    { id: 0, array: infoInputsArray },
+    { id: 1, array: funcInputsArray },
+    { id: 2, array: customInputsArray },
   ];
 
   function sendCounterData() {
@@ -93,15 +118,17 @@ export default function AddDialog() {
       counter: +getInputValue("#countInput"),
       goal: +getInputValue("#goalInput"),
       defaultInput: +getInputValue("#defaultInput"),
-      color: getInputValue("#borderColorInput"),
+      color: getInputValue("#colorInput"),
+      additionalColor: getInputValue("#additionalColorInput"),
       textColor: getInputValue("#textColorInput"),
     };
+
     if (currentCounter && dialogElementData.isEdit) {
       tempItem.id = currentCounter.id;
       tempItem.dateID = currentCounter.dateID;
       SCounters.editCounter(tempItem);
       document.querySelector<HTMLInputElement>(
-        `#CounterInput${currentCounter.id}`
+        `#CounterInput-${currentCounter.id}`
       )!.value = `${tempItem.defaultInput}`;
       return;
     }
@@ -113,69 +140,106 @@ export default function AddDialog() {
   function submit() {
     SCounterDialog.deleteDialog();
     sendCounterData();
-    if (dialogElementData.isEdit) {
-      document
-        .querySelector<HTMLDialogElement>(
-          `#counterMenu${dialogElementData.id}`
-        )!
-        .classList.toggle("opacity-0");
+  }
+
+  function subtitleText(slide: number): string {
+    switch (slide) {
+      case 0:
+        return "Здесь вы можете добавить основную информацию. Можете оставить поля заголовка и описания пустыми, тогда будет только номер счётчика.";
+      case 1:
+        return "Функциональность счётчика даст вам более гибкую и удобную работу с ним. В будущем, тут будут более интересные пункты.";
+      case 2:
+        return "Данный раздел позволит вам касотимизровать ваш счётчик. После создания вы можете отредактировать любой из пунктов.";
     }
+    return "";
   }
 
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>(
-        "#counterDialog" + dialogElementData.id
+        "#CounterDialog-" + dialogElementData.id
       )!.open
     ) {
       const dialog = document.querySelector<HTMLDialogElement>(
-        "#counterDialog" + dialogElementData.id
+        "#CounterDialog-" + dialogElementData.id
       )!;
       dialog.showModal();
-      dialog.classList.toggle("dialog-anim");
+      dialog.classList.toggle("anim-y");
     }
   }, []);
 
   return (
     <dialog
-      id={`counterDialog${dialogElementData.id}`}
-      className="dialog dialog-anim dialog-padding w-full mx-[20px] md:mx-auto md:max-w-3xl rounded-2xl duration-200"
+      id={`CounterDialog-${dialogElementData.id}`}
+      className="dialog anim-y dialog-padding w-full mx-[20px] md:mx-auto md:max-w-3xl rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.text}</h2>
-        <h3 className="subtitle">{dialogElementData.title}</h3>
+        <p className="subtitle">{subtitleText(currentSlide)}</p>
       </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="form"
+        id="inputsParent"
       >
-        {AddInputsArray.map((item: IAddInputsArray) => {
+        {inputsArray.map((inputs) => {
           return (
-            <label key={item.id} className="label">
-              <span className="text-ssp ml-3">{item.labelText}</span>
-              <input
-                type={item.type}
-                placeholder={item.placeholder}
-                defaultValue={item.defValue}
-                id={item.htmlId}
-                name={item.htmlId}
-                className="input"
-              />
-            </label>
+            <div
+              key={inputs.id}
+              id={`inputsArray-${inputs.id}`}
+              className={`${
+                currentSlide === inputs.id ? "" : "hidden"
+              } form w-full`}
+            >
+              {inputs.array.map((input) => {
+                return (
+                  <label key={input.id} className="label">
+                    <span>{input.labelText}</span>
+                    <input
+                      type={input.type}
+                      placeholder={input.placeholder}
+                      defaultValue={input.defValue}
+                      id={input.htmlId}
+                      name={input.htmlId}
+                    />
+                  </label>
+                );
+              })}
+            </div>
           );
         })}
       </form>
-      <button
-        onClick={() => {
-          submit();
-        }}
-        aria-label={dialogElementData.buttonText}
-        className="button bg-app-100 dark:bg-app-150"
-      >
-        {dialogElementData.buttonText}
-      </button>
+      <div className="flex flex-wrap gap-[10px]">
+        <button
+          onClick={() => {
+            if (currentSlide !== 2) {
+              console.log(currentSlide);
+              setCurrentSlide(currentSlide + 1);
+              // sliderAnimation("#inputsParent", currentSlide);
+              return;
+            }
+            submit();
+          }}
+          aria-label={
+            currentSlide === 2 ? dialogElementData.buttonText : "Далее"
+          }
+          className="button bg-app-100 dark:bg-app-150"
+        >
+          {currentSlide === 2 ? dialogElementData.buttonText : "Далее"}
+        </button>
+        <button
+          onClick={() => {
+            setCurrentSlide(currentSlide - 1);
+            // sliderAnimation("#inputsParent", currentSlide);
+          }}
+          aria-label="Назад"
+          className="button bg-app-100 dark:bg-app-150"
+          disabled={currentSlide === 0 ? true : false}
+        >
+          Назад
+        </button>
+      </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -185,19 +249,11 @@ export default function AddDialog() {
         className="dialog-close"
         aria-label="Закрыть диалоговое окно"
         onClick={() => {
-          if (dialogElementData.isEdit) {
-            document
-              .querySelector<HTMLDivElement>(
-                `#counterMenu${dialogElementData.id}`
-              )!
-              .classList.toggle("opacity-0");
-          }
-
           document
             .querySelector<HTMLDialogElement>(
-              `#counterDialog${dialogElementData.id}`
+              `#CounterDialog-${dialogElementData.id}`
             )!
-            .classList.toggle("dialog-anim");
+            .classList.toggle("anim-y");
 
           setTimeout(() => {
             SCounterDialog.deleteDialog();

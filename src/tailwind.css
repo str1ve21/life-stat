@@ -23,7 +23,15 @@
     @apply rounded-[20px] md:rounded-[40px] lg:rounded-[60px];
   }
 
-  .content-text {
+  .anim-y {
+    @apply transform-gpu opacity-0 translate-y-[40px] duration-200;
+  }
+
+  .anim-x {
+    @apply transform-gpu opacity-0 -translate-x-[40px] duration-200;
+  }
+
+  .content-data {
     @apply flex flex-col justify-center lg:min-h-[80vh] lg:w-[70%] xl:w-[60%] 2xl:w-[50%] content-padding mx-[20px] lg:m-0 bg-neutral-100/30 dark:bg-neutral-900/30 lg:bg-transparent dark:lg:bg-transparent z-[100] round lg:rounded-none backdrop-blur-[8px] lg:backdrop-blur-none;
   }
 
@@ -32,11 +40,11 @@
   }
 
   .image-crop {
-    @apply h-full overflow-hidden;
+    @apply h-full w-full overflow-hidden;
   }
 
   .image-crop img {
-    @apply h-full object-cover scale-[1.1];
+    @apply h-full w-full object-cover scale-[1.1];
   }
 
   .content-padding {
@@ -52,7 +60,7 @@
   }
 
   .counter-value {
-    @apply text-7xl xl:text-8xl text-raleway font-light leading-none;
+    @apply text-7xl xl:text-8xl text-manrope font-light leading-none;
   }
 
   .dialog {
@@ -60,7 +68,7 @@
   }
 
   .dialog-anim {
-    @apply opacity-0 -translate-y-[40px];
+    @apply transform-gpu opacity-0 translate-y-[40px];
   }
 
   .dialog-padding {
@@ -76,11 +84,11 @@
   }
 
   .dialog-text {
-    @apply text-base md:text-lg lg:text-xl text-raleway text-neutral-900 dark:text-neutral-100;
+    @apply text-base md:text-lg lg:text-xl text-manrope text-neutral-900 dark:text-neutral-100;
   }
 
   .text-logo {
-    @apply text-xl md:text-2xl xl:text-3xl text-ssp text-neutral-900 dark:text-neutral-100;
+    @apply ml-[10px] lg:ml-[20px] text-xl md:text-2xl xl:text-3xl text-raleway text-neutral-900 dark:text-neutral-100;
   }
 
   .text-nav {
@@ -88,47 +96,59 @@
   }
 
   .hello-title {
-    @apply text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-ssp font-bold text-neutral-900 dark:text-neutral-100;
+    @apply text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-raleway font-bold text-neutral-900 dark:text-neutral-100;
   }
 
   .hello-subtitle {
-    @apply text-base md:text-lg lg:text-xl 2xl:text-2xl text-raleway opacity-80 text-neutral-900 dark:text-neutral-100;
+    @apply text-base md:text-lg lg:text-xl 2xl:text-2xl text-manrope opacity-80 text-neutral-900 dark:text-neutral-100;
   }
 
   .title {
-    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-ssp font-bold text-neutral-900 dark:text-neutral-100;
+    @apply mb-[10px] text-3xl md:text-4xl lg:text-5xl text-raleway font-bold text-neutral-900 dark:text-neutral-100;
   }
 
   .subtitle {
-    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-raleway opacity-80 text-neutral-900 dark:text-neutral-100;
+    @apply mb-[20px] md:mb-[40px] text-base md:text-lg lg:text-xl text-manrope opacity-80 text-neutral-900 dark:text-neutral-100;
   }
 
   .text {
-    @apply mb-[20px] md:mb-[40px] text-lg md:text-xl lg:text-2xl 2xl:text-3xl text-raleway text-neutral-900 dark:text-neutral-100;
+    @apply mb-[20px] md:mb-[40px] text-lg md:text-xl lg:text-2xl 2xl:text-3xl text-manrope text-neutral-900 dark:text-neutral-100;
   }
 
   .subtext {
-    @apply text-base md:text-lg xl:text-xl text-raleway text-neutral-900 dark:text-neutral-100;
+    @apply text-base md:text-lg xl:text-xl text-manrope text-neutral-900 dark:text-neutral-100;
   }
 
   .icon {
-    @apply w-[20px] lg:w-[30px] duration-200 text-neutral-900 dark:text-neutral-100;
+    @apply w-[15px] lg:w-[20px] duration-200 text-neutral-900 dark:text-neutral-100;
   }
 
   .button {
-    @apply px-8 py-2 hover:scale-95 text-lg text-raleway text-center rounded-2xl duration-200;
+    @apply px-[25px] py-[7.5px] hover:scale-95 text-base md:text-lg xl:text-xl text-manrope text-center rounded-full duration-200 disabled:grayscale disabled:scale-95;
+  }
+
+  .button-sm {
+    @apply px-[15px] py-[5px] hover:scale-95 text-sm md:text-base xl:text-lg text-manrope text-center rounded-full duration-200;
   }
 
   .form {
     @apply grid grid-cols-1 md:grid-cols-2 gap-[15px] md:gap-[20px] mb-[20px] md:mb-[40px] text-lg line-height-1;
   }
 
-  .label {
-    @apply flex flex-col gap-[5px] md:gap-[10px] text-neutral-900 dark:text-neutral-100;
+  .form-vertical {
+    @apply grid grid-cols-1 gap-[15px] md:gap-[20px] mb-[20px] md:mb-[40px] text-lg line-height-1 text-neutral-900 dark:text-neutral-100;
   }
 
-  .input {
-    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway border-app-100/20 bg-transparent rounded-xl text-neutral-900 dark:text-neutral-100;
+  .label {
+    @apply relative flex flex-col gap-[5px] text-neutral-900 dark:text-neutral-100;
+  }
+
+  .label span {
+    @apply text-manrope ml-[15px];
+  }
+
+  .label input {
+    @apply relative px-[15px] py-[10px] border-4 w-full min-h-[50px] text-manrope border-neutral-900/30 dark:border-neutral-100/30 bg-transparent rounded-full text-neutral-900 dark:text-neutral-100;
   }
 
   .checkbox {
@@ -136,27 +156,31 @@
   }
 
   .checkbox-label {
-    @apply flex justify-center items-center text-lg text-raleway rounded-2xl text-neutral-900 dark:text-neutral-100;
+    @apply flex justify-center items-center text-lg text-manrope rounded-2xl text-neutral-900 dark:text-neutral-100;
   }
 
-  .account-form {
-    @apply flex flex-col w-full max-w-xl gap-[20px] p-[20px] md:p-[40px] text-lg line-height-1 bg-neutral-100/50 dark:bg-neutral-800/50 round text-neutral-900 dark:text-neutral-100;
-  }
-
-  .account-label {
-    @apply flex flex-col gap-[5px] md:gap-[10px] rounded-2xl text-neutral-900 dark:text-neutral-100;
-  }
-
-  .account-input {
-    @apply px-2 py-2 w-full min-h-[50px] border-4 text-raleway dark:border-neutral-200 border-neutral-800 bg-transparent rounded-xl text-neutral-900 dark:text-neutral-100;
-  }
-
-  .buttons-navbar {
-    @apply flex flex-wrap justify-center p-[10px] gap-[20px] lg:gap-[40px] bg-neutral-100/50 dark:bg-neutral-800/50 rounded-2xl text-neutral-900 dark:text-neutral-100;
+  .buttons-bar {
+    @apply flex flex-wrap justify-center gap-[20px];
   }
 }
 
 @layer utilities {
+  @font-face {
+    font-family: "Raleway", sans-serif;
+    -webkit-font-feature-settings: "lnum";
+    -moz-font-feature-settings: "lnum";
+    font-feature-settings: "lnum";
+    src: url("./assets/Raleway-Bold.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Manrope", sans-serif;
+    -webkit-font-feature-settings: "lnum";
+    -moz-font-feature-settings: "lnum";
+    font-feature-settings: "lnum";
+    src: url("./assets/Manrope-Regular.ttf") format("truetype");
+  }
+
   ::selection {
     background: #ff9b41;
     color: #101010;
@@ -170,15 +194,14 @@
     color-scheme: dark;
   }
 
-  .text-ssp {
-    font-family: "Source Sans Pro", sans-serif;
+  .text-manrope {
+    font-family: "Manrope", sans-serif;
+    font-weight: 400;
   }
 
   .text-raleway {
     font-family: "Raleway", sans-serif;
-    -webkit-font-feature-settings: "lnum";
-    -moz-font-feature-settings: "lnum";
-    font-feature-settings: "lnum";
+    font-weight: 700;
   }
 
   .text-vertical-rl {

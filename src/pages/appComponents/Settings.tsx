@@ -10,7 +10,7 @@ export default function InfoDialog() {
   return (
     <dialog
       id="settingsDialog"
-      className="dialog dialog-anim dialog-padding md:max-w-6xl w-full mx-[20px] md:mx-auto rounded-2xl duration-200"
+      className="dialog anim-y dialog-padding md:max-w-6xl w-full mx-[20px] md:mx-auto rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">Настройки.</h2>
@@ -53,7 +53,7 @@ export default function InfoDialog() {
         onClick={() => {
           const dialog =
             document.querySelector<HTMLDialogElement>("#settingsDialog")!;
-          dialog.classList.toggle("dialog-anim");
+          dialog.classList.toggle("anim-y");
           setTimeout(() => {
             dialog.close();
           }, 200);

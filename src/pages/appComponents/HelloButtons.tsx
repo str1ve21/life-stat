@@ -11,8 +11,6 @@ export default function HelloButtons() {
   const createCounterDialog: ICounterDialog = {
     id: "",
     text: "Добавление счётчика.",
-    title:
-      "Здесь вы можете создать новый счётчик со своими параметрами, и кастомизировать его. Необязательными являются заголовок, описание и цель.",
     buttonText: "Создать",
     isEdit: false,
   };
@@ -27,7 +25,7 @@ export default function HelloButtons() {
           SCounterDialog.createDialog(createCounterDialog);
         }}
         aria-label="Создать счётчик"
-        className="button bg-emerald-300 dark:bg-emerald-600"
+        className="flex items-center gap-[10px] button bg-emerald-300 dark:bg-emerald-600"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,19 +38,20 @@ export default function HelloButtons() {
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
-            d="M12 4.5v15m7.5-7.5h-15"
+            d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"
           />
         </svg>
+        Новый счётчик
       </button>
-      <button
+      {/* <button
         onClick={() => {
           const dialog =
             document.querySelector<HTMLDialogElement>("#settingsDialog")!;
           dialog.showModal();
-          dialog.classList.toggle("dialog-anim");
+          dialog.classList.toggle("anim-y");
         }}
         aria-label="Настройки приложения"
-        className="button bg-sky-300 dark:bg-sky-600"
+        className="flex items-center gap-[10px] button bg-sky-300 dark:bg-sky-600"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +72,8 @@ export default function HelloButtons() {
             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
           />
         </svg>
-      </button>
+        Настройки
+      </button> */}
     </div>
   );
 }

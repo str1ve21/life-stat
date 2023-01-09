@@ -39,7 +39,7 @@ export default function Benefit() {
       id="Польза"
       className="relative flex justify-center flex-col lg:flex-row h-max rounded-none z-30 overflow-hidden"
     >
-      <div className="content-text">
+      <div className="content-data">
         <div id="benefit-title" style={{ filter: "opacity(0)" }}>
           <h2 className="hello-title">Стоит ли использовать?</h2>
           <p className="hello-subtitle mb-[20px] lg:mb-[40px]">

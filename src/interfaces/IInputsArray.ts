@@ -1,4 +1,4 @@
-export default interface IAddInputsArray {
+export default interface IInputsArray {
   readonly id: number;
   type: string;
   htmlId: string;

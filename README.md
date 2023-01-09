@@ -72,5 +72,5 @@ YandexID Api:`https://yandex.ru/id/business?utm_source=yandex&utm_medium=yandex-
 
 Данные счётчиков:
 
-- JSON массив  
+- JSON массив
 - Данные о теме хранятся локально

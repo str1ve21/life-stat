@@ -13,21 +13,21 @@ export default function InfoDialog() {
   useEffect(() => {
     if (
       !document.querySelector<HTMLDialogElement>(
-        "#infoDialog" + dialogElementData.id
+        "#InfoDialog-" + dialogElementData.id
       )!.open
     ) {
       const dialog = document.querySelector<HTMLDialogElement>(
-        "#infoDialog" + dialogElementData.id
+        "#InfoDialog-" + dialogElementData.id
       )!;
       dialog.showModal();
-      dialog.classList.toggle("dialog-anim");
+      dialog.classList.toggle("anim-y");
     }
   }, []);
 
   return (
     <dialog
-      id={`infoDialog${dialogElementData.id}`}
-      className="dialog dialog-anim dialog-padding md:max-w-2xl w-full mx-[20px] md:mx-auto rounded-2xl duration-200"
+      id={`InfoDialog-${dialogElementData.id}`}
+      className="dialog anim-y dialog-padding md:max-w-3xl w-full mx-[20px] md:mx-auto rounded-2xl duration-200"
     >
       <div className="dialog-header">
         <h2 className="title">{dialogElementData.title}</h2>
@@ -38,7 +38,7 @@ export default function InfoDialog() {
           return (
             <p
               key={item}
-              className="dialog-text p-[10px] odd:bg-neutral-200 odd:dark:bg-neutral-800 odd:rounded-2xl"
+              className="dialog-text px-[15px] py-[10px] odd:bg-neutral-200 odd:dark:bg-neutral-800 odd:rounded-full"
             >
               {item}
             </p>
@@ -55,15 +55,9 @@ export default function InfoDialog() {
         onClick={() => {
           document
             .querySelector<HTMLDialogElement>(
-              `#counterMenu${dialogElementData.id}`
+              `#InfoDialog-${dialogElementData.id}`
             )!
-            .classList.toggle("opacity-0");
-
-          document
-            .querySelector<HTMLDialogElement>(
-              `#infoDialog${dialogElementData.id}`
-            )!
-            .classList.toggle("dialog-anim");
+            .classList.toggle("anim-y");
 
           setTimeout(() => {
             SInfoDialog.deleteDialog();

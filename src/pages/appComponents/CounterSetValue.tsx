@@ -12,41 +12,58 @@ import { getInputValue } from "../../func/getInputValue";
 interface IProps {
   storeCounterID: string;
   defInput: number;
-  accentColor: string;
+  additionalColor: string;
+  textColor: string;
 }
 
 const CounterSetValue = observer((props: IProps) => {
   return (
-    <div className="grid grid-cols-2 gap-[10px] md:gap-[20px] mt-[5px] md:mt-[10px]">
-      <input
-        type="number"
-        defaultValue={props.defInput}
-        aria-label="Значение для изменения счётчика"
-        id={`CounterInput${props.storeCounterID}`}
-        className="min-h-[50px] px-2 py-2 text-base md:text-lg border-2 bg-transparent backdrop-invert-[0.15] text-raleway rounded-2xl"
-        style={{
-          borderColor: props.accentColor,
-          transition: "border 2000ms, background 2000ms, color 500ms",
-        }}
-      />
-      <button
-        onClick={() => {
-          if (+getInputValue(`#CounterInput${props.storeCounterID}`) !== 0) {
-            SCounters.changeValue(
-              props.storeCounterID,
-              +getInputValue(`#CounterInput${props.storeCounterID}`)
-            );
-          }
-        }}
-        aria-label="Добавить значение"
-        className="p-auto border-2 hover:scale-95 text-base md:text-lg text-raleway backdrop-invert-[0.15] rounded-2xl"
-        style={{
-          borderColor: props.accentColor,
-          transition: "border 2000ms, background 2000ms, transform 200ms",
-        }}
-      >
-        Добавить
-      </button>
+    <div className="flex gap-[10px] md:gap-[20px] mt-[10px] md:mt-[20px]">
+      <div className="grid grid-cols-2">
+        <input
+          type="number"
+          defaultValue={props.defInput}
+          aria-label="Значение для изменения счётчика"
+          id={`CounterInput-${props.storeCounterID}`}
+          className="px-[15px] py-[10px] text-base md:text-lg text-manrope border-r-2 rounded-full rounded-r-none"
+          style={{
+            borderColor: props.textColor,
+            background: props.additionalColor,
+            transition: "background 2000ms, color 500ms",
+          }}
+        />
+        <button
+          onClick={() => {
+            if (+getInputValue(`#CounterInput-${props.storeCounterID}`) !== 0) {
+              SCounters.changeValue(
+                props.storeCounterID,
+                +getInputValue(`#CounterInput-${props.storeCounterID}`)
+              );
+            }
+          }}
+          aria-label="Добавить значение"
+          className="button h-full w-full hover:scale-100 hover:opacity-90 rounded-full rounded-l-none"
+          style={{
+            background: props.additionalColor,
+            transition: "background 2000ms, opacity 200ms",
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-[20px] mx-auto"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 });
