@@ -22,7 +22,7 @@ const WelcomePage = observer(() => {
     "Смысл",
     "Польза",
     "Планы",
-    "Ссылки",
+    "Инфо",
   ];
 
   useEffect(() => {
