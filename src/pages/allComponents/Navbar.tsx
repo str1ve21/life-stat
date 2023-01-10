@@ -46,70 +46,72 @@ export default function Navbar(props: IProps) {
         })}
       </nav>
       <div className="flex gap-[20px] my-auto">
-        {props.isMobileExist && (
-          <button
-            onClick={() => {
-              toggleMobileMenu((prev) => !prev);
-            }}
-            className="flex lg:hidden h-max p-[5px] bg-white dark:bg-black rounded-full"
-          >
-            {isMobileMenu && (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="icon text-rose-300 dark:text-rose-700"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            )}
-            {isMobileMenu === false && (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="icon"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-            )}
-          </button>
-        )}
-        <div
-          className={`absolute flex lg:hidden flex-col w-[calc(100%-95px)] md:w-[calc(100%-110px)] gap-[10px] top-[65px] md:top-[70px] left-[20px] right-[75px] md:right-[120px] p-[20px] bg-white dark:bg-black rounded-2xl duration-200 ${
-            isMobileMenu
-              ? "visible opacity-100 translate-y-0"
-              : "invisible opacity-0 -translate-y-[20px]"
-          }`}
-        >
-          <nav className="flex flex-wrap gap-[10px] h-max text-nav bg-clip-text bg-gradient-to-r from-app-600 to-app-100">
-            {linksArray.map((item: string) => {
-              return (
-                <a
-                  className="mx-auto hover:text-transparent text-manrope duration-200"
-                  href={"#" + item}
-                  key={item}
-                  onClick={() => {
-                    toggleMobileMenu((prev) => !prev);
-                  }}
+        <div className="relative flex justify-end">
+          {props.isMobileExist && (
+            <button
+              onClick={() => {
+                toggleMobileMenu((prev) => !prev);
+              }}
+              className="flex lg:hidden h-max p-[5px] bg-white dark:bg-black rounded-full"
+            >
+              {isMobileMenu && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="icon text-rose-300 dark:text-rose-700"
                 >
-                  {item}
-                </a>
-              );
-            })}
-          </nav>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              )}
+              {isMobileMenu === false && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="icon"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              )}
+            </button>
+          )}
+          <div
+            className={`absolute flex lg:hidden flex-col max-w-[300px] w-[65vw] top-[50px] lg:top-[80px] gap-[10px] p-[20px] bg-white dark:bg-black rounded-2xl duration-200 ${
+              isMobileMenu
+                ? "visible opacity-100 translate-y-0"
+                : "invisible opacity-0 -translate-y-[20px]"
+            }`}
+          >
+            <nav className="flex flex-wrap gap-[10px] h-max text-nav bg-clip-text bg-gradient-to-r from-app-600 to-app-100">
+              {linksArray.map((item: string) => {
+                return (
+                  <a
+                    className="mx-auto hover:text-transparent text-manrope duration-200"
+                    href={"#" + item}
+                    key={item}
+                    onClick={() => {
+                      toggleMobileMenu((prev) => !prev);
+                    }}
+                  >
+                    {item}
+                  </a>
+                );
+              })}
+            </nav>
+          </div>
         </div>
         <ThemeSwitcher></ThemeSwitcher>
       </div>

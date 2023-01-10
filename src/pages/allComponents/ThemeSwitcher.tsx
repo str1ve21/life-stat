@@ -42,7 +42,7 @@ const ThemeSwitcher = observer(() => {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative flex justify-center">
       <button
         className="h-max p-[5px] lg:p-[10px] hover:scale-95 bg-white dark:bg-black rounded-full duration-200"
         aria-label="Переключение темы"
@@ -92,7 +92,7 @@ const ThemeSwitcher = observer(() => {
         </svg>
       </button>
       <div
-        className={`absolute flex flex-col gap-[10px] p-[10px] translate-y-[20px] bg-white dark:bg-black rounded-2xl duration-200 ${
+        className={`absolute flex flex-col gap-[10px] p-[10px] top-[50px] lg:top-[80px] bg-white dark:bg-black rounded-2xl duration-200 ${
           STheme.themeData.isMenuVisible
             ? "visible opacity-100 translate-y-0"
             : "invisible opacity-0 -translate-y-[20px]"
