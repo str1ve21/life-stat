@@ -27,7 +27,7 @@ const WelcomePage = observer(() => {
 
   useEffect(() => {
     document.documentElement.classList.remove("scroll-smooth");
-    window.scrollTo(0, window.innerHeight);
+    document.querySelector("#Главная")?.scrollIntoView();
     document.documentElement.classList.add("scroll-smooth");
   }, []);
 
