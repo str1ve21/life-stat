@@ -64,7 +64,7 @@ export default function Roadmap() {
             return (
               <p
                 key={item}
-                className="text m-0 p-[10px] lg:text-right odd:bg-neutral-200/20 odd:dark:bg-neutral-800/20 odd:rounded-2xl"
+                className="text m-0 px-[15px] py-[10px] lg:text-right dark:odd:bg-neutral-200/20 odd:bg-neutral-800/20 odd:rounded-full"
               >
                 {item}
               </p>

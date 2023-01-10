@@ -220,7 +220,7 @@ export default function Account() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className={`icon dark:text-neutral-900 text-neutral-100 ${
+                    className={`icon-sm dark:text-neutral-900 text-neutral-100 ${
                       isShowPass ? "hidden" : "block"
                     }`}
                   >
@@ -239,7 +239,7 @@ export default function Account() {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className={`icon dark:text-neutral-900 text-neutral-100 ${
+                    className={`icon-sm dark:text-neutral-900 text-neutral-100 ${
                       isShowPass ? "block" : "hidden"
                     }`}
                   >

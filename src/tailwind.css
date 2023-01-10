@@ -120,7 +120,11 @@
   }
 
   .icon {
-    @apply w-[15px] lg:w-[20px] duration-200 text-neutral-900 dark:text-neutral-100;
+    @apply w-[25px] duration-200 text-neutral-900 dark:text-neutral-100;
+  }
+
+  .icon-sm {
+    @apply w-[15px] duration-200 text-neutral-900 dark:text-neutral-100;
   }
 
   .button {
