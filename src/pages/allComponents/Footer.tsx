@@ -15,7 +15,7 @@ export default function Footer() {
 
   return (
     <footer
-      id="Ссылки"
+      id="Инфо"
       className="relative flex flex-col h-max z-[60] overflow-hidden content-padding"
     >
       <div>

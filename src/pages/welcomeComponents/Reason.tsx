@@ -24,6 +24,8 @@ export default function Reason() {
       );
     });
     if (window.innerWidth >= 1024) {
+      console.log(document.querySelector<HTMLImageElement>("#reason-image"));
+
       window.addEventListener("pointermove", (event) => {
         document.querySelector<HTMLImageElement>(
           "#reason-image"

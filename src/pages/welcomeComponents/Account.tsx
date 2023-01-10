@@ -1,5 +1,5 @@
 // react, router, mobx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // stores
@@ -134,6 +134,20 @@ export default function Account() {
   // function onVerifyCaptcha(token: any) {
   //   console.log("Token is: " + token);
   // }
+
+  useEffect(() => {
+    if (window.innerWidth >= 1024) {
+      console.log(document.querySelector<HTMLImageElement>("#account-image"));
+
+      window.addEventListener("pointermove", (event) => {
+        document.querySelector<HTMLImageElement>(
+          "#account-image"
+        )!.style.transform = `scale(1.1) translate(${
+          -event.clientX / 75 + "px"
+        }, ${-event.clientY / 50 + "px"})`;
+      });
+    }
+  });
 
   return (
     <section
@@ -327,7 +341,7 @@ export default function Account() {
       </div>
       <div className="content-image">
         <div className="image-crop">
-          <img src={AccountAsset} alt="AccountAsset" id="reason-image" />
+          <img src={AccountAsset} alt="AccountAsset" id="account-image" />
         </div>
       </div>
     </section>
